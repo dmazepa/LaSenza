@@ -30,6 +30,17 @@ local.properties
 
 
 #################
+## IDEA
+#################
+.idea
+lib
+out
+target
+*.iml
+*.ipr
+*.iws
+
+#################
 ## Visual Studio
 #################
 
