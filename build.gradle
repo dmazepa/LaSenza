@@ -32,7 +32,5 @@ task homepageTitle (type: Test) {
     } else {
         systemProperties["webdriver.base.url"] = System.properties["webdriver.base.url"]
     }
-    println 'Default Running!'
     include 'LaSenza/Titles.class'
-    //include 'net/thucydides/showcase/jbehave/BrowseByCategory.class'
 }
