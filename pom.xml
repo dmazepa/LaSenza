@@ -15,7 +15,6 @@
         <thucydides.version>0.9.74</thucydides.version>
         <thucydides.jbehave.version>0.9.71</thucydides.jbehave.version>
         <webdriver.driver>firefox</webdriver.driver>
-        <thucydides.project.key>BIGCOMMERCE</thucydides.project.key>
     </properties>
 
     <dependencies>
@@ -32,9 +31,6 @@
                 <groupId>net.thucydides.maven.plugins</groupId>
                 <artifactId>maven-thucydides-plugin</artifactId>
                 <version>0.9.71</version>
-                <configuration>
-                    <projectKey>${thucydides.project.key}</projectKey>
-                </configuration>
                 <executions>
                     <execution>
                         <id>thucydides-reports</id>
