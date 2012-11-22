@@ -6,7 +6,7 @@ import org.jbehave.core.annotations.When
 import org.jbehave.core.annotations.Then
 import LaSenza.steps.UserSteps
 
-class HeaderSteps{
+class TitlesSteps {
 
     @Steps
     UserSteps user;
