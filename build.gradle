@@ -26,13 +26,13 @@ dependencies {
     groovy 'org.codehaus.groovy:groovy:1.8.6'
 }
 
-task run (type: Test) {
+task homepageTitle (type: Test) {
     if (project.hasProperty("teamcity")) {
         systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]
     } else {
         systemProperties["webdriver.base.url"] = System.properties["webdriver.base.url"]
     }
     println 'Default Running!'
-    //include 'net/thucydides/showcase/jbehave/AdvancedSearch.class'
+    include 'LaSenza/Header.class'
     //include 'net/thucydides/showcase/jbehave/BrowseByCategory.class'
 }
