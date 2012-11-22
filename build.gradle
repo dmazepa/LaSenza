@@ -28,7 +28,7 @@ dependencies {
 
 task homepageTitle (type: Test) {
     if (project.hasProperty("teamcity")) {
-        systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"] . "/homepageTitle"
+        systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]"
     } else {
         systemProperties["webdriver.base.url"] = System.properties["webdriver.base.url"]
     }
