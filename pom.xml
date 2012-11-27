@@ -10,7 +10,7 @@
 
     <name>Sample Thucydides project</name>
 
-<!--    <properties>
+   <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <thucydides.version>0.9.74</thucydides.version>
         <thucydides.jbehave.version>0.9.71</thucydides.jbehave.version>
@@ -24,7 +24,7 @@
             <version>${thucydides.version}</version>
         </dependency>
 
-    </dependencies>-->
+    </dependencies>
     <build>
         <plugins>
             <plugin>
