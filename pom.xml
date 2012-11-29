@@ -17,14 +17,18 @@
         <webdriver.driver>firefox</webdriver.driver>
     </properties>
 
-    <dependencies>
-        <dependency>
+   <!-- <dependencies>
+        &lt;!&ndash;<dependency>
             <groupId>net.thucydides</groupId>
             <artifactId>thucydides-core</artifactId>
             <version>${thucydides.version}</version>
+        </dependency>&ndash;&gt;
+        <dependency>
+            <groupId>net.thucydides</groupId>
+            <artifactId>thucydides-jbehave-plugin</artifactId>
+            <version>${thucydides.jbehave.version}</version>
         </dependency>
-
-    </dependencies>
+    </dependencies>-->
     <build>
         <plugins>
             <plugin>

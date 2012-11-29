@@ -8,8 +8,8 @@ version = '0.0.1-SNAPSHOT'
 
 configurations.compile.transitive = true
 
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 repositories {
     mavenRepo urls: ["http://repo.maven.apache.org/maven2"]
@@ -33,4 +33,13 @@ task homepageTitle (type: Test) {
         systemProperties["webdriver.base.url"] = System.properties["webdriver.base.url"]
     }
     include 'LaSenza/Titles.class'
+}
+
+task master (type: Test) {
+    if (project.hasProperty("teamcity")) {
+        systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]
+    } else {
+        systemProperties["webdriver.base.url"] = System.properties["webdriver.base.url"]
+    }
+    include 'LaSenza/JBehaveTest.class'
 }
