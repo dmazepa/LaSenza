@@ -1,0 +1,1 @@
+Add global header banner as static block on Home and CLP pages

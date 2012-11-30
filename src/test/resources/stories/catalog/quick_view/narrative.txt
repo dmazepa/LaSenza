@@ -1,0 +1,2 @@
+Catalog
+Add Quickview support for product block in grid

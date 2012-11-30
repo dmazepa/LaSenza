@@ -26,13 +26,13 @@ dependencies {
     groovy 'org.codehaus.groovy:groovy:1.8.6'
 }
 
-task homepageTitle (type: Test) {
+task slider (type: Test) {
     if (project.hasProperty("teamcity")) {
         systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]
     } else {
         systemProperties["webdriver.base.url"] = System.properties["webdriver.base.url"]
     }
-    include 'LaSenza/Titles.class'
+    include 'LaSenza/SliderAsUser.class'
 }
 
 task master (type: Test) {
