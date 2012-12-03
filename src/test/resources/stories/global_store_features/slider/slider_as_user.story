@@ -10,5 +10,4 @@ Then A placeholder appears in the bottom of the carousel to indicate position wi
 
 Scenario: Controls at the bottom of the carousel allow users to manually move from image to image
 Given I am on home page
-When I click controls in the bottom of the carousel
-Then Images vary from one to another
+Then I click controls in the bottom of the carousel

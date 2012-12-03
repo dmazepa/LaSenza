@@ -26,13 +26,8 @@ class SliderAsUserSteps {
         user.assert_place_holder_on_slider()
     }
 
-    @When("I click controls in the bottom of the carousel")
-    public void click_controls_of_slider() {
-        user.click_on_second_image_of_slider()
-    }
-
-    @Then("Images vary from one to another")
-    public void assert_changes_of_images(){
-        user.assert_second_image_active()
+    @Then("I click controls in the bottom of the carousel")
+    public void click_on_second_image_of_slider_and_assert_changes() {
+        user.click_on_second_image_of_slider_and_assert_changes()
     }
 }
