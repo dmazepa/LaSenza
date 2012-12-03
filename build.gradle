@@ -29,8 +29,12 @@ dependencies {
 task slider (type: Test) {
     if (project.hasProperty("teamcity")) {
         systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]
+        systemProperties["webdriver.chrome.driver"] = project.teamcity["webdriver.chrome.driver"]
+        systemProperties["webdriver.driver"] = project.teamcity["webdriver.driver"]
     } else {
         systemProperties["webdriver.base.url"] = System.properties["webdriver.base.url"]
+        systemProperties["webdriver.chrome.driver"] = System.properties["webdriver.chrome.driver"]
+        systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
     }
     include 'LaSenza/SliderAsUser.class'
 }
@@ -38,8 +42,12 @@ task slider (type: Test) {
 task master (type: Test) {
     if (project.hasProperty("teamcity")) {
         systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]
+        systemProperties["webdriver.chrome.driver"] = project.teamcity["webdriver.chrome.driver"]
+        systemProperties["webdriver.driver"] = project.teamcity["webdriver.driver"]
     } else {
         systemProperties["webdriver.base.url"] = System.properties["webdriver.base.url"]
+        systemProperties["webdriver.chrome.driver"] = System.properties["webdriver.chrome.driver"]
+        systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
     }
     include 'LaSenza/JBehaveTest.class'
 }

@@ -16,7 +16,7 @@ class UserSteps extends ScenarioSteps {
     }
     @Step
     def opens_home_page() {
-        homePage.open()
+        homePage.open1()
     }
     @Step
     def should_see_title(String title) {
@@ -25,19 +25,13 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_carousel() {
         click_on_first_image_of_slider()
-        waitForSecondImageActive()
-        Thread.sleep(5000)
-        assert_third_image_active()
+        //timeout(5000)
+        assert_second_image_active()
     }
 
     @Step
-    def assert_third_image_active() {
-        homePage.assert_third_image_active()
-    }
-
-    @Step
-    def waitForSecondImageActive() {
-        homePage.waitForSecondImageActive()
+    def timeout(int mSec) {
+        Thread.sleep(mSec)
     }
 
     @Step

@@ -31,11 +31,6 @@ class HomePage extends PageObject{
     @FindBy(xpath = "//div[@id='slider_homepage']/div/ul/div/li[4]/img")
     private WebElement sliderImage4;
 
-    def assert_first_image_active(){
-        assert !element(sliderImage2).isCurrentlyVisible()
-        assert element(sliderImage1).isCurrentlyVisible()
-    }
-
     def assert_second_image_active(){
         System.out.println(element(sliderImage1).isCurrentlyVisible());
         System.out.println(element(sliderImage2).isCurrentlyVisible());
@@ -45,21 +40,11 @@ class HomePage extends PageObject{
         assert element(sliderImage2).isCurrentlyVisible()
     }
 
-    def assert_third_image_active(){
-        System.out.println(element(sliderImage1).isCurrentlyVisible());
-        System.out.println(element(sliderImage2).isCurrentlyVisible());
-        System.out.println(element(sliderImage3).isCurrentlyVisible());
-        System.out.println(element(sliderImage4).isCurrentlyVisible());
-        assert !element(sliderImage2).isCurrentlyVisible()
-        assert element(sliderImage3).isCurrentlyVisible()
-    }
-
     def click_on_first_image_of_slider() {
         element(buttonFirstImageSlider).click();
     }
 
     def click_on_second_image_of_slider() {
-        element(sliderImage3).shouldBeCurrentlyVisible()
         element(buttonSecondImageSlider).click();
     }
 
@@ -68,7 +53,7 @@ class HomePage extends PageObject{
         element(buttonSecondImageSlider).shouldBePresent();
     }
 
-    def waitForSecondImageActive() {
-        element(sliderImage2).waitUntilVisible()
+    def open1() {
+        getDriver().get(System.getProperty("webdriver.base.url"))
     }
 }
