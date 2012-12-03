@@ -30,6 +30,11 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
+    def assert_second_image_active() {
+        homePage.assert_second_image_active()
+    }
+
+    @Step
     def timeout(int mSec) {
         Thread.sleep(mSec)
     }
@@ -64,11 +69,35 @@ class UserSteps extends ScenarioSteps {
         getDriver().get("${System.getProperty("webdriver.base.url")}/${categoryName}.html")
     }
 
+    @Step
     def opens_subCLP(String categoryName, String subCategoryName) {
         getDriver().get("${System.getProperty("webdriver.base.url")}/${categoryName}/${subCategoryName}.html")
     }
 
+    @Step
     def opens_CP(String categoryName, String collectionName) {
         getDriver().get("${System.getProperty("webdriver.base.url")}/${categoryName}/collections/${collectionName}.html")
+    }
+
+    @Step
+    def assert_default_location(String location) {
+        homePage.assert_location(location)
+    }
+
+    @Step
+    def click_on_select_location() {
+        homePage.click_on_select_location()
+    }
+
+    def waitForPopUP() {
+        homePage.waitForPopUPLocation()
+    }
+
+    def selectLocation(String location) {
+        homePage.click_on_location_in_list(location)
+    }
+
+    def assert_location(String location) {
+        homePage.assert_location(location)
     }
 }

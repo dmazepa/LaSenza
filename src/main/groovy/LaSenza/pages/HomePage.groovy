@@ -4,6 +4,7 @@ import net.thucydides.core.pages.PageObject
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
+import org.openqa.selenium.By
 
 class HomePage extends PageObject{
 
@@ -15,6 +16,14 @@ class HomePage extends PageObject{
 
     @FindBy(xpath = "//div[@class='global-header-banner']/img")
     private WebElement globalHeaderBanner;
+
+    @FindBy(id = "popId-languageSelect")
+    private WebElement popUpListLocations;
+
+    @FindBy(xpath = "//div[@class='switch switcher-language']")
+    private WebElement selectLocation;
+
+
 
     @FindBy(xpath = "//div[@id='slider_homepage']/ul/li[1]/a")
     private WebElement buttonFirstImageSlider;
@@ -65,5 +74,22 @@ class HomePage extends PageObject{
 
     def assert_static_block_below_menu_panel() {
         element(globalHeaderBanner).shouldBeVisible()
+    }
+
+    def assert_location(String location) {
+        assert getDriver().findElements(By.xpath("//strong[@class='current language-${location}']")) != []
+        assert getDriver().getCurrentUrl().contains("?___store=${location}")
+    }
+
+    def click_on_select_location() {
+        element(selectLocation).click()
+    }
+
+    def waitForPopUPLocation() {
+        element(popUpListLocations).waitUntilVisible()
+    }
+
+    def click_on_location_in_list(String location) {
+        getDriver().findElement(By.xpath("//li[@class='language-${location}']")).click()
     }
 }
