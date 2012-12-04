@@ -21,8 +21,6 @@ class HomePage extends PageObject{
     @FindBy(xpath = "//div[@class='switch switcher-language']")
     private WebElement selectLocation;
 
-
-
     @FindBy(xpath = "//div[@id='slider_homepage']/ul/li[1]/a")
     private WebElement buttonFirstImageSlider;
 
@@ -44,15 +42,6 @@ class HomePage extends PageObject{
     @FindBy(xpath = "//div[@id='slider_homepage']/div/ul/div/li[4]/img")
     private WebElement sliderImage4;
 
-    def assert_second_image_active(){
-        System.out.println(element(sliderImage1).isCurrentlyVisible());
-        System.out.println(element(sliderImage2).isCurrentlyVisible());
-        System.out.println(element(sliderImage3).isCurrentlyVisible());
-        System.out.println(element(sliderImage4).isCurrentlyVisible());
-        assert !element(sliderImage1).isCurrentlyVisible()
-        assert element(sliderImage2).isCurrentlyVisible()
-    }
-
     def click_on_first_image_of_slider() {
         element(sliderImage1).waitUntilNotVisible()
         System.out.println(element(sliderImage1).isCurrentlyVisible());
@@ -62,7 +51,6 @@ class HomePage extends PageObject{
         element(buttonFirstImageSlider).click();
         element(sliderImage1).waitUntilVisible()
         Thread.sleep(2000)
-        //waitForRenderedElements(By.xpath("//div[@id='slider_homepage']/div/ul/div/li[1]/img"))
         System.out.println(element(sliderImage1).isCurrentlyVisible());
         System.out.println(element(sliderImage2).isCurrentlyVisible());
         System.out.println(element(sliderImage3).isCurrentlyVisible());
@@ -95,19 +83,6 @@ class HomePage extends PageObject{
         getDriver().findElement(By.xpath("//li[@class='language-${location}']")).click()
     }
 
-    def waitUntilFistImageAppears() {
-        element(sliderImage1).waitUntilVisible()
-    }
-
-    def assert_third_image_active() {
-        System.out.println(element(sliderImage1).isCurrentlyVisible());
-        System.out.println(element(sliderImage2).isCurrentlyVisible());
-        System.out.println(element(sliderImage3).isCurrentlyVisible());
-        System.out.println(element(sliderImage4).isCurrentlyVisible());
-        assert !element(sliderImage2).isCurrentlyVisible()
-        assert element(sliderImage3).isCurrentlyVisible()
-    }
-
     def assert_image_active(int imageNumber) {
         System.out.println(element(sliderImage1).isCurrentlyVisible());
         System.out.println(element(sliderImage2).isCurrentlyVisible());
@@ -117,5 +92,9 @@ class HomePage extends PageObject{
             assert !element(By.xpath("//div[@id='slider_homepage']/div/ul/div/li[${imageNumber-1}]/img")).isCurrentlyVisible()
         }
         assert element(By.xpath("//div[@id='slider_homepage']/div/ul/div/li[${imageNumber}]/img")).isCurrentlyVisible()
+    }
+
+    def assert_cont_images_in_slider(int i) {
+        assert getDriver().findElements(By.xpath("//div[@id='slider_homepage']/ul/li")).size() == i
     }
 }

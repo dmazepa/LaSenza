@@ -37,26 +37,6 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def assert_third_image_active() {
-        homePage.assert_third_image_active()
-    }
-
-    @Step
-    def waitUntilSecondImageAppears() {
-        homePage.waitUntilFistImageAppears()
-    }
-
-    @Step
-    def waitUntilFistImageAppears() {
-        homePage.waitUntilFistImageAppears()
-    }
-
-    @Step
-    def assert_second_image_active() {
-        homePage.assert_second_image_active()
-    }
-
-    @Step
     def click_on_first_image_of_slider(){
         homePage.click_on_first_image_of_slider()
     }
@@ -107,15 +87,23 @@ class UserSteps extends ScenarioSteps {
         homePage.click_on_select_location()
     }
 
+    @Step
     def waitForPopUP() {
         homePage.waitForPopUPLocation()
     }
 
+    @Step
     def selectLocation(String location) {
         homePage.click_on_location_in_list(location)
     }
 
+    @Step
     def assert_location(String location) {
         homePage.assert_location(location)
+    }
+
+    @Step
+    def assert_count_images_in_slider(int i) {
+        homePage.assert_cont_images_in_slider(i)
     }
 }
