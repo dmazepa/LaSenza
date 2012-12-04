@@ -28,6 +28,6 @@ class SliderAsUserSteps {
 
     @Then("I click controls in the bottom of the carousel")
     public void click_on_second_image_of_slider_and_assert_changes() {
-        user.click_on_second_image_of_slider_and_assert_changes()
+        user.click_on_first_image_of_slider_and_assert_changes()
     }
 }

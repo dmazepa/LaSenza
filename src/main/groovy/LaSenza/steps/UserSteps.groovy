@@ -16,7 +16,7 @@ class UserSteps extends ScenarioSteps {
     }
     @Step
     def opens_home_page() {
-        homePage.open1()
+        homePage.open()
     }
     @Step
     def should_see_title(String title) {
@@ -25,13 +25,10 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_carousel() {
         click_on_first_image_of_slider()
-        timeout(4000)
-        assert_second_image_active()
-    }
-
-    @Step
-    def assert_second_image_active() {
-        homePage.assert_second_image_active()
+        timeout(5000)
+        homePage.assert_image_active(2)
+        timeout(5000)
+        homePage.assert_image_active(3)
     }
 
     @Step
@@ -40,13 +37,34 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
+    def assert_third_image_active() {
+        homePage.assert_third_image_active()
+    }
+
+    @Step
+    def waitUntilSecondImageAppears() {
+        homePage.waitUntilFistImageAppears()
+    }
+
+    @Step
+    def waitUntilFistImageAppears() {
+        homePage.waitUntilFistImageAppears()
+    }
+
+    @Step
+    def assert_second_image_active() {
+        homePage.assert_second_image_active()
+    }
+
+    @Step
     def click_on_first_image_of_slider(){
         homePage.click_on_first_image_of_slider()
     }
 
     @Step
-    def click_on_second_image_of_slider_and_assert_changes(){
-        homePage.click_on_second_image_of_slider_and_assert_changes()
+    def click_on_first_image_of_slider_and_assert_changes(){
+        homePage.click_on_first_image_of_slider()
+        homePage.assert_image_active(1)
     }
 
     @Step
