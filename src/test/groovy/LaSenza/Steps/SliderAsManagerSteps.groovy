@@ -1,12 +1,12 @@
 package LaSenza.Steps
 
 import LaSenza.steps.AdminPanelSteps
+import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
+import org.jbehave.core.annotations.AfterStories
 import org.jbehave.core.annotations.Given
 import org.jbehave.core.annotations.Then
 import org.jbehave.core.annotations.When
-import LaSenza.steps.UserSteps
-import org.jbehave.core.annotations.AfterStory
 
 class SliderAsManagerSteps {
 
@@ -36,7 +36,7 @@ class SliderAsManagerSteps {
         user.assert_count_images_in_slider(5)
     }
 
-    @AfterStory
+    @AfterStories
     public void deleteBannerAndEditSlider(){
         admin.open_admin_panel()
         admin.edit_banners_in_slider(false)

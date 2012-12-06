@@ -66,6 +66,8 @@ task design_homepage (type: Test) {
         systemProperties["webdriver.base.url"] = System.properties["webdriver.base.url"]
         systemProperties["webdriver.chrome.driver"] = System.properties["webdriver.chrome.driver"]
         systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
+        systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
+
     }
     include 'LaSenza/BlockBelowPanelMenu.class'
 }
@@ -80,7 +82,7 @@ task multistore (type: Test) {
         systemProperties["webdriver.base.url"] = System.properties["webdriver.base.url"]
         systemProperties["webdriver.chrome.driver"] = System.properties["webdriver.chrome.driver"]
         systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
-        systemProperties["thucydides.only.save.failing.screenshots"] = project.teamcity["thucydides.only.save.failing.screenshots"]
+        systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
     include 'LaSenza/MultiStoresSupport.class'
 }
