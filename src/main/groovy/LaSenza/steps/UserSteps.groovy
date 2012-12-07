@@ -2,6 +2,7 @@ package LaSenza.steps
 
 import LaSenza.pages.CLPage
 import LaSenza.pages.HomePage
+import LaSenza.pages.LoginPage
 import LaSenza.pages.PDPage
 import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
@@ -12,12 +13,14 @@ class UserSteps extends ScenarioSteps {
     HomePage homePage
     CLPage clPage
     PDPage pDPage
+    LoginPage loginPage
 
     UserSteps(Pages pages){
         super(pages)
         homePage = pages[HomePage]
         clPage = pages[CLPage]
         pDPage = pages[PDPage]
+        loginPage = pages[LoginPage]
     }
     @Step
     def opens_home_page() {
@@ -114,7 +117,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_quick_view() {
-        clPage.open_quick_w()
+        clPage.open_quick_w(1)
     }
 
     @Step
@@ -149,5 +152,10 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_on_PDP() {
        pDPage.assert_on_PDP()
+    }
+    @Step
+    def log_in() {
+        loginPage.open1()
+        loginPage.log_in("test1@speroteck.com", "testthis")
     }
 }

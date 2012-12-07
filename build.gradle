@@ -72,7 +72,7 @@ task design_homepage (type: Test) {
     include 'LaSenza/BlockBelowPanelMenu.class'
 }
 
-task multistore (type: Test) {
+task quickview (type: Test) {
     if (project.hasProperty("teamcity")) {
         systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]
         systemProperties["webdriver.chrome.driver"] = project.teamcity["webdriver.chrome.driver"]
@@ -84,5 +84,5 @@ task multistore (type: Test) {
         systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
-    include 'LaSenza/MultiStoresSupport.class'
+    include 'LaSenza/MainElements.class'
 }

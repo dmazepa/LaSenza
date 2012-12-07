@@ -30,8 +30,11 @@ class CLPage extends HomePage{
     @FindBy(xpath = "//a[contains(text(), 'View Full Details')]")
     private WebElement linkViewFullDetails
 
-    def open_quick_w() {
-        getDriver().findElement(By.xpath("//a[2]")).click()
+    @FindBy(xpath = "//div[@class='product-view']//a[@class='link-wishlist']")
+    private WebElement linkAddToWishList
+
+    def open_quick_w(def i) {
+        getDriver().findElement(By.xpath("//div[@class='category-products']//li[${i}]/a[2]")).click()
     }
 
     def send_esc_key() {
@@ -56,10 +59,15 @@ class CLPage extends HomePage{
            element(linkBrandName).click()
         }else {
             if( el == "Product Name"){
+                element(linkProductName).waitUntilVisible()
                 element(linkProductName).click()
             }else {
                 element(linkViewFullDetails).click()
             }
         }
+    }
+
+    def click_on_add_to_wish_list() {
+        element(linkAddToWishList).click()
     }
 }

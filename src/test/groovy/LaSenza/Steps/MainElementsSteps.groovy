@@ -55,7 +55,6 @@ class MainElementsSteps {
 
     @Then("QW module should close and customer navigates to the PDP.")
     public void quickViewClosedSendsToPDP(){
-        user.assert_qw_absent()
         user.assert_on_PDP()
     }
 }
