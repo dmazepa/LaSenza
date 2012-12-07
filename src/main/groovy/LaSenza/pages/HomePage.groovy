@@ -15,6 +15,9 @@ class HomePage extends PageObject{
     @FindBy(xpath = "//div[@class='global-header-banner']/img")
     private WebElement globalHeaderBanner;
 
+    @FindBy(xpath = "//div/div")
+    private WebElement someElement;
+
     @FindBy(id = "popId-languageSelect")
     private WebElement popUpListLocations;
 
@@ -26,9 +29,6 @@ class HomePage extends PageObject{
 
     @FindBy(xpath = "//div[@id='slider_homepage']/ul/li[2]/a")
     private WebElement buttonSecondImageSlider;
-
-    @FindBy(xpath = "//div[@id='slider_homepage']/ul/li[3]/a")
-    private WebElement buttonThirdImageSlider;
 
     @FindBy(xpath = "//div[@id='slider_homepage']/div/ul/div/li[1]/img")
     private WebElement sliderImage1;
@@ -96,5 +96,9 @@ class HomePage extends PageObject{
 
     def assert_cont_images_in_slider(int i) {
         assert getDriver().findElements(By.xpath("//div[@id='slider_homepage']/ul/li")).size() == i
+    }
+
+    def click_outside_qw() {
+        element(someElement).click()
     }
 }

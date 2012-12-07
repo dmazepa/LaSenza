@@ -1,18 +1,23 @@
 package LaSenza.steps
 
+import LaSenza.pages.CLPage
+import LaSenza.pages.HomePage
+import LaSenza.pages.PDPage
+import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 import net.thucydides.core.steps.ScenarioSteps
-import LaSenza.pages.HomePage
-import net.thucydides.core.annotations.Step
-
 
 class UserSteps extends ScenarioSteps {
 
     HomePage homePage
+    CLPage clPage
+    PDPage pDPage
 
     UserSteps(Pages pages){
         super(pages)
         homePage = pages[HomePage]
+        clPage = pages[CLPage]
+        pDPage = pages[PDPage]
     }
     @Step
     def opens_home_page() {
@@ -105,5 +110,44 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_count_images_in_slider(int i) {
         homePage.assert_cont_images_in_slider(i)
+    }
+
+    @Step
+    def open_quick_view() {
+        clPage.open_quick_w()
+    }
+
+    @Step
+    def send_esc_key() {
+        clPage.send_esc_key()
+    }
+
+    @Step
+    def assert_qw_absent() {
+        clPage.qw_should_be_absent()
+    }
+
+    @Step
+    def click_outside_qw() {
+        homePage.click_outside_qw()
+    }
+
+    def click_close_button() {
+        clPage.click_close_button()
+    }
+
+    @Step
+    def assert_no_thumbnail_images_qw() {
+        clPage.qw_should_not_have_thumbnail_images()
+    }
+
+    @Step
+    def click_on_element(String element) {
+        clPage.click_on_qw_element(element)
+    }
+
+    @Step
+    def assert_on_PDP() {
+       pDPage.assert_on_PDP()
     }
 }

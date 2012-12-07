@@ -27,5 +27,11 @@ Then QW module should close.
 
 Scenario: Clicking on Brand Name/Product Name/View Full Details closes the Quickview module and navigates customers to the PDP.
 Given I am on QW.
-When I Clicking on Brand Name/Product Name/View Full Details.
+When I Clicking on <Element>.
 Then QW module should close and customer navigates to the PDP.
+
+Examples:
+|Element
+|Brand Name
+|Product Name
+|View Full Details
