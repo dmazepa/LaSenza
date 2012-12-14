@@ -1,10 +1,10 @@
 package LaSenza.pages
 
 import net.thucydides.core.pages.PageObject
+import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
-import org.openqa.selenium.By
 
 class HomePage extends PageObject{
 
@@ -18,8 +18,14 @@ class HomePage extends PageObject{
     @FindBy(xpath = "//div/div")
     private WebElement someElement;
 
+    @FindBy(xpath = "//span[@class='welcome-msg']")
+    private WebElement blockWelcomeMsg;
+
     @FindBy(id = "popId-languageSelect")
     private WebElement popUpListLocations;
+
+    @FindBy(id = "search")
+    private WebElement fieldSearch;
 
     @FindBy(xpath = "//div[@class='switch switcher-language']")
     private WebElement selectLocation;
@@ -101,4 +107,17 @@ class HomePage extends PageObject{
     def click_outside_qw() {
         element(someElement).click()
     }
+
+    def assert_welcome_msg() {
+        assert blockWelcomeMsg.getText() == 'WELCOME BACK TEST TESTER'
+    }
+
+    def click_on_search_field() {
+        element(fieldSearch).click()
+    }
+
+    def assert_default_text_in_search_field_removes() {
+
+    }
+
 }

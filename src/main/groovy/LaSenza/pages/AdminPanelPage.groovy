@@ -72,8 +72,14 @@ class AdminPanelPage extends HomePage{
     @FindBy(xpath = "//ul[@id='nav']/li[8]/ul/li[2]/a")
     private WebElement subMenuStaticBlocks
 
+    @FindBy(xpath = "//ul[@id='nav']/li[11]/ul/li[15]/a")
+    private WebElement subMenuCleanCache
+
     @FindBy(xpath = "//button[@class='scalable add']")
     private WebElement buttonAddBanner
+
+    @FindBy(xpath = "//button[@class='scalable delete']")
+    private WebElement buttonFlushMagentoCache
 
     def goTo(additionUrl){
         getDriver().get("${System.getProperty("webdriver.base.url")}/${additionUrl}")
@@ -144,6 +150,12 @@ class AdminPanelPage extends HomePage{
         getDriver().findElement(By.xpath("//button[@title='Submit']")).click()
         Alert alert = getDriver().switchTo().alert();
         alert.accept()
+        element(blockSuccessMsg).waitUntilVisible()
+    }
+
+    Object clean_cache() {
+        getDriver().get(subMenuCleanCache.getAttribute("href"))
+        element(buttonFlushMagentoCache).click()
         element(blockSuccessMsg).waitUntilVisible()
     }
 }

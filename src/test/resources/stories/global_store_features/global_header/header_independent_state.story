@@ -8,12 +8,6 @@ Given I am on home page
 When I click on link Store Locator.
 Then I should redirects to the Store Locator page.
 
-Scenario: Allow user to enter text into search field.
-Given I am on home page.
-When I click on the search input field.
-Then default text removes.
-And I can enter the text.
-
 Scenario: Magnifying glass icon performs the search and navigates users to a Search Results page
 Given I am on home page.
 And I enter text to search field.

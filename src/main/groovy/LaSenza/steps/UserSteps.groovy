@@ -158,4 +158,14 @@ class UserSteps extends ScenarioSteps {
         loginPage.open1()
         loginPage.log_in("test1@speroteck.com", "testthis")
     }
+
+    @Step
+    def click_on_search_field() {
+        homePage.click_on_search_field()
+    }
+
+    @Step
+    def assert_default_text_in_search_field_removes() {
+        homePage.assert_default_text_in_search_field_removes()
+    }
 }

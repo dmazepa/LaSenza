@@ -3,9 +3,10 @@ Meta:
 Narrative:
 Header for customer with cookies enabled.
 
-Scenario: Welcome message for guest with cookie enabled.
-Given I am on home page as guest with cookies.
-Then I should string Welcome <First Name>!
+Scenario: Welcome message for customer with cookie enabled.
+Given I am on home page as customer with cookies.
+When I did not have activity more than  set to cookie save.
+Then I should string Welcome First Name
 
 Scenario: Link Please Log In redirects to Login page.
 Given I am on home page as guest with cookie enabled.

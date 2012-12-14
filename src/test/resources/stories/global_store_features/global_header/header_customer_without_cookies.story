@@ -5,7 +5,7 @@ Header for customer without cookies enabled.
 
 Scenario: Welcome message for customer.
 Given I am on home page as customer.
-Then I should string Welcome Back <First Name>!
+Then I should see string Welcome Back <First Name>!
 
 Scenario: Link Log Out logs out customer and load default header state.
 Given I am on home page as customer.

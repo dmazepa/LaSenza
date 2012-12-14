@@ -70,4 +70,15 @@ class AdminPanelSteps extends UserSteps{
         adminPage.open_banner_manager()
         adminPage.find_and_delete_banner()
     }
+
+    @Step
+    def clean_cache() {
+        adminPage.clean_cache()
+    }
+
+    @Step
+    @Pending
+    def set_cookie_time(int seconds) {
+
+    }
 }

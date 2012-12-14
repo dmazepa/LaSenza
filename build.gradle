@@ -39,6 +39,7 @@ task slider (type: Test) {
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
     include 'LaSenza/SliderAsUser.class'
+    include 'LaSenza/SliderAsManager.class'
 }
 
 task master (type: Test) {

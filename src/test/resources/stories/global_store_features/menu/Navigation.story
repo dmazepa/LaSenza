@@ -37,3 +37,8 @@ Scenario: I can navigate to SubCLP with static block and left navigation by menu
 Given I am on Home page.
 When I click on View All Offers link in menu.
 Then I should go to chosen SubCLP with static block and left navigation.
+
+Scenario: On mouse over dropdown menu appears if available.
+Given I am on home page
+When I mouse one of the category with dropdown menu.
+Then I should see dropdown menu.

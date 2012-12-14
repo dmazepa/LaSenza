@@ -31,4 +31,9 @@ class CustomerSteps extends UserSteps{
         myAccountPage.assert_product_added_to_wishlist()
         myAccountPage.delete_items_from_wish_list()
     }
+
+    @Step
+    def assert_welcome_msg() {
+        homePage.assert_welcome_msg()
+    }
 }
