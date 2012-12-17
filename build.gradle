@@ -42,7 +42,7 @@ task slider (type: Test) {
     include 'LaSenza/SliderAsManager.class'
 }
 
-task master (type: Test) {
+task develop (type: Test) {
     if (project.hasProperty("teamcity")) {
         systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]
         systemProperties["webdriver.chrome.driver"] = project.teamcity["webdriver.chrome.driver"]
