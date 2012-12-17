@@ -2,14 +2,12 @@ package LaSenza.Steps
 
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
-import org.jbehave.core.annotations.Given
-import org.jbehave.core.annotations.Then
-import org.jbehave.core.annotations.When
 
 class TitlesSteps {
 
     @Steps
     UserSteps user;
+/*
 
     @Given("I want to see title \"Home Page\" on Home Page")
     public void givenIAmOnTheHomePage() {
@@ -25,6 +23,7 @@ class TitlesSteps {
     public void thenShouldSeeTitleHomePage() {
         user.should_see_title("Home Page")
     }
+*/
 
 
 }

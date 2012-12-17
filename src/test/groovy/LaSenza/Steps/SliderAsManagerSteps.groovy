@@ -3,16 +3,16 @@ package LaSenza.Steps
 import LaSenza.steps.AdminPanelSteps
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
-import org.jbehave.core.annotations.*
 
 class SliderAsManagerSteps {
 
     @Steps
     AdminPanelSteps admin
+
     @Steps
     UserSteps user
 
-    @Given("I am in admin panel")
+   /* @Given("I am in admin panel")
     public void openAdminPanel(){
         admin.open_admin_panel()
     }
@@ -32,5 +32,5 @@ class SliderAsManagerSteps {
     public void checkAddedImageOnFrontEnd(){
         user.opens_home_page_thucydides()
         user.assert_count_images_in_slider(5)
-    }
+    }*/
 }

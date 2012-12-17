@@ -15,7 +15,7 @@ class AddToWishListSteps {
     @Steps
     CustomerSteps customer
 
-    @Given("I am on QW with configurable product as customer.")
+    /*@Given("I am on QW with configurable product as customer.")
     public void on_qw_as_customer(){
         user.log_in()
         customer.opens_CLP("beauty")
@@ -30,5 +30,5 @@ class AddToWishListSteps {
     @Then("Quickview module closes and adds the product to her wishlist.")
     public void assert_product_added_to_wishlist(){
         customer.assert_product_added_to_wishlist()
-    }
+    }*/
 }
