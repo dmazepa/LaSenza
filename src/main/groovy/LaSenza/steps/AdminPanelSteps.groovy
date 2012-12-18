@@ -65,7 +65,6 @@ class AdminPanelSteps extends UserSteps{
     }
 
     @Step
-    @Pending
     def delete_banner() {
         adminPage.open_banner_manager()
         adminPage.find_and_delete_banner()

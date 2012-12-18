@@ -3,6 +3,7 @@ package LaSenza.Steps
 import LaSenza.steps.AdminPanelSteps
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
+import org.jbehave.core.annotations.*
 
 class SliderAsManagerSteps {
 
@@ -12,7 +13,7 @@ class SliderAsManagerSteps {
     @Steps
     UserSteps user
 
-   /* @Given("I am in admin panel")
+    @Given("I am in admin panel")
     public void openAdminPanel(){
         admin.open_admin_panel()
     }
@@ -31,6 +32,14 @@ class SliderAsManagerSteps {
     @Then("I should see one more image for rotating carousel on home page")
     public void checkAddedImageOnFrontEnd(){
         user.opens_home_page_thucydides()
-        user.assert_count_images_in_slider(5)
-    }*/
+        user.assert_count_images_in_slider(4)
+    }
+
+    @AfterStories
+    public void deleteBanner(){
+        admin.open_admin_panel()
+        admin.edit_banners_in_slider(false)
+        //admin.delete_banner()       not work for chrome
+        admin.clean_cache()
+    }
 }

@@ -8,6 +8,8 @@ import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 import net.thucydides.core.steps.ScenarioSteps
 
+import static org.hamcrest.MatcherAssert.assertThat
+
 class UserSteps extends ScenarioSteps {
 
     HomePage homePage
@@ -28,12 +30,12 @@ class UserSteps extends ScenarioSteps {
     }
     @Step
     def should_see_title(String title) {
-       assert homePage.getTitle() == title
+       assertThat(homePage.getTitle(), is(title))
     }
     @Step
     def assert_carousel() {
         click_on_first_image_of_slider()
-        timeout(5000)
+        timeout(6000)
         homePage.assert_image_active(2)
         timeout(5000)
         homePage.assert_image_active(3)

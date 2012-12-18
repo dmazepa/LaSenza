@@ -119,9 +119,4 @@ class HomePage extends PageObject{
     def assert_default_text_in_search_field_removes() {
 
     }
-/*
-    def assertTitle(String title) {
-        def g = getDriver().getTitle()
-        assert getDriver().getTitle() == title
-    }*/
 }

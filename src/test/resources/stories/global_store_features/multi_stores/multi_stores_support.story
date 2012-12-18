@@ -19,7 +19,7 @@ Given I am on home page.
 Then I sould see default location "ca_en"
 
 Scenario: I can change the version of the site.
-Given I am on home page.
+Given I am on home page
 When I choose <siteVersion> version of site.
 Then I should see <siteVersion> version of site.
 

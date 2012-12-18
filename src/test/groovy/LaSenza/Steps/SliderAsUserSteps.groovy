@@ -2,13 +2,14 @@ package LaSenza.Steps
 
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
+import org.jbehave.core.annotations.*
 
 class SliderAsUserSteps {
 
     @Steps
     UserSteps user;
 
-   /* @Given("I am on home page")
+    @Given("I am on home page")
     public void givenIAmOnTheHomePage() {
         user.opens_home_page()
     }
@@ -26,5 +27,5 @@ class SliderAsUserSteps {
     @Then("I click controls in the bottom of the carousel")
     public void click_on_second_image_of_slider_and_assert_changes() {
         user.click_on_first_image_of_slider_and_assert_changes()
-    }*/
+    }
 }
