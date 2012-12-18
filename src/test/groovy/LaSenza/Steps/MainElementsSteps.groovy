@@ -2,13 +2,14 @@ package LaSenza.Steps
 
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
+import org.jbehave.core.annotations.*
 
 class MainElementsSteps {
 
     @Steps
     UserSteps user
 
-    /*@Given("I am on QW.")
+    @Given("I am on QW.")
     public void openQWSimple(){
         user.opens_CLP("sexy-lingerie/kimonos")
         user.open_quick_view()
@@ -53,5 +54,5 @@ class MainElementsSteps {
     @Then("QW module should close and customer navigates to the PDP.")
     public void quickViewClosedSendsToPDP(){
         user.assert_on_PDP()
-    }*/
+    }
 }
