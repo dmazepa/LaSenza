@@ -119,3 +119,6 @@ task payment_method (type: Test) {
 task topmenu (type: Test) {
     include 'LaSenza/Developing.class'
 }
+task quickview (type: Test) {
+    include 'LaSenza/Developing.class'
+}
