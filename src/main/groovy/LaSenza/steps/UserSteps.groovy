@@ -28,7 +28,7 @@ class UserSteps extends ScenarioSteps {
     }
     @Step
     def should_see_title(String title) {
-        homePage.getTitle() == title
+       assert homePage.getTitle() == title
     }
     @Step
     def assert_carousel() {
