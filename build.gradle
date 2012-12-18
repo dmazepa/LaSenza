@@ -26,7 +26,7 @@ dependencies {
     groovy 'org.codehaus.groovy:groovy:1.8.6'
 }
 
-task slider (type: Test) {
+task master (type: Test) {
     if (project.hasProperty("teamcity")) {
         systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]
         systemProperties["webdriver.chrome.driver"] = project.teamcity["webdriver.chrome.driver"]
@@ -38,8 +38,7 @@ task slider (type: Test) {
         systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
-    include 'LaSenza/SliderAsUser.class'
-    include 'LaSenza/SliderAsManager.class'
+    include 'LaSenza/JBehaveTest.class'
 }
 
 task develop (type: Test) {
@@ -73,7 +72,7 @@ task design_homepage (type: Test) {
     include 'LaSenza/BlockBelowPanelMenu.class'
 }
 
-task quickview (type: Test) {
+task configurable_quickview (type: Test) {
     if (project.hasProperty("teamcity")) {
         systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]
         systemProperties["webdriver.chrome.driver"] = project.teamcity["webdriver.chrome.driver"]
@@ -86,4 +85,37 @@ task quickview (type: Test) {
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
     include 'LaSenza/MainElements.class'
+}
+task addtocart (type: Test) {
+    include 'LaSenza/Developing.class'
+}
+task catalog_import (type: Test) {
+    include 'LaSenza/Developing.class'
+}
+task category_page_design (type: Test) {
+    include 'LaSenza/Developing.class'
+}
+task checkout_design (type: Test) {
+    include 'LaSenza/Developing.class'
+}
+task checkout_giftcard (type: Test) {
+    include 'LaSenza/Developing.class'
+}
+task collection_landing (type: Test) {
+    include 'LaSenza/Developing.class'
+}
+task design_shopping_cart (type: Test) {
+    include 'LaSenza/Developing.class'
+}
+task epicore_catalog_update (type: Test) {
+    include 'LaSenza/Developing.class'
+}
+task giftcard (type: Test) {
+    include 'LaSenza/Developing.class'
+}
+task payment_method (type: Test) {
+    include 'LaSenza/Developing.class'
+}
+task topmenu (type: Test) {
+    include 'LaSenza/Developing.class'
 }
