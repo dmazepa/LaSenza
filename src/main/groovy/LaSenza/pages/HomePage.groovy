@@ -119,4 +119,8 @@ class HomePage extends PageObject{
     def assert_default_text_in_search_field_removes() {
 
     }
+
+    def open1() {
+        getDriver().get(System.getProperty("webdriver.base.url"))
+    }
 }

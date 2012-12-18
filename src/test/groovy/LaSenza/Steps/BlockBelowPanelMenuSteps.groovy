@@ -11,7 +11,7 @@ class BlockBelowPanelMenuSteps {
 
     @Given("I am on home page.")
     public void openHomePage(){
-        user.opens_home_page_thucydides()
+        user.opopens_home_page_thucydides()
     }
 
     @Given("I am on CLP.")

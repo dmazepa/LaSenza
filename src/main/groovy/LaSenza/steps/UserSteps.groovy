@@ -64,7 +64,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def opens_home_page_thucydides() {
-        homePage.open()
+        homePage.open1()
     }
 
     @Step
