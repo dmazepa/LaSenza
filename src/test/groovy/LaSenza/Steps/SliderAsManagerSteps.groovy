@@ -33,13 +33,16 @@ class SliderAsManagerSteps {
     public void checkAddedImageOnFrontEnd(){
         user.opens_home_page_thucydides()
         user.assert_count_images_in_slider(4)
+        admin.open_admin_panel()
+        admin.edit_banners_in_slider(false)
+        admin.clean_cache()
     }
 
-    @AfterStories
+    /*@AfterStories
     public void deleteBanner(){
         admin.open_admin_panel()
         admin.edit_banners_in_slider(false)
         //admin.delete_banner()       not work for chrome
         admin.clean_cache()
-    }
+    }*/
 }

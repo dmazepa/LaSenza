@@ -133,9 +133,9 @@ class AdminPanelPage extends HomePage{
         element(buttonHideEditor).click()
         element(areaCMSBlockContent).waitUntilVisible().clear()
         if (addBanner){
-            element(areaCMSBlockContent).type("<div id=\"slider_homepage\">{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"24,25,26,${bannerID}\" template=\"banner/widget/block.phtml\"}}</div>")
+            element(areaCMSBlockContent).type("<div id=\"slider_homepage\">{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"3,4,14,${bannerID}\" template=\"banner/widget/block.phtml\"}}</div>")
         } else {
-            element(areaCMSBlockContent).type("<div id=\"slider_homepage\">{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"24,25,26\" template=\"banner/widget/block.phtml\"}}</div>")
+            element(areaCMSBlockContent).type("<div id=\"slider_homepage\">{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"3,4,14\" template=\"banner/widget/block.phtml\"}}</div>")
         }
         element(buttonSaveBlock).click()
         element(blockSuccessMsg).waitUntilVisible()
@@ -145,11 +145,13 @@ class AdminPanelPage extends HomePage{
         element(fieldFindByNameBanner).typeAndEnter("TestBaner")
         element(blockLoading).waitUntilNotVisible()
         ((JavascriptExecutor) driver).executeScript('return bannerGrid_massactionJsObject.selectAll()')
-        Thread.sleep(2000)
+        waitABit(2000)
+        //Thread.sleep(2000)
         element(selectAction).selectByValue("delete")
         //((JavascriptExecutor) driver).executeScript('bannerGrid_massactionJsObject.apply()')
         getDriver().findElement(By.xpath("//button[@title='Submit']")).click()
-        Thread.sleep(2000)
+        waitABit(2000)
+        //Thread.sleep(2000)
         Alert alert = getDriver().switchTo().alert();
         alert.accept()
         element(blockSuccessMsg).waitUntilVisible()

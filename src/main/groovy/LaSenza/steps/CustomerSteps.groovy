@@ -17,7 +17,7 @@ class CustomerSteps extends UserSteps{
 
     @Step
     def open_quick_view_configurable() {
-        cLPage.open_quick_w(3)
+        cLPage.open_quick_w(2)
     }
 
     @Step

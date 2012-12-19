@@ -45,22 +45,18 @@ class HomePage extends PageObject{
     @FindBy(xpath = "//div[@id='slider_homepage']/div/ul/div/li[3]/img")
     private WebElement sliderImage3;
 
-    @FindBy(xpath = "//div[@id='slider_homepage']/div/ul/div/li[4]/img")
-    private WebElement sliderImage4;
-
     def click_on_first_image_of_slider() {
         element(sliderImage1).waitUntilNotVisible()
         System.out.println(element(sliderImage1).isCurrentlyVisible());
         System.out.println(element(sliderImage2).isCurrentlyVisible());
         System.out.println(element(sliderImage3).isCurrentlyVisible());
-        System.out.println(element(sliderImage4).isCurrentlyVisible());
         element(buttonFirstImageSlider).click();
         element(sliderImage1).waitUntilVisible()
+        //waitABit(2000)
         Thread.sleep(2000)
         System.out.println(element(sliderImage1).isCurrentlyVisible());
         System.out.println(element(sliderImage2).isCurrentlyVisible());
         System.out.println(element(sliderImage3).isCurrentlyVisible());
-        System.out.println(element(sliderImage4).isCurrentlyVisible());
     }
 
     def assert_place_holder_on_slider() {
@@ -93,7 +89,6 @@ class HomePage extends PageObject{
         System.out.println(element(sliderImage1).isCurrentlyVisible());
         System.out.println(element(sliderImage2).isCurrentlyVisible());
         System.out.println(element(sliderImage3).isCurrentlyVisible());
-        System.out.println(element(sliderImage4).isCurrentlyVisible());
         if (imageNumber != 1) {
             assert !element(By.xpath("//div[@id='slider_homepage']/div/ul/div/li[${imageNumber-1}]/img")).isCurrentlyVisible()
         }

@@ -24,7 +24,7 @@ class CLPage extends HomePage{
     @FindBy(xpath = "//a/a/a")
     private WebElement linkBrandName
 
-    @FindBy(xpath = "//a[contains(text(), 'Test Simple Product')]")
+    @FindBy(xpath = "//h1/a")
     private WebElement linkProductName
 
     @FindBy(xpath = "//a[contains(text(), 'View Full Details')]")
@@ -51,17 +51,20 @@ class CLPage extends HomePage{
     }
 
     def qw_should_not_have_thumbnail_images() {
+        element(thumbnailImageQW).shouldBeVisible()
         element(thumbnailImageQW).shouldNotBeVisible()
     }
 
     def click_on_qw_element(String el) {
         if (el == "Brand Name"){
-           element(linkBrandName).click()
+            element(linkBrandName).waitUntilVisible()
+            element(linkBrandName).click()
         }else {
             if( el == "Product Name"){
                 element(linkProductName).waitUntilVisible()
                 element(linkProductName).click()
             }else {
+                element(linkViewFullDetails).waitUntilVisible()
                 element(linkViewFullDetails).click()
             }
         }
