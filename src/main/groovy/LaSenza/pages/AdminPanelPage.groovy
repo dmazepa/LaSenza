@@ -42,6 +42,12 @@ class AdminPanelPage extends HomePage{
     @FindBy(id = "block_content")
     private WebElement areaCMSBlockContent
 
+    @FindBy(id = "web_cookie-head")
+    private WebElement sessionCookieManagement
+
+    @FindBy(id = "web_cookie_cookie_lifetime")
+    private WebElement inputCookieTime
+
     @FindBy(id = "toggleblock_content")
     private WebElement buttonHideEditor
 
@@ -60,17 +66,26 @@ class AdminPanelPage extends HomePage{
     @FindBy(xpath = "//button[@title='Save Banner']")
     private WebElement buttonSaveBanner
 
+    @FindBy(xpath = "//button[@title='Save Config']")
+    private WebElement buttonSaveConfig
+
     @FindBy(xpath = "//button[@title='Save Block']")
     private WebElement buttonSaveBlock
 
     @FindBy(xpath = "//li[@class='success-msg']")
     private WebElement blockSuccessMsg
 
+    @FindBy(xpath = "//ul[@id='system_config_tabs']//li[1]//dd[2]/a")
+    private WebElement tabWeb
+
     @FindBy(xpath = "//ul[@id='nav']/li[8]/ul/li[3]/a")
     private WebElement subMenuBanner
 
     @FindBy(xpath = "//ul[@id='nav']/li[8]/ul/li[2]/a")
     private WebElement subMenuStaticBlocks
+
+    @FindBy(xpath = "//ul[@id='nav']/li[13]/ul/li[20]/a")
+    private WebElement subMenuConfiguration
 
     @FindBy(xpath = "//ul[@id='nav']/li[11]/ul/li[15]/a")
     private WebElement subMenuCleanCache
@@ -124,6 +139,10 @@ class AdminPanelPage extends HomePage{
         getDriver().get(subMenuStaticBlocks.getAttribute("href"))
     }
 
+    def open_menu_configuration() {
+        getDriver().get(subMenuConfiguration.getAttribute("href"))
+    }
+
     def open_CMS_block(String id) {
         element(fieldFindByIDCMSBlock).typeAndEnter(id)
         getDriver().get(stringTableToGetTitle.getAttribute("title"))
@@ -146,20 +165,36 @@ class AdminPanelPage extends HomePage{
         element(blockLoading).waitUntilNotVisible()
         ((JavascriptExecutor) driver).executeScript('return bannerGrid_massactionJsObject.selectAll()')
         waitABit(2000)
-        //Thread.sleep(2000)
+        Thread.sleep(2000)
         element(selectAction).selectByValue("delete")
         //((JavascriptExecutor) driver).executeScript('bannerGrid_massactionJsObject.apply()')
         getDriver().findElement(By.xpath("//button[@title='Submit']")).click()
-        waitABit(2000)
-        //Thread.sleep(2000)
+        Thread.sleep(2000)
         Alert alert = getDriver().switchTo().alert();
         alert.accept()
         element(blockSuccessMsg).waitUntilVisible()
     }
 
-    Object clean_cache() {
+    def clean_cache() {
         getDriver().get(subMenuCleanCache.getAttribute("href"))
         element(buttonFlushMagentoCache).click()
         element(blockSuccessMsg).waitUntilVisible()
+    }
+
+    def set_cookie_time(def timeSec) {
+        open_menu_configuration()
+        if (tabWeb.getAttribute("class") != "active"){
+            element(tabWeb).click()
+        }
+        if (sessionCookieManagement.getAttribute("class") != "open"){
+            element(sessionCookieManagement).click()
+        }
+        element(inputCookieTime).waitUntilVisible()
+        if (inputCookieTime.getAttribute("value") != timeSec){
+            element(inputCookieTime).clear()
+            element(inputCookieTime).type(timeSec)
+            element(buttonSaveConfig).click()
+            element(blockSuccessMsg).waitUntilVisible()
+        }
     }
 }

@@ -2,7 +2,6 @@ package LaSenza.steps
 
 import LaSenza.pages.AdminPanelPage
 import LaSenza.pages.HomePage
-import net.thucydides.core.annotations.Pending
 import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 
@@ -76,8 +75,7 @@ class AdminPanelSteps extends UserSteps{
     }
 
     @Step
-    @Pending
     def set_cookie_time(int seconds) {
-
+        adminPage.set_cookie_time("10")
     }
 }

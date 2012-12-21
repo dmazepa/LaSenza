@@ -172,4 +172,9 @@ class UserSteps extends ScenarioSteps {
     def assert_default_text_in_search_field_removes() {
         homePage.assert_default_text_in_search_field_removes()
     }
+
+    @Step
+    def refresh_page() {
+        getDriver().navigate().refresh()
+    }
 }
