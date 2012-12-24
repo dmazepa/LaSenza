@@ -139,10 +139,10 @@ class HomePage extends PageObject{
     }
 
     def assert_logged_out() {
-        assert element(linkLogIn).isPresent()
+        assert linkLogIn.isDisplayed()
     }
 
     def assert_default_header() {
-        element(linkRegister).shouldBePresent()
+        assert linkRegister.isDisplayed()
     }
 }
