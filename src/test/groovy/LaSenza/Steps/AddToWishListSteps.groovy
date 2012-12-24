@@ -3,7 +3,6 @@ package LaSenza.Steps
 import LaSenza.steps.CustomerSteps
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
-import org.jbehave.core.annotations.*
 
 class AddToWishListSteps {
 
@@ -12,7 +11,7 @@ class AddToWishListSteps {
 
     @Steps
     CustomerSteps customer
-
+/*
     @Given("I am on QW with configurable product as customer.")
     public void on_qw_as_customer(){
         user.log_in()
@@ -28,5 +27,5 @@ class AddToWishListSteps {
     @Then("Quickview module closes and adds the product to her wishlist.")
     public void assert_product_added_to_wishlist(){
         customer.assert_product_added_to_wishlist()
-    }
+    }*/
 }
