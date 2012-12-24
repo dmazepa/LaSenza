@@ -29,4 +29,8 @@ class LoginPage extends HomePage{
         element(fieldPassword).type(pass)
         element(buttonLogin).click()
     }
+
+    def assert_on_login_page() {
+        element(buttonLogin).shouldBePresent()
+    }
 }

@@ -6,7 +6,8 @@ Header for customer with cookies enabled.
 Scenario: Welcome message for customer with cookie enabled.
 Given I am on home page as customer with cookies.
 When I did not have activity more than  set to cookie save.
-Then I should string Welcome First Name
+Then I should see string "WELCOM BACK TEST TESTER"
+Then I should see string "Please login. Not Test Tester?"
 
 Scenario: Link Please Log In redirects to Login page.
 Given I am on home page as guest with cookie enabled.
@@ -14,8 +15,8 @@ When I click on link Please Log In.
 Then I should redirects to Login page.
 
 Scenario: Link Not <First Name> <Last Name>? logs the user out and loads the default header state.
-Given I am on Login page as guest with cookies.
-When I click on link Not <First Name> <Last Name>?.
+Given I am on home page as guest with cookie enabled.
+When I click on link "Not Test Tester?".
 Then It logs me out.
 And Load default header state.
 

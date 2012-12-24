@@ -75,7 +75,13 @@ class AdminPanelSteps extends UserSteps{
     }
 
     @Step
-    def set_cookie_time(int seconds) {
-        adminPage.set_cookie_time("10")
+    def set_cookie_time(def i) {
+        adminPage.set_cookie_time(i)
+    }
+
+    @Step
+    def restore_default_state() {
+        open_admin_panel()
+        set_cookie_time("3600")
     }
 }

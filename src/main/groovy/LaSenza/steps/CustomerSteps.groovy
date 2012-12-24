@@ -33,7 +33,12 @@ class CustomerSteps extends UserSteps{
     }
 
     @Step
-    def assert_welcome_msg() {
-        homePage.assert_welcome_msg()
+    def assert_welcome_msg(String welcomeMSG) {
+        homePage.assert_welcome_msg(welcomeMSG)
+    }
+
+    @Step
+    def assert_please_login_msg(String pleaseLoginNotTestTester) {
+        homePage.assert_please_login_msg(pleaseLoginNotTestTester)
     }
 }

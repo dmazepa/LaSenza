@@ -177,4 +177,24 @@ class UserSteps extends ScenarioSteps {
     def refresh_page() {
         getDriver().navigate().refresh()
     }
+
+    @Step
+    def click_on_link_please_log_in() {
+        homePage.click_on_link_please_log_in()
+    }
+
+    @Step
+    def assert_on_login_page() {
+        loginPage.assert_on_login_page()
+    }
+
+    @Step
+    def assert_logged_out() {
+        homePage.assert_logged_out()
+    }
+
+    @Step
+    def assert_default_header() {
+        homePage.assert_default_header()
+    }
 }
