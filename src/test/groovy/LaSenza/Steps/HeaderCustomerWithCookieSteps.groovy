@@ -64,10 +64,10 @@ class HeaderCustomerWithCookieSteps {
     public void assert_on_login_page(){
         user.assert_on_login_page()
     }
-    @Then("It logs me out.")
-    public void assert_logged_out(){
-        user.assert_logged_out()
-    }
+//    @Then("It logs me out.")
+//    public void assert_logged_out(){
+//        user.assert_logged_out()
+//    }
      @Then("Load default header state.")
      public void assert_default_header(){
         user.assert_default_header()
