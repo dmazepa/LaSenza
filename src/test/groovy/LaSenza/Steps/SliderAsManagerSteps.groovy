@@ -13,10 +13,10 @@ class SliderAsManagerSteps {
     @Steps
     UserSteps user
 
-    @Given("I am in admin panel")
+   /* @Given("I am in admin panel")
     public void openAdminPanel(){
         admin.open_admin_panel()
-    }
+    }*/
 
   /*  @When("I create new banner")
     public void createNewBanner(){
