@@ -18,10 +18,10 @@ class SliderAsManagerSteps {
         admin.open_admin_panel()
     }
 
-    @When("I create new banner")
+  /*  @When("I create new banner")
     public void createNewBanner(){
         admin.create_new_banner()
-    }
+    }*/
 
     @Then("I have added him to slider")
     public void addBannerToSlider(){
