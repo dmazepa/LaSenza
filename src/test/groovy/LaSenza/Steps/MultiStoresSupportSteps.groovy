@@ -9,12 +9,12 @@ class MultiStoresSupportSteps {
     @Steps
     UserSteps user
 
-    @When("I choose <siteVersion> version of site.")
+    /*@When("I choose <siteVersion> version of site.")
     public void chooseSiteVersion(String siteVersion){
         user.click_on_select_location()
         user.waitForPopUP()
         user.selectLocation(siteVersion)
-    }
+    }*/
 
     @Then('I sould see default location "$location"')
     public void assert_default_location(String location){
