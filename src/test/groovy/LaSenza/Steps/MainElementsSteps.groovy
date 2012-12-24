@@ -9,11 +9,11 @@ class MainElementsSteps {
     @Steps
     UserSteps user
 
-    @Given("I am on QW.")
+   /* @Given("I am on QW.")
     public void openQWSimple(){
         user.opens_CLP("sexy-lingerie/kimonos")
         user.open_quick_view()
-    }
+    }*/
 
    /* @Given("I am on QW with one image.")
     public void openQWWithOneImage(){
