@@ -15,11 +15,11 @@ class MainElementsSteps {
         user.open_quick_view()
     }
 
-    @Given("I am on QW with one image.")
+   /* @Given("I am on QW with one image.")
     public void openQWWithOneImage(){
         user.opens_CLP("sexy-lingerie/kimonos")
         user.open_quick_view()
-    }
+    }*/
 
     @Given("I shouldn't see thumbnail images.")
     public void shouldNotSeeThumbnailImages(){
