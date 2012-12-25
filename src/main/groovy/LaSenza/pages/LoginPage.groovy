@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
-class LoginPage extends HomePage{
+class LoginPage extends ForAllPage{
 
     LoginPage(WebDriver driver){
         super(driver)

@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
-class PDPage extends HomePage{
+class PDPage extends ForAllPage{
 
     PDPage(WebDriver driver){
         super(driver)

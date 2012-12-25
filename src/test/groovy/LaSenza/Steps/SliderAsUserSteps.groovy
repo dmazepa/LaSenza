@@ -9,11 +9,11 @@ class SliderAsUserSteps {
     @Steps
     UserSteps user;
 
-   /* @Given("I am on home page")
+    @Given("I am on home page")
     public void givenIAmOnTheHomePage() {
         user.opens_home_page()
-    }*/
-
+    }
+/*
     @When("I should see carousel cycles automatically through a series of hero images at 5 second intervals with a smooth (fade in / fade out) transition between carousel changes")
     public void assertCarousel() {
         user.assert_carousel()
@@ -27,5 +27,5 @@ class SliderAsUserSteps {
     @Then("I click controls in the bottom of the carousel")
     public void click_on_second_image_of_slider_and_assert_changes() {
         user.click_on_first_image_of_slider_and_assert_changes()
-    }
+    }*/
 }

@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.Alert
 import org.openqa.selenium.By
 
-class AdminPanelPage extends HomePage{
+class AdminPanelPage extends ForAllPage{
 
     def bannerID
 

@@ -53,7 +53,8 @@ task develop (type: Test) {
         systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
-    include 'LaSenza/JBehaveTest.class'
+    include 'LaSenza/*.class'
+    exclude 'LaSenza/JBehaveTest.class'
 }
 
 task design_homepage (type: Test) {
@@ -69,7 +70,8 @@ task design_homepage (type: Test) {
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
 
     }
-    include 'LaSenza/BlockBelowPanelMenu.class'
+    include 'LaSenza/*.class'
+    exclude 'LaSenza/JBehaveTest.class'
 }
 
 task configurable_quickview (type: Test) {

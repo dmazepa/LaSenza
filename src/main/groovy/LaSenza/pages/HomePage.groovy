@@ -1,6 +1,6 @@
 package LaSenza.pages
 
-import net.thucydides.core.pages.PageObject
+import net.thucydides.core.annotations.DefaultUrl
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -8,7 +8,8 @@ import org.openqa.selenium.support.FindBy
 
 import static org.hamcrest.MatcherAssert.assertThat
 
-class HomePage extends PageObject{
+@DefaultUrl("http://lasenza-dev.lcgosc.com/develop")
+class HomePage extends ForAllPage{
 
     HomePage(WebDriver driver){
         super(driver)
