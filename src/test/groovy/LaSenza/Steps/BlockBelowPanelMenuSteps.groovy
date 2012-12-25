@@ -8,11 +8,11 @@ class BlockBelowPanelMenuSteps {
 
     @Steps
     UserSteps user
-/*
+
     @Given("I am on home page.")
     public void openHomePage(){
         user.opens_home_page()
-    }*/
+    }
 
     @Given("I am on CLP.")
     public void openCLP(){
