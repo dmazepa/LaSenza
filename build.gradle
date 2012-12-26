@@ -16,7 +16,7 @@ repositories {
 }
 dependencies {
     compile "net.thucydides:thucydides-core:0.9.74"
-    compile "net.thucydides:thucydides-jbehave-plugin:0.9.72-SNAPSHOT"
+    compile "net.thucydides:thucydides-jbehave-plugin:0.9.71"
     compile "org.slf4j:slf4j-simple:1.6.4"
     compile "org.codehaus.groovy:groovy-all:2.0.5"
     compile "com.googlecode.lambdaj:lambdaj:2.3.1"
