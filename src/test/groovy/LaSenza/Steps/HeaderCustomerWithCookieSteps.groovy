@@ -40,11 +40,6 @@ class HeaderCustomerWithCookieSteps {
        customer.assert_please_login_msg(pleaseLoginNotTestTester)
     }
 
-    @AfterStory(uponGivenStory = true)
-    public void set_default_cookie(){
-        admin.restore_default_state()
-    }
-
     @Given("I am on home page as guest with cookie enabled.")
     public void open_home_page_as_guest_with_cookie(){
         user.log_in()
@@ -73,5 +68,11 @@ class HeaderCustomerWithCookieSteps {
     @When('I click on link "Not Test Tester?".')
     public void click_on_link_not(){
         user.click_on_link_please_log_in()
+    }
+
+
+    @AfterStories
+    public void set_default_cookie(){
+        admin.restore_default_state()
     }
 }

@@ -29,3 +29,5 @@ Scenario: Link Wish List redirects to My Wish List Login page.
 Given I am on Login page as guest with cookie enabled.
 When I click on link Wish List.
 Then I should redirects to the My Wish List Login page.
+
+AfterStory
