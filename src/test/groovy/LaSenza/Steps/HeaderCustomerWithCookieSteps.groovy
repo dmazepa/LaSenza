@@ -4,9 +4,7 @@ import LaSenza.steps.AdminPanelSteps
 import LaSenza.steps.CustomerSteps
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
-import org.jbehave.core.annotations.Given
-import org.jbehave.core.annotations.Then
-import org.jbehave.core.annotations.When
+import org.jbehave.core.annotations.*
 
 class HeaderCustomerWithCookieSteps {
 
@@ -42,10 +40,10 @@ class HeaderCustomerWithCookieSteps {
        customer.assert_please_login_msg(pleaseLoginNotTestTester)
     }
 
-   /* @AfterStories
+    @AfterStories
     public void set_default_cookie(){
         admin.restore_default_state()
-    }*/
+    }
 
     @Given("I am on home page as guest with cookie enabled.")
     public void open_home_page_as_guest_with_cookie(){
