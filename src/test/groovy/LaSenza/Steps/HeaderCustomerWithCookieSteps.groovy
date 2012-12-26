@@ -40,7 +40,7 @@ class HeaderCustomerWithCookieSteps {
        customer.assert_please_login_msg(pleaseLoginNotTestTester)
     }
 
-    @AfterStories
+    @AfterStory(uponGivenStory = true)
     public void set_default_cookie(){
         admin.restore_default_state()
     }

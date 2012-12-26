@@ -9,6 +9,7 @@ class HeaderIndependentStateSteps {
 
     @Given('I enter text "$text" to search field.')
     public void enter_text_to_the_search_field(text){
+
     }
 
     @When("I click magnifying glass icon.")
