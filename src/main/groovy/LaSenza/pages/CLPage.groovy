@@ -1,10 +1,8 @@
 package LaSenza.pages
 
-import org.openqa.selenium.By
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.WebElement
+import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.support.FindBy
-import org.openqa.selenium.Keys
+import org.openqa.selenium.*
 
 class CLPage extends ForAllPage{
 
@@ -27,6 +25,9 @@ class CLPage extends ForAllPage{
     @FindBy(xpath = "//h1/a")
     private WebElement linkProductName
 
+    @FindBy(xpath = "//div[@class='category-products']//li/div/a[2]")
+    private WebElement buttonQuickView
+
     @FindBy(xpath = "//a[contains(text(), 'View Full Details')]")
     private WebElement linkViewFullDetails
 
@@ -34,7 +35,11 @@ class CLPage extends ForAllPage{
     private WebElement linkAddToWishList
 
     def open_quick_w(def i) {
-        getDriver().findElement(By.xpath("//div[@class='category-products']//li[${i}]/a[2]")).click()
+        Locatable hoverItem = (Locatable) getDriver().findElement(By.xpath("//div[@class='category-products']//li[${i}]/div/a[1]"))
+        Mouse mouse = ((HasInputDevices) driver).getMouse()
+        mouse.mouseMove(hoverItem.getCoordinates())
+        element(buttonQuickView).waitUntilVisible()
+                .click()
     }
 
     def send_esc_key() {

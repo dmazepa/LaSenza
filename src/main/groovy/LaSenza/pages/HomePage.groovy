@@ -27,10 +27,10 @@ class HomePage extends ForAllPage{
     @FindBy(xpath = "//a[@class='unset-cookie']")
     private WebElement linkNotUserNameUserLastName;
 
-    @FindBy(linkText = "Login")
+    @FindBy(xpath = "//a[@title='Login']")
     private WebElement linkLogIn;
 
-    @FindBy(linkText = "register")
+    @FindBy(xpath = "//a[@title='register']")
     private WebElement linkRegister;
 
     @FindBy(id = "popId-languageSelect")
@@ -140,10 +140,10 @@ class HomePage extends ForAllPage{
     }
 
     def assert_logged_out() {
-        element(linkLogIn).shouldBePresent()
+        element(linkLogIn).shouldBeVisible()
     }
 
     def assert_default_header() {
-        assert linkRegister.isDisplayed()
+        element(linkRegister).shouldBeVisible()
     }
 }

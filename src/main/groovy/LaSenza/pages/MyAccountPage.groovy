@@ -1,10 +1,10 @@
 package LaSenza.pages
 
+import org.openqa.selenium.Alert
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.By
-import org.openqa.selenium.Alert
 
 class MyAccountPage extends ForAllPage{
 
@@ -19,11 +19,11 @@ class MyAccountPage extends ForAllPage{
     private WebElement buttonRemoveItemFromWishList;
 
     def assert_product_added_to_wishlist() {
-        shouldContainText("Test Configurable Product")
+        shouldContainText("Ultimate t-shirt lig")
     }
 
     def delete_items_from_wish_list() {
-        while(getDriver().findElements(By.xpath("//tbody/tr")) !=[] ){
+        while(getDriver().findElements(By.xpath("//a[@title='Remove Item']")) != [] ){
             element(buttonRemoveItemFromWishList).click()
             Alert alert = getDriver().switchTo().alert();
             alert.accept()

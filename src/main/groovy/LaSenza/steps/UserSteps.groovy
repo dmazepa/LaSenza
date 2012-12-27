@@ -121,7 +121,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_quick_view() {
-        clPage.open_quick_w(2)
+        clPage.open_quick_w(1)
     }
 
     @Step
