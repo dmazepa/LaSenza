@@ -78,16 +78,16 @@ class AdminPanelPage extends ForAllPage{
     @FindBy(xpath = "//ul[@id='system_config_tabs']//li[1]//dd[2]/a")
     private WebElement tabWeb
 
-    @FindBy(xpath = "//ul[@id='nav']/li[8]/ul/li[3]/a")
+    @FindBy(xpath = "//ul[@id='nav']/li[8]/ul/li[5]/a")
     private WebElement subMenuBanner
 
-    @FindBy(xpath = "//ul[@id='nav']/li[8]/ul/li[2]/a")
+    @FindBy(xpath = "//ul[@id='nav']/li[8]/ul/li[3]/a")
     private WebElement subMenuStaticBlocks
 
     @FindBy(xpath = "//ul[@id='nav']/li[13]/ul/li[20]/a")
     private WebElement subMenuConfiguration
 
-    @FindBy(xpath = "//ul[@id='nav']/li[11]/ul/li[15]/a")
+    @FindBy(xpath = "//ul[@id='nav']/li[13]/ul/li[16]/a")
     private WebElement subMenuCleanCache
 
     @FindBy(xpath = "//button[@class='scalable add']")
@@ -152,9 +152,9 @@ class AdminPanelPage extends ForAllPage{
         element(buttonHideEditor).click()
         element(areaCMSBlockContent).waitUntilVisible().clear()
         if (addBanner){
-            element(areaCMSBlockContent).type("<div id=\"slider_homepage\">{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"3,4,14,${bannerID}\" template=\"banner/widget/block.phtml\"}}</div>")
+            element(areaCMSBlockContent).type("<div id=\"slider_homepage\">{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"1,2,3,4,${bannerID}\" template=\"banner/widget/block.phtml\"}}</div>")
         } else {
-            element(areaCMSBlockContent).type("<div id=\"slider_homepage\">{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"3,4,14\" template=\"banner/widget/block.phtml\"}}</div>")
+            element(areaCMSBlockContent).type("<div id=\"slider_homepage\">{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"1,2,3,4\" template=\"banner/widget/block.phtml\"}}</div>")
         }
         element(buttonSaveBlock).click()
         element(blockSuccessMsg).waitUntilVisible()
