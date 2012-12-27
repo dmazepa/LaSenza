@@ -11,7 +11,7 @@ And I can see more then one thumbnail image.
 
 Scenario: I shouldn't see thumbnail images on QW for product, that has one image.
 Given I am on PDP with one image.
-And I shouldn't see thumbnail images.
+And I shouldn't see thumbnail imageso on PDP.
 When I click on image.
 Then Activates Magento's standard product zoom feature.
 
