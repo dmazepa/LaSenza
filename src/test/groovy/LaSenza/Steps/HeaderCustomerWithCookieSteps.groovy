@@ -70,7 +70,7 @@ class HeaderCustomerWithCookieSteps {
     public void assert_on_login_page(){
         user.assert_on_login_page()
     }
-    @Then("It logs me out.")
+    @Then("It logs customer out.")
     public void assert_logged_out(){
         user.assert_logged_out()
     }

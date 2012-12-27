@@ -5,7 +5,7 @@ Header for customer without cookies enabled.
 
 Scenario: Welcome message for customer.
 Given I am on home page as customer.
-Then I should see string Welcome Back <First Name>!
+Then I should see string "WELCOME BACK TEST TESTER"
 
 Scenario: Link Log Out logs out customer and load default header state.
 Given I am on home page as customer.
@@ -14,7 +14,7 @@ Then It logs customer out.
 And Load default header state.
 
 Scenario: Link My Account redirects to the My Account Dashboard page.
-Given I am on Home page as customer.
+Given I am on home page as customer.
 When I click on link My Account.
 Then I should redirects to the My Account Dashboard page.
 

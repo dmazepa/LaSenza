@@ -161,7 +161,9 @@ class UserSteps extends ScenarioSteps {
     @Step
     def log_in() {
         loginPage.open1()
-        loginPage.log_in("test1@speroteck.com", "testthis")
+        if(homePage.return_logged_out()){
+            loginPage.log_in("test1@speroteck.com", "testthis")
+        }
     }
 
     @Step

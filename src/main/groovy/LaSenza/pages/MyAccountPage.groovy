@@ -15,6 +15,9 @@ class MyAccountPage extends ForAllPage{
     @FindBy(id = "send2")
     private WebElement buttonLogin;
 
+    @FindBy(id = "wishlist-create-button")
+    private WebElement buttonCreateWishlist;
+
     @FindBy(xpath = "//a[@title='Remove Item']")
     private WebElement buttonRemoveItemFromWishList;
 
@@ -28,5 +31,13 @@ class MyAccountPage extends ForAllPage{
             Alert alert = getDriver().switchTo().alert();
             alert.accept()
         }
+    }
+
+    def assert_on_my_account_dashboard_page() {
+        shouldContainText("My Dashboard")
+    }
+
+    def assert_on_my_wishlist_page() {
+        element(buttonCreateWishlist).shouldBeVisible()
     }
 }

@@ -39,6 +39,9 @@ class HomePage extends ForAllPage{
     @FindBy(xpath = "//a[@title='My Wishlists']")
     private WebElement linkMyWishlist;
 
+    @FindBy(xpath = "//a[@title='Log Out']")
+    private WebElement linkLogOut;
+
     @FindBy(id = "popId-languageSelect")
     private WebElement popUpListLocations;
 
@@ -146,7 +149,11 @@ class HomePage extends ForAllPage{
     }
 
     def assert_logged_out() {
-        element(linkLogIn).shouldBeVisible()
+       element(linkLogIn).shouldBeVisible()
+    }
+
+    def return_logged_out() {
+       return element(linkLogIn).isVisible()
     }
 
     def assert_default_header() {
@@ -159,5 +166,9 @@ class HomePage extends ForAllPage{
 
     def click_on_link_my_wishlist() {
         element(linkMyWishlist).click()
+    }
+
+    def click_on_link_log_out() {
+        element(linkLogOut).click()
     }
 }
