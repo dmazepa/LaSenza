@@ -5,7 +5,7 @@ import org.jbehave.core.annotations.*
 class HeaderIndependentStateSteps {
 
     @Given('I enter text "$text" to search field.')
-    public void enter_text_to_the_search_field(@Named("text") int text){
+    public void enter_text_to_the_search_field(@Named("text") String text){
 
     }
 

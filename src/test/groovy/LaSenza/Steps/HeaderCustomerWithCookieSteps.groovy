@@ -4,7 +4,9 @@ import LaSenza.steps.AdminPanelSteps
 import LaSenza.steps.CustomerSteps
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
-import org.jbehave.core.annotations.*
+import org.jbehave.core.annotations.Given
+import org.jbehave.core.annotations.Then
+import org.jbehave.core.annotations.When
 
 class HeaderCustomerWithCookieSteps {
 
@@ -56,23 +58,23 @@ class HeaderCustomerWithCookieSteps {
     public void assert_on_login_page(){
         user.assert_on_login_page()
     }
-//    @Then("It logs me out.")
-//    public void assert_logged_out(){
-//        user.assert_logged_out()
-//    }
-     @Then("Load default header state.")
-     public void assert_default_header(){
-        user.assert_default_header()
-     }
+    @Then("It logs me out.")
+    public void assert_logged_out(){
+        user.assert_logged_out()
+    }
+    @Then("Load default header state.")
+    public void assert_default_header(){
+       user.assert_default_header()
+       admin.restore_default_state()
+    }
 
     @When('I click on link "Not Test Tester?".')
     public void click_on_link_not(){
         user.click_on_link_please_log_in()
     }
 
-
-    @AfterStories
+  /*  @AfterScenario(uponType = ScenarioType.NORMAL)
     public void set_default_cookie(){
-        admin.restore_default_state()
-    }
+
+    }*/
 }

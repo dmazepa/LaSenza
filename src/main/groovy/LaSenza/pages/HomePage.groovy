@@ -140,7 +140,7 @@ class HomePage extends ForAllPage{
     }
 
     def assert_logged_out() {
-        assert linkLogIn.isDisplayed()
+        element(linkLogIn).shouldBePresent()
     }
 
     def assert_default_header() {
