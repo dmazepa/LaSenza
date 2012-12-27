@@ -33,6 +33,12 @@ class HomePage extends ForAllPage{
     @FindBy(xpath = "//a[@title='register']")
     private WebElement linkRegister;
 
+    @FindBy(xpath = "//a[@title='My Account']")
+    private WebElement linkMyAccount;
+
+    @FindBy(xpath = "//a[@title='My Wishlists']")
+    private WebElement linkMyWishlist;
+
     @FindBy(id = "popId-languageSelect")
     private WebElement popUpListLocations;
 
@@ -145,5 +151,13 @@ class HomePage extends ForAllPage{
 
     def assert_default_header() {
         element(linkRegister).shouldBeVisible()
+    }
+
+    def click_on_link_my_account() {
+        element(linkMyAccount).click()
+    }
+
+    def click_on_link_my_wishlist() {
+        element(linkMyWishlist).click()
     }
 }

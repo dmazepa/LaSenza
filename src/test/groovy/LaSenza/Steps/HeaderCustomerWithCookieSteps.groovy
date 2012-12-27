@@ -5,6 +5,7 @@ import LaSenza.steps.CustomerSteps
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
 import org.jbehave.core.annotations.Given
+import org.jbehave.core.annotations.Pending
 import org.jbehave.core.annotations.Then
 import org.jbehave.core.annotations.When
 
@@ -50,8 +51,19 @@ class HeaderCustomerWithCookieSteps {
     }
 
     @When("I click on link Please Log In.")
+    @Pending //link doesn't present
     public void click_on_link_please_log_in(){
         user.click_on_link_please_log_in()
+    }
+
+    @When("I click on link My Account.")
+    public void click_on_link_my_account(){
+        user.click_on_link_my_account()
+    }
+
+    @When("I click on link Wish List.")
+    public void click_on_link_my_wishlist(){
+        user.click_on_link_my_wishlist()
     }
 
     @Then("I should redirects to Login page.")
@@ -65,10 +77,16 @@ class HeaderCustomerWithCookieSteps {
     @Then("Load default header state.")
     public void assert_default_header(){
        user.assert_default_header()
+    }
+
+    @Then("I should redirects to the My Wish List Login page.")
+    public void assert_on_wish_list_login_page(){
        admin.restore_default_state()
+       user.assert_on_wish_list_login_page()
     }
 
     @When('I click on link "Not Test Tester?".')
+    @Pending //link doesn't present
     public void click_on_link_not(){
         user.click_on_link_please_log_in()
     }

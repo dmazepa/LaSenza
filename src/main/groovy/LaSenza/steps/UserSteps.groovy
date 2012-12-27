@@ -4,6 +4,7 @@ import LaSenza.pages.CLPage
 import LaSenza.pages.HomePage
 import LaSenza.pages.LoginPage
 import LaSenza.pages.PDPage
+import net.thucydides.core.annotations.Pending
 import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 import net.thucydides.core.steps.ScenarioSteps
@@ -196,5 +197,21 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_default_header() {
         homePage.assert_default_header()
+    }
+
+    @Step
+    def click_on_link_my_account() {
+        homePage.click_on_link_my_account()
+    }
+
+    @Step
+    def click_on_link_my_wishlist() {
+        homePage.click_on_link_my_wishlist()
+    }
+
+    @Step
+    @Pending
+    def assert_on_wish_list_login_page() {
+
     }
 }
