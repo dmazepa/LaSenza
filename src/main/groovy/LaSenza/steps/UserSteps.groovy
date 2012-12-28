@@ -11,6 +11,8 @@ import net.thucydides.core.steps.ScenarioSteps
 
 import static org.hamcrest.MatcherAssert.assertThat
 import LaSenza.pages.CreateAccountPage
+import LaSenza.pages.StoreLocatorPage
+import LaSenza.pages.SearchPage
 
 class UserSteps extends ScenarioSteps {
 
@@ -19,14 +21,19 @@ class UserSteps extends ScenarioSteps {
     PDPage pDPage
     LoginPage loginPage
     CreateAccountPage createAccountPage
+    StoreLocatorPage  storeLocatorPage
+    SearchPage  searchPage
 
     UserSteps(Pages pages){
         super(pages)
+        homePage = pages[HomePage]
         homePage = pages[HomePage]
         clPage = pages[CLPage]
         pDPage = pages[PDPage]
         loginPage = pages[LoginPage]
         createAccountPage = pages[CreateAccountPage]
+        storeLocatorPage = pages[StoreLocatorPage]
+        searchPage = pages[SearchPage]
     }
     @Step
     def opens_home_page() {
@@ -238,5 +245,34 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_on_create_account_page() {
         createAccountPage.assert_on_create_account_page()
+    }
+
+    @Step
+    def click_on_link_store_locator() {
+        homePage.click_on_link_store_locator()
+    }
+
+    @Step
+    def assert_on_store_locator_page() {
+        storeLocatorPage.assert_on_store_locator_page()
+    }
+
+    @Step
+    def enter_text_to_the_search_field(String searchText) {
+        homePage.enter_text_to_the_search_field(searchText)
+    }
+
+    @Step
+    def click_on_search_button() {
+        homePage.click_on_search_button()
+    }
+
+    @Step
+    def assert_on_search_page() {
+        searchPage.assert_on_search_page()
+    }
+
+    def assert_no_results() {
+        searchPage.assert_no_results()
     }
 }

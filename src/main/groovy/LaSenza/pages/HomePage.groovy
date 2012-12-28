@@ -33,6 +33,9 @@ class HomePage extends ForAllPage{
     @FindBy(xpath = "//a[@title='register']")
     private WebElement linkRegister;
 
+    @FindBy(xpath = "//a[contains(text(), 'Store Locator')]")
+    private WebElement linkStoreLocator;
+
     @FindBy(xpath = "//a[@title='My Account']")
     private WebElement linkMyAccount;
 
@@ -47,6 +50,9 @@ class HomePage extends ForAllPage{
 
     @FindBy(id = "search")
     private WebElement fieldSearch;
+
+    @FindBy(xpath = "//button[@title='Go']")
+    private WebElement buttonSearch;
 
     @FindBy(xpath = "//div[@class='switch switcher-language']")
     private WebElement selectLocation;
@@ -178,5 +184,17 @@ class HomePage extends ForAllPage{
 
     def click_on_link_register() {
         element(linkRegister).click()
+    }
+
+    def click_on_link_store_locator() {
+        element(linkStoreLocator).click()
+    }
+
+    def enter_text_to_the_search_field(String text) {
+        typeInto(fieldSearch, text)
+    }
+
+    def click_on_search_button() {
+        element(buttonSearch).click()
     }
 }
