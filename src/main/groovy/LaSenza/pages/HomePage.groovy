@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
 import static org.hamcrest.MatcherAssert.assertThat
+import static org.hamcrest.CoreMatchers.equalTo
 
 @DefaultUrl("http://lasenza-dev.lcgosc.com/develop")
 class HomePage extends ForAllPage{
@@ -53,6 +54,24 @@ class HomePage extends ForAllPage{
 
     @FindBy(xpath = "//button[@title='Go']")
     private WebElement buttonSearch;
+
+    @FindBy(xpath = "//strong[@id='cartHeader']/span[1]")
+    private WebElement textQtyHeader;
+
+    @FindBy(xpath = "//strong[@id='cartHeader']//span[@class='price']")
+    private WebElement textPriceHeader;
+
+    @FindBy(xpath = "//div[@id='topCartContent']")
+    private WebElement blockMiniCart;
+
+    @FindBy(xpath = "//table[@class='mini-cart-price']//td[@class='qty']")
+    private WebElement blockQtyMiniCart;
+
+    @FindBy(xpath = "//table[@class='mini-cart-price']//span[@class='price']")
+    private WebElement blockPriceMiniCart;
+
+    @FindBy(xpath = "//div[@class='mini-cart-bottom']//span[@class='price']")
+    private WebElement blockTotalMiniCart;
 
     @FindBy(xpath = "//div[@class='switch switcher-language']")
     private WebElement selectLocation;
@@ -196,5 +215,23 @@ class HomePage extends ForAllPage{
 
     def click_on_search_button() {
         element(buttonSearch).click()
+    }
+
+    def assert_mini_cart_appears() {
+        element(blockMiniCart).shouldBeVisible()
+    }
+
+    def assert_qty_and_price_added_to_mini_cart(String qty, String price) {
+        assertThat(element(blockQtyMiniCart).getText(), equalTo(qty))
+        assertThat(element(blockPriceMiniCart).getText(), equalTo(price))
+        assertThat(element(blockTotalMiniCart).getText(), equalTo(price))
+    }
+
+    def assert_total_qty_in_header(String qty) {
+        assert element(textQtyHeader).getText() == qty
+    }
+
+    def assert_total_price_in_header(String price) {
+        assertThat(element(textPriceHeader).getText(), equalTo(price))
     }
 }

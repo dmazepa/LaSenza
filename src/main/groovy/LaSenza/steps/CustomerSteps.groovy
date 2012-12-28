@@ -70,8 +70,5 @@ class CustomerSteps extends UserSteps{
     def add_to_wishlist_from_pdp() {
     }
 
-    @Step
-    def open_pdp(int id) {
-        getDriver().get("${System.getProperty("webdriver.base.url")}/catalog/product/view/id/${id}")
-    }
+
 }

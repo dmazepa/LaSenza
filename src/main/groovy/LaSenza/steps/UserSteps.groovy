@@ -53,6 +53,11 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
+    def open_pdp(int id) {
+        getDriver().get("${System.getProperty("webdriver.base.url")}/catalog/product/view/id/${id}")
+    }
+
+    @Step
     def timeout(int mSec) {
         //waitABit(mSec)
         Thread.sleep(mSec)
@@ -272,7 +277,38 @@ class UserSteps extends ScenarioSteps {
         searchPage.assert_on_search_page()
     }
 
+    @Step
     def assert_no_results() {
         searchPage.assert_no_results()
+    }
+
+    @Step
+    def click_add_to_cart_button_pdp() {
+        pDPage.click_add_to_cart_button()
+    }
+
+    @Step
+    def assert_qty_and_price_added_in_header(String qty, String price) {
+        assert_total_qty_in_header(qty)
+        assert_total_price_in_header(price)
+    }
+
+    def assert_total_price_in_header(String price) {
+        homePage.assert_total_price_in_header(price)
+    }
+
+    @Step
+    def assert_total_qty_in_header(String qty) {
+        homePage.assert_total_qty_in_header(qty)
+    }
+
+    @Step
+    def assert_mini_cart_appears() {
+        homePage.assert_mini_cart_appears()
+    }
+
+    @Step
+    def assert_qty_and_price_added_to_mini_cart(String qty, String price) {
+        homePage.assert_qty_and_price_added_to_mini_cart(qty,price)
     }
 }

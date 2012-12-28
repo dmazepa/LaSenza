@@ -6,9 +6,9 @@ Allow user to add simple products to from PDP using ajax.
 Scenario: Customer can add products from PDP.
 Given I am on PDP with simple product.
 When I click Add to Cart button.
-Then Added items appears ﬁrst in the list of Mini-Cart items.
-And The quantity and order total are updated to reﬂect the addition.
+Then The quantity "1" and order total "$7.00" are updated to reﬂect the addition.
 And Mini cart slides down.
+And Added items qty "1" and price "$7.00" appears ﬁrst in the list of Mini-Cart items.
 
 Scenario: Customer can't add product from PDP with quantity greater than the inventory available.
 Given I am on PDP with simple product.
