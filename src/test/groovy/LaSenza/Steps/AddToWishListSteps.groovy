@@ -16,7 +16,8 @@ class AddToWishListSteps {
     @Given("I am on QW with configurable product as customer.")
     public void on_qw_as_customer(){
         user.log_in()
-        customer.opens_CLP("beauty")
+        customer.assert_on_my_account_dashboard_page()
+        customer.opens_CLP("bras")
         customer.open_quick_view_configurable()
     }
 

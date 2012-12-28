@@ -36,7 +36,7 @@ class HomePage extends ForAllPage{
     @FindBy(xpath = "//a[@title='My Account']")
     private WebElement linkMyAccount;
 
-    @FindBy(xpath = "//a[@title='My Wishlists']")
+    @FindBy(xpath = "//a[@title='My Wishlist']")
     private WebElement linkMyWishlist;
 
     @FindBy(xpath = "//a[@title='Log Out']")

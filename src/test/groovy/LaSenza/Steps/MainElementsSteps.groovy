@@ -11,7 +11,7 @@ class MainElementsSteps {
 
     @Given("I am on QW.")
     public void openQWSimple(){
-        user.opens_CLP("sexy-lingerie/kimonos")
+        user.opens_CLP("bras/push-up")
         user.open_quick_view()
     }
 
