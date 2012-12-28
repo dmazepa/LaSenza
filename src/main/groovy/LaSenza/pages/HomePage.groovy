@@ -36,7 +36,7 @@ class HomePage extends ForAllPage{
     @FindBy(xpath = "//a[@title='My Account']")
     private WebElement linkMyAccount;
 
-    @FindBy(xpath = "//a[@title='My Wishlist']")
+    @FindBy(xpath = "//a[@title='Wish list']")
     private WebElement linkMyWishlist;
 
     @FindBy(xpath = "//a[@title='Log Out']")
@@ -170,5 +170,13 @@ class HomePage extends ForAllPage{
 
     def click_on_link_log_out() {
         element(linkLogOut).click()
+    }
+
+    def click_on_link_login() {
+        element(linkLogIn).click()
+    }
+
+    def click_on_link_register() {
+        element(linkRegister).click()
     }
 }

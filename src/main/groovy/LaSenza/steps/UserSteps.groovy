@@ -10,6 +10,7 @@ import net.thucydides.core.pages.Pages
 import net.thucydides.core.steps.ScenarioSteps
 
 import static org.hamcrest.MatcherAssert.assertThat
+import LaSenza.pages.CreateAccountPage
 
 class UserSteps extends ScenarioSteps {
 
@@ -17,6 +18,7 @@ class UserSteps extends ScenarioSteps {
     CLPage clPage
     PDPage pDPage
     LoginPage loginPage
+    CreateAccountPage createAccountPage
 
     UserSteps(Pages pages){
         super(pages)
@@ -24,6 +26,7 @@ class UserSteps extends ScenarioSteps {
         clPage = pages[CLPage]
         pDPage = pages[PDPage]
         loginPage = pages[LoginPage]
+        createAccountPage = pages[CreateAccountPage]
     }
     @Step
     def opens_home_page() {
@@ -215,5 +218,25 @@ class UserSteps extends ScenarioSteps {
     @Pending
     def assert_on_wish_list_login_page() {
 
+    }
+
+    @Step
+    def should_see_welcomeMSG(String msg) {
+        homePage.assert_welcome_msg(msg)
+    }
+
+    @Step
+    def click_on_link_login() {
+        homePage.click_on_link_login()
+    }
+
+    @Step
+    def click_on_link_register() {
+        homePage.click_on_link_register()
+    }
+
+    @Step
+    def assert_on_create_account_page() {
+        createAccountPage.assert_on_create_account_page()
     }
 }

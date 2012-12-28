@@ -17,7 +17,7 @@ class MainElementsSteps {
 
     @Given("I am on QW with one image.")
     public void openQWWithOneImage(){
-        user.opens_CLP("sexy-lingerie/kimonos")
+        user.opens_CLP("bras/push-up")
         user.open_quick_view()
     }
 
