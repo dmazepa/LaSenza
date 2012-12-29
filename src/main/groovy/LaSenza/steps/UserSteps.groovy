@@ -293,6 +293,7 @@ class UserSteps extends ScenarioSteps {
         assert_total_price_in_header(price)
     }
 
+    @Step
     def assert_total_price_in_header(String price) {
         homePage.assert_total_price_in_header(price)
     }
@@ -310,5 +311,20 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_qty_and_price_added_to_mini_cart(String qty, String price) {
         homePage.assert_qty_and_price_added_to_mini_cart(qty,price)
+    }
+
+    @Step
+    def fill_qty(String qty) {
+        pDPage.fill_qty(qty)
+    }
+
+    @Step
+    def assert_item_not_added() {
+        homePage.assert_item_not_added()
+    }
+
+
+    def store_state_of_total_price_and_qty() {
+        homePage.store_state_of_total_price_and_qty()
     }
 }

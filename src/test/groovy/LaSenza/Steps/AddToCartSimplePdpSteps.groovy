@@ -19,6 +19,12 @@ class AddToCartSimplePdpSteps {
         user.click_add_to_cart_button_pdp()
     }
 
+    @When('I fill quantity "$qty" greater than the inventory available.')
+    public void fill_qty(String qty){
+        user.fill_qty(qty)
+        user.store_state_of_total_price_and_qty()
+    }
+
     @Then('Added items qty "$qty" and price "$price" appears ﬁrst in the list of Mini-Cart items.')
     public void assert_item_added_to_mini_cart(String qty, String price){
         user.assert_qty_and_price_added_to_mini_cart(qty, price)
@@ -27,6 +33,11 @@ class AddToCartSimplePdpSteps {
     @Then("Mini cart slides down.")
     public void assert_mini_cart_appears(){
         user.assert_mini_cart_appears()
+    }
+
+    @Then("Item don't add to cart.")
+    public void assert_item_not_added(){
+        user.assert_item_not_added()
     }
 
     @Then('The quantity "$qty" and order total "$price" are updated to reﬂect the addition.')

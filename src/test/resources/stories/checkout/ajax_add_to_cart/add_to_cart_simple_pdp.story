@@ -12,7 +12,7 @@ And Added items qty "1" and price "$7.00" appears ﬁrst in the list of Mini-Car
 
 Scenario: Customer can't add product from PDP with quantity greater than the inventory available.
 Given I am on PDP with simple product.
-When I fill quantity greater than the inventory available.
+When I fill quantity "10000" greater than the inventory available.
 And I click Add to Cart button.
 Then Item don't add to cart.
 And Appropriate error messaging displays to the right of the Add to Cart button.

@@ -17,6 +17,9 @@ class PDPage extends ForAllPage{
     @FindBy(xpath = "//button[@class='button btn-cart']")
     private WebElement buttonAddToCart;
 
+    @FindBy(id = "qty")
+    private WebElement fieldQTY;
+
 
     def assert_on_PDP() {
         element(productName).waitUntilVisible()
@@ -28,5 +31,9 @@ class PDPage extends ForAllPage{
         Thread.sleep(2000)
         Alert alert = getDriver().switchTo().alert();
         alert.accept()
+    }
+
+    def fill_qty(String qty) {
+        typeInto(fieldQTY, qty)
     }
 }

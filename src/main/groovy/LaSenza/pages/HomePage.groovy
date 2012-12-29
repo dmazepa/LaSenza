@@ -16,6 +16,10 @@ class HomePage extends ForAllPage{
         super(driver)
     }
 
+    String qtyHeaderBefore
+    String priceHeaderBefore
+
+
     @FindBy(xpath = "//div[@class='global-header-banner']/img")
     private WebElement globalHeaderBanner;
 
@@ -228,10 +232,21 @@ class HomePage extends ForAllPage{
     }
 
     def assert_total_qty_in_header(String qty) {
-        assert element(textQtyHeader).getText() == qty
+        assertThat(element(textQtyHeader).getText(), equalTo(qty))
     }
 
     def assert_total_price_in_header(String price) {
         assertThat(element(textPriceHeader).getText(), equalTo(price))
+    }
+
+    def assert_item_not_added() {
+        element(blockMiniCart).shouldNotBeVisible()
+        assertThat(element(textQtyHeader).getText(), equalTo(qtyHeaderBefore))
+        assertThat(element(textPriceHeader).getText(), equalTo(priceHeaderBefore))
+    }
+
+    def store_state_of_total_price_and_qty() {
+        qtyHeaderBefore = element(textQtyHeader).getText()
+        priceHeaderBefore = element(textPriceHeader).getText()
     }
 }
