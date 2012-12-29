@@ -16,6 +16,9 @@ class LoginPage extends ForAllPage{
     @FindBy(id = "pass")
     private WebElement fieldPassword;
 
+    @FindBy(xpath = "//input[@title='Remember Me']")
+    private WebElement checkboxWithCookie;
+
     @FindBy(id = "send2")
     private WebElement buttonLogin;
 
@@ -24,9 +27,12 @@ class LoginPage extends ForAllPage{
         getDriver().get("${System.getProperty("webdriver.base.url")}/customer/account/login/")
     }
 
-    def log_in(String email, String pass) {
+    def log_in(String email, String pass, Boolean withCookie) {
         element(fieldEmail).type(email)
         element(fieldPassword).type(pass)
+        if(!withCookie){
+          element(checkboxWithCookie).click()
+        }
         element(buttonLogin).click()
     }
 

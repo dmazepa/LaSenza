@@ -174,10 +174,10 @@ class UserSteps extends ScenarioSteps {
        pDPage.assert_on_PDP()
     }
     @Step
-    def log_in() {
+    def log_in(Boolean withCookie) {
         loginPage.open1()
         if(homePage.return_logged_out()){
-            loginPage.log_in("test1@speroteck.com", "testthis")
+            loginPage.log_in("test1@speroteck.com", "testthis", withCookie)
         }
     }
 

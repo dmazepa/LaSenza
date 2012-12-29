@@ -25,7 +25,7 @@ class HeaderCustomerWithCookieSteps {
     public void open_home_page_as_customer_with_cookie(){
         admin.open_admin_panel()
         admin.set_cookie_time("10")
-        user.log_in()
+        user.log_in(true)
     }
 
     @When("I did not have activity more than  set to cookie save.")
@@ -46,7 +46,7 @@ class HeaderCustomerWithCookieSteps {
 
     @Given("I am on home page as guest with cookie enabled.")
     public void open_home_page_as_guest_with_cookie(){
-        user.log_in()
+        user.log_in(true)
         user.timeout(12000)
         user.refresh_page()
     }

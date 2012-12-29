@@ -22,7 +22,7 @@ class MyAccountPage extends ForAllPage{
     private WebElement buttonRemoveItemFromWishList;
 
     def assert_product_added_to_wishlist() {
-        shouldContainText("Strapless Convertible Bra")
+        shouldContainText("Collar & Bow Tie")
     }
 
     def delete_items_from_wish_list() {

@@ -18,7 +18,7 @@ class DevelopingSteps {
 
     @Given("I am on home page as customer.")
     public void open_home_page_as_customer_with_cookie(){
-        user.log_in()
+        user.log_in(true)
     }
 
     @Then("I should redirects to the My Account Dashboard page.")
