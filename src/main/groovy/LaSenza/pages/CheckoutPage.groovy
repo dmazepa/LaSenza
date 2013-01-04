@@ -36,6 +36,36 @@ class CheckoutPage extends ForAllPage{
     @FindBy(id = "billing:postcode")
     private WebElement fieldPostalCode
 
+    @FindBy(id = "billing:telephone")
+    private WebElement fieldTelephone
+
+    @FindBy(id = "ccsave_cc_number")
+    private WebElement fieldCartNumber
+
+    @FindBy(id = "ccsave_expiration")
+    private WebElement selectMonth
+
+    @FindBy(id = "ccsave_expiration_yr")
+    private WebElement selectYear
+
+    @FindBy(id = "ccsave_cc_owner")
+    private WebElement fieldCartName
+
+    @FindBy(id = "ccsave_cc_cid")
+    private WebElement fieldVerificationNumber
+
+    @FindBy(name = "shipping_method")
+    private WebElement shipment
+
+    @FindBy(xpath = "//input[@value='VI']")
+    private WebElement inputCreditCart
+
+    @FindBy(xpath = "//button[@class='button btn-checkout']")
+    private WebElement buttonConfirmAndPay
+
+    @FindBy(xpath = "//img[@class='v-middle']")
+    private WebElement loader
+
     def fill_email_field() {
         element(fieldEmail).type("test1@speroteck.com");
     }
@@ -66,5 +96,44 @@ class CheckoutPage extends ForAllPage{
 
     def fill_postal_code_field() {
         element(fieldPostalCode).type("11111");
+    }
+
+    def fill_telephone_field() {
+        element(fieldTelephone).type("1234567890")
+    }
+
+    def click_input_credit_cart() {
+        element(inputCreditCart).click();
+    }
+
+    def fill_cart_name() {
+        element(fieldCartName).type("Visa")
+    }
+
+    def fill_cart_number_field() {
+        element(fieldCartNumber).type("4111111111111111")
+    }
+
+    def select_month() {
+        element(selectMonth).selectByValue("3")
+    }
+
+    def select_year() {
+        element(selectYear).selectByValue("2022");
+    }
+
+    def fill_verification_number_field() {
+        element(fieldVerificationNumber).type("111")
+    }
+
+    def check_shipment() {
+        element(shipment).waitUntilVisible();
+        element(shipment).click();
+    }
+
+    def click_button_confirm_and_pay() {
+        element(loader).waitUntilNotVisible()
+        element(buttonConfirmAndPay).click()
+        waitForTextToAppear("Please review your information before submitting your order.")
     }
 }

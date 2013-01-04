@@ -372,16 +372,60 @@ class UserSteps extends ScenarioSteps {
         fill_city_field();
         select_state();
         fill_postal_code_field();
-       /* fill_telephone_field();
-        check_shipment();
+        fill_telephone_field();
         click_input_credit_cart();
         fill_cart_name();
         fill_cart_number_field();
         select_month();
         select_year();
         fill_verification_number_field();
-        click_button_place_order();
-        click_button_submit_order();*/
+        check_shipment();
+        click_button_confirm_and_pay();
+    }
+
+    @Step
+    def click_button_confirm_and_pay() {
+        checkoutPage.click_button_confirm_and_pay()
+    }
+
+    @Step
+    def check_shipment() {
+        checkoutPage.check_shipment()
+    }
+
+    @Step
+    def fill_verification_number_field() {
+        checkoutPage.fill_verification_number_field()
+    }
+
+    @Step
+    def select_year() {
+        checkoutPage.select_year()
+    }
+
+    @Step
+    def select_month() {
+        checkoutPage.select_month()
+    }
+
+    @Step
+    def fill_cart_number_field() {
+        checkoutPage.fill_cart_number_field()
+    }
+
+    @Step
+    def fill_cart_name() {
+        checkoutPage.fill_cart_name()
+    }
+
+    @Step
+    def click_input_credit_cart() {
+        checkoutPage.click_input_credit_cart()
+    }
+
+    @Step
+    def fill_telephone_field() {
+        checkoutPage.fill_telephone_field()
     }
 
     @Step
