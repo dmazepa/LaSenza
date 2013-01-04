@@ -40,9 +40,14 @@ class AddToCartSimplePdpSteps {
         user.assert_item_not_added()
     }
 
-    @Then('The quantity "$qty" and order total "$price" are updated to reﬂect the addition.')
+    @Then('The qty "$qty" and order total "$price" are updated to reﬂect the addition.')
     public void assert_qty_and_price_added_in_header(String qty, String price){
         user.assert_qty_and_price_added_in_header(qty, price)
+    }
+
+    @Then('Added ites qty "$qty" and price "$price" appears ﬁrst in the list of Mini-Cart items.')
+    public void assert_item_in_mini_cart(String qty, String price){
+        user.assert_qty_and_price_added_to_mini_cart(qty, price)
     }
 
 }

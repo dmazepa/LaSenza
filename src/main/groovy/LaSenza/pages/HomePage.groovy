@@ -226,6 +226,8 @@ class HomePage extends ForAllPage{
     }
 
     def assert_qty_and_price_added_to_mini_cart(String qty, String price) {
+        println("Fack")
+        println(element(blockQtyMiniCart).getText())
         assertThat(element(blockQtyMiniCart).getText(), equalTo(qty))
         assertThat(element(blockPriceMiniCart).getText(), equalTo(price))
         assertThat(element(blockTotalMiniCart).getText(), equalTo(price))

@@ -23,6 +23,7 @@ class UserSteps extends ScenarioSteps {
     CreateAccountPage createAccountPage
     StoreLocatorPage  storeLocatorPage
     SearchPage  searchPage
+    CLPage  cLPage
 
     UserSteps(Pages pages){
         super(pages)
@@ -34,6 +35,7 @@ class UserSteps extends ScenarioSteps {
         createAccountPage = pages[CreateAccountPage]
         storeLocatorPage = pages[StoreLocatorPage]
         searchPage = pages[SearchPage]
+        cLPage = pages[CLPage]
     }
     @Step
     def opens_home_page() {
@@ -59,9 +61,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def timeout(int mSec) {
-        //waitABit(mSec)
         Thread.sleep(mSec)
-        //Thread.wait(mSec)
     }
 
     @Step
@@ -133,11 +133,6 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_count_images_in_slider(int i) {
         homePage.assert_cont_images_in_slider(i)
-    }
-
-    @Step
-    def open_quick_view() {
-        clPage.open_quick_w(1)
     }
 
     @Step
@@ -323,8 +318,37 @@ class UserSteps extends ScenarioSteps {
         homePage.assert_item_not_added()
     }
 
-
+    @Step
     def store_state_of_total_price_and_qty() {
         homePage.store_state_of_total_price_and_qty()
+    }
+
+    @Step
+    def choose_and_store_configurable_options() {
+        choose_configurable_options()
+        store_configurable_options()
+    }
+
+    def store_configurable_options() {
+        pDPage.store_configurable_options()
+    }
+
+    @Step
+    def choose_configurable_options() {
+        pDPage.choose_configurable_options()
+    }
+
+    @Step
+    def assert_qty_and_price_added_to_shopping_cart(String qty, String price) {
+
+    }
+
+    @Step
+    def open_quick_view_configurable() {
+        cLPage.open_quick_w(3)
+    }
+
+    def open_quick_view() {
+        cLPage.open_quick_w(2)
     }
 }

@@ -38,7 +38,7 @@ class CLPage extends ForAllPage{
         Locatable hoverItem = (Locatable) getDriver().findElement(By.xpath("//div[@class='category-products']//li[${i}]/div/a[1]"))
         Mouse mouse = ((HasInputDevices) driver).getMouse()
         mouse.mouseMove(hoverItem.getCoordinates())
-        element(buttonQuickView).waitUntilVisible()
+        element(By.xpath("//div[@class='category-products']//li[${i}]/div/a[2]")).waitUntilVisible()
                 .click()
     }
 
