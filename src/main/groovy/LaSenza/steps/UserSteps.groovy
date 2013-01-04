@@ -13,6 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat
 import LaSenza.pages.CreateAccountPage
 import LaSenza.pages.StoreLocatorPage
 import LaSenza.pages.SearchPage
+import LaSenza.pages.CheckoutPage
 
 class UserSteps extends ScenarioSteps {
 
@@ -24,6 +25,7 @@ class UserSteps extends ScenarioSteps {
     StoreLocatorPage  storeLocatorPage
     SearchPage  searchPage
     CLPage  cLPage
+    CheckoutPage  checkoutPage
 
     UserSteps(Pages pages){
         super(pages)
@@ -36,6 +38,7 @@ class UserSteps extends ScenarioSteps {
         storeLocatorPage = pages[StoreLocatorPage]
         searchPage = pages[SearchPage]
         cLPage = pages[CLPage]
+        checkoutPage = pages[CheckoutPage]
     }
     @Step
     def opens_home_page() {
@@ -348,7 +351,88 @@ class UserSteps extends ScenarioSteps {
         cLPage.open_quick_w(3)
     }
 
+    @Step
     def open_quick_view() {
         cLPage.open_quick_w(2)
+    }
+
+    @Step
+    def open_second_step_of_checkout() {
+        open_first_step_of_checkout()
+        enter_valid_data_on_checkout_page()
+    }
+
+    @Step
+    def enter_valid_data_on_checkout_page() {
+        fill_email_field();
+        fill_first_name_field();
+        fill_last_name_field();
+        fill_address1_field();
+        fill_address2_field();
+        fill_city_field();
+        select_state();
+        fill_postal_code_field();
+       /* fill_telephone_field();
+        check_shipment();
+        click_input_credit_cart();
+        fill_cart_name();
+        fill_cart_number_field();
+        select_month();
+        select_year();
+        fill_verification_number_field();
+        click_button_place_order();
+        click_button_submit_order();*/
+    }
+
+    @Step
+    def fill_postal_code_field() {
+        checkoutPage.fill_postal_code_field()
+    }
+
+    @Step
+    def select_state() {
+        checkoutPage.select_state()
+    }
+
+    @Step
+    def fill_city_field() {
+        checkoutPage.fill_city_field()
+    }
+
+    @Step
+    def fill_address2_field() {
+        checkoutPage.fill_address2_field()
+    }
+
+    @Step
+    def fill_address1_field() {
+        checkoutPage.fill_address1_field()
+    }
+
+    @Step
+    def fill_last_name_field() {
+        checkoutPage.fill_last_name_field()
+    }
+
+    @Step
+    def fill_first_name_field() {
+        checkoutPage.fill_first_name_field()
+    }
+
+    @Step
+    def fill_email_field() {
+        checkoutPage.fill_email_field()
+    }
+
+    @Step
+    def open_first_step_of_checkout() {
+        open_pdp(2213)
+        click_add_to_cart_button_pdp()
+        go_to_checkout()
+    }
+
+    @Step
+    def go_to_checkout() {
+        checkoutPage.open()
     }
 }

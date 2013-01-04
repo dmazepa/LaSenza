@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.CoreMatchers.equalTo
 
-@DefaultUrl("http://lasenza-dev.lcgosc.com/develop")
+@DefaultUrl("http://localhost:9000/develop")
 class HomePage extends ForAllPage{
 
     HomePage(WebDriver driver){
