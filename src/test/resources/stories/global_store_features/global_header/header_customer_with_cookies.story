@@ -6,8 +6,8 @@ Header for customer with cookies enabled.
 Scenario: Welcome message for customer with cookie enabled.
 Given I am on home page as customer with cookies.
 When I did not have activity more than  set to cookie save.
-Then I should see string "WELCOME BACK TEST TESTER"
-Then I should see string "Please login. Not Test Tester?"
+Then I should see welcome msg "WELCOME BACK TEST TESTER"
+Then I should see string "Please Login. Not Test Tester?"
 
 Scenario: Link Please Log In redirects to Login page.
 Given I am on home page as guest with cookie enabled.

@@ -34,7 +34,7 @@ class HeaderCustomerWithCookieSteps {
         user.refresh_page()
     }
 
-    @Then('I should see string "$welcomeMSG"')
+    @Then('I should see welcome msg "$welcomeMSG"')
     public void should_see_welcome_msg(String welcomeMSG){
        customer.assert_welcome_msg(welcomeMSG)
     }

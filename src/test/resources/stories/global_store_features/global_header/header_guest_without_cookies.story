@@ -5,7 +5,7 @@ Header for guest without cookies enabled.
 
 Scenario: Welcome message for guest.
 Given I am on home page.
-Then I should see string "WELCOME!"
+Then I should see welcome msg "WELCOME!"
 
 Scenario: Link Log In redirects to Login page.
 Given I am on home page.

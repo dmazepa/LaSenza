@@ -154,7 +154,9 @@ class HomePage extends ForAllPage{
     }
 
     def assert_welcome_msg(def welcomeMSG) {
-        assertThat(blockWelcomeMsg.getText(), is(welcomeMSG))
+        def g = blockWelcomeMsg.getText()
+        assert blockWelcomeMsg.getText() == welcomeMSG
+        //assertThat(blockWelcomeMsg.getText(), is("WELCOME BACK TEST TESTER"))  Not work.
     }
 
     def click_on_search_field() {
@@ -170,7 +172,8 @@ class HomePage extends ForAllPage{
     }
 
     def assert_please_login_msg(String pleaseLoginNotTestTester) {
-        assertThat(linkNotUserNameUserLastName.getText(), is(pleaseLoginNotTestTester))
+        def h = linkNotUserNameUserLastName.getText()
+        assert linkNotUserNameUserLastName.getText() == pleaseLoginNotTestTester
     }
 
     def click_on_link_please_log_in() {
@@ -226,7 +229,6 @@ class HomePage extends ForAllPage{
     }
 
     def assert_qty_and_price_added_to_mini_cart(String qty, String price) {
-        println("Fack")
         println(element(blockQtyMiniCart).getText())
         assertThat(element(blockQtyMiniCart).getText(), equalTo(qty))
         assertThat(element(blockPriceMiniCart).getText(), equalTo(price))
