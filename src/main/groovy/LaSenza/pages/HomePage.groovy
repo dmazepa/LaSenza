@@ -29,6 +29,9 @@ class HomePage extends ForAllPage{
     @FindBy(xpath = "//span[@class='welcome-msg']")
     private WebElement blockWelcomeMsg;
 
+    @FindBy(xpath = "//div[@class='block-title']")
+    private WebElement iconBagHeader;
+
     @FindBy(xpath = "//a[@class='unset-cookie']")
     private WebElement linkNotUserNameUserLastName;
 
@@ -47,11 +50,20 @@ class HomePage extends ForAllPage{
     @FindBy(xpath = "//a[@title='Wish list']")
     private WebElement linkMyWishlist;
 
+    @FindBy(xpath = "//strong//span[@class='price']")
+    private WebElement totalPriceHeader
+
+    @FindBy(xpath = "//ul[@class='links cart-link']")
+    private WebElement textMyCartHeader
+
     @FindBy(xpath = "//a[@title='Log Out']")
     private WebElement linkLogOut;
 
     @FindBy(id = "popId-languageSelect")
     private WebElement popUpListLocations;
+
+    @FindBy(id = "cartHeader")
+    private WebElement qtyHeader;
 
     @FindBy(id = "search")
     private WebElement fieldSearch;
@@ -230,6 +242,7 @@ class HomePage extends ForAllPage{
 
     def assert_qty_and_price_added_to_mini_cart(String qty, String price) {
         println(element(blockQtyMiniCart).getText())
+
         assertThat(element(blockQtyMiniCart).getText(), equalTo(qty))
         assertThat(element(blockPriceMiniCart).getText(), equalTo(price))
         assertThat(element(blockTotalMiniCart).getText(), equalTo(price))
@@ -244,7 +257,6 @@ class HomePage extends ForAllPage{
     }
 
     def assert_item_not_added() {
-        element(blockMiniCart).shouldNotBeVisible()
         assertThat(element(textQtyHeader).getText(), equalTo(qtyHeaderBefore))
         assertThat(element(textPriceHeader).getText(), equalTo(priceHeaderBefore))
     }
@@ -252,5 +264,34 @@ class HomePage extends ForAllPage{
     def store_state_of_total_price_and_qty() {
         qtyHeaderBefore = element(textQtyHeader).getText()
         priceHeaderBefore = element(textPriceHeader).getText()
+    }
+
+    def click_on_click_on_element_in_shopping_cart_area(String el) {
+        if (el == "Icon Bag"){
+            element(iconBagHeader).waitUntilVisible()
+            element(iconBagHeader).click()
+        }else {
+            if( el == "QTY"){
+                element(qtyHeader).waitUntilVisible()
+                element(qtyHeader).click()
+            }else {
+                element(totalPriceHeader).waitUntilVisible()
+                element(totalPriceHeader).click()
+            }
+        }
+    }
+
+    def click_on_element_text_my_cart_header() {
+        element(textMyCartHeader).click()
+    }
+
+    def assert_mini_cart_not_appears() {
+        element(blockMiniCart).shouldNotBeVisible()
+
+    }
+
+    def assert_on_home_page() {
+        assertThat(driver.getCurrentUrl(), equalTo(System.getProperty("webdriver.base.url")))
+        element(sliderImage1).shouldBePresent()
     }
 }

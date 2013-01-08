@@ -163,7 +163,7 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def click_on_element(String element) {
+    def click_on_qw_element(String element) {
         clPage.click_on_qw_element(element)
     }
 
@@ -286,7 +286,7 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def assert_qty_and_price_added_in_header(String qty, String price) {
+    def assert_qty_and_price_added_in_header(def qty, def price) {
         assert_total_qty_in_header(qty)
         assert_total_price_in_header(price)
     }
@@ -318,6 +318,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def assert_item_not_added() {
+        homePage.assert_mini_cart_not_appears()
         homePage.assert_item_not_added()
     }
 
@@ -339,11 +340,6 @@ class UserSteps extends ScenarioSteps {
     @Step
     def choose_configurable_options() {
         pDPage.choose_configurable_options()
-    }
-
-    @Step
-    def assert_qty_and_price_added_to_shopping_cart(String qty, String price) {
-
     }
 
     @Step
@@ -478,5 +474,40 @@ class UserSteps extends ScenarioSteps {
     @Step
     def go_to_checkout() {
         checkoutPage.open()
+    }
+
+    @Step
+    def add_items_to_cart() {
+        open_pdp(2213)
+        set_qty_on_pdp("2")
+        click_add_to_cart_button_pdp()
+        open_pdp(2212)
+        choose_configurable_options()
+        click_add_to_cart_button_pdp()
+        refresh_page()
+    }
+
+    @Step
+    def set_qty_on_pdp(String qty) {
+        pDPage.fill_qty(qty)
+    }
+
+    @Step
+    def click_on_element_in_shopping_cart_area(String element) {
+        homePage.click_on_click_on_element_in_shopping_cart_area(element)
+    }
+
+    @Step
+    def click_on_element_text_my_cart_header() {
+        homePage.click_on_element_text_my_cart_header()
+    }
+
+    @Step
+    def assert_mini_cart_not_appears() {
+        homePage.assert_mini_cart_not_appears()
+    }
+
+    def assert_on_home_page() {
+        homePage.assert_on_home_page()
     }
 }

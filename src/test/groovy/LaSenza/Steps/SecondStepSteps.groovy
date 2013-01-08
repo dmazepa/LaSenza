@@ -9,7 +9,7 @@ class SecondStepSteps {
     @Steps
     UserSteps user
 
-    @Given("I am on second step of checkout process.")
+    @Given("I am on second step of checkout process with valid information.")
     public void on_second_step_of_checkout(){
         user.open_second_step_of_checkout()
     }

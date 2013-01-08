@@ -38,7 +38,7 @@ class MainElementsSteps {
 
     @When("I Clicking on <Element>.")
     public void click_on_element(String Element){
-        user.click_on_element(Element)
+        user.click_on_qw_element(Element)
     }
 
     @When("I clicking outside of the Quickview window.")
