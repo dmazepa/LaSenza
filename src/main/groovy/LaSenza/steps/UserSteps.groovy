@@ -104,7 +104,7 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def opens_CP(String categoryName, String collectionName) {
+    def opens_CDP(String categoryName, String collectionName) {
         getDriver().get("${System.getProperty("webdriver.base.url")}/${categoryName}/collections/${collectionName}.html")
     }
 
@@ -534,5 +534,9 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_3_static_blocks_in_menu_sale() {
         homePage.assert_3_static_blocks_in_menu_sale()
+    }
+
+    def opens_CP(String categoryName) {
+        getDriver().get("${System.getProperty("webdriver.base.url")}/${categoryName}/collections.html")
     }
 }

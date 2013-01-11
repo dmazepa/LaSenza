@@ -26,12 +26,12 @@ class BlockBelowPanelMenuSteps {
 
     @Given("I am on CP.")
     public void openCP(){
-        user.opens_CP("sexy-lingerie","the-show-off-trade")
+        user.opens_CP("sexy-lingerie")
     }
 
     @Given("I am on CDP.")
-    @Pending
     public void openCDP(){
+        user.opens_CDP("sexy-lingerie", "the-show-off-trade")
     }
 
     @Then("I should see static block below menu panel.")
