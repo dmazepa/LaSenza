@@ -167,7 +167,7 @@ class HomePage extends ForAllPage{
 
     def assert_welcome_msg(def welcomeMSG) {
         def g = blockWelcomeMsg.getText()
-        assert blockWelcomeMsg.getText() == welcomeMSG
+        //assert blockWelcomeMsg.getText() == welcomeMSG
         assertThat(blockWelcomeMsg.getText(), equalTo(welcomeMSG))
     }
 

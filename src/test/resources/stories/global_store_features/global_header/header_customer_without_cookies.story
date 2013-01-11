@@ -5,7 +5,7 @@ Header for customer without cookies enabled.
 
 Scenario: Welcome message for customer.
 Given I am on home page as customer without coockie.
-Then I should see string "WELCOME BACK TEST TESTER"
+Then I should see welcome msg "WELCOME BACK TEST TESTER"
 
 Scenario: Link Log Out logs out customer and load default header state.
 Given I am on home page as customer without coockie.

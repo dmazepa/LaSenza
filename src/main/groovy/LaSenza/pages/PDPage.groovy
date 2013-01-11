@@ -55,4 +55,8 @@ class PDPage extends ForAllPage{
         color = element(selectColor).getSelectedValue()
         size = element(selectSize).getSelectedValue()
     }
+
+    def add_to_wishlist_from_pdp(String nameWishlist) {
+
+    }
 }

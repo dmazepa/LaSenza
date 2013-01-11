@@ -9,11 +9,6 @@ class HeaderGuestWithoutCookiesSteps {
     @Steps
     UserSteps user
 
-    @Then('I should see string "WELCOME!"')
-    public void assert_welcome_msg_guest(String welcomeMSG){
-        user.should_see_welcomeMSG(welcomeMSG)
-    }
-
     @When("I click on link Log In.")
     public void click_on_link_login(){
         user.click_on_link_login()

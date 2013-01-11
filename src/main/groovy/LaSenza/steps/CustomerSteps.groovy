@@ -56,12 +56,15 @@ class CustomerSteps extends UserSteps{
     @Step
     def add_product_to_multi_wishlists() {
         open_pdp(2213)
-        add_to_wishlist_from_pdp()
+        add_to_wishlist_from_pdp("Wishlist1")
+        open_pdp(2213)
+        add_to_wishlist_from_pdp("Wishlist2")
     }
 
     @Step
     @Pending
-    def add_to_wishlist_from_pdp() {
+    def add_to_wishlist_from_pdp(String nameWishlist) {
+        pDPage.add_to_wishlist_from_pdp(nameWishlist)
     }
 
 
