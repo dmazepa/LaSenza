@@ -66,6 +66,7 @@ class HeaderCustomerWithCookieSteps {
     @Then("I should redirects to Login page.")
     public void assert_on_login_page(){
         user.assert_on_login_page()
+        admin.restore_default_state()
     }
     @Then("It logs customer out.")
     public void assert_logged_out(){
@@ -90,5 +91,7 @@ class HeaderCustomerWithCookieSteps {
     @AfterStory(uponGivenStory=true)
     public void set_default_cookie(){
         admin.restore_default_state()
+        admin.getDriver().close()
+        admin.getDriver().quit()
     }
 }

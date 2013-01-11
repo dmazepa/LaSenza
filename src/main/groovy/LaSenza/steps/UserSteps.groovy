@@ -536,7 +536,19 @@ class UserSteps extends ScenarioSteps {
         homePage.assert_3_static_blocks_in_menu_sale()
     }
 
+    @Step
     def opens_CP(String categoryName) {
         getDriver().get("${System.getProperty("webdriver.base.url")}/${categoryName}/collections.html")
+    }
+
+    @Step
+    def click_on_link_in_menu(String linkName) {
+        homePage.move_mouse_on_menu("bras")
+        homePage.click_on_link_in_menu(linkName)
+    }
+
+    @Step
+    def assert_on_CLP(String nameSubCLP) {
+        cLPage.assert_on_CLP(nameSubCLP)
     }
 }

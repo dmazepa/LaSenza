@@ -4,6 +4,8 @@ import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.*
 
+import static org.hamcrest.MatcherAssert.assertThat
+
 class CLPage extends ForAllPage{
 
     CLPage(WebDriver driver){
@@ -33,6 +35,9 @@ class CLPage extends ForAllPage{
 
     @FindBy(xpath = "//div[@class='product-view']//a[@class='link-wishlist']")
     private WebElement linkAddToWishList
+
+    @FindBy(xpath = "//h1")
+    private WebElement titleCLP
 
     def open_quick_w(def i) {
         Locatable hoverItem = (Locatable) getDriver().findElement(By.xpath("//div[@class='category-products']//li[${i}]/div/a[1]"))
@@ -77,5 +82,9 @@ class CLPage extends ForAllPage{
 
     def click_on_add_to_wish_list() {
         element(linkAddToWishList).click()
+    }
+
+    def assert_on_CLP(String nameCLP) {
+        assertThat(element(titleCLP).getText(), containsText(nameCLP.toUpperCase()))
     }
 }

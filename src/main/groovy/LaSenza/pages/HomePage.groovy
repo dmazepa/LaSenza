@@ -326,4 +326,8 @@ class HomePage extends ForAllPage{
     def assert_3_static_blocks_in_menu_sale() {
         assert driver.findElements(By.xpath("//li[7]//div[@class='widget widget-static-block']")).size() == 3
     }
+
+    def click_on_link_in_menu(String linkName) {
+        element(By.xpath("//a/span[contains(text(), '$linkName')]")).click()
+    }
 }
