@@ -510,4 +510,29 @@ class UserSteps extends ScenarioSteps {
     def assert_on_home_page() {
         homePage.assert_on_home_page()
     }
+
+    @Step
+    def move_mouse_on_menu(String nameMenu) {
+        homePage.move_mouse_on_menu(nameMenu)
+    }
+
+    @Step
+    def assert_no_collections_block_in_menu() {
+        homePage.assert_no_collections_block_in_menu()
+    }
+
+    @Step
+    def assert_static_block_instead_collections_in_menu() {
+        homePage.assert_static_block_instead_collections_in_menu()
+    }
+
+    @Step
+    def assert_main_categories_in_menu_sale() {
+        homePage.assert_main_categories_in_menu_sale()
+    }
+
+    @Step
+    def assert_3_static_blocks_in_menu_sale() {
+        homePage.assert_3_static_blocks_in_menu_sale()
+    }
 }

@@ -8,6 +8,9 @@ import org.openqa.selenium.support.FindBy
 
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.CoreMatchers.equalTo
+import org.openqa.selenium.internal.Locatable
+import org.openqa.selenium.Mouse
+import org.openqa.selenium.HasInputDevices
 
 @DefaultUrl("http://localhost:9000/develop")
 class HomePage extends ForAllPage{
@@ -293,5 +296,34 @@ class HomePage extends ForAllPage{
     def assert_on_home_page() {
         assertThat(driver.getCurrentUrl(), equalTo(System.getProperty("webdriver.base.url")))
         element(sliderImage1).shouldBePresent()
+    }
+
+    def move_mouse_on_menu(String nameMenu) {
+        Locatable hoverItem = (Locatable) getDriver().findElement(By.cssSelector(".tab.$nameMenu"))
+        Mouse mouse = ((HasInputDevices) driver).getMouse()
+        mouse.mouseMove(hoverItem.getCoordinates())
+    }
+
+    def assert_no_collections_block_in_menu() {
+        assert driver.findElements(By.xpath("//li[4]//div[@class='tab-content ']/div/div[2]/span")).size() == 0
+    }
+
+    def assert_static_block_instead_collections_in_menu() {
+        element(By.xpath("//li[4]/div/div/div[2]")).shouldBeVisible()
+    }
+
+    def assert_main_categories_in_menu_sale() {
+        def punktsSaleMenu = driver.findElements(By.xpath("//li[7]//li//span")).collect(){WebElement el ->
+            el.text
+        }
+        def punktsMainMenu = driver.findElements(By.xpath("//ul[@class='tabs']/li/a")).collect(){WebElement el ->
+            el.text
+        }
+        punktsMainMenu.remove(6)
+        assert punktsMainMenu == punktsSaleMenu
+    }
+
+    def assert_3_static_blocks_in_menu_sale() {
+        assert driver.findElements(By.xpath("//li[7]//div[@class='widget widget-static-block']")).size() == 3
     }
 }
