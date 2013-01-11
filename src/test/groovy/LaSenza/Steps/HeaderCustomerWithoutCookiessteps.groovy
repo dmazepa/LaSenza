@@ -15,16 +15,10 @@ class HeaderCustomerWithoutCookiesSteps {
     UserSteps user
 
 
-    @Given("I am on home page as customer.")
+    @Given("I am on home page as customer without coockie.")
     public void open_home_page_as_customer_with_cookie(){
-        user.log_in()
+        user.log_in(false)
     }
-
-    @Then('I should see string "$welcomeMSG"')
-    public void assert_welcome_msg(String welcomeMSG){
-        customer.assert_welcome_msg(welcomeMSG)
-    }
-
 
     @When("I click on link Log Out.")
     public void click_on_link_log_out(){
@@ -38,7 +32,7 @@ class HeaderCustomerWithoutCookiesSteps {
 
     @Given("I am on Home page as customer and has multiple wishlists and items in Wish List.")
     public void on_home_with_multi_wishlist(){
-        user.log_in()
+        user.log_in(false)
         customer.add_product_to_multi_wishlists()
     }
 

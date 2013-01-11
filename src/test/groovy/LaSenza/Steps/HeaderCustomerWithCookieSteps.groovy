@@ -4,11 +4,7 @@ import LaSenza.steps.AdminPanelSteps
 import LaSenza.steps.CustomerSteps
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
-import org.jbehave.core.annotations.Given
-import org.jbehave.core.annotations.Pending
-import org.jbehave.core.annotations.Then
-import org.jbehave.core.annotations.When
-import org.junit.After
+import org.jbehave.core.annotations.*
 
 class HeaderCustomerWithCookieSteps {
 
@@ -91,7 +87,7 @@ class HeaderCustomerWithCookieSteps {
         user.click_on_link_please_log_in()
     }
 
-    @After
+    @AfterStories
     public void set_default_cookie(){
         admin.restore_default_state()
     }
