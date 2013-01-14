@@ -87,11 +87,4 @@ class HeaderCustomerWithCookieSteps {
     public void click_on_link_not(){
         user.click_on_link_please_log_in()
     }
-
-    @AfterStory(uponGivenStory=true)
-    public void set_default_cookie(){
-        admin.restore_default_state()
-        admin.getDriver().close()
-        admin.getDriver().quit()
-    }
 }
