@@ -1,19 +1,12 @@
 package LaSenza.steps
 
-import LaSenza.pages.CLPage
-import LaSenza.pages.HomePage
-import LaSenza.pages.LoginPage
-import LaSenza.pages.PDPage
 import net.thucydides.core.annotations.Pending
 import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 import net.thucydides.core.steps.ScenarioSteps
+import LaSenza.pages.*
 
 import static org.hamcrest.MatcherAssert.assertThat
-import LaSenza.pages.CreateAccountPage
-import LaSenza.pages.StoreLocatorPage
-import LaSenza.pages.SearchPage
-import LaSenza.pages.CheckoutPage
 
 class UserSteps extends ScenarioSteps {
 
@@ -26,6 +19,7 @@ class UserSteps extends ScenarioSteps {
     SearchPage  searchPage
     CLPage  cLPage
     CheckoutPage  checkoutPage
+    ThankYouPage  thankYouPage
 
     UserSteps(Pages pages){
         super(pages)
@@ -39,6 +33,7 @@ class UserSteps extends ScenarioSteps {
         searchPage = pages[SearchPage]
         cLPage = pages[CLPage]
         checkoutPage = pages[CheckoutPage]
+        thankYouPage = pages[ThankYouPage]
     }
     @Step
     def opens_home_page() {
@@ -550,5 +545,15 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_on_CLP(String nameSubCLP) {
         cLPage.assert_on_CLP(nameSubCLP)
+    }
+
+    @Step
+    def click_submit_button() {
+        checkoutPage.click_button_submit()
+    }
+
+    @Step
+    def assert_thank_you_page() {
+        thankYouPage.assert_thank_you_page()
     }
 }

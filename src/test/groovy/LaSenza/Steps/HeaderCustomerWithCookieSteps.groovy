@@ -66,7 +66,6 @@ class HeaderCustomerWithCookieSteps {
     @Then("I should redirects to Login page.")
     public void assert_on_login_page(){
         user.assert_on_login_page()
-        admin.restore_default_state()
     }
     @Then("It logs customer out.")
     public void assert_logged_out(){
@@ -80,6 +79,7 @@ class HeaderCustomerWithCookieSteps {
     @Then("I should redirects to the My Wish List Login page.")
     public void assert_on_wish_list_login_page(){
        user.assert_on_wish_list_login_page()
+       admin.restore_default_state()
     }
 
     @When('I click on link "Not Test Tester?".')
