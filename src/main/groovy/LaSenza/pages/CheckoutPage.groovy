@@ -63,6 +63,9 @@ class CheckoutPage extends ForAllPage{
     @FindBy(xpath = "//button[@class='button btn-checkout']")
     private WebElement buttonConfirmAndPay
 
+    @FindBy(xpath = "//button[@class='confirm button btn-checkout-submit']")
+    private WebElement buttonSubmit
+
     @FindBy(xpath = "//img[@class='v-middle']")
     private WebElement loader
 
@@ -135,5 +138,9 @@ class CheckoutPage extends ForAllPage{
         element(loader).waitUntilNotVisible()
         element(buttonConfirmAndPay).click()
         waitForTextToAppear("Please review your information before submitting your order.")
+    }
+
+    def click_button_submit() {
+        element(buttonSubmit).click()
     }
 }
