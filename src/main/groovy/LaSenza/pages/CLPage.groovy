@@ -4,8 +4,6 @@ import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.*
 
-import static org.hamcrest.MatcherAssert.assertThat
-
 class CLPage extends ForAllPage{
 
     CLPage(WebDriver driver){
@@ -85,6 +83,8 @@ class CLPage extends ForAllPage{
     }
 
     def assert_on_CLP(String nameCLP) {
-        assertThat(element(titleCLP).getText(), containsText(nameCLP.toUpperCase()))
+        def f =  element(titleCLP).getText()
+        def d =  nameCLP.toUpperCase()
+        assert element(titleCLP).getText().contains(nameCLP.toUpperCase())
     }
 }
