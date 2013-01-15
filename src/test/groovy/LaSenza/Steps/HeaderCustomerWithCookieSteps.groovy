@@ -78,8 +78,8 @@ class HeaderCustomerWithCookieSteps {
 
     @Then("I should redirects to the My Wish List Login page.")
     public void assert_on_wish_list_login_page(){
-       user.assert_on_wish_list_login_page()
-       admin.restore_default_state()
+        admin.restore_default_state()
+        user.assert_on_wish_list_login_page()
     }
 
     @When('I click on link "Not Test Tester?".')

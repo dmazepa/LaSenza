@@ -83,6 +83,5 @@ class AdminPanelSteps extends UserSteps{
     def restore_default_state() {
         open_admin_panel()
         set_cookie_time("3600")
-        getDriver().close()
     }
 }
