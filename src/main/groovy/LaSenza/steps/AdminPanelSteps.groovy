@@ -86,7 +86,7 @@ class AdminPanelSteps extends UserSteps{
     }
 
     @Step
-    def open_product(int id) {
+    def open_product(def id) {
         adminPage.open_product(id)
     }
 
@@ -98,5 +98,14 @@ class AdminPanelSteps extends UserSteps{
     @Step
     def set_product_visibility(String visibility) {
         adminPage.set_product_visibility(visibility)
+    }
+
+    @Step
+    def set_brand_name_category(String brandName, def id) {
+        adminPage.open_attribute_manager()
+        adminPage.open_attribute_from_attribute_manager("Brand name")
+        adminPage.set_attribute_value("Brand Name1")
+        open_product(id)
+        adminPage.set_product_brand_category(brandName)
     }
 }

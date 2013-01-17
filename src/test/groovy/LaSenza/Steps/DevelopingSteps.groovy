@@ -28,9 +28,10 @@ class DevelopingSteps {
     public void prepare_base(){
         admin.open_admin_panel()
         admin.open_product(1929)
-            admin.set_product_visibility("Catalog, Search")
-            admin.set_product_qty("1000")
-            admin.getDriver().close()
+        admin.set_product_visibility("Catalog, Search")
+        admin.set_product_qty("1000")
+        admin.set_brand_name_category("Brand Name1",1929)
+        admin.getDriver().close()
     }
 
     @Then("I should redirects to the My Account Dashboard page.")

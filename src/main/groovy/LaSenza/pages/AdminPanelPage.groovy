@@ -84,8 +84,14 @@ class AdminPanelPage extends ForAllPage{
     @FindBy(id = "visibility")
     private WebElement selectVisibility
 
+    @FindBy(id = "product_info_tabs_categories")
+    private WebElement tabCategories
+
+    @FindBy(id = "ext-gen23")
+    private WebElement checkboxBras
+
     @FindBy(xpath = "//button[@class='scalable save']")
-    private WebElement buttonSaveProduct
+    private WebElement buttonSave
 
     @FindBy(xpath = "//ul[@id='system_config_tabs']//li[1]//dd[2]/a")
     private WebElement tabWeb
@@ -96,10 +102,28 @@ class AdminPanelPage extends ForAllPage{
     @FindBy(xpath = "//ul[@id='nav']/li[8]/ul/li[3]/a")
     private WebElement subMenuStaticBlocks
 
-    @FindBy(xpath = "//ul[@id='nav']/li[13]/ul/li[20]/a")
+    @FindBy(xpath = "//ul[@id='nav']/li[12]/ul/li[20]/a")
     private WebElement subMenuConfiguration
 
-    @FindBy(xpath = "//ul[@id='nav']/li[13]/ul/li[16]/a")
+    @FindBy(xpath = "//ul[@id='nav']/li[3]/ul/li[4]/ul/li[1]/a")
+    private WebElement subMenuManageAttributes
+
+    @FindBy(xpath = "//table[@id='attributeGrid_table']//tbody/tr")
+    private WebElement rowFirstAttributeManager
+
+    @FindBy(id = "product_attribute_tabs_labels")
+    private WebElement tabManageLabelOptions
+
+    @FindBy(id = "manufacturer")
+    private WebElement selectBrandName
+
+    @FindBy(id = "add_new_option_button")
+    private WebElement buttonAddNewOption
+
+    @FindBy(id = "attributeGrid_filter_frontend_label")
+    private WebElement fieldSearchAttributeByLabel
+
+    @FindBy(xpath = "//ul[@id='nav']/li[12]/ul/li[16]/a")
     private WebElement subMenuCleanCache
 
     @FindBy(xpath = "//button[@class='scalable add']")
@@ -210,7 +234,7 @@ class AdminPanelPage extends ForAllPage{
         }
     }
 
-    def open_product(int id) {
+    def open_product(def id) {
         getDriver().get("${System.getProperty("webdriver.base.url")}index.php/admin/catalog_product/edit/id/${id}")
     }
 
@@ -218,11 +242,41 @@ class AdminPanelPage extends ForAllPage{
         element(tabInventory).click()
         element(fieldQty).waitUntilVisible()
         typeInto(fieldQty, qty)
-        element(buttonSaveProduct).click()
+        element(buttonSave).click()
         element(blockSuccessMsg).waitUntilVisible()
     }
 
     def set_product_visibility(String visibility) {
         element(selectVisibility).selectByVisibleText(visibility)
+    }
+
+    def open_attribute_manager() {
+        getDriver().get(subMenuManageAttributes.getAttribute("href"))
+    }
+
+    def open_attribute_from_attribute_manager(String nameAttribute) {
+        element(fieldSearchAttributeByLabel).typeAndEnter(nameAttribute)
+        getDriver().get(rowFirstAttributeManager.getAttribute("title"))
+    }
+
+    def set_attribute_value(String value) {
+        element(tabManageLabelOptions).click()
+        element(buttonAddNewOption).waitUntilVisible()
+        element(buttonAddNewOption).click()
+        element(By.name("option[value][option_0][3]")).waitUntilVisible()
+        for(def i=0; i <= 3; i++){
+            element(By.name("option[value][option_0][${i}]")).type(value)
+        }
+        element(buttonSave).click()
+        element(blockSuccessMsg).waitUntilVisible()
+    }
+
+    def set_product_brand_category(String brandName) {
+        element(selectBrandName).selectByVisibleText(brandName)
+        element(tabCategories).click()
+        element(checkboxBras).waitUntilVisible()
+        element(checkboxBras).click()
+        element(buttonSave).click()
+        element(blockSuccessMsg).waitUntilVisible()
     }
 }

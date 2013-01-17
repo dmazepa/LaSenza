@@ -461,7 +461,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_first_step_of_checkout() {
-        open_pdp(3067)
+        open_pdp(1929)
         click_add_to_cart_button_pdp()
         go_to_checkout()
     }
@@ -473,10 +473,10 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def add_items_to_cart() {
-        open_pdp(3067)
+        open_pdp(1929)
         set_qty_on_pdp("2")
         click_add_to_cart_button_pdp()
-        open_pdp(2212)
+        open_pdp(3067)
         choose_configurable_options()
         click_add_to_cart_button_pdp()
         refresh_page()
