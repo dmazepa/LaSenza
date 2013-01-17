@@ -39,19 +39,19 @@ class CheckoutPage extends ForAllPage{
     @FindBy(id = "billing:telephone")
     private WebElement fieldTelephone
 
-    @FindBy(id = "ccsave_cc_number")
+    @FindBy(id = "moneriscc_cc_number")
     private WebElement fieldCartNumber
 
-    @FindBy(id = "ccsave_expiration")
+    @FindBy(id = "moneriscc_expiration")
     private WebElement selectMonth
 
-    @FindBy(id = "ccsave_expiration_yr")
+    @FindBy(id = "moneriscc_expiration_yr")
     private WebElement selectYear
 
-    @FindBy(id = "ccsave_cc_owner")
+    @FindBy(id = "moneriscc_cc_owner")
     private WebElement fieldCartName
 
-    @FindBy(id = "ccsave_cc_cid")
+    @FindBy(id = "moneriscc_cc_cid")
     private WebElement fieldVerificationNumber
 
     @FindBy(name = "shipping_method")
