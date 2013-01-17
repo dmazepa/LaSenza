@@ -26,7 +26,7 @@ dependencies {
     groovy 'org.codehaus.groovy:groovy:1.8.6'
 }
 
-task master (type: Test) {
+task prepear (type: Test) {
     if (project.hasProperty("teamcity")) {
         systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]
         systemProperties["webdriver.chrome.driver"] = project.teamcity["webdriver.chrome.driver"]
@@ -53,8 +53,8 @@ task develop (type: Test) {
         systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
-    include 'LaSenza/*.class'
-    exclude 'LaSenza/JBehaveTest.class'
+    include 'LaSenza/JBehaveTest.class'
+    exclude  'LaSenza/*.class'
 }
 
 task design_homepage (type: Test) {

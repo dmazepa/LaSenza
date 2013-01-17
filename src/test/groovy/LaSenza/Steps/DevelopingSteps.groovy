@@ -5,6 +5,7 @@ import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
 import org.jbehave.core.annotations.Given
 import org.jbehave.core.annotations.Then
+import LaSenza.steps.AdminPanelSteps
 
 class DevelopingSteps {
 
@@ -14,6 +15,8 @@ class DevelopingSteps {
 
     @Steps
     UserSteps user
+    @Steps
+    AdminPanelSteps admin
 
 
     @Given("I am on home page as customer.")
@@ -21,10 +24,20 @@ class DevelopingSteps {
         user.log_in(true)
     }
 
+    @Given("Prepare_base")
+    public void prepare_base(){
+        admin.open_admin_panel()
+        admin.open_product(1929)
+            admin.set_product_visibility("Catalog, Search")
+            admin.set_product_qty("1000")
+            admin.getDriver().close()
+    }
+
     @Then("I should redirects to the My Account Dashboard page.")
     public void assert_on_my_account_dashboard_page(){
         customer.assert_on_my_account_dashboard_page()
     }
+
 
 
 }
