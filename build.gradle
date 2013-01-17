@@ -38,7 +38,7 @@ task prepear (type: Test) {
         systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
-    include 'LaSenza/JBehaveTest.class'
+    include 'LaSenza/Developing.class'
 }
 
 task develop (type: Test) {
@@ -53,8 +53,9 @@ task develop (type: Test) {
         systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
-    include 'LaSenza/JBehaveTest.class'
-    exclude  'LaSenza/*.class'
+    include 'LaSenza/*.class'
+    exclude  'LaSenza/JBehaveTest.class'
+    exclude  'LaSenza/Developing.class'
 }
 
 task design_homepage (type: Test) {
