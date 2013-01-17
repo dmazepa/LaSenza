@@ -11,6 +11,7 @@ class ThankYouPage extends ForAllPage{
     }
 
     def assert_thank_you_page() {
+        waitForTextToAppear("Your order has been received.")
         shouldContainText("Your order has been received.")
         shouldContainText("Thank you for your purchase!")
     }
