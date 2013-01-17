@@ -54,7 +54,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_pdp(int id) {
-        getDriver().get("${System.getProperty("webdriver.base.url")}/catalog/product/view/id/${id}")
+        getDriver().get("${System.getProperty("webdriver.base.url")}catalog/product/view/id/${id}")
     }
 
     @Step
@@ -90,17 +90,17 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def opens_CLP(String categoryName) {
-        getDriver().get("${System.getProperty("webdriver.base.url")}/${categoryName}.html")
+        getDriver().get("${System.getProperty("webdriver.base.url")}${categoryName}.html")
     }
 
     @Step
     def opens_subCLP(String categoryName, String subCategoryName) {
-        getDriver().get("${System.getProperty("webdriver.base.url")}/${categoryName}/${subCategoryName}.html")
+        getDriver().get("${System.getProperty("webdriver.base.url")}${categoryName}/${subCategoryName}.html")
     }
 
     @Step
     def opens_CDP(String categoryName, String collectionName) {
-        getDriver().get("${System.getProperty("webdriver.base.url")}/${categoryName}/collections/${collectionName}.html")
+        getDriver().get("${System.getProperty("webdriver.base.url")}${categoryName}/collections/${collectionName}.html")
     }
 
     @Step
@@ -461,7 +461,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_first_step_of_checkout() {
-        open_pdp(2213)
+        open_pdp(3067)
         click_add_to_cart_button_pdp()
         go_to_checkout()
     }
@@ -473,7 +473,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def add_items_to_cart() {
-        open_pdp(2213)
+        open_pdp(3067)
         set_qty_on_pdp("2")
         click_add_to_cart_button_pdp()
         open_pdp(2212)
@@ -533,7 +533,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def opens_CP(String categoryName) {
-        getDriver().get("${System.getProperty("webdriver.base.url")}/${categoryName}/collections.html")
+        getDriver().get("${System.getProperty("webdriver.base.url")}${categoryName}/collections.html")
     }
 
     @Step

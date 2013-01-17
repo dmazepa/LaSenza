@@ -84,4 +84,19 @@ class AdminPanelSteps extends UserSteps{
         open_admin_panel()
         set_cookie_time("3600")
     }
+
+    @Step
+    def open_product(int id) {
+        adminPage.open_product(id)
+    }
+
+    @Step
+    def set_product_qty(String qty) {
+        adminPage.set_product_qty(qty)
+    }
+
+    @Step
+    def set_product_visibility(String visibility) {
+        adminPage.set_product_visibility(visibility)
+    }
 }

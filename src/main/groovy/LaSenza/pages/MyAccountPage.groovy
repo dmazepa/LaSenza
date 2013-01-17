@@ -22,7 +22,7 @@ class MyAccountPage extends ForAllPage{
     private WebElement buttonRemoveItemFromWishList;
 
     def assert_product_added_to_wishlist() {
-        shouldContainText("Cotton Plunge Push Up Bra with Contrast Trim")
+        shouldContainText("Strapless Double Push Up Bra")
     }
 
     def delete_items_from_wish_list() {

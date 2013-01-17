@@ -3,15 +3,28 @@ package LaSenza.Steps
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
 import org.jbehave.core.annotations.*
+import LaSenza.steps.AdminPanelSteps
 
 class AddToCartSimplePdpSteps {
 
     @Steps
     UserSteps user
 
+    @Steps
+    AdminPanelSteps admin
+
+    @BeforeStories
+    public void set_inventory(){
+        admin.open_admin_panel()
+        admin.open_product(1929)
+        admin.set_product_visibility("Catalog, Search")
+        admin.set_product_qty("1000")
+        admin.getDriver().close()
+    }
+
     @Given("I am on PDP with simple product.")
     public void open_pdp_simple(){
-        user.open_pdp(2213)
+        user.open_pdp(1929)
     }
 
     @When("I click Add to Cart button.")

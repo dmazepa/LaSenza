@@ -73,7 +73,19 @@ class AdminPanelPage extends ForAllPage{
     private WebElement buttonSaveBlock
 
     @FindBy(xpath = "//li[@class='success-msg']")
-    private WebElement blockSuccessMsg
+    private WebElement  blockSuccessMsg
+
+    @FindBy(id = "product_info_tabs_inventory")
+    private WebElement tabInventory
+
+    @FindBy(id = "inventory_qty")
+    private WebElement fieldQty
+
+    @FindBy(id = "visibility")
+    private WebElement selectVisibility
+
+    @FindBy(xpath = "//button[@class='scalable save']")
+    private WebElement buttonSaveProduct
 
     @FindBy(xpath = "//ul[@id='system_config_tabs']//li[1]//dd[2]/a")
     private WebElement tabWeb
@@ -97,7 +109,7 @@ class AdminPanelPage extends ForAllPage{
     private WebElement buttonFlushMagentoCache
 
     def goTo(additionUrl){
-        getDriver().get("${System.getProperty("webdriver.base.url")}/${additionUrl}")
+        getDriver().get("${System.getProperty("webdriver.base.url")}${additionUrl}")
     }
 
     def open_and_login() {
@@ -196,5 +208,21 @@ class AdminPanelPage extends ForAllPage{
             element(buttonSaveConfig).click()
             element(blockSuccessMsg).waitUntilVisible()
         }
+    }
+
+    def open_product(int id) {
+        getDriver().get("${System.getProperty("webdriver.base.url")}index.php/admin/catalog_product/edit/id/${id}")
+    }
+
+    def set_product_qty(String qty) {
+        element(tabInventory).click()
+        element(fieldQty).waitUntilVisible()
+        typeInto(fieldQty, qty)
+        element(buttonSaveProduct).click()
+        element(blockSuccessMsg).waitUntilVisible()
+    }
+
+    def set_product_visibility(String visibility) {
+        element(selectVisibility).selectByVisibleText(visibility)
     }
 }

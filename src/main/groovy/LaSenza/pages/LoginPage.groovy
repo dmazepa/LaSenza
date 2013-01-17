@@ -24,7 +24,7 @@ class LoginPage extends ForAllPage{
 
 
     def open1() {
-        getDriver().get("${System.getProperty("webdriver.base.url")}/customer/account/login/")
+        getDriver().get("${System.getProperty("webdriver.base.url")}customer/account/login/")
     }
 
     def log_in(String email, String pass, Boolean withCookie) {
