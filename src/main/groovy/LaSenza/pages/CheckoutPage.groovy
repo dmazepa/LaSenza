@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
+import static org.hamcrest.MatcherAssert.assertThat
+import static org.hamcrest.Matchers.equalTo
+
 @DefaultUrl("http://localhost:9000/develop/checkout/onepage/")
 class CheckoutPage extends ForAllPage{
 
@@ -18,11 +21,20 @@ class CheckoutPage extends ForAllPage{
     @FindBy(id = "billing:firstname")
     private WebElement fieldFirstName
 
+    @FindBy(id = "shipping:firstname")
+    private WebElement fieldFirstNameShipping
+
     @FindBy(id = "billing:lastname")
     private WebElement fieldLastName
 
+    @FindBy(id = "shipping:lastname")
+    private WebElement fieldLastNameShipping
+
     @FindBy(id = "billing:street1")
     private WebElement fieldAddress1
+
+    @FindBy(id = "shipping:street1")
+    private WebElement fieldAddress1Shipping
 
     @FindBy(id = "billing:street2")
     private WebElement fieldAddress2
@@ -30,11 +42,20 @@ class CheckoutPage extends ForAllPage{
     @FindBy(id = "billing:city")
     private WebElement fieldCity
 
+    @FindBy(id = "shipping:city")
+    private WebElement fieldCityShipping
+
     @FindBy(id = "billing:region_id")
     private WebElement selectState
 
+    @FindBy(id = "shipping:region_id")
+    private WebElement selectStateShipping
+
     @FindBy(id = "billing:postcode")
     private WebElement fieldPostalCode
+
+    @FindBy(id = "shipping:postcode")
+    private WebElement fieldPostalCodeShipping
 
     @FindBy(id = "billing:telephone")
     private WebElement fieldTelephone
@@ -65,6 +86,21 @@ class CheckoutPage extends ForAllPage{
 
     @FindBy(xpath = "//button[@class='confirm button btn-checkout-submit']")
     private WebElement buttonSubmit
+
+    @FindBy(xpath = "//button[@class='popup-trigger']")
+    private WebElement linkAlreadyRegister
+
+    @FindBy(id = "login-email")
+    private WebElement fieldEmailPopUp
+
+    @FindBy(id = "login-password")
+    private WebElement fieldPasswordPopUp
+
+    @FindBy(xpath = "//form[@id='login-form']//button[@class='button']")
+    private WebElement buttonLoginPopUp
+
+    @FindBy(id = "billing:use_for_shipping")
+    private WebElement checkboxUseBillingForShipping
 
     @FindBy(xpath = "//img[@class='v-middle']")
     private WebElement loader
@@ -142,5 +178,32 @@ class CheckoutPage extends ForAllPage{
 
     def click_button_submit() {
         element(buttonSubmit).click()
+    }
+
+    def click_on_link_already_register() {
+        element(linkAlreadyRegister).click()
+        element(fieldEmailPopUp).waitUntilVisible()
+    }
+
+    def type_data_to_login(String email, String pas) {
+        element(fieldEmailPopUp).type(email)
+        element(fieldPasswordPopUp).type(pas)
+    }
+
+    def click_login_button_pop_up() {
+        element(buttonLoginPopUp).click()
+    }
+
+    def uncheck_checkbox_use_billing_for_shipping() {
+        element(checkboxUseBillingForShipping).click()
+    }
+
+    def assert_data_copied_from_billing_to_shipping() {
+        assert element(fieldFirstName).getText() == element(fieldFirstNameShipping).getText()
+        assert element(fieldLastName).getText() == element(fieldLastNameShipping).getText()
+        assertThat(element(fieldAddress1).getText(), equalTo(element(fieldAddress1Shipping).getText()))
+        assertThat(element(fieldCity).getText(), equalTo(element(fieldCityShipping).getText()))
+        assertThat(element(fieldPostalCode).getText(), equalTo(element(fieldPostalCodeShipping).getText()))
+        assertThat(element(selectState).getSelectedVisibleTextValue(), equalTo(element(selectStateShipping).getSelectedVisibleTextValue()))
     }
 }

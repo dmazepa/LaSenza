@@ -170,7 +170,6 @@ class HomePage extends ForAllPage{
 
     def assert_welcome_msg(def welcomeMSG) {
         def g = blockWelcomeMsg.getText()
-        //assert blockWelcomeMsg.getText() == welcomeMSG
         assertThat(blockWelcomeMsg.getText(), equalTo(welcomeMSG))
     }
 
@@ -329,5 +328,9 @@ class HomePage extends ForAllPage{
 
     def click_on_link_in_menu(String linkName) {
         element(By.xpath("//a/span[contains(text(), '$linkName')]")).click()
+    }
+
+    def assert_logged_in() {
+        element(linkLogOut).shouldBePresent()
     }
 }

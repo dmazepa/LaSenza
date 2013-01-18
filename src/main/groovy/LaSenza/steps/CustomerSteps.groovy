@@ -67,5 +67,8 @@ class CustomerSteps extends UserSteps{
         pDPage.add_to_wishlist_from_pdp(nameWishlist)
     }
 
-
+    @Step
+    def assert_logged_in() {
+        homePage.assert_logged_in()
+    }
 }

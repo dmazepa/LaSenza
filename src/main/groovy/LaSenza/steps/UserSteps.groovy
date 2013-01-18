@@ -351,6 +351,7 @@ class UserSteps extends ScenarioSteps {
     def open_second_step_of_checkout() {
         open_first_step_of_checkout()
         enter_valid_data_on_checkout_page()
+        click_button_confirm_and_pay()
     }
 
     @Step
@@ -371,7 +372,6 @@ class UserSteps extends ScenarioSteps {
         select_year();
         fill_verification_number_field();
         check_shipment();
-        click_button_confirm_and_pay();
     }
 
     @Step
@@ -555,5 +555,30 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_thank_you_page() {
         thankYouPage.assert_thank_you_page()
+    }
+
+    @Step
+    def click_on_link_already_register() {
+        checkoutPage.click_on_link_already_register()
+    }
+
+    @Step
+    def type_data_to_login(String email, String pas) {
+        checkoutPage.type_data_to_login(email, pas)
+    }
+
+    @Step
+    def click_login_button_pop_up() {
+        checkoutPage.click_login_button_pop_up()
+    }
+
+    @Step
+    def uncheck_checkbox_use_billing_for_shipping() {
+        checkoutPage.uncheck_checkbox_use_billing_for_shipping()
+    }
+
+    @Step
+    def assert_data_copied_from_billing_to_shipping() {
+        checkoutPage.assert_data_copied_from_billing_to_shipping()
     }
 }
