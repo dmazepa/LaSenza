@@ -60,6 +60,15 @@ class CheckoutPage extends ForAllPage{
     @FindBy(id = "billing:telephone")
     private WebElement fieldTelephone
 
+    @FindBy(id = "shipping:telephone")
+    private WebElement fieldTelephoneShipping
+
+    @FindBy(id = "shipping:save_in_address_book")
+    private WebElement checkboxSaveShippingAddress
+
+    @FindBy(id = "shipping-address-select")
+    private WebElement selectShippingAddress
+
     @FindBy(id = "moneriscc_cc_number")
     private WebElement fieldCartNumber
 
@@ -104,6 +113,12 @@ class CheckoutPage extends ForAllPage{
 
     @FindBy(xpath = "//img[@class='v-middle']")
     private WebElement loader
+
+    @FindBy(xpath = "//a[@class='cvv-what-is-this']")
+    private WebElement linkWhatIsThis
+
+    @FindBy(id = "payment-tool-tip-close")
+    private WebElement linkCloseWhatIsThis
 
     def fill_email_field() {
         element(fieldEmail).type("test1@speroteck.com");
@@ -205,5 +220,49 @@ class CheckoutPage extends ForAllPage{
         assertThat(element(fieldCity).getText(), equalTo(element(fieldCityShipping).getText()))
         assertThat(element(fieldPostalCode).getText(), equalTo(element(fieldPostalCodeShipping).getText()))
         assertThat(element(selectState).getSelectedVisibleTextValue(), equalTo(element(selectStateShipping).getSelectedVisibleTextValue()))
+    }
+
+    def click_on_link_What_is_this() {
+        element(linkWhatIsThis).click()
+        element(linkCloseWhatIsThis).waitUntilVisible()
+    }
+
+    def assert_what_is_this() {
+        element(linkCloseWhatIsThis).shouldBeVisible()
+        element(linkCloseWhatIsThis).click()
+        element(linkCloseWhatIsThis).shouldNotBeVisible()
+    }
+
+    def fill_first_name_shipping_field() {
+        element(fieldFirstNameShipping).type("First Name Shipping")
+    }
+
+    def fill_last_name_shipping_field() {
+        element(fieldLastNameShipping).type("Last Name Shipping")
+    }
+
+    def fill_address1_shipping_field() {
+        element(fieldAddress1Shipping).type("Address Shipping")
+    }
+
+    def fill_city_shipping_field() {
+        element(fieldCityShipping).type("City Shipping")
+    }
+
+    def fill_postal_code_shipping_field() {
+        element(fieldPostalCodeShipping).type("14000")
+    }
+
+    def fill_telephone_shipping_field() {
+        element(fieldTelephoneShipping).type("555-555-5555")
+    }
+
+    def check_checkbox_save_address() {
+        element(checkboxSaveShippingAddress).click()
+    }
+
+    def select_add_new_address() {
+        element(selectShippingAddress).waitUntilVisible()
+        element(selectShippingAddress).selectByVisibleText("New Address")
     }
 }

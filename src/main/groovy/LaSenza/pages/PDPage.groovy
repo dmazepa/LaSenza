@@ -4,6 +4,7 @@ import org.openqa.selenium.Alert
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
+import org.openqa.selenium.By
 
 class PDPage extends ForAllPage{
 
@@ -58,5 +59,9 @@ class PDPage extends ForAllPage{
 
     def add_to_wishlist_from_pdp(String nameWishlist) {
 
+    }
+
+    def contain_configurable_options() {
+        return driver.findElements(By.xpath("//div[@class='product-options-block']//dd[2]//select")).size() != 0
     }
 }

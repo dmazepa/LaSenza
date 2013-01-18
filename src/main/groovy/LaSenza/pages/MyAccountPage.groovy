@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.By
+import net.thucydides.core.annotations.DefaultUrl
 
+@DefaultUrl("http://localhost:9000/customer/account/")
 class MyAccountPage extends ForAllPage{
 
     MyAccountPage(WebDriver driver){

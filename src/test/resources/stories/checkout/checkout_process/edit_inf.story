@@ -24,13 +24,14 @@ Given I am on checkout page as User and choose payment by Credit cart.
 Then I can click on link What is this?
 And It is associated with a form field triggers a tab tip popup with a description or explanation of the form field.
 
-Scenario: Allow Customers save entered address in Address book.
-Given I am on checkout page as Customer and process checkout with checked Save in Address Book checkbox.
-Then I can see entered on checkout page address in address book?
-
 Scenario: Allow customers log in on Checkout page.
 Given I am on checkout page as User.
 When I click on link Already Registered
 And Enter valid data.
 And Click login button.
 Then I become logged in without leaving the page.
+
+Scenario: Allow Customers save entered address in Address book.
+Given I am on checkout page as Customer and process checkout with checked Save in Address Book checkbox.
+Then I can see entered on checkout page address in address book
+

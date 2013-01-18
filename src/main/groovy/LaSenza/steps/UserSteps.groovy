@@ -349,7 +349,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_second_step_of_checkout() {
-        open_first_step_of_checkout()
+        open_first_step_of_checkout(1929)
         enter_valid_data_on_checkout_page()
         click_button_confirm_and_pay()
     }
@@ -460,8 +460,11 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def open_first_step_of_checkout() {
-        open_pdp(1929)
+    def open_first_step_of_checkout(def id) {
+        open_pdp(id)
+        if(pDPage.contain_configurable_options()){
+            choose_configurable_options()
+        }
         click_add_to_cart_button_pdp()
         go_to_checkout()
     }
@@ -580,5 +583,15 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_data_copied_from_billing_to_shipping() {
         checkoutPage.assert_data_copied_from_billing_to_shipping()
+    }
+
+    @Step
+    def click_on_link_What_is_this() {
+        checkoutPage.click_on_link_What_is_this()
+    }
+
+    @Step
+    def assert_what_is_this() {
+        checkoutPage.assert_what_is_this()
     }
 }
