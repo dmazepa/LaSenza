@@ -144,5 +144,11 @@ class CustomerSteps extends UserSteps{
     @Step
     def open_my_account_address_book() {
         myAccountPage.open()
+        myAccountPage.click_on_tab("Address Book")
+    }
+
+    @Step
+    def assert_address_added() {
+        myAccountPage.assert_address_added()
     }
 }

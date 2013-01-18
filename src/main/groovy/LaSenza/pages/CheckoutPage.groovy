@@ -108,7 +108,7 @@ class CheckoutPage extends ForAllPage{
     @FindBy(xpath = "//form[@id='login-form']//button[@class='button']")
     private WebElement buttonLoginPopUp
 
-    @FindBy(id = "billing:use_for_shipping")
+    @FindBy(xpath = "//input[@id='billing:use_for_shipping']")
     private WebElement checkboxUseBillingForShipping
 
     @FindBy(xpath = "//img[@class='v-middle']")
@@ -186,12 +186,14 @@ class CheckoutPage extends ForAllPage{
     }
 
     def click_button_confirm_and_pay() {
+        //element(loader).waitUntilVisible()
         element(loader).waitUntilNotVisible()
         element(buttonConfirmAndPay).click()
         waitForTextToAppear("Please review your information before submitting your order.")
     }
 
     def click_button_submit() {
+        element(buttonSubmit).waitUntilVisible()
         element(buttonSubmit).click()
     }
 
@@ -210,7 +212,10 @@ class CheckoutPage extends ForAllPage{
     }
 
     def uncheck_checkbox_use_billing_for_shipping() {
-        element(checkboxUseBillingForShipping).click()
+        def f = checkboxUseBillingForShipping.getAttribute("checked")
+        if(checkboxUseBillingForShipping.getAttribute("checked") != "checked" & checkboxUseBillingForShipping.getAttribute("checked") != null){
+            element(checkboxUseBillingForShipping).click()
+        }
     }
 
     def assert_data_copied_from_billing_to_shipping() {
@@ -258,7 +263,10 @@ class CheckoutPage extends ForAllPage{
     }
 
     def check_checkbox_save_address() {
-        element(checkboxSaveShippingAddress).click()
+        def r = checkboxSaveShippingAddress.getAttribute("checked")
+        if(checkboxSaveShippingAddress.getAttribute("checked") == null){
+            element(checkboxSaveShippingAddress).click()
+        }
     }
 
     def select_add_new_address() {

@@ -66,6 +66,7 @@ class EditInfSteps {
     @Then("I can see entered on checkout page address in address book")
     public void assert_address_added(){
         customer.open_my_account_address_book()
+        customer.assert_address_added()
     }
 
     @Then("It is associated with a form field triggers a tab tip popup with a description or explanation of the form field.")
