@@ -1,11 +1,11 @@
 package LaSenza.pages
 
+import net.thucydides.core.annotations.DefaultUrl
 import org.openqa.selenium.Alert
+import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
-import org.openqa.selenium.By
-import net.thucydides.core.annotations.DefaultUrl
 
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
@@ -23,17 +23,20 @@ class MyAccountPage extends ForAllPage{
     @FindBy(id = "wishlist-create-button")
     private WebElement buttonCreateWishlist;
 
-    @FindBy(id = "//a[contains(text(), 'Delete Address')]")
+    @FindBy(xpath = "//a[contains(text(), 'Delete Address')]")
     private WebElement linkDeleteAddress;
 
-    @FindBy(id = "//li[@class='success-msg']")
+    @FindBy(xpath = "//li[@class='success-msg']")
     private WebElement blockSuccessMSG;
+
+    @FindBy(xpath = "//h1")
+    private WebElement titleText
 
     @FindBy(xpath = "//a[@title='Remove Item']")
     private WebElement buttonRemoveItemFromWishList;
 
-    def assert_product_added_to_wishlist() {
-        shouldContainText("Cotton Plunge Push Up Bra with Contrast Trim")
+    def assert_product_added_to_wishlist(def productName) {
+        shouldContainText(productName)
     }
 
     def delete_items_from_wish_list() {
@@ -52,9 +55,9 @@ class MyAccountPage extends ForAllPage{
         element(buttonCreateWishlist).shouldBeVisible()
     }
 
-    def click_on_tab(nameTab) {
-        driver.findElement(By.xpath("//a[contains(text(), '${nameTab}')]"))
-        element(linkDeleteAddress).waitUntilVisible()
+    def click_on_tab(String nameTab) {
+        driver.findElement(By.xpath("//a[contains(text(), '${nameTab}')]")).click()
+        assert titleText.getText()  == nameTab.toUpperCase()
     }
 
     def assert_address_added() {
@@ -70,4 +73,6 @@ class MyAccountPage extends ForAllPage{
             element(blockSuccessMSG).waitUntilVisible()
         }
     }
+
+
 }

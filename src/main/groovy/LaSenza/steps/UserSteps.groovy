@@ -337,10 +337,6 @@ class UserSteps extends ScenarioSteps {
         pDPage.choose_configurable_options()
     }
 
-    @Step
-    def open_quick_view_configurable() {
-        cLPage.open_quick_w(3)
-    }
 
     @Step
     def open_quick_view() {

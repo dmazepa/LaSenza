@@ -24,7 +24,8 @@ class CustomerSteps extends UserSteps{
     @Step
     def assert_product_added_to_wishlist() {
         cLPage.qw_should_be_absent()
-        myAccountPage.assert_product_added_to_wishlist()
+        def d = cLPage.get_product_name()
+        myAccountPage.assert_product_added_to_wishlist(cLPage.get_product_name())
         myAccountPage.delete_items_from_wish_list()
     }
 
@@ -129,6 +130,8 @@ class CustomerSteps extends UserSteps{
         enter_payment_information()
         checkoutPage.click_button_confirm_and_pay()
         checkoutPage.click_button_submit()
+        thankYouPage.assert_thank_you_page()
+        thankYouPage.setOrderNumber()
     }
 
     @Step
@@ -143,7 +146,7 @@ class CustomerSteps extends UserSteps{
 
     @Step
     def open_my_account_address_book() {
-        myAccountPage.open()
+        myAccountPage.go_to()
         myAccountPage.click_on_tab("Address Book")
     }
 
@@ -151,4 +154,12 @@ class CustomerSteps extends UserSteps{
     def assert_address_added() {
         myAccountPage.assert_address_added()
     }
+
+    @Step
+    def open_quick_view_configurable() {
+        cLPage.set_product_name(3)
+        cLPage.open_quick_w(3)
+        Thread.sleep(1000)
+    }
+
 }

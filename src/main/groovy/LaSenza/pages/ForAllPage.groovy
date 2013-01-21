@@ -8,4 +8,8 @@ class ForAllPage extends PageObject{
         super(driver)
     }
 
+    def go_to() {
+        getDriver().get("${System.getProperty("webdriver.base.url")}customer/account/")
+    }
+
 }

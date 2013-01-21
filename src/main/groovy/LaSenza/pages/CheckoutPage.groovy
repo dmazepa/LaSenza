@@ -181,13 +181,14 @@ class CheckoutPage extends ForAllPage{
     }
 
     def check_shipment() {
+        element(loader).waitUntilNotVisible()
         element(shipment).waitUntilVisible();
         element(shipment).click();
     }
 
     def click_button_confirm_and_pay() {
-        //element(loader).waitUntilVisible()
         element(loader).waitUntilNotVisible()
+        element(buttonConfirmAndPay).waitUntilVisible()
         element(buttonConfirmAndPay).click()
         waitForTextToAppear("Please review your information before submitting your order.")
     }
@@ -195,6 +196,7 @@ class CheckoutPage extends ForAllPage{
     def click_button_submit() {
         element(buttonSubmit).waitUntilVisible()
         element(buttonSubmit).click()
+
     }
 
     def click_on_link_already_register() {

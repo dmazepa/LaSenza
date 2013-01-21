@@ -6,6 +6,8 @@ import org.openqa.selenium.*
 
 class CLPage extends ForAllPage{
 
+    private def productName
+
     CLPage(WebDriver driver){
         super(driver)
     }
@@ -43,6 +45,14 @@ class CLPage extends ForAllPage{
         mouse.mouseMove(hoverItem.getCoordinates())
         element(By.xpath("//div[@class='category-products']//li[${i}]/div/a[2]")).waitUntilVisible()
                 .click()
+    }
+
+    def set_product_name(def i) {
+        this.productName = element(By.xpath("//div[@class='category-products']//li[${i}]/h2/a")).getText()
+    }
+
+    final def get_product_name() {
+        return this.productName
     }
 
     def send_esc_key() {
