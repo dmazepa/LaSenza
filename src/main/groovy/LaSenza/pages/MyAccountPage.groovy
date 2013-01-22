@@ -66,13 +66,14 @@ class MyAccountPage extends ForAllPage{
         shouldContainText("Address Shipping")
         shouldContainText("City Shipping,  California, 14000")
         shouldContainText("T: 555-555-5555")
-        while (driver.findElements(By.xpath("//a[contains(text(), 'Delete Address')]")).size() != 0){
+    }
+   def delete_additional_shipping_address() {
+         while (driver.findElements(By.xpath("//a[contains(text(), 'Delete Address')]")).size() != 0){
             element(linkDeleteAddress).click()
             Alert alert = getDriver().switchTo().alert();
             alert.accept()
             element(blockSuccessMSG).waitUntilVisible()
-        }
-    }
-
+         }
+   }
 
 }

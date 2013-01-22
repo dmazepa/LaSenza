@@ -187,6 +187,7 @@ class CheckoutPage extends ForAllPage{
     }
 
     def click_button_confirm_and_pay() {
+        Thread.sleep(2000)
         element(loader).waitUntilNotVisible()
         element(buttonConfirmAndPay).waitUntilVisible()
         element(buttonConfirmAndPay).click()

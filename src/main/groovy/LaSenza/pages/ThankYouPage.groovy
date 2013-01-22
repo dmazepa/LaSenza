@@ -18,9 +18,9 @@ class ThankYouPage extends ForAllPage{
     private WebElement blockOrderNumber
 
     def assert_thank_you_page() {
-        waitForTextToAppear("Your order has been received.")
-        shouldContainText("Your order has been received.")
-        shouldContainText("Thank you for your purchase!")
+        waitForTextToAppear("Thank you for your order")
+        shouldContainText("Thank you for your order")
+        shouldContainText("If you have questions about your order, we're happy to take your call.")
     }
 
     def setOrderNumber() {

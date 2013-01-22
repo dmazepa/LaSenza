@@ -153,6 +153,7 @@ class CustomerSteps extends UserSteps{
     @Step
     def assert_address_added() {
         myAccountPage.assert_address_added()
+        myAccountPage.delete_additional_shipping_address()
     }
 
     @Step
@@ -162,4 +163,9 @@ class CustomerSteps extends UserSteps{
         Thread.sleep(1000)
     }
 
+    @Step
+    def delete_additional_shipping_address() {
+        myAccountPage.click_on_tab("Address Book")
+        myAccountPage.delete_additional_shipping_address()
+    }
 }
