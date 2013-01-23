@@ -140,7 +140,7 @@ class CustomerSteps extends UserSteps{
         checkoutPage.fill_cart_number_field()
         checkoutPage.select_month()
         checkoutPage.select_year()
-        checkoutPage.fill_verification_number_field()
+        checkoutPage.fill_verification_number_field("111")
         checkoutPage.check_shipment()
     }
 
@@ -168,4 +168,5 @@ class CustomerSteps extends UserSteps{
         myAccountPage.click_on_tab("Address Book")
         myAccountPage.delete_additional_shipping_address()
     }
+
 }

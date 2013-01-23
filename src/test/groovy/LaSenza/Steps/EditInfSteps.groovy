@@ -44,7 +44,7 @@ class EditInfSteps {
     public void create_account(){
         Random random = new Random()
         user.enter_valid_data_on_checkout_page("account${random.nextInt(1000)}@sproteck.com", "111")
-        user.create_account_on_checkout_page("testthis","testthis1")
+        user.create_account_on_checkout_page("testthis","testthis")
         user.click_button_confirm_and_pay_via_javascript()
         user.click_submit_button()
     }
