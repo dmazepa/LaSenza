@@ -333,4 +333,14 @@ class HomePage extends ForAllPage{
     def assert_logged_in() {
         element(linkLogOut).shouldBePresent()
     }
+
+    def log_out_if_logged_in() {
+        if(logged_in()){
+            click_on_link_log_out()
+        }
+    }
+
+    def logged_in() {
+        return element(linkLogOut).isPresent()
+    }
 }

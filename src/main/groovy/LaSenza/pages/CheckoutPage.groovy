@@ -1,12 +1,16 @@
 package LaSenza.pages
 
 import net.thucydides.core.annotations.DefaultUrl
+import org.openqa.selenium.HasInputDevices
+import org.openqa.selenium.Mouse
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
+import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.support.FindBy
 
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
+import org.openqa.selenium.JavascriptExecutor
 
 @DefaultUrl("http://localhost:9000/develop/checkout/onepage/")
 class CheckoutPage extends ForAllPage{
@@ -90,11 +94,23 @@ class CheckoutPage extends ForAllPage{
     @FindBy(xpath = "//input[@value='VI']")
     private WebElement inputCreditCart
 
+    @FindBy(xpath = "//input[@class='checkbox create_an_account']")
+    private WebElement checkboxCreateAccount
+
+    @FindBy(xpath = "//input[@id='contact:customer_password']")
+    private WebElement fieldPassword
+
     @FindBy(xpath = "//button[@class='button btn-checkout']")
     private WebElement buttonConfirmAndPay
 
+    @FindBy(xpath = "//button[@class='button btn-checkout disabled']")
+    private WebElement buttonConfirmAndPayDisabled
+
     @FindBy(xpath = "//button[@class='confirm button btn-checkout-submit']")
     private WebElement buttonSubmit
+
+    @FindBy(xpath = "//input[@id='contact:confirm_password']")
+    private WebElement fieldConfirmPassword
 
     @FindBy(xpath = "//button[@class='popup-trigger']")
     private WebElement linkAlreadyRegister
@@ -120,8 +136,8 @@ class CheckoutPage extends ForAllPage{
     @FindBy(id = "payment-tool-tip-close")
     private WebElement linkCloseWhatIsThis
 
-    def fill_email_field() {
-        element(fieldEmail).type("test1@speroteck.com");
+    def fill_email_field(def email) {
+        element(fieldEmail).type(email);
     }
 
     def fill_first_name_field() {
@@ -157,7 +173,11 @@ class CheckoutPage extends ForAllPage{
     }
 
     def click_input_credit_cart() {
-        element(inputCreditCart).click();
+        element(loader).waitUntilNotVisible()
+        Mouse mouse = ((HasInputDevices) driver).getMouse()
+        Locatable hoverItem = (Locatable) inputCreditCart
+        mouse.click(hoverItem.getCoordinates())
+        //element(inputCreditCart).click();
     }
 
     def fill_cart_name() {
@@ -187,10 +207,10 @@ class CheckoutPage extends ForAllPage{
     }
 
     def click_button_confirm_and_pay() {
-        Thread.sleep(2000)
-        element(loader).waitUntilNotVisible()
-        element(buttonConfirmAndPay).waitUntilVisible()
-        element(buttonConfirmAndPay).click()
+        Thread.sleep(4000)
+        Mouse mouse = ((HasInputDevices) driver).getMouse()
+        Locatable hoverItem = (Locatable) buttonConfirmAndPay
+        mouse.click(hoverItem.getCoordinates())
         waitForTextToAppear("Please review your information before submitting your order.")
     }
 
@@ -275,5 +295,18 @@ class CheckoutPage extends ForAllPage{
     def select_add_new_address() {
         element(selectShippingAddress).waitUntilVisible()
         element(selectShippingAddress).selectByVisibleText("New Address")
+    }
+
+    def create_account(String pass) {
+        element(checkboxCreateAccount).click()
+        element(fieldPassword).waitUntilVisible()
+        element(fieldPassword).type(pass)
+        element(fieldConfirmPassword).type(pass)
+    }
+
+    def click_button_confirm_and_pay_via_javascript() {
+        Thread.sleep(4000)
+        ((JavascriptExecutor) driver).executeScript('review.save()')
+        //element(buttonConfirmAndPay).click()
     }
 }

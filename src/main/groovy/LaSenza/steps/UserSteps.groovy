@@ -53,7 +53,7 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def open_pdp(int id) {
+    def open_pdp(def id) {
         getDriver().get("${System.getProperty("webdriver.base.url")}catalog/product/view/id/${id}")
     }
 
@@ -346,21 +346,13 @@ class UserSteps extends ScenarioSteps {
     @Step
     def open_second_step_of_checkout() {
         open_first_step_of_checkout(1929)
-        enter_valid_data_on_checkout_page()
+        enter_valid_data_on_checkout_page("test1@speroteck.com")
         click_button_confirm_and_pay()
     }
 
     @Step
-    def enter_valid_data_on_checkout_page() {
-        fill_email_field();
-        fill_first_name_field();
-        fill_last_name_field();
-        fill_address1_field();
-        fill_address2_field();
-        fill_city_field();
-        select_state();
-        fill_postal_code_field();
-        fill_telephone_field();
+    def enter_valid_data_on_checkout_page(def email) {
+        enter_valid_billing_data(email)
         click_input_credit_cart();
         fill_cart_name();
         fill_cart_number_field();
@@ -451,8 +443,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def fill_email_field() {
-        checkoutPage.fill_email_field()
+    def fill_email_field(def email) {
+        checkoutPage.fill_email_field(email)
     }
 
     @Step
@@ -589,5 +581,44 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_what_is_this() {
         checkoutPage.assert_what_is_this()
+    }
+
+    @Step
+    def assert_correct_information_on_thank_you_page() {
+        thankYouPage.assert_correct_information_on_thank_you_page()
+    }
+
+    @Step
+    def assert_return_to_home_page() {
+        thankYouPage.click_return_to_shopping()
+        homePage.assert_on_home_page()
+    }
+
+    @Step
+    def log_out_if_logged_in() {
+        homePage.log_out_if_logged_in()
+    }
+
+    @Step
+    def enter_valid_billing_data(def email) {
+        fill_email_field(email);
+        fill_first_name_field();
+        fill_last_name_field();
+        fill_address1_field();
+        fill_address2_field();
+        fill_city_field();
+        select_state();
+        fill_postal_code_field();
+        fill_telephone_field();
+    }
+
+    @Step
+    def create_account_on_checkout_page() {
+        checkoutPage.create_account("testthis")
+    }
+
+    @Step
+    def click_button_confirm_and_pay_via_javascript() {
+        checkoutPage.click_button_confirm_and_pay_via_javascript()
     }
 }

@@ -15,6 +15,8 @@ class EditInfSteps {
 
     @Given("I am on checkout page as User.")
     public void on_checkout_page_as_user(){
+        user.opens_home_page()
+        user.log_out_if_logged_in()
         user.open_first_step_of_checkout(1929)
     }
 
@@ -38,9 +40,18 @@ class EditInfSteps {
         user.click_on_link_already_register()
     }
 
+    @When("I create account.")
+    public void create_account(){
+        Random random = new Random()
+        user.enter_valid_data_on_checkout_page("account${random.nextInt(1000)}@sproteck.com")
+        user.create_account_on_checkout_page()
+        user.click_button_confirm_and_pay_via_javascript()
+        user.click_submit_button()
+    }
+
     @When("I check check-box Ship to My Billing Address.")
     public void fill_fields_billing_and_uncheck_checkbox_use_billing_for_shipping(){
-        user.enter_valid_data_on_checkout_page()
+        user.enter_valid_billing_data("test1@speroteck.com")
         user.uncheck_checkbox_use_billing_for_shipping()
     }
 
@@ -73,6 +84,11 @@ class EditInfSteps {
     @Then("It is associated with a form field triggers a tab tip popup with a description or explanation of the form field.")
     public void assert_what_is_this(){
         user.assert_what_is_this()
+    }
+
+    @Then("I get account.")
+    public void assert_on_my_account_page(){
+        customer.assert_logged_in()
     }
 
     @Then("It copies the data from the Billing Address form fields into the Shipping address form fields.")
