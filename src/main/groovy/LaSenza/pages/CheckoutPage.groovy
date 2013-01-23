@@ -11,6 +11,7 @@ import org.openqa.selenium.support.FindBy
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
 import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.By
 
 @DefaultUrl("http://localhost:9000/develop/checkout/onepage/")
 class CheckoutPage extends ForAllPage{
@@ -199,8 +200,8 @@ class CheckoutPage extends ForAllPage{
         element(selectYear).selectByValue("2022");
     }
 
-    def fill_verification_number_field() {
-        element(fieldVerificationNumber).type("111")
+    def fill_verification_number_field(def verificationNumber) {
+        element(fieldVerificationNumber).type(verificationNumber)
     }
 
     def check_shipment() {
@@ -254,6 +255,7 @@ class CheckoutPage extends ForAllPage{
     }
 
     def click_on_link_What_is_this() {
+        element(linkWhatIsThis).waitUntilVisible()
         element(linkWhatIsThis).click()
         element(linkCloseWhatIsThis).waitUntilVisible()
     }
@@ -315,5 +317,13 @@ class CheckoutPage extends ForAllPage{
 
     def assert_error_message_wrong_password() {
         element(errorMessageWrongPassword).shouldBeVisible()
+    }
+
+    def click_on_edit_link(def element, def counter) {
+        getDriver().findElement(By.xpath("//div[@class='review-block-left']/div[${counter}]//button")).click()
+    }
+
+    def assert_on_checkout_page() {
+        element(buttonConfirmAndPay).shouldBeVisible()
     }
 }

@@ -7,6 +7,9 @@ import net.thucydides.core.steps.ScenarioSteps
 import LaSenza.pages.*
 
 import static org.hamcrest.MatcherAssert.assertThat
+import org.openqa.selenium.Alert
+
+import static org.hamcrest.Matchers.equalTo
 
 class UserSteps extends ScenarioSteps {
 
@@ -346,20 +349,25 @@ class UserSteps extends ScenarioSteps {
     @Step
     def open_second_step_of_checkout() {
         open_first_step_of_checkout(1929)
-        enter_valid_data_on_checkout_page("test1@speroteck.com")
+        enter_valid_data_on_checkout_page("test1@speroteck.com", "111")
         click_button_confirm_and_pay()
     }
 
     @Step
-    def enter_valid_data_on_checkout_page(def email) {
+    def enter_valid_data_on_checkout_page(def email, def verificationNumber) {
         enter_valid_billing_data(email)
+        enter_payment_inf(verificationNumber)
+        check_shipment();
+    }
+
+    @Step
+    def enter_payment_inf(def verificationNumber) {
         click_input_credit_cart();
         fill_cart_name();
         fill_cart_number_field();
         select_month();
         select_year();
-        fill_verification_number_field();
-        check_shipment();
+        fill_verification_number_field(verificationNumber);
     }
 
     @Step
@@ -373,8 +381,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def fill_verification_number_field() {
-        checkoutPage.fill_verification_number_field()
+    def fill_verification_number_field(def verificationNumber) {
+        checkoutPage.fill_verification_number_field(verificationNumber)
     }
 
     @Step
@@ -625,5 +633,29 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_error_message() {
         checkoutPage.assert_error_message_wrong_password()
+    }
+
+    @Step
+    def click_on_edit_link(def element, def counter) {
+        checkoutPage.click_on_edit_link(element, counter)
+    }
+
+    @Step
+    def assert_on_checkout_page() {
+        checkoutPage.assert_on_checkout_page()
+    }
+
+    @Step
+    def open_second_step_of_checkout_with_invalid_data() {
+        open_first_step_of_checkout(1929)
+        enter_valid_data_on_checkout_page("test1@speroteck.com", "1111")
+        click_button_confirm_and_pay()
+    }
+
+    @Step
+    def assert_error_message_wrong_payment() {
+        Alert alert = getDriver().switchTo().alert();
+        assertThat(alert.getText(), equalTo("Please enter a valid credit card verification number."))
+        alert.accept()
     }
 }
