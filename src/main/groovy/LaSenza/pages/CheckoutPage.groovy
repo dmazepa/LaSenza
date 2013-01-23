@@ -112,6 +112,9 @@ class CheckoutPage extends ForAllPage{
     @FindBy(xpath = "//input[@id='contact:confirm_password']")
     private WebElement fieldConfirmPassword
 
+    @FindBy(id = "advice-validate-cpassword-contact:confirm_password")
+    private WebElement errorMessageWrongPassword
+
     @FindBy(xpath = "//button[@class='popup-trigger']")
     private WebElement linkAlreadyRegister
 
@@ -297,16 +300,20 @@ class CheckoutPage extends ForAllPage{
         element(selectShippingAddress).selectByVisibleText("New Address")
     }
 
-    def create_account(String pass) {
+    def create_account(def pass, def confirmPass) {
         element(checkboxCreateAccount).click()
         element(fieldPassword).waitUntilVisible()
         element(fieldPassword).type(pass)
-        element(fieldConfirmPassword).type(pass)
+        element(fieldConfirmPassword).type(confirmPass)
     }
 
     def click_button_confirm_and_pay_via_javascript() {
         Thread.sleep(4000)
         ((JavascriptExecutor) driver).executeScript('review.save()')
         //element(buttonConfirmAndPay).click()
+    }
+
+    def assert_error_message_wrong_password() {
+        element(errorMessageWrongPassword).shouldBeVisible()
     }
 }

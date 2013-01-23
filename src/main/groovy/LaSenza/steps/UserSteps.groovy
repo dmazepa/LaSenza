@@ -613,12 +613,17 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def create_account_on_checkout_page() {
-        checkoutPage.create_account("testthis")
+    def create_account_on_checkout_page(def pass, def confirmPass) {
+        checkoutPage.create_account(pass, confirmPass)
     }
 
     @Step
     def click_button_confirm_and_pay_via_javascript() {
         checkoutPage.click_button_confirm_and_pay_via_javascript()
+    }
+
+    @Step
+    def assert_error_message() {
+        checkoutPage.assert_error_message_wrong_password()
     }
 }

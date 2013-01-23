@@ -35,6 +35,11 @@ Scenario: Allow Customers save entered address in Address book.
 Given I am on checkout page as Customer and process checkout with checked Save in Address Book checkbox.
 Then I can see entered on checkout page address in address book
 
+Scenario: Show to users appropriate error message if he enter wrong password.
+Given I am on checkout page as User.
+When I create account and enter wrong password.
+Then I get error message.
+
 Scenario: Allow Users create account from Order Recipient page.
 Given I am on checkout page as User.
 When I create account.

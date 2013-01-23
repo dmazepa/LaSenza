@@ -44,7 +44,7 @@ class EditInfSteps {
     public void create_account(){
         Random random = new Random()
         user.enter_valid_data_on_checkout_page("account${random.nextInt(1000)}@sproteck.com")
-        user.create_account_on_checkout_page()
+        user.create_account_on_checkout_page("testthis","testthis1")
         user.click_button_confirm_and_pay_via_javascript()
         user.click_submit_button()
     }
@@ -53,6 +53,13 @@ class EditInfSteps {
     public void fill_fields_billing_and_uncheck_checkbox_use_billing_for_shipping(){
         user.enter_valid_billing_data("test1@speroteck.com")
         user.uncheck_checkbox_use_billing_for_shipping()
+    }
+
+    @When("I create account and enter wrong password.")
+    public void create_account_with_wrong_password(){
+        Random random = new Random()
+        user.enter_valid_data_on_checkout_page("account${random.nextInt(1000)}@sproteck.com")
+        user.create_account_on_checkout_page("testthis", "testthis1")
     }
 
     @When("Enter valid data.")
@@ -89,6 +96,11 @@ class EditInfSteps {
     @Then("I get account.")
     public void assert_on_my_account_page(){
         customer.assert_logged_in()
+    }
+
+    @Then("I get error message.")
+    public void assert_error_message(){
+        user.assert_error_message()
     }
 
     @Then("It copies the data from the Billing Address form fields into the Shipping address form fields.")
