@@ -1,0 +1,2 @@
+Catalog
+Add configurable related products on PDP

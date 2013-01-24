@@ -1,0 +1,24 @@
+<story path="stories/catalog/quick_view/add_to_wish_list.story" title="">
+<scenario keyword="Scenario:" title="Allow Customers add product to wishlist from QW.">
+<step outcome="successful">Given I am on QW with configurable product as customer.</step>
+<step outcome="successful">When I click Add to Wishlist button.</step>
+<step outcome="successful">Then Quickview module closes and adds the product to her wishlist.</step>
+</scenario>
+<scenario keyword="Scenario:" title="Allow Users not logged in or does not has account add product to wishlist from QW.">
+<step outcome="pending" keyword="PENDING">Given I am on QW with gift cart product as User.</step>
+<step outcome="notPerformed" keyword="NOT PERFORMED">When I click Add to Wishlist button.</step>
+<step outcome="pending" keyword="PENDING">Then Quickview module closes and she is navigated to the Account Creation page.</step>
+<pendingMethod>@Given(&quot;I am on QW with gift cart product as User.&quot;)
+@Pending
+public void givenIAmOnQWWithGiftCartProductAsUser() {
+  // PENDING
+}
+</pendingMethod>
+<pendingMethod>@Then(&quot;Quickview module closes and she is navigated to the Account Creation page.&quot;)
+@Pending
+public void thenQuickviewModuleClosesAndSheIsNavigatedToTheAccountCreationPage() {
+  // PENDING
+}
+</pendingMethod>
+</scenario>
+</story>

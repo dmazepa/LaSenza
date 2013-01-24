@@ -12,7 +12,7 @@ import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.Mouse
 import org.openqa.selenium.HasInputDevices
 
-@DefaultUrl("http://localhost:9000/develop/")
+@DefaultUrl("http://localhost:9000")
 class HomePage extends ForAllPage{
 
     HomePage(WebDriver driver){

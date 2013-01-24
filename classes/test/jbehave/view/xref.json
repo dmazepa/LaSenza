@@ -1,0 +1,21 @@
+{"xref": {
+  "whenMade": 1359057762071,
+  "createdBy": "JBehave",
+  "metaFilter": "",
+  "meta": [],
+  "stories": [
+    {
+      "description": "",
+      "narrative": "",
+      "name": "add_to_wish_list.story",
+      "path": "stories/catalog/quick_view/add_to_wish_list.story",
+      "html": "stories.catalog.quick_view.add_to_wish_list.html",
+      "meta": "",
+      "scenarios": "Scenario:Allow Customers add product to wishlist from QW.\u000aGiven I am on QW with configurable product as customer.\u000aWhen I click Add to Wishlist button.\u000aThen Quickview module closes and adds the product to her wishlist.\u000a\u000a\u000aScenario:Allow Users not logged in or does not has account add product to wishlist from QW.\u000aGiven I am on QW with gift cart product as User.\u000aWhen I click Add to Wishlist button.\u000aThen Quickview module closes and she is navigated to the Account Creation page.\u000a\u000a\u000a",
+      "passed": true,
+      "started": 1359057669697,
+      "duration": 83351
+    }
+  ],
+  "stepMatches": []
+}}

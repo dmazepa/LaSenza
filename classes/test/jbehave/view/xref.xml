@@ -1,0 +1,33 @@
+<xref>
+  <whenMade>1359057762071</whenMade>
+  <createdBy>JBehave</createdBy>
+  <metaFilter></metaFilter>
+  <meta/>
+  <stories>
+    <story>
+      <description></description>
+      <narrative></narrative>
+      <name>add_to_wish_list.story</name>
+      <path>stories/catalog/quick_view/add_to_wish_list.story</path>
+      <html>stories.catalog.quick_view.add_to_wish_list.html</html>
+      <meta></meta>
+      <scenarios>Scenario:Allow Customers add product to wishlist from QW.
+Given I am on QW with configurable product as customer.
+When I click Add to Wishlist button.
+Then Quickview module closes and adds the product to her wishlist.
+
+
+Scenario:Allow Users not logged in or does not has account add product to wishlist from QW.
+Given I am on QW with gift cart product as User.
+When I click Add to Wishlist button.
+Then Quickview module closes and she is navigated to the Account Creation page.
+
+
+</scenarios>
+      <passed>true</passed>
+      <started>1359057669697</started>
+      <duration>83351</duration>
+    </story>
+  </stories>
+  <stepMatches/>
+</xref>

@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.equalTo
 import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.By
 
-@DefaultUrl("http://localhost:9000/develop/checkout/onepage/")
+@DefaultUrl("http://localhost:9000/checkout/onepage/")
 class CheckoutPage extends ForAllPage{
 
     CheckoutPage(WebDriver driver){

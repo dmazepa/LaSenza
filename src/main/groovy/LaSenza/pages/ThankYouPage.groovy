@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
 
-@DefaultUrl("http://localhost:9000//develop/checkout/onepage/success/")
+@DefaultUrl("http://localhost:9000/checkout/onepage/success/")
 class ThankYouPage extends ForAllPage{
 
     private def orderNumber

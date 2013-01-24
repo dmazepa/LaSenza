@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
 
-@DefaultUrl("http://localhost:9000/develop/customer/account/")
+@DefaultUrl("http://localhost:9000/customer/account/")
 class MyAccountPage extends ForAllPage{
 
     MyAccountPage(WebDriver driver){
@@ -48,7 +48,8 @@ class MyAccountPage extends ForAllPage{
     }
 
     def assert_on_my_account_dashboard_page() {
-        shouldContainText("My Dashboard")
+        def f = element(titleText).getText()
+        element(titleText).shouldContainText("MY DASHBOARD")
     }
 
     def assert_on_my_wishlist_page() {
