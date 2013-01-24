@@ -22,11 +22,6 @@ class LoginPage extends ForAllPage{
     @FindBy(id = "send2")
     private WebElement buttonLogin;
 
-
-    def open1() {
-        getDriver().get("${System.getProperty("webdriver.base.url")}customer/account/login/")
-    }
-
     def log_in(String email, String pass, Boolean withCookie) {
         element(fieldEmail).type(email)
         element(fieldPassword).type(pass)

@@ -171,8 +171,8 @@ class UserSteps extends ScenarioSteps {
     }
     @Step
     def log_in(Boolean withCookie) {
-        loginPage.open1()
         if(homePage.return_logged_out()){
+            homePage.click_on_link_login()
             loginPage.log_in("test1@speroteck.com", "testthis", withCookie)
         }
     }
