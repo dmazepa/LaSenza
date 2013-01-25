@@ -345,7 +345,6 @@ class CheckoutPage extends ForAllPage{
         //element(blockDiscountCouponTotals).waitUntilVisible()
         element(blockDiscountCouponTotals).shouldBeVisible()
         shouldContainText("AutoTestCoupon (12345)")
-        shouldContainText("-\$39.11")
     }
 
     def message_appears_promo_code_applied() {
