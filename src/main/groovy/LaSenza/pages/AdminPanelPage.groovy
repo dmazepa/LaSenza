@@ -108,6 +108,42 @@ class AdminPanelPage extends ForAllPage{
     @FindBy(xpath = "//ul[@id='nav']/li[3]/ul/li[4]/ul/li[1]/a")
     private WebElement subMenuManageAttributes
 
+    @FindBy(xpath = "//ul[@id='nav']/li[6]/ul/li[2]/a")
+    private WebElement subMenuCatalogPriceRules
+
+    @FindBy(xpath = "//button[@title='Add New Rule']")
+    private WebElement buttonAddNewRule
+
+    @FindBy(id = "rule_name")
+    private WebElement fieldRuleName
+
+    @FindBy(id = "rule_is_active")
+    private WebElement selectStatus
+
+    @FindBy(id = "rule_website_ids")
+    private WebElement selectWebsite
+
+    @FindBy(id = "rule_customer_group_ids")
+    private WebElement selectCustomerGroups
+
+    @FindBy(id = "rule_coupon_type")
+    private WebElement selectCoupon
+
+    @FindBy(id = "rule_coupon_code")
+    private WebElement fieldCouponCode
+
+    @FindBy(id = "rule_uses_per_coupon")
+    private WebElement fieldUsesPerCoupon
+
+    @FindBy(id = "rule_uses_per_customer")
+    private WebElement fieldUsesPerCustomer
+
+    @FindBy(id = "promo_catalog_edit_tabs_actions_section")
+    private WebElement tabActions
+
+    @FindBy(id = "rule_discount_amount")
+    private WebElement fieldDiscountAmount
+
     @FindBy(xpath = "//table[@id='attributeGrid_table']//tbody/tr")
     private WebElement rowFirstAttributeManager
 
@@ -276,6 +312,34 @@ class AdminPanelPage extends ForAllPage{
         element(tabCategories).click()
         element(checkboxBras).waitUntilVisible()
         element(checkboxBras).click()
+        element(buttonSave).click()
+        element(blockSuccessMsg).waitUntilVisible()
+    }
+
+    def open_catalog_price_rules() {
+        getDriver().get(subMenuCatalogPriceRules.getAttribute("href"))
+    }
+
+    boolean coupon_absent() {
+        return !containsText("AutoTestCoupon")
+    }
+
+    def create_coupon() {
+        element(buttonAddNewRule).click()
+        element(fieldRuleName).waitUntilVisible()
+        element(selectStatus).selectByVisibleText("Active")
+        element(selectWebsite).selectByValue("1")
+        element(selectWebsite).selectByValue("2")
+        element(selectCustomerGroups).selectByValue("0")
+        element(selectCustomerGroups).selectByValue("1")
+        element(selectCoupon).selectByValue("2")
+        element(fieldUsesPerCoupon).type("1000")
+        element(fieldUsesPerCustomer).type("1000")
+        element(fieldCouponCode).type("12345")
+        element(fieldRuleName).type("AutoTestCoupon")
+        element(tabActions).click()
+        element(fieldDiscountAmount).waitUntilVisible()
+        element(fieldDiscountAmount).type("99")
         element(buttonSave).click()
         element(blockSuccessMsg).waitUntilVisible()
     }

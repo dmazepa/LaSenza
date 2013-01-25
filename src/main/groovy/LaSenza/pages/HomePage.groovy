@@ -233,7 +233,6 @@ class HomePage extends ForAllPage{
 
     def assert_qty_and_price_added_to_mini_cart(String qty, String price) {
         println(element(blockQtyMiniCart).getText())
-
         assertThat(element(blockQtyMiniCart).getText(), equalTo(qty))
         assertThat(element(blockPriceMiniCart).getText(), equalTo(price))
         assertThat(element(blockTotalMiniCart).getText(), equalTo(price))
@@ -331,5 +330,10 @@ class HomePage extends ForAllPage{
 
     def logged_in() {
         return element(linkLogOut).isPresent()
+    }
+
+    def no_items_in_cart() {
+        def r = getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size()
+        return  getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() == 0
     }
 }

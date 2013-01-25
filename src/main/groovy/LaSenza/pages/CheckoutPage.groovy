@@ -104,8 +104,14 @@ class CheckoutPage extends ForAllPage{
     @FindBy(xpath = "//button[@class='button btn-checkout']")
     private WebElement buttonConfirmAndPay
 
-    @FindBy(xpath = "//button[@class='button btn-checkout disabled']")
-    private WebElement buttonConfirmAndPayDisabled
+    @FindBy(id = "coupon")
+    private WebElement fieldCoupon
+
+    @FindBy(xpath = "//button[@class='button apply gray coupon-btn']")
+    private WebElement buttonApplyCoupon
+
+    @FindBy(xpath = "//div[@class='footer-wrapper discount']")
+    private WebElement blockDiscountCouponTotals
 
     @FindBy(xpath = "//button[@class='confirm button btn-checkout-submit']")
     private WebElement buttonSubmit
@@ -325,5 +331,24 @@ class CheckoutPage extends ForAllPage{
 
     def assert_on_checkout_page() {
         element(buttonConfirmAndPay).shouldBeVisible()
+    }
+
+    def enter_coupon(String couponCode) {
+        element(fieldCoupon).type(couponCode)
+    }
+
+    def click_apply_coupon() {
+        element(buttonApplyCoupon).click()
+    }
+
+    def coupon_discount_appears_in_grand_total() {
+        //element(blockDiscountCouponTotals).waitUntilVisible()
+        element(blockDiscountCouponTotals).shouldBeVisible()
+        shouldContainText("AutoTestCoupon (12345)")
+        shouldContainText("-\$39.11")
+    }
+
+    def message_appears_promo_code_applied() {
+        shouldContainText("AutoTestCoupon (12345) has been applied to your order.")
     }
 }

@@ -14,7 +14,7 @@ Given I am on checkout page as User.
 When I Enter a valid coupon code.
 And Click the Apply Coupon button.
 Then The coupon discount appears as a new line in the order summary and the grand total is updated.
-And Message appears: “<promo code name> has been applied to your order”.
+And Message appears AutoTestCoupon (12345) has been applied to your order.
 
 Scenario: Disallow users use their invalid coupon codes.
 Given I am on checkout page as User.
@@ -29,7 +29,7 @@ And Click the Add Gift Card button.
 Then The gift card discount appears as a new line in the order summary and the grand total is updated.
 
 Scenario: Allow users view their Gift card ballance.
-Given I am on checkout as User with some products in cart.
+Given I am on checkout page as User.
 When I enter a valid gift card code.
 And Click the Check Gift Card Status & Balance.
 Then The Gift Card Status & Balance appears.
@@ -37,13 +37,13 @@ When I click on X remove link.
 Then The Gift Card Status & Balance disappears.
 
 Scenario: Disallow users use invalid Gift cards.
-Given I am on checkout as User with some products in cart.
+Given I am on checkout page as User.
 When I enter a invalid gift card code.
 And Click the Add Gift Card button.
 Then Message appears that the gift card is invalid
 
 Scenario: Allow users pay for all products in cart using only Gift cart.
-Given I am on checkout as User with some products in cart.
+Given I am on checkout page as User.
 When I enter a invalid gift card code, that has balance more than cart Total.
 And Click the Add Gift Card button.
 Then The Payment Method section is disabled
@@ -54,6 +54,6 @@ Given I am on checkout as User with gift cart product in cart.
 Then I can't apply gift cart to cart.
 
 Scenario: Do not save in checkout session applied gift cards.
-Given I am on checkout as User with some products in cart.
+Given I am on checkout page as User.
 When I go to home page and return to checkout page.
 Then I can't see previous applied gift cards.

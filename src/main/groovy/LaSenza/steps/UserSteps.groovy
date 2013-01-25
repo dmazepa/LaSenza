@@ -457,12 +457,18 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_first_step_of_checkout(def id) {
-        open_pdp(id)
-        if(pDPage.contain_configurable_options()){
-            choose_configurable_options()
+        if(no_items_in_cart()){
+            open_pdp(id)
+            if(pDPage.contain_configurable_options()){
+                choose_configurable_options()
+            }
+            click_add_to_cart_button_pdp()
         }
-        click_add_to_cart_button_pdp()
         go_to_checkout()
+    }
+
+    def no_items_in_cart() {
+        return homePage.no_items_in_cart()
     }
 
     @Step
@@ -657,5 +663,25 @@ class UserSteps extends ScenarioSteps {
         Alert alert = getDriver().switchTo().alert();
         assertThat(alert.getText(), equalTo("Please enter a valid credit card verification number."))
         alert.accept()
+    }
+
+    @Step
+    def enter_coupon(String couponCode) {
+        checkoutPage.enter_coupon(couponCode)
+    }
+
+    @Step
+    def click_apply_coupon() {
+        checkoutPage.click_apply_coupon()
+    }
+
+    @Step
+    def coupon_discount_appears_in_grand_total() {
+        checkoutPage.coupon_discount_appears_in_grand_total()
+    }
+
+    @Step
+    def message_appears_promo_code_applied() {
+        checkoutPage.message_appears_promo_code_applied()
     }
 }

@@ -108,4 +108,28 @@ class AdminPanelSteps extends UserSteps{
         open_product(id)
         adminPage.set_product_brand_category(brandName)
     }
+
+    @Step
+    def create_coupon_code_if_not_exist() {
+        open_admin_panel()
+        open_catalog_price_rules()
+        if(coupon_absent()){
+            create_coupon()
+        }
+    }
+
+    @Step
+    def create_coupon() {
+        adminPage.create_coupon()
+    }
+
+    @Step
+    boolean coupon_absent() {
+        return  adminPage.coupon_absent()
+    }
+
+    @Step
+    def open_catalog_price_rules() {
+        adminPage.open_catalog_price_rules()
+    }
 }
