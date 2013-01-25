@@ -1,16 +1,12 @@
 package LaSenza.pages
 
 import net.thucydides.core.annotations.DefaultUrl
-import org.openqa.selenium.By
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.WebElement
-import org.openqa.selenium.support.FindBy
-
-import static org.hamcrest.MatcherAssert.assertThat
-import static org.hamcrest.CoreMatchers.equalTo
 import org.openqa.selenium.internal.Locatable
-import org.openqa.selenium.Mouse
-import org.openqa.selenium.HasInputDevices
+import org.openqa.selenium.support.FindBy
+import org.openqa.selenium.*
+
+import static org.hamcrest.CoreMatchers.equalTo
+import static org.hamcrest.MatcherAssert.assertThat
 
 @DefaultUrl("http://localhost:9000")
 class HomePage extends ForAllPage{
@@ -25,9 +21,6 @@ class HomePage extends ForAllPage{
 
     @FindBy(xpath = "//div[@class='global-header-banner']/img")
     private WebElement globalHeaderBanner;
-
-    @FindBy(xpath = "//div/div")
-    private WebElement someElement;
 
     @FindBy(xpath = "//span[@class='welcome-msg']")
     private WebElement blockWelcomeMsg;
@@ -164,10 +157,6 @@ class HomePage extends ForAllPage{
         assert getDriver().findElements(By.xpath("//div[@id='slider_homepage']/ul/li")).size() == i
     }
 
-    def click_outside_qw() {
-        element(someElement).click()
-    }
-
     def assert_welcome_msg(def welcomeMSG) {
         def g = blockWelcomeMsg.getText()
         assertThat(blockWelcomeMsg.getText(), equalTo(welcomeMSG))
@@ -178,7 +167,7 @@ class HomePage extends ForAllPage{
     }
 
     def assert_default_text_in_search_field_removes() {
-
+        assert false
     }
 
     def open1() {

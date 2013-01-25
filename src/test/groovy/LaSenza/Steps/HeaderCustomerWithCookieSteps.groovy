@@ -40,10 +40,10 @@ class HeaderCustomerWithCookieSteps {
        customer.assert_please_login_msg(pleaseLoginNotTestTester)
     }
 
-    @Given("I am on home page as guest with cookie enabled.")
+    @Given("I am on home page as customer with cookie enabled.")
     public void open_home_page_as_guest_with_cookie(){
         user.log_in(true)
-        user.timeout(12000)
+        user.timeout(14000)
         user.refresh_page()
     }
 

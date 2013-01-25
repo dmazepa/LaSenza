@@ -3,6 +3,7 @@ package LaSenza.pages
 import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.*
+import org.openqa.selenium.interactions.Actions
 
 class CLPage extends ForAllPage{
 
@@ -69,7 +70,7 @@ class CLPage extends ForAllPage{
     }
 
     def qw_should_not_have_thumbnail_images() {
-        element(thumbnailImageQW).shouldBeVisible()
+        //element(thumbnailImageQW).shouldBeVisible()
         element(thumbnailImageQW).shouldNotBeVisible()
     }
 
@@ -97,4 +98,11 @@ class CLPage extends ForAllPage{
         def d =  nameCLP.toUpperCase()
         assert element(titleCLP).getText().contains(nameCLP.toUpperCase())
     }
+
+
+    def click_outside_qw() {
+        Actions clicker = new Actions(driver);
+        clicker.moveToElement(buttonQWClose).moveByOffset(-10, -10).click().perform();
+    }
+
 }

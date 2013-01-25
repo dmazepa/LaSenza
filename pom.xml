@@ -12,8 +12,8 @@
 
    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <thucydides.version>0.9.74</thucydides.version>
-        <thucydides.jbehave.version>0.9.71</thucydides.jbehave.version>
+        <thucydides.version>0.9.90</thucydides.version>
+        <thucydides.jbehave.version>0.9.90</thucydides.jbehave.version>
         <webdriver.driver>firefox</webdriver.driver>
     </properties>
 
@@ -39,7 +39,7 @@
             <plugin>
                 <groupId>net.thucydides.maven.plugins</groupId>
                 <artifactId>maven-thucydides-plugin</artifactId>
-                <version>0.9.71</version>
+                <version>0.9.90</version>
                 <executions>
                     <execution>
                         <id>thucydides-reports</id>

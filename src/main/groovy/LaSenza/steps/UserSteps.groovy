@@ -148,7 +148,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def click_outside_qw() {
-        homePage.click_outside_qw()
+        cLPage.click_outside_qw()
     }
 
     def click_close_button() {
@@ -172,10 +172,9 @@ class UserSteps extends ScenarioSteps {
     @Step
     def log_in(Boolean withCookie) {
         homePage.open()
-        if(homePage.return_logged_out()){
-            homePage.click_on_link_login()
-            loginPage.log_in("test1@speroteck.com", "testthis", withCookie)
-        }
+        homePage.log_out_if_logged_in()
+        homePage.click_on_link_login()
+        loginPage.log_in("test1@speroteck.com", "testthis", withCookie)
     }
 
     @Step
