@@ -684,4 +684,74 @@ class UserSteps extends ScenarioSteps {
     def message_appears_promo_code_applied() {
         checkoutPage.message_appears_promo_code_applied()
     }
+
+    @Step
+    def open_store_locator_page() {
+        storeLocatorPage.open()
+    }
+
+    @Step
+    def enter_text_to_search_field(String text) {
+        storeLocatorPage.enter_text_to_search_field(text)
+    }
+
+    @Step
+    def specify_search_radius(String radius) {
+        storeLocatorPage.enter_radius_into_radius_field(radius)
+    }
+
+    @Step
+    def click_button_search_store_locator() {
+        storeLocatorPage.click_button_search()
+    }
+
+    @Step
+    def assert_pop_up_present() {
+        storeLocatorPage.assert_pop_up_present()
+    }
+
+    @Step
+    def assert_no_results_store_locator() {
+        storeLocatorPage.assert_no_results_store_locator()
+    }
+
+    @Step
+    def click_reset_button() {
+        storeLocatorPage.click_button_reset()
+    }
+
+    @Step
+    def assert_search_field_clear_store_locator() {
+        storeLocatorPage.assert_search_field_clear_store_locator()
+    }
+
+    @Step
+    def assert_search_results_contain_all_stores() {
+        storeLocatorPage.assert_search_results_contain_all_stores()
+    }
+
+    @Step
+    def click_on_store_entry(def entryNumber) {
+        storeLocatorPage. click_on_store_entry(entryNumber)
+    }
+
+    @Step
+    def assert_location_on_map() {
+        storeLocatorPage.assert_location_on_map()
+    }
+
+    @Step
+    def click_on_direction() {
+        storeLocatorPage.click_on_direction()
+    }
+
+    @Step
+    def click_link_reset_store_locations() {
+        storeLocatorPage.click_link_reset_store_locations()
+    }
+
+    @Step
+    def assert_default_radius() {
+        storeLocatorPage.assert_default_radius()
+    }
 }

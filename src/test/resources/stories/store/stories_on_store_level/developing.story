@@ -6,9 +6,7 @@ Header for guest without cookies enabled.
 Scenario: Prepare Base.
 Given Prepare_base
 
-Scenario: Allow users use their coupon codes.
-Given I am on checkout page as User.
-When I Enter a valid coupon code.
-And Click the Apply Coupon button.
-Then The coupon discount appears as a new line in the order summary and the grand total is updated.
-And Message appears AutoTestCoupon (12345) has been applied to your order.
+Scenario: Allow users clear all actions on Store Locator page.
+Given I am on Store Locator page with some previous actions.
+When I click link Reset Locations.
+Then Restores the page to its initial load state where all available store locations are displayed in the sidebar.
