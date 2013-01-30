@@ -13,5 +13,7 @@ target
 *.iws
 .gradle
 build
+classes
+
 
 

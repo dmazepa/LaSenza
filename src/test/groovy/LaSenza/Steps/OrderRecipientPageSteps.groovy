@@ -12,7 +12,8 @@ class OrderRecipientPageSteps {
     @Given("I am on Order Recipient page.")
     public void open_thank_you_page(){
         user.open_second_step_of_checkout()
-        user.click_button_confirm_and_pay()
+        user.click_button_confirm_and_pay_via_javascript()
+        user.click_submit_button()
     }
 
     @Then("I can see appropriate information about order.")

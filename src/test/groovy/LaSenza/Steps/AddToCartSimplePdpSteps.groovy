@@ -15,7 +15,7 @@ class AddToCartSimplePdpSteps {
 
     @Given("I am on PDP with simple product.")
     public void open_pdp_simple(){
-        user.open_pdp(1929)
+        user.open_pdp(1472)
     }
 
     @When("I click Add to Cart button.")

@@ -3,6 +3,10 @@ Meta:
 Narrative:
 Show to user summary information on second checkout step.
 
+Scenario: Allow Users create account from Checkout page.
+Given I am on checkout page as User.
+When I create account.
+Then I get account.
 
 Scenario: Disallow users submit order with wrong information.
 Given I am on second step of checkout process with invalid information.

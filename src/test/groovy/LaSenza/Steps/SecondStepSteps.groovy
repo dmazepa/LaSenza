@@ -16,6 +16,7 @@ class SecondStepSteps {
 
     @Given("I am on second step of checkout process with invalid information.")
     public void on_second_step_of_checkout_with_wrong_inf(){
+        user.log_out_if_logged_in()
         user.open_second_step_of_checkout_with_invalid_data()
     }
 

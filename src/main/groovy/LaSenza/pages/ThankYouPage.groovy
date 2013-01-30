@@ -37,16 +37,17 @@ class ThankYouPage extends ForAllPage{
     }
 
     def assert_correct_information_on_thank_you_page() {
-        assert billingAddress.getText() == "Test Tester\n" +
+       /* assertThat(billingAddress.getText(), equalTo("Test Tester\n" +
                 "Address\n" +
                 "Sacramento, California, 94203\n" +
                 "United States\n" +
-                "T: 555-555-5555 "
-        assertThat(billingAddress.getText(), equalTo("Test Tester\n" +
-                "Address\n" +
-                "Sacramento, California, 94203\n" +
+                "T: 555-555-5555 "))*/
+        assertThat(billingAddress.getText(), equalTo("TestFirstName TestLastName\n" +
+                "Test Address1\n" +
+                "Test Address2\n" +
+                "Test City, California, 11111\n" +
                 "United States\n" +
-                "T: 555-555-5555 "))
+                "T: 1234567890"))
     }
 
     def click_return_to_shopping() {

@@ -40,6 +40,9 @@ class CLPage extends ForAllPage{
     @FindBy(xpath = "//h1")
     private WebElement titleCLP
 
+    @FindBy(xpath = "//div/div")
+    private WebElement elementOutsideQW
+
     def open_quick_w(def i) {
         Locatable hoverItem = (Locatable) getDriver().findElement(By.xpath("//div[@class='category-products']//li[${i}]/div/a[1]"))
         Mouse mouse = ((HasInputDevices) driver).getMouse()
@@ -102,7 +105,8 @@ class CLPage extends ForAllPage{
 
     def click_outside_qw() {
         Actions clicker = new Actions(driver);
-        clicker.moveToElement(buttonQWClose).moveByOffset(-10, -10).click().perform();
+        clicker.moveToElement(buttonQWClose).moveByOffset(-10, 300).click().perform();
+        element(elementOutsideQW).click()
     }
 
 }

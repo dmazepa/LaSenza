@@ -1,10 +1,13 @@
 package LaSenza.pages
 
-import org.openqa.selenium.Alert
+import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
-import org.openqa.selenium.By
+import org.openqa.selenium.Alert
+
+import static org.hamcrest.MatcherAssert.assertThat
+import static org.hamcrest.Matchers.equalTo
 
 class PDPage extends ForAllPage{
 
@@ -18,13 +21,13 @@ class PDPage extends ForAllPage{
     @FindBy(xpath = "//div[@class='product-name']/h1/a")
     private WebElement productName;
 
-    @FindBy(xpath = "//div[@class='product-options-block']//dd[1]//select")
+    @FindBy(xpath = "//div[@class='product-options-block']//div[@class='option-wrapper'][1]//select")
     private WebElement selectColor;
 
-    @FindBy(xpath = "//div[@class='product-options-block']//dd[2]//select")
+    @FindBy(xpath = "//div[@class='product-options-block']//div[@class='option-wrapper'][2]//select")
     private WebElement selectSize;
 
-    @FindBy(xpath = "//button[@class='button btn-cart']")
+    @FindBy(xpath = "//button[@title='Add to Cart']")
     private WebElement buttonAddToCart;
 
     @FindBy(id = "qty")
@@ -38,10 +41,7 @@ class PDPage extends ForAllPage{
 
     def click_add_to_cart_button() {
         element(buttonAddToCart).click()
-        Thread.sleep(3000)
-        Alert alert = getDriver().switchTo().alert();
-        alert.accept()
-    }
+   }
 
     def fill_qty(String qty) {
         typeInto(fieldQTY, qty)
@@ -63,5 +63,11 @@ class PDPage extends ForAllPage{
 
     def contain_configurable_options() {
         return driver.findElements(By.xpath("//div[@class='product-options-block']//dd[2]//select")).size() != 0
+    }
+
+    def assert_modal_window(String textAlert) {
+        Alert alert = getDriver().switchTo().alert();
+        assertThat(alert.getText(), equalTo(textAlert))
+        alert.accept()
     }
 }

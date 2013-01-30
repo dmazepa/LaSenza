@@ -24,7 +24,7 @@ And Enter valid data.
 And Click login button.
 Then I become logged in without leaving the page.
 
-Scenario: Users can subscribes to SMS Marketing messages.
+Scenario: Users can subscribes to SMS Marketing messages (phase 2).
 Given I am on checkout page as User.
 When I check SMS Marketing Signup.
 Then Triggers a partial page refresh through which a form field for mobile phone number displays.
@@ -39,8 +39,3 @@ Scenario: Show to users appropriate error message if he enter wrong password.
 Given I am on checkout page as User.
 When I create account and enter wrong password.
 Then I get error message.
-
-Scenario: Allow Users create account from Order Recipient page.
-Given I am on checkout page as User.
-When I create account.
-Then I get account.

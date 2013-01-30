@@ -43,7 +43,7 @@ class HeaderCustomerWithCookieSteps {
     @Given("I am on home page as customer with cookie enabled.")
     public void open_home_page_as_guest_with_cookie(){
         user.log_in(true)
-        user.timeout(14000)
+        user.timeout(16000)
         user.refresh_page()
     }
 
