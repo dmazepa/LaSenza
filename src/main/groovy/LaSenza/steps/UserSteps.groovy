@@ -316,6 +316,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def assert_item_not_added() {
+        pDPage.assert_modal_window("The maximum quantity allowed for purchase is 10000.")
         homePage.assert_mini_cart_not_appears()
         homePage.assert_item_not_added()
     }
@@ -348,7 +349,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_second_step_of_checkout() {
-        open_first_step_of_checkout(1929)
+        open_first_step_of_checkout(1472)
         enter_valid_data_on_checkout_page("test1@speroteck.com", "111")
         click_button_confirm_and_pay()
     }
@@ -478,10 +479,10 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def add_items_to_cart() {
-        open_pdp(1929)
+        open_pdp(1472)
         set_qty_on_pdp("2")
         click_add_to_cart_button_pdp()
-        open_pdp(3067)
+        open_pdp(1574)
         choose_configurable_options()
         click_add_to_cart_button_pdp()
         refresh_page()
@@ -653,7 +654,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_second_step_of_checkout_with_invalid_data() {
-        open_first_step_of_checkout(1929)
+        open_first_step_of_checkout(1472)
         enter_valid_data_on_checkout_page("test1@speroteck.com", "1111")
         click_button_confirm_and_pay()
     }
@@ -736,8 +737,9 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
+    @Pending
     def assert_location_on_map() {
-        storeLocatorPage.assert_location_on_map()
+        //storeLocatorPage.assert_location_on_map()
     }
 
     @Step
@@ -753,5 +755,33 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_default_radius() {
         storeLocatorPage.assert_default_radius()
+    }
+
+    @Step
+    def open_create_account_page() {
+        homePage.open()
+        homePage.click_on_link_login()
+        loginPage.click_on_button_register()
+    }
+
+    @Step
+    def create_account(def email, def pas) {
+        fill_field_first_name()
+        fill_field_last_name()
+        /*fill_field_email()
+        fill_field_password()
+        fill_field_confirm_password()
+        click_button_register()*/
+    }
+
+    @Step
+    @Pending
+    def fill_field_last_name() {
+        createAccountPage.fill_field_last_name()
+    }
+
+    @Step
+    def fill_field_first_name() {
+        createAccountPage.fill_field_first_name()
     }
 }

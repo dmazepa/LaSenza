@@ -17,12 +17,12 @@ class EditInfSteps {
     public void on_checkout_page_as_user(){
         user.opens_home_page()
         user.log_out_if_logged_in()
-        user.open_first_step_of_checkout(1929)
+        user.open_first_step_of_checkout(1472)
     }
 
     @Given("I am on checkout page as User and choose payment by Credit cart.")
     public void on_checkout_page_as_user_with_payment_visa(){
-        user.open_first_step_of_checkout(1929)
+        user.open_first_step_of_checkout(1472)
     }
 
     @Given("I am on checkout page as Customer and process checkout with checked Save in Address Book checkbox.")
@@ -30,7 +30,7 @@ class EditInfSteps {
         user.log_in(true)
         customer.assert_on_my_account_dashboard_page()
         customer.delete_additional_shipping_address()
-        customer.open_first_step_of_checkout(3067)
+        customer.open_first_step_of_checkout(1574)
         customer.enter_new_shipping_address()
         customer.check_checkbox_save_address()
         customer.pass_checkout()
@@ -44,7 +44,7 @@ class EditInfSteps {
     @When("I create account.")
     public void create_account(){
         Random random = new Random()
-        user.enter_valid_data_on_checkout_page("account${random.nextInt(1000)}@sproteck.com", "111")
+        user.enter_valid_data_on_checkout_page("checkout${random.nextInt(1000)}@sproteck.com", "111")
         user.create_account_on_checkout_page("testthis","testthis")
         user.click_button_confirm_and_pay_via_javascript()
         user.click_submit_button()
@@ -61,6 +61,7 @@ class EditInfSteps {
         Random random = new Random()
         user.enter_valid_data_on_checkout_page("account${random.nextInt(1000)}@sproteck.com", "111")
         user.create_account_on_checkout_page("testthis", "testthis1")
+        user.click_button_confirm_and_pay_via_javascript()
     }
 
     @When("Enter valid data.")

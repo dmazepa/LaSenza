@@ -16,4 +16,12 @@ class CreateAccountPage extends ForAllPage{
     def assert_on_create_account_page() {
         element(inputFirstName).shouldBeVisible()
     }
+
+    def fill_field_first_name() {
+        element(inputFirstName).type("First Name")
+    }
+
+    def fill_field_last_name() {
+
+    }
 }

@@ -11,7 +11,7 @@ class AddToCartConfigurablePdpSteps {
 
     @Given("I am on PDP with configurable product.")
     public void open_pdp_configurable(){
-        user.open_pdp(3067)
+        user.open_pdp(1574)
     }
 
     @When("Set multiple product conﬁgurations.")

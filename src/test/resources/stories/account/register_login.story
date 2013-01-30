@@ -3,7 +3,7 @@ Meta:
 Narrative:
 Customers can register or log in to the site
 
-Scenario: Customers can log in in to his account.
+Scenario: Customers can log in to his account.
 Given I am on Login page.
 When Passing successful authentication.
 Then I get My Account: Dashboard page with logged in status.
