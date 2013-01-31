@@ -12,7 +12,6 @@ class MultiStoresSupportSteps {
     @When("I choose <siteVersion> version of site.")
     public void chooseSiteVersion(String siteVersion){
         user.click_on_select_location()
-        user.waitForPopUP()
         user.selectLocation(siteVersion)
     }
 

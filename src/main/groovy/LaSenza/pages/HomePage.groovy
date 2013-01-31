@@ -127,18 +127,15 @@ class HomePage extends ForAllPage{
 
     def assert_location(String location) {
         assert getDriver().findElements(By.xpath("//strong[@class='current language-${location}']")) != []
-        assert getDriver().getCurrentUrl().contains("?___store=${location}")
+        //assert getDriver().getCurrentUrl().contains("?___store=${location}")
     }
 
     def click_on_select_location() {
         element(selectLocation).click()
     }
 
-    def waitForPopUPLocation() {
-        element(popUpListLocations).waitUntilVisible()
-    }
-
     def click_on_location_in_list(String location) {
+        element(popUpListLocations).waitUntilVisible()
         getDriver().findElement(By.xpath("//li[@class='language-${location}']")).click()
     }
 

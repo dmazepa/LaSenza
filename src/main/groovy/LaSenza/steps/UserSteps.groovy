@@ -117,11 +117,6 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def waitForPopUP() {
-        homePage.waitForPopUPLocation()
-    }
-
-    @Step
     def selectLocation(String location) {
         homePage.click_on_location_in_list(location)
     }
