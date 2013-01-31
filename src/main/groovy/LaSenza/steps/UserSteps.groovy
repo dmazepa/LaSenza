@@ -49,7 +49,7 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_carousel() {
         click_on_first_image_of_slider()
-        timeout(6000)
+        timeout(5000)
         homePage.assert_image_active(2)
         timeout(5000)
         homePage.assert_image_active(3)

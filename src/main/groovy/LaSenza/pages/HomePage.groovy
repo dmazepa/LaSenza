@@ -110,8 +110,7 @@ class HomePage extends ForAllPage{
         System.out.println(element(sliderImage3).isCurrentlyVisible());
         element(buttonFirstImageSlider).click();
         element(sliderImage1).waitUntilVisible()
-        //waitABit(2000)
-        Thread.sleep(2000)
+        //Thread.sleep(2000)
         System.out.println(element(sliderImage1).isCurrentlyVisible());
         System.out.println(element(sliderImage2).isCurrentlyVisible());
         System.out.println(element(sliderImage3).isCurrentlyVisible());

@@ -33,7 +33,7 @@ class UseDiscountCheckoutSteps {
     @When("I Enter a valid coupon code.")
     public  void enter_valid_coupon(){
         admin.create_coupon_code_if_not_exist()
-        user.open_first_step_of_checkout(1929)
+        user.open_first_step_of_checkout(1472)
         user.enter_coupon("12345")
     }
 

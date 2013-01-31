@@ -20,7 +20,7 @@ class HeaderCustomerWithCookieSteps {
     @Given("I am on home page as customer with cookies.")
     public void open_home_page_as_customer_with_cookie(){
         admin.open_admin_panel()
-        admin.set_cookie_time("10")
+        admin.set_cookie_time("5")
         user.log_in(true)
     }
 
@@ -42,8 +42,9 @@ class HeaderCustomerWithCookieSteps {
 
     @Given("I am on home page as customer with cookie enabled.")
     public void open_home_page_as_guest_with_cookie(){
+        user.click_on_link_please_log_in()
         user.log_in(true)
-        user.timeout(16000)
+        user.timeout(12000)
         user.refresh_page()
     }
 

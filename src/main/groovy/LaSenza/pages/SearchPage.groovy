@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
 import static org.hamcrest.MatcherAssert.assertThat
-
+import static org.hamcrest.Matchers.equalTo
 
 class SearchPage extends ForAllPage{
 
@@ -16,6 +16,9 @@ class SearchPage extends ForAllPage{
     @FindBy(xpath = "//div[@class='breadcrumbs']/ul/li[2]")
     private WebElement breadcrumbsLevel2;
 
+    @FindBy(xpath = "//h1")
+    private WebElement titlePage
+
     @FindBy(xpath = "//p[@class='note-msg']")
     private WebElement blockMSGNoResults;
 
@@ -23,13 +26,13 @@ class SearchPage extends ForAllPage{
     private WebElement blockSearchResults;
 
     def assert_on_search_page() {
-        getTitle().contains("Search results for")
-        shouldContainText("Search results for")
-        assertThat(element(breadcrumbsLevel2).getText(), containsText("Search results for:"))
+        getTitle().equals("Search results for \'text\'")
+        def r = element(titlePage).getText()
+        assertThat(element(titlePage).getText(), equalTo("SEARCH RESULTS FOR \'TEXT\'"))
+        assertThat(element(breadcrumbsLevel2).getText(), equalTo("Search results for \'text\'"))
     }
 
     def assert_no_results() {
-        def p=element(blockMSGNoResults).getText()
         assertThat(element(blockMSGNoResults).getText(), containsText("Your search returns no results."))
         element(blockSearchResults).shouldNotBePresent()
     }

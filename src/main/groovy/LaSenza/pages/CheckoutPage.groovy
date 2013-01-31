@@ -191,6 +191,7 @@ class CheckoutPage extends ForAllPage{
     }
 
     def fill_cart_name() {
+        element(fieldCartName).waitUntilVisible()
         element(fieldCartName).type("Visa")
     }
 

@@ -15,12 +15,6 @@ When I specify a search radius "100".
 And Click button search.
 Then Only locations that fall within the selected radius will be returned in the search result.
 
-Scenario: For the incorrect address appropriate error message displays.
-Given I am on Store Locator page.
-When I enter search term "" into Address field.
-And Click button search.
-Then A popup displays to indicate that The address is not valid.
-
 Scenario: Search gives no results.
 Given I am on Store Locator page.
 When I enter search term "text" into Address field.
@@ -47,3 +41,9 @@ Scenario: Allow users clear all actions on Store Locator page.
 Given I am on Store Locator page with some previous actions.
 When I click link Reset Locations.
 Then Restores the page to its initial load state where all available store locations are displayed in the sidebar.
+
+Scenario: For the incorrect address appropriate error message displays.
+Given I am on Store Locator page.
+When I enter search term "" into Address field.
+And Click button search.
+Then A popup displays to indicate that The address is not valid.
