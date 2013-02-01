@@ -1,13 +1,19 @@
 package LaSenza.Steps
 
-import org.jbehave.core.annotations.*
-import net.thucydides.core.annotations.Steps
+import LaSenza.steps.CustomerSteps
 import LaSenza.steps.UserSteps
+import net.thucydides.core.annotations.Steps
+import org.jbehave.core.annotations.Given
+import org.jbehave.core.annotations.Then
+import org.jbehave.core.annotations.When
 
 class SecondStepSteps {
 
     @Steps
     UserSteps user
+
+    @Steps
+    CustomerSteps customer
 
     @Given("I am on second step of checkout process with valid information.")
     public void on_second_step_of_checkout(){
@@ -25,6 +31,7 @@ class SecondStepSteps {
         user.go_to_checkout()
         user.enter_payment_inf("111")
         user.click_button_confirm_and_pay_via_javascript()
+        user.wait_for_confirmation_page()
     }
 
     @When("I click <element> link <counter> Edit.")

@@ -191,12 +191,16 @@ class CheckoutPage extends ForAllPage{
     }
 
     def fill_cart_name() {
-        element(fieldCartName).waitUntilVisible()
-        element(fieldCartName).type("Visa")
+        element(loader).waitUntilNotVisible()
+        fieldCartName.clear()
+        fieldCartName.sendKeys("Visa")
     }
 
     def fill_cart_number_field() {
-        element(fieldCartNumber).type("4111111111111111")
+        element(loader).waitUntilNotVisible()
+        element(fieldCartNumber).waitUntilVisible()
+        fieldCartNumber.clear()
+        fieldCartNumber.sendKeys("4111111111111111")
     }
 
     def select_month() {
@@ -204,6 +208,7 @@ class CheckoutPage extends ForAllPage{
     }
 
     def select_year() {
+        element(selectYear).waitUntilVisible()
         element(selectYear).selectByValue("2022");
     }
 
@@ -262,6 +267,8 @@ class CheckoutPage extends ForAllPage{
 
     def click_on_link_What_is_this() {
         element(linkWhatIsThis).waitUntilVisible()
+        element(loader).waitUntilNotVisible()
+        Thread.sleep(1000)
         element(linkWhatIsThis).click()
         element(linkCloseWhatIsThis).waitUntilVisible()
     }
@@ -325,7 +332,7 @@ class CheckoutPage extends ForAllPage{
         element(errorMessageWrongPassword).shouldBeVisible()
     }
 
-    def click_on_edit_link(def element, def counter) {
+    def click_on_edit_link(def element1, def counter) {
         getDriver().findElement(By.xpath("//div[@class='review-block-left']/div[${counter}]//button")).click()
     }
 
@@ -349,5 +356,9 @@ class CheckoutPage extends ForAllPage{
 
     def message_appears_promo_code_applied() {
         shouldContainText("AutoTestCoupon (12345) has been applied to your order.")
+    }
+
+    def wait_for_confirmation_page() {
+        waitForTextToAppear("Please review your information before submitting your order. ")
     }
 }

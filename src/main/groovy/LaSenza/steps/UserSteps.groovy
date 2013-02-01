@@ -4,11 +4,10 @@ import net.thucydides.core.annotations.Pending
 import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 import net.thucydides.core.steps.ScenarioSteps
+import org.openqa.selenium.Alert
 import LaSenza.pages.*
 
 import static org.hamcrest.MatcherAssert.assertThat
-import org.openqa.selenium.Alert
-
 import static org.hamcrest.Matchers.equalTo
 
 class UserSteps extends ScenarioSteps {
@@ -276,6 +275,7 @@ class UserSteps extends ScenarioSteps {
     @Step
     def click_add_to_cart_button_pdp() {
         pDPage.click_add_to_cart_button()
+        homePage.assert_mini_cart_appears()
     }
 
     @Step
@@ -656,6 +656,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def assert_error_message_wrong_payment() {
+        Thread.sleep(3000)
         Alert alert = getDriver().switchTo().alert();
         assertThat(alert.getText(), equalTo("Please enter a valid credit card verification number."))
         alert.accept()
@@ -778,5 +779,10 @@ class UserSteps extends ScenarioSteps {
     @Step
     def fill_field_first_name() {
         createAccountPage.fill_field_first_name()
+    }
+
+    @Step
+    def wait_for_confirmation_page() {
+        checkoutPage.wait_for_confirmation_page()
     }
 }
