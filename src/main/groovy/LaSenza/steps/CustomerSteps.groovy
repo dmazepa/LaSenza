@@ -169,4 +169,7 @@ class CustomerSteps extends UserSteps{
         myAccountPage.delete_additional_shipping_address()
     }
 
+    def wait_for_thank_you_page() {
+        thankYouPage.waitForThankYouPage()
+    }
 }

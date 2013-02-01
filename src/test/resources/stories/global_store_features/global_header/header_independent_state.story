@@ -17,7 +17,7 @@ Then I should redirects to the Store Locator page.
 
 Scenario: Magnifying glass icon performs the search and navigates users to a Search Results page
 Given I am on home page.
-And I enter "text" to search field.
+And I enter "text1" to search field.
 When I click magnifying glass icon.
 Then Search performs and navigates me to a Search Results page.
 

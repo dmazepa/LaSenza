@@ -22,7 +22,7 @@ class CLPage extends ForAllPage{
     @FindBy(xpath = "//div[@class='more-views']/ul/li")
     private WebElement thumbnailImageQW
 
-    @FindBy(xpath = "//a/a/a")
+    @FindBy(xpath = "//div[@class='brand-name']/a")
     private WebElement linkBrandName
 
     @FindBy(xpath = "//h1/a")
@@ -34,7 +34,7 @@ class CLPage extends ForAllPage{
     @FindBy(xpath = "//a[contains(text(), 'View Full Details')]")
     private WebElement linkViewFullDetails
 
-    @FindBy(xpath = "//div[@class='product-view']//a[@class='link-wishlist']")
+    @FindBy(xpath = "//span[contains(text(), 'Add to Wishlist')]")
     private WebElement linkAddToWishList
 
     @FindBy(xpath = "//h1")
@@ -93,6 +93,7 @@ class CLPage extends ForAllPage{
     }
 
     def click_on_add_to_wish_list() {
+        element(linkAddToWishList).waitUntilVisible()
         element(linkAddToWishList).click()
     }
 

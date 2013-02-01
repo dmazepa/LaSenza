@@ -26,14 +26,14 @@ class SearchPage extends ForAllPage{
     private WebElement blockSearchResults;
 
     def assert_on_search_page() {
-        getTitle().equals("Search results for \'text\'")
+        getTitle().equals("Search results for \'text1\'")
         def r = element(titlePage).getText()
-        assertThat(element(titlePage).getText(), equalTo("SEARCH RESULTS FOR \'TEXT\'"))
-        assertThat(element(breadcrumbsLevel2).getText(), equalTo("Search results for \'text\'"))
+        assertThat(element(titlePage).getText(), equalTo("SEARCH RESULTS FOR \'TEXT1\'"))
+        assertThat(element(breadcrumbsLevel2).getText(), equalTo("SEARCH RESULTS FOR \'TEXT1\'"))
     }
 
     def assert_no_results() {
-        assertThat(element(blockMSGNoResults).getText(), containsText("Your search returns no results."))
+        assertThat(element(blockMSGNoResults).getText(), containsText("Your search returned no results."))
         element(blockSearchResults).shouldNotBePresent()
     }
 }

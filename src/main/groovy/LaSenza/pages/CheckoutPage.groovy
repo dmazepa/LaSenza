@@ -228,7 +228,6 @@ class CheckoutPage extends ForAllPage{
     def click_button_submit() {
         element(buttonSubmit).waitUntilVisible()
         element(buttonSubmit).click()
-
     }
 
     def click_on_link_already_register() {

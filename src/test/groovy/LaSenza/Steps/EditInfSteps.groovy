@@ -97,6 +97,7 @@ class EditInfSteps {
 
     @Then("I get account.")
     public void assert_on_my_account_page(){
+        customer.wait_for_thank_you_page()
         customer.assert_logged_in()
     }
 

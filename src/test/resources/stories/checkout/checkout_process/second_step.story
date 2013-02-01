@@ -22,5 +22,6 @@ Examples:
 |billing edit           |1
 |shipping address edit  |2
 |payment edit           |4
-|shipping method edit   |5
 |other edit             |7
+|shipping method edit   |5
+

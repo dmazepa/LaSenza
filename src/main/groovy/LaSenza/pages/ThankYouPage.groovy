@@ -53,4 +53,8 @@ class ThankYouPage extends ForAllPage{
     def click_return_to_shopping() {
         element(linkReturnToShopping).click()
     }
+
+    def waitForThankYouPage() {
+        element(linkReturnToShopping).waitUntilVisible()
+    }
 }
