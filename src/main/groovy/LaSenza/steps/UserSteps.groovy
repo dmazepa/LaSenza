@@ -48,7 +48,7 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_carousel() {
         click_on_first_image_of_slider()
-        timeout(5000)
+        timeout(7000)
         homePage.assert_image_active(2)
         timeout(5000)
         homePage.assert_image_active(3)
@@ -779,10 +779,5 @@ class UserSteps extends ScenarioSteps {
     @Step
     def fill_field_first_name() {
         createAccountPage.fill_field_first_name()
-    }
-
-    @Step
-    def wait_for_confirmation_page() {
-        checkoutPage.wait_for_confirmation_page()
     }
 }

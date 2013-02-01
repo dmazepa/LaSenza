@@ -204,6 +204,7 @@ class CheckoutPage extends ForAllPage{
     }
 
     def select_month() {
+        element(loader).waitUntilNotVisible()
         element(selectMonth).selectByValue("3")
     }
 
@@ -213,12 +214,14 @@ class CheckoutPage extends ForAllPage{
     }
 
     def fill_verification_number_field(def verificationNumber) {
+        element(loader).waitUntilNotVisible()
         element(fieldVerificationNumber).type(verificationNumber)
     }
 
     def check_shipment() {
         element(loader).waitUntilNotVisible()
-        element(shipment).waitUntilVisible();
+        element(shipment).waitUntilPresent();
+        Thread.sleep(1000)
         element(shipment).click();
     }
 

@@ -28,10 +28,7 @@ class SecondStepSteps {
 
     @Given("I am on second step of checkout process with information, that I want to change.")
     public void on_second_step_of_checkout_with_wrong_inf_change(){
-        user.go_to_checkout()
-        user.enter_payment_inf("111")
-        user.click_button_confirm_and_pay_via_javascript()
-        user.wait_for_confirmation_page()
+        user.open_second_step_of_checkout()
     }
 
     @When("I click <element> link <counter> Edit.")
