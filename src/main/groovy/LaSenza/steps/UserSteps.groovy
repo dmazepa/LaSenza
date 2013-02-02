@@ -275,7 +275,6 @@ class UserSteps extends ScenarioSteps {
     @Step
     def click_add_to_cart_button_pdp() {
         pDPage.click_add_to_cart_button()
-        homePage.assert_mini_cart_appears()
     }
 
     @Step

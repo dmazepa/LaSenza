@@ -66,6 +66,7 @@ class PDPage extends ForAllPage{
     }
 
     def assert_modal_window(String textAlert) {
+        Thread.sleep(2000)
         Alert alert = getDriver().switchTo().alert();
         assertThat(alert.getText(), equalTo(textAlert))
         alert.accept()

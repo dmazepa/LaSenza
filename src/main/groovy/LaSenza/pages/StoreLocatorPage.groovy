@@ -67,6 +67,7 @@ class StoreLocatorPage extends ForAllPage{
     }
 
     def assert_pop_up_present() {
+        Thread.sleep(2000)
         Alert alert = getDriver().switchTo().alert();
         assertThat(alert.getText(), equalTo("The address is not valid."))
         alert.accept()
