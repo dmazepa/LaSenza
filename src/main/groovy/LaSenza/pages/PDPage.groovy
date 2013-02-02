@@ -30,6 +30,9 @@ class PDPage extends ForAllPage{
     @FindBy(xpath = "//button[@title='Add to Cart']")
     private WebElement buttonAddToCart;
 
+    @FindBy(xpath = "//div[@class='preloader-bg']")
+    private WebElement preloader
+
     @FindBy(id = "qty")
     private WebElement fieldQTY;
 
@@ -41,6 +44,8 @@ class PDPage extends ForAllPage{
 
     def click_add_to_cart_button() {
         element(buttonAddToCart).click()
+        element(preloader).waitUntilVisible()
+        element(preloader).waitUntilNotVisible()
    }
 
     def fill_qty(String qty) {

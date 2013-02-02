@@ -271,7 +271,7 @@ class CheckoutPage extends ForAllPage{
     def click_on_link_What_is_this() {
         element(linkWhatIsThis).waitUntilVisible()
         element(loader).waitUntilNotVisible()
-        Thread.sleep(1000)
+        Thread.sleep(2000)
         element(linkWhatIsThis).click()
         element(linkCloseWhatIsThis).waitUntilVisible()
     }
