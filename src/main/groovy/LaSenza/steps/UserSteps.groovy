@@ -779,4 +779,9 @@ class UserSteps extends ScenarioSteps {
     def fill_field_first_name() {
         createAccountPage.fill_field_first_name()
     }
+
+    @Step
+    def click_add_to_cart_button_expect_error() {
+        pDPage.click_add_to_cart_button_expect_error()
+    }
 }

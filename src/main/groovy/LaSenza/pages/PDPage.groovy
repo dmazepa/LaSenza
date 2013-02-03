@@ -46,7 +46,11 @@ class PDPage extends ForAllPage{
         element(buttonAddToCart).click()
         element(preloader).waitUntilVisible()
         element(preloader).waitUntilNotVisible()
-   }
+    }
+
+    def click_add_to_cart_button_expect_error() {
+        element(buttonAddToCart).click()
+    }
 
     def fill_qty(String qty) {
         typeInto(fieldQTY, qty)

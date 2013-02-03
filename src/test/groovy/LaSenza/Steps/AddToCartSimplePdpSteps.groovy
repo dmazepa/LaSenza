@@ -20,7 +20,7 @@ class AddToCartSimplePdpSteps {
 
     @When("I click Add to Cart button.")
     public void click_add_to_cart_button(){
-        user.click_add_to_cart_button_pdp()
+        user.click_add_to_cart_button_expect_error()
     }
 
     @When('I fill quantity "$qty" greater than the inventory available.')
