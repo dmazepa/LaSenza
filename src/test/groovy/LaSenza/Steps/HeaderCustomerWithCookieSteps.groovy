@@ -21,6 +21,7 @@ class HeaderCustomerWithCookieSteps {
     public void open_home_page_as_customer_with_cookie(){
         admin.open_admin_panel()
         admin.set_cookie_time("5")
+        admin.clean_cache()
         user.log_in(true)
     }
 
