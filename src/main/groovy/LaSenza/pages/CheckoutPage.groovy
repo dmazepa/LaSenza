@@ -209,12 +209,14 @@ class CheckoutPage extends ForAllPage{
     }
 
     def select_year() {
+        element(loader).waitUntilNotVisible()
         element(selectYear).waitUntilVisible()
         element(selectYear).selectByValue("2022");
     }
 
     def fill_verification_number_field(def verificationNumber) {
         element(loader).waitUntilNotVisible()
+        element(fieldVerificationNumber).waitUntilVisible()
         element(fieldVerificationNumber).type(verificationNumber)
     }
 
@@ -235,6 +237,7 @@ class CheckoutPage extends ForAllPage{
 
     def click_button_submit() {
         element(buttonSubmit).waitUntilVisible()
+        Thread.sleep(1000)
         element(buttonSubmit).click()
     }
 
