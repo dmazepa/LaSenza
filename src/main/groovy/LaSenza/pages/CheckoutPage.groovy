@@ -95,6 +95,9 @@ class CheckoutPage extends ForAllPage{
     @FindBy(xpath = "//input[@value='VI']")
     private WebElement inputCreditCart
 
+    @FindBy(id= "p_method_moneriscc")
+    private WebElement inputPaymentMethodCreditCart
+
     @FindBy(xpath = "//input[@class='checkbox create_an_account']")
     private WebElement checkboxCreateAccount
 
@@ -184,6 +187,8 @@ class CheckoutPage extends ForAllPage{
 
     def click_input_credit_cart() {
         element(loader).waitUntilNotVisible()
+        element(inputPaymentMethodCreditCart).click()
+        element(loader).waitUntilNotVisible()
         Mouse mouse = ((HasInputDevices) driver).getMouse()
         Locatable hoverItem = (Locatable) inputCreditCart
         mouse.click(hoverItem.getCoordinates())
@@ -209,26 +214,28 @@ class CheckoutPage extends ForAllPage{
     }
 
     def select_year() {
-        element(loader).waitUntilNotVisible()
         element(selectYear).waitUntilVisible()
+        element(loader).waitUntilNotVisible()
         element(selectYear).selectByValue("2022");
     }
 
     def fill_verification_number_field(def verificationNumber) {
-        element(loader).waitUntilNotVisible()
         element(fieldVerificationNumber).waitUntilVisible()
+        Thread.sleep(1000)
+        element(loader).waitUntilNotVisible()
+        Thread.sleep(1000)
         element(fieldVerificationNumber).type(verificationNumber)
     }
 
     def check_shipment() {
-        Thread.sleep(3000)
+        Thread.sleep(2000)
         element(loader).waitUntilNotVisible()
         element(shipment).waitUntilVisible();
         element(shipment).click();
     }
 
     def click_button_confirm_and_pay() {
-        Thread.sleep(4000)
+        Thread.sleep(3000)
         Mouse mouse = ((HasInputDevices) driver).getMouse()
         Locatable hoverItem = (Locatable) buttonConfirmAndPay
         mouse.click(hoverItem.getCoordinates())
