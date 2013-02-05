@@ -81,6 +81,7 @@ class EditInfSteps {
 
     @Then("I can click on link What is this?")
     public void click_on_link_What_is_this(){
+        user.click_input_credit_cart()
         user.click_on_link_What_is_this()
     }
 

@@ -43,12 +43,14 @@ class PDPage extends ForAllPage{
     }
 
     def click_add_to_cart_button() {
+        element(buttonAddToCart).waitUntilVisible()
         element(buttonAddToCart).click()
         element(preloader).waitUntilVisible()
         element(preloader).waitUntilNotVisible()
     }
 
     def click_add_to_cart_button_expect_error() {
+        element(buttonAddToCart).waitUntilVisible()
         element(buttonAddToCart).click()
     }
 

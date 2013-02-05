@@ -186,6 +186,7 @@ class CheckoutPage extends ForAllPage{
     }
 
     def click_input_credit_cart() {
+        element(inputPaymentMethodCreditCart).waitUntilVisible()
         element(loader).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).click()
         element(loader).waitUntilNotVisible()

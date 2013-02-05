@@ -18,7 +18,7 @@ class MainElementsSteps {
     @Given("I am on QW with one image.")
     public void openQWWithOneImage(){
         user.opens_CLP("/sale")
-        user.open_quick_view(2)
+        user.open_quick_view(1)
     }
 
     @Given("I shouldn't see thumbnail images.")

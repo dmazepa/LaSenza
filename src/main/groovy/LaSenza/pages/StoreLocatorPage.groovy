@@ -64,6 +64,7 @@ class StoreLocatorPage extends ForAllPage{
 
     def click_button_search() {
         element(buttonSearch).click()
+        Thread.sleep(2000)
     }
 
     def assert_pop_up_present() {

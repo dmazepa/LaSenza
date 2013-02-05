@@ -17,13 +17,13 @@ Then Only locations that fall within the selected radius will be returned in the
 
 Scenario: Search gives no results.
 Given I am on Store Locator page.
-When I enter search term "text" into Address field.
+When I enter search term "text, 12" into Address field.
 And Click button search.
 Then The area to the left of the map indicates No results found.
 
 Scenario: Allow users clear entered search terms by one click.
 Given I am on Store Locator page.
-When I enter search term "text" into Address field.
+When I enter search term "text, 12" into Address field.
 When I click Reset button.
 Then Address field clears.
 
