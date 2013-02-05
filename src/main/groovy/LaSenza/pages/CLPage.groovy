@@ -5,6 +5,9 @@ import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.*
 import org.openqa.selenium.interactions.Actions
 
+import static org.hamcrest.MatcherAssert.assertThat
+import static org.hamcrest.Matchers.equalTo
+
 class CLPage extends ForAllPage{
 
     private def productName
@@ -43,12 +46,22 @@ class CLPage extends ForAllPage{
     @FindBy(xpath = "//div/div")
     private WebElement elementOutsideQW
 
+    @FindBy(xpath = "//div[@class='option-wrapper'][2]//select")
+    private WebElement selectSizeFirstQV
+
+    @FindBy(xpath = "//a[@class='add-more-items']")
+    private WebElement linkAddMoreItemsQV
+
+    @FindBy(xpath = "//div//select")
+    private WebElement selectColorFirstQV
+
     def open_quick_w(def i) {
         Locatable hoverItem = (Locatable) getDriver().findElement(By.xpath("//div[@class='category-products']//li[${i}]/div/a[1]"))
         Mouse mouse = ((HasInputDevices) driver).getMouse()
         mouse.mouseMove(hoverItem.getCoordinates())
         element(By.xpath("//div[@class='category-products']//li[${i}]/div/a[2]")).waitUntilVisible()
                 .click()
+        element(buttonQWClose).waitUntilVisible()
     }
 
     def set_product_name(def i) {
@@ -98,8 +111,6 @@ class CLPage extends ForAllPage{
     }
 
     def assert_on_CLP(String nameCLP) {
-        def f =  element(titleCLP).getText()
-        def d =  nameCLP.toUpperCase()
         assert element(titleCLP).getText().contains(nameCLP.toUpperCase())
     }
 
@@ -110,4 +121,37 @@ class CLPage extends ForAllPage{
         element(elementOutsideQW).click()
     }
 
+    def assert_select_size_disable_QV() {
+        element(selectSizeFirstQV).shouldNotBeEnabled()
+    }
+
+    def assert_QTY_field_prefilled_QV(def fieldPosition, String value) {
+        assertThat(getDriver().findElement(By.xpath("//fieldset/div[${fieldPosition}]//input")).getAttribute("value"), equalTo(value))
+    }
+
+    def assert_two_rows_of_additional_products_opened_QV() {
+        assertThat(getDriver().findElements(By.xpath("//fieldset/div")).size(), equalTo(2))
+    }
+
+    def assert_QTY_third_row_prefilled_QV() {
+        assertThat(getDriver().findElement(By.xpath("//fieldset/div[3]//input")).getAttribute("value"), equalTo("1"))
+    }
+
+    def add_row_additional_product_QV() {
+        def additionalProductsQuantity = getDriver().findElements(By.xpath("//fieldset/div")).size()
+        element(linkAddMoreItemsQV).click()
+        element(By.xpath("//fieldset/div[${additionalProductsQuantity+1}]")).waitUntilVisible()
+    }
+
+    def set_QTY_additional_products_QV(String rowNumber, String value) {
+        element(By.xpath("//fieldset/div[${rowNumber}]//input")).type(value)
+    }
+
+    def select_color_first_row_QV() {
+        element(selectColorFirstQV).selectByIndex(1)
+    }
+
+    def assert_select_size_first_row_enabled_QV() {
+        element(selectSizeFirstQV).shouldBeEnabled()
+    }
 }

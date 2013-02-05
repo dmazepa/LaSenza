@@ -13,7 +13,6 @@ import static org.hamcrest.Matchers.equalTo
 class UserSteps extends ScenarioSteps {
 
     HomePage homePage
-    CLPage clPage
     PDPage pDPage
     LoginPage loginPage
     CreateAccountPage createAccountPage
@@ -27,7 +26,6 @@ class UserSteps extends ScenarioSteps {
         super(pages)
         homePage = pages[HomePage]
         homePage = pages[HomePage]
-        clPage = pages[CLPage]
         pDPage = pages[PDPage]
         loginPage = pages[LoginPage]
         createAccountPage = pages[CreateAccountPage]
@@ -132,12 +130,12 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def send_esc_key() {
-        clPage.send_esc_key()
+        cLPage.send_esc_key()
     }
 
     @Step
     def assert_qw_absent() {
-        clPage.qw_should_be_absent()
+        cLPage.qw_should_be_absent()
     }
 
     @Step
@@ -146,17 +144,17 @@ class UserSteps extends ScenarioSteps {
     }
 
     def click_close_button() {
-        clPage.click_close_button()
+        cLPage.click_close_button()
     }
 
     @Step
     def assert_no_thumbnail_images_qw() {
-        clPage.qw_should_not_have_thumbnail_images()
+        cLPage.qw_should_not_have_thumbnail_images()
     }
 
     @Step
     def click_on_qw_element(String element) {
-        clPage.click_on_qw_element(element)
+        cLPage.click_on_qw_element(element)
     }
 
     @Step
@@ -337,8 +335,8 @@ class UserSteps extends ScenarioSteps {
 
 
     @Step
-    def open_quick_view() {
-        cLPage.open_quick_w(2)
+    def open_quick_view(def i) {
+        cLPage.open_quick_w(i)
     }
 
     @Step
@@ -783,5 +781,45 @@ class UserSteps extends ScenarioSteps {
     @Step
     def click_add_to_cart_button_expect_error() {
         pDPage.click_add_to_cart_button_expect_error()
+    }
+
+    @Step
+    def assert_select_size_disable_QV() {
+        cLPage.assert_select_size_disable_QV()
+    }
+
+    @Step
+    def assert_QTY_field_prefilled_QV(String fieldPosition, String value) {
+        cLPage.assert_QTY_field_prefilled_QV(fieldPosition, value)
+    }
+
+    @Step
+    def assert_two_rows_of_additional_products_opened_QV() {
+        cLPage.assert_two_rows_of_additional_products_opened_QV()
+    }
+
+    @Step
+    def assert_QTY_third_row_prefilled_QV() {
+        cLPage.assert_QTY_third_row_prefilled_QV()
+    }
+
+    @Step
+    def add_row_additional_product_QV() {
+        cLPage.add_row_additional_product_QV()
+    }
+
+    @Step
+    def set_QTY_additional_products_QV(String rowNumber, String value) {
+        cLPage.set_QTY_additional_products_QV(rowNumber, value)
+    }
+
+    @Step
+    def select_color_first_row_QV() {
+        cLPage.select_color_first_row_QV()
+    }
+
+    @Step
+    def assert_select_size_first_row_enabled_QV() {
+        cLPage.assert_select_size_first_row_enabled_QV()
     }
 }
