@@ -248,8 +248,14 @@ class HomePage extends ForAllPage{
     }
 
     def store_state_of_total_price_and_qty() {
-        qtyHeaderBefore = element(textQtyHeader).getText()
-        priceHeaderBefore = element(textPriceHeader).getText()
+        if(getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() != 0){
+            qtyHeaderBefore = element(textQtyHeader).getText()
+            priceHeaderBefore = element(textPriceHeader).getText()
+        } else{
+            qtyHeaderBefore = 0
+            priceHeaderBefore = 0
+        }
+
     }
 
     def click_on_click_on_element_in_shopping_cart_area(String el) {
