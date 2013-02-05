@@ -15,8 +15,8 @@ class AddToWishListSteps {
 
     @Given("I am on QW with configurable product as customer.")
     public void on_qw_as_customer(){
+        user.opens_home_page()
         user.log_in(true)
-        customer.assert_on_my_account_dashboard_page()
         customer.opens_CLP("bras")
         customer.open_quick_view_configurable()
     }
@@ -26,8 +26,19 @@ class AddToWishListSteps {
         customer.click_add_to_wishlist()
     }
 
+    @When("I click Add to Wishlist button User.")
+    public void click_add_to_wishlist_user(){
+        user.click_add_to_wishlist_user()
+    }
+
     @Then("Quickview module closes and adds the product to her wishlist.")
     public void assert_product_added_to_wishlist(){
         customer.assert_product_added_to_wishlist()
+    }
+
+    @Then("Quickview module closes and she is navigated to the Account Creation page.")
+    public void assert_QV_closed_and_on_login_page(){
+        user.assert_qw_absent()
+        user.assert_on_login_page()
     }
 }

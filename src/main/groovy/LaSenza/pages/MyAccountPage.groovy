@@ -48,7 +48,6 @@ class MyAccountPage extends ForAllPage{
     }
 
     def assert_on_my_account_dashboard_page() {
-        def f = element(titleText).getText()
         element(titleText).shouldContainText("MY DASHBOARD")
     }
 

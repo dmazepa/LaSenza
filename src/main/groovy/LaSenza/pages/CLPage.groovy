@@ -40,6 +40,9 @@ class CLPage extends ForAllPage{
     @FindBy(xpath = "//span[contains(text(), 'Add to Wishlist')]")
     private WebElement linkAddToWishList
 
+    @FindBy(xpath = "//a[contains(text(), 'Add to Wishlist')]")
+    private WebElement linkAddToWishListUser
+
     @FindBy(xpath = "//h1")
     private WebElement titleCLP
 
@@ -153,5 +156,9 @@ class CLPage extends ForAllPage{
 
     def assert_select_size_first_row_enabled_QV() {
         element(selectSizeFirstQV).shouldBeEnabled()
+    }
+
+    def click_on_add_to_wish_list_user() {
+        element(linkAddToWishListUser).click()
     }
 }

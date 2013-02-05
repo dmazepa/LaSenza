@@ -822,4 +822,9 @@ class UserSteps extends ScenarioSteps {
     def assert_select_size_first_row_enabled_QV() {
         cLPage.assert_select_size_first_row_enabled_QV()
     }
+
+    @Step
+    def click_add_to_wishlist_user() {
+        cLPage.click_on_add_to_wish_list_user()
+    }
 }
