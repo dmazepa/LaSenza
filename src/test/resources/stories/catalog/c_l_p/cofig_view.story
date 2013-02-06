@@ -5,7 +5,7 @@ Allow users configure view in grid.
 
 Scenario: User can see pagination and can move to other pages.
 Given I am on Category page as User.
-Then I can see only right arrow in pagination.
+Given I can see only right arrow in pagination.
 When I click on second page.
 Then Second page with products opens.
 Then I can see left and right arrows in pagination.

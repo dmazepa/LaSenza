@@ -837,4 +837,9 @@ class UserSteps extends ScenarioSteps {
     def click_add_to_wishlist_user() {
         cLPage.click_on_add_to_wish_list_user()
     }
+
+    @Step
+    def assert_only_right_row_present() {
+        cLPage.assert_only_right_row_present()
+    }
 }

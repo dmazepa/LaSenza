@@ -58,6 +58,12 @@ class CLPage extends ForAllPage{
     @FindBy(xpath = "//div//select")
     private WebElement selectColorFirstQV
 
+    @FindBy(xpath = "//a[@title='Next']")
+    private WebElement rowRightNext
+
+    @FindBy(xpath = "//a[@title='Previous']")
+    private WebElement rowLeftPrevious
+
     def open_quick_w(def i) {
         Locatable hoverItem = (Locatable) getDriver().findElement(By.xpath("//div[@class='category-products']//li[${i}]/div/a[1]"))
         Mouse mouse = ((HasInputDevices) driver).getMouse()
@@ -160,5 +166,10 @@ class CLPage extends ForAllPage{
 
     def click_on_add_to_wish_list_user() {
         element(linkAddToWishListUser).click()
+    }
+
+    def assert_only_right_row_present() {
+        element(rowRightNext).shouldBeVisible()
+        element(rowLeftPrevious).shouldNotBePresent()
     }
 }

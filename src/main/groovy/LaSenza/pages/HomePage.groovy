@@ -243,8 +243,13 @@ class HomePage extends ForAllPage{
     }
 
     def assert_item_not_added() {
-        assertThat(element(textQtyHeader).getText(), equalTo(qtyHeaderBefore))
-        assertThat(element(textPriceHeader).getText(), equalTo(priceHeaderBefore))
+        if(getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() != 0){
+            assertThat(element(textQtyHeader).getText(), equalTo(qtyHeaderBefore))
+            assertThat(element(textPriceHeader).getText(), equalTo(priceHeaderBefore))
+        } else{
+            assertThat(qtyHeaderBefore, equalTo("0"))
+            assertThat(priceHeaderBefore, equalTo("0"))
+        }
     }
 
     def store_state_of_total_price_and_qty() {
@@ -252,8 +257,8 @@ class HomePage extends ForAllPage{
             qtyHeaderBefore = element(textQtyHeader).getText()
             priceHeaderBefore = element(textPriceHeader).getText()
         } else{
-            qtyHeaderBefore = 0
-            priceHeaderBefore = 0
+            qtyHeaderBefore = "0"
+            priceHeaderBefore = "0"
         }
 
     }
