@@ -186,6 +186,7 @@ class CheckoutPage extends ForAllPage{
     }
 
     def click_input_credit_cart() {
+        Thread.sleep(1000)
         element(inputPaymentMethodCreditCart).waitUntilVisible()
         element(loader).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).click()
@@ -193,13 +194,11 @@ class CheckoutPage extends ForAllPage{
         Mouse mouse = ((HasInputDevices) driver).getMouse()
         Locatable hoverItem = (Locatable) inputCreditCart
         mouse.click(hoverItem.getCoordinates())
-        //element(inputCreditCart).click();
     }
 
     def fill_cart_name() {
         element(loader).waitUntilNotVisible()
-        fieldCartName.clear()
-        fieldCartName.sendKeys("Visa")
+        element(fieldCartName).type("Visa")
     }
 
     def fill_cart_number_field() {

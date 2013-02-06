@@ -28,7 +28,7 @@ class EditInfSteps {
     @Given("I am on checkout page as Customer and process checkout with checked Save in Address Book checkbox.")
     public void on_checkout_page_as_customer_with_save_address_checked(){
         user.log_in(true)
-        customer.assert_on_my_account_dashboard_page()
+        customer.open_my_account_address_book()
         customer.delete_additional_shipping_address()
         customer.open_first_step_of_checkout(1574)
         customer.enter_new_shipping_address()

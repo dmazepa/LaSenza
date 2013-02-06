@@ -26,9 +26,13 @@ class ThankYouPage extends ForAllPage{
     @FindBy (xpath = "//div[@class='buttons-set']/a")
     private WebElement linkReturnToShopping
 
+    @FindBy (xpath = "//h1")
+    private WebElement textTitle
+
     def assert_thank_you_page() {
-        waitForTextToAppear("Thank you for your order")
-        shouldContainText("Thank you for your order")
+        element(linkReturnToShopping).waitUntilVisible()
+        assertThat(element(textTitle).getText(), equalTo("THANK YOU FOR YOUR ORDER"))
+        shouldContainText("THANK YOU FOR YOUR ORDER")
         shouldContainText("If you have questions about your order, we're happy to take your call.")
     }
 

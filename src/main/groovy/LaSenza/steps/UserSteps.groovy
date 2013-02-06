@@ -308,9 +308,19 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def assert_item_not_added() {
-        pDPage.assert_modal_window("The maximum quantity allowed for purchase is 10000.")
-        homePage.assert_mini_cart_not_appears()
+        assert_modal_window("The maximum quantity allowed for purchase is 10000.")
+        assert_mini_cart_not_appears()
+        assert_item_not_added_on_header()
+    }
+
+    @Step
+    def assert_item_not_added_on_header() {
         homePage.assert_item_not_added()
+    }
+
+    @Step
+    def assert_modal_window(String textInModalWindow) {
+        pDPage.assert_modal_window(textInModalWindow)
     }
 
     @Step

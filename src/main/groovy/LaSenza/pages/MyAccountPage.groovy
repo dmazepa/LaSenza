@@ -56,15 +56,18 @@ class MyAccountPage extends ForAllPage{
     }
 
     def click_on_tab(String nameTab) {
-        driver.findElement(By.xpath("//a[contains(text(), '${nameTab}')]")).click()
-        assert titleText.getText()  == nameTab.toUpperCase()
+        if (titleText.getText() != nameTab){
+            driver.findElement(By.xpath("//a[contains(text(), '${nameTab}')]")).click()
+            assert titleText.getText()  == nameTab.toUpperCase()
+        }
+
     }
 
     def assert_address_added() {
         assertThat(driver.findElements(By.xpath("//li[@class='item']")).size(), equalTo(1))
         shouldContainText("First Name Shipping Last Name Shipping")
         shouldContainText("Address Shipping")
-        shouldContainText("City Shipping,  California, 14000")
+        shouldContainText("City Shipping, California, 14000")
         shouldContainText("T: 555-555-5555")
     }
    def delete_additional_shipping_address() {

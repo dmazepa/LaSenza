@@ -136,6 +136,7 @@ class CustomerSteps extends UserSteps{
 
     @Step
     def enter_payment_information() {
+        checkoutPage.click_input_credit_cart()
         checkoutPage.fill_cart_name()
         checkoutPage.fill_cart_number_field()
         checkoutPage.select_month()
@@ -165,7 +166,6 @@ class CustomerSteps extends UserSteps{
 
     @Step
     def delete_additional_shipping_address() {
-        myAccountPage.click_on_tab("Address Book")
         myAccountPage.delete_additional_shipping_address()
     }
 
