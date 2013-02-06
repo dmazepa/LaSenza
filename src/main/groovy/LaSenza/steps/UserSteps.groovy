@@ -842,4 +842,59 @@ class UserSteps extends ScenarioSteps {
     def assert_only_right_row_present() {
         cLPage.assert_only_right_row_present()
     }
+
+    @Step
+    def click_on_link_second_page() {
+        cLPage.click_on_link_second_page()
+    }
+
+    @Step
+    def assert_on_second_page_CLP() {
+        cLPage.assert_on_second_page_CLP()
+    }
+
+    @Step
+    def assert_left_and_right_row_CLP() {
+        cLPage.assert_left_and_right_row_CLP()
+    }
+
+    @Step
+    def assert_second_page_selected_CLP() {
+        cLPage.assert_second_page_selected_CLP()
+    }
+
+    @Step
+    def click_on_last_page_CLP() {
+        cLPage.click_on_last_page_CLP()
+    }
+
+    @Step
+    def asser_only_left_row_CLP() {
+        cLPage.asser_only_left_row_CLP()
+    }
+
+    @Step
+    def click_right_arrow() {
+        cLPage.click_right_arrow()
+    }
+
+    @Step
+    def click_left_arrow_CLP() {
+        cLPage.click_left_arrow_CLP()
+    }
+
+    @Step
+    def assert_on_first_page_CLP() {
+        cLPage.assert_on_first_page_CLP()
+    }
+
+    @Step
+    def assert_qty_items_on_CLP(def qtyItems) {
+        cLPage.assert_qty_items_on_CLP(qtyItems)
+    }
+
+    @Step
+    def select_to_show_qty_items_CLP(String qtyItems) {
+        cLPage.select_to_show_qty_items_CLP(qtyItems)
+    }
 }

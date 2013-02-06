@@ -1,9 +1,9 @@
 package LaSenza.pages
 
+import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.*
-import org.openqa.selenium.interactions.Actions
 
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
@@ -31,9 +31,6 @@ class CLPage extends ForAllPage{
     @FindBy(xpath = "//h1/a")
     private WebElement linkProductName
 
-    @FindBy(xpath = "//div[@class='category-products']//li/div/a[2]")
-    private WebElement buttonQuickView
-
     @FindBy(xpath = "//a[contains(text(), 'View Full Details')]")
     private WebElement linkViewFullDetails
 
@@ -59,10 +56,28 @@ class CLPage extends ForAllPage{
     private WebElement selectColorFirstQV
 
     @FindBy(xpath = "//a[@title='Next']")
-    private WebElement rowRightNext
+    private WebElement arrowRightNext
 
     @FindBy(xpath = "//a[@title='Previous']")
-    private WebElement rowLeftPrevious
+    private WebElement arrowLeftPrevious
+
+    @FindBy(xpath = "//div[@class='pages']//a[contains(text(), '2')]")
+    private WebElement linkSecondPage
+
+    @FindBy(xpath = "//div[@class='pages']//a[contains(text(), '4')]")
+    private WebElement linkFoursPage
+
+    @FindBy(xpath = "//div[@class='pages']//a[contains(text(), '1')]")
+    private WebElement linkFirstPage
+
+    @FindBy(xpath = "//li[@class='current']")
+    private WebElement textNumberCurrentPage
+
+    @FindBy(xpath = "//div[@class='pager']//a[@class='sbSelector']")
+    private WebElement selectItemsPerPage
+
+    @FindBy(xpath = "//ul[@class='sbOptions']")
+    private WebElement selectItemsPerPageOptions
 
     def open_quick_w(def i) {
         Locatable hoverItem = (Locatable) getDriver().findElement(By.xpath("//div[@class='category-products']//li[${i}]/div/a[1]"))
@@ -169,7 +184,56 @@ class CLPage extends ForAllPage{
     }
 
     def assert_only_right_row_present() {
-        element(rowRightNext).shouldBeVisible()
-        element(rowLeftPrevious).shouldNotBePresent()
+        element(arrowRightNext).shouldBeVisible()
+        element(arrowLeftPrevious).shouldNotBePresent()
+    }
+
+    def click_on_link_second_page() {
+        element(linkSecondPage).click()
+    }
+
+    def assert_on_second_page_CLP() {
+        element(linkSecondPage).shouldNotBePresent()
+    }
+
+    def assert_left_and_right_row_CLP() {
+        element(arrowLeftPrevious).shouldBePresent()
+        element(arrowRightNext).shouldBePresent()
+    }
+
+    def assert_second_page_selected_CLP() {
+        element(linkSecondPage).shouldNotBePresent()
+        assertThat(element(textNumberCurrentPage).getText(), equalTo("2"))
+    }
+
+    def click_on_last_page_CLP() {
+        element(linkFoursPage).click()
+    }
+
+    def asser_only_left_row_CLP() {
+        element(arrowLeftPrevious).shouldBePresent()
+        element(arrowRightNext).shouldNotBePresent()
+    }
+
+    def click_right_arrow() {
+        element(arrowRightNext).click()
+    }
+
+    def click_left_arrow_CLP() {
+        element(arrowLeftPrevious).click()
+    }
+
+    def assert_on_first_page_CLP() {
+        element(linkFirstPage).shouldNotBePresent()
+        assertThat(element(textNumberCurrentPage).getText(), equalTo("1"))
+    }
+
+    def assert_qty_items_on_CLP(def qtyItems) {
+        assertThat(getDriver().findElements(By.xpath("//h2[@class='product-name']")).size().toString(), equalTo(qtyItems))
+    }
+
+    def select_to_show_qty_items_CLP(String qtyItems) {
+        element(selectItemsPerPage).click()
+        element(selectItemsPerPageOptions).waitUntilVisible()
     }
 }

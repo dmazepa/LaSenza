@@ -145,7 +145,7 @@ class AdminPanelPage extends ForAllPage{
     private WebElement fieldDiscountAmount
 
     @FindBy(xpath = "//table[@id='attributeGrid_table']//tbody/tr")
-    private WebElement rowFirstAttributeManager
+    private WebElement arrovFirstAttributeManager
 
     @FindBy(id = "product_attribute_tabs_labels")
     private WebElement tabManageLabelOptions
