@@ -9,7 +9,7 @@ Given Prepare_base
 Scenario: Prepare Base.
 Given Check products inventory
 
-Scenario: Total count of items in Wish list should displays for customers.
-Given I am on Home page as customer and has multiple wishlists and items in Wish List.
-Then Total count of items in Wish list should displays.
-Then The same item from different wish lists is counted multiple times.
+Scenario: I can navigate to SubCLP with static block and left navigation by menu.
+Given I am on home page
+When I click on View All Offers link in menu "sleepwear".
+Then I should go to chosen SubCLP with static block and left navigation.

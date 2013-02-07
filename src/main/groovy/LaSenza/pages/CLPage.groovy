@@ -80,6 +80,9 @@ class CLPage extends ForAllPage{
     @FindBy(xpath = "//div[@class='sorter']//a[@class='sbSelector']")
     private WebElement selectSortByCurrent
 
+    @FindBy(xpath = "//div[@class='col-left sidebar']")
+    private WebElement blockLeftNavigation
+
 
     def open_quick_w(def i) {
         Locatable hoverItem = (Locatable) getDriver().findElement(By.xpath("//div[@class='category-products']//li[${i}]/div/a[1]"))
@@ -247,5 +250,13 @@ class CLPage extends ForAllPage{
 
     def assert_sorted_by(def sortingValue) {
         assertThat(element(selectSortByCurrent).getText(), equalTo(sortingValue))
+    }
+
+    def assert_on_subCLP_with_single_static_block() {
+        assertThat("Single static block present", equalTo("Single static block absent"))
+    }
+
+    def assert_on_subCLP_with_left_navigation() {
+        element(blockLeftNavigation).shouldBePresent()
     }
 }

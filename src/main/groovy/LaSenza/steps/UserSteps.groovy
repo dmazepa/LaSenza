@@ -546,7 +546,11 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def click_on_link_in_menu(String linkName) {
-        homePage.move_mouse_on_menu("bras")
+        move_mouse_on_menu("bras")
+        click_on_link_in_menu_after_appearing(linkName)
+    }
+
+    def click_on_link_in_menu_after_appearing(String linkName) {
         homePage.click_on_link_in_menu(linkName)
     }
 
@@ -916,5 +920,15 @@ class UserSteps extends ScenarioSteps {
     @Step
     def click_on_link_please_log_in_not() {
         homePage.click_on_link_please_log_in_not()
+    }
+
+    @Step
+    def assert_on_subCLP_with_single_static_block() {
+        cLPage.assert_on_subCLP_with_single_static_block()
+    }
+
+    @Step
+    def assert_on_subCLP_with_left_navigation() {
+        cLPage.assert_on_subCLP_with_left_navigation()
     }
 }

@@ -43,4 +43,21 @@ class NavigationSteps {
     public void assert_on_featured_products_page(){
         user.assert_on_CLP("Featured")
     }
+
+    @When('I click on View All Offers link in menu "$categoryName".')
+    public void click_view_all_offers(String categoryName){
+        user.move_mouse_on_menu(categoryName)
+        user.click_on_link_in_menu("View all offers")
+    }
+
+    @Then("I should go to chosen SubCLP with single static block.")
+    public void assert_on_subCLP_with_single_static_block(){
+        user.assert_on_subCLP_with_single_static_block()
+    }
+
+    @Then("I should go to chosen SubCLP with static block and left navigation.")
+    public void assert_on_subCLP_with_static_block_and_left_navigation(){
+        user.assert_on_subCLP_with_left_navigation()
+        user.assert_on_subCLP_with_single_static_block()
+    }
 }
