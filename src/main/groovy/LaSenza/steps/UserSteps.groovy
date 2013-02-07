@@ -931,4 +931,9 @@ class UserSteps extends ScenarioSteps {
     def assert_on_subCLP_with_left_navigation() {
         cLPage.assert_on_subCLP_with_left_navigation()
     }
+
+    @Step
+    def assert_drop_down_menu_opened() {
+        homePage.assert_drop_down_menu_opened()
+    }
 }

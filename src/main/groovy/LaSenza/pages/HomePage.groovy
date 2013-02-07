@@ -111,6 +111,9 @@ class HomePage extends ForAllPage{
     @FindBy(xpath = "//div[@id='slider_homepage']/div/ul/div/li[3]/img")
     private WebElement sliderImage3;
 
+    @FindBy(xpath = "//div[@class='tab-content ']")
+    private WebElement blockDropDownMenu
+
     def click_on_first_image_of_slider() {
         element(sliderImage1).waitUntilNotVisible()
         System.out.println(element(sliderImage1).isCurrentlyVisible());
@@ -372,5 +375,9 @@ class HomePage extends ForAllPage{
         } else{
             qtyItemsInWishListHeader = "0"
         }
+    }
+
+    def assert_drop_down_menu_opened() {
+        element(blockDropDownMenu).shouldBeVisible()
     }
 }

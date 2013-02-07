@@ -60,4 +60,14 @@ class NavigationSteps {
         user.assert_on_subCLP_with_left_navigation()
         user.assert_on_subCLP_with_single_static_block()
     }
+
+    @When("I move mouse to the category with dropdown menu.")
+    public void move_mouse_to_category(){
+        user.move_mouse_on_menu("bras")
+    }
+
+    @Then("I should see dropdown menu.")
+    public void assert_drop_down_menu_opened(){
+        user.assert_drop_down_menu_opened()
+    }
 }
