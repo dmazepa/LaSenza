@@ -11,6 +11,8 @@ import static org.hamcrest.MatcherAssert.assertThat
 @DefaultUrl("http://localhost:9000")
 class HomePage extends ForAllPage{
 
+    def qtyItemsInWishListHeader
+
     HomePage(WebDriver driver){
         super(driver)
     }
@@ -356,6 +358,19 @@ class HomePage extends ForAllPage{
     def click_on_link_please_log_in_not() {
         if(getDriver().findElements(By.xpath("//a[@class='unset-cookie']")).size() != 0){
             element(linkNotUserNameUserLastName).click()
+        }
+    }
+
+    def assert_item_added_to_wishlist_header() {
+        assertThat(qtyItemsInWishListHeader, equalTo(getDriver().findElement(By.xpath("//a[contains(text(), 'Wish list')]")).getText().replaceAll("\\D", "")))
+
+    }
+
+    def set_items_qty_in_wish_list_header() {
+        if(getDriver().findElements(By.xpath("//a[contains(text(), 'Wish list')]")).size() != 0){
+            qtyItemsInWishListHeader = getDriver().findElement(By.xpath("//a[contains(text(), 'Wish list')]")).getText().replaceAll("\\D", "")
+        } else{
+            qtyItemsInWishListHeader = "0"
         }
     }
 }

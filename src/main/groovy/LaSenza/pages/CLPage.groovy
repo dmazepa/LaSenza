@@ -237,6 +237,7 @@ class CLPage extends ForAllPage{
     def select_to_show_qty_items_CLP(String qtyItems) {
         qtyPages = getDriver().findElements(By.xpath("//div[@class='pages']//li")).size()
         element(selectItemsPerPage).click()
+        element(By.xpath("//a[contains(text(), '${qtyItems}')]")).waitUntilVisible()
         getDriver().findElement(By.xpath("//a[contains(text(), '${qtyItems}')]")).click()
     }
 

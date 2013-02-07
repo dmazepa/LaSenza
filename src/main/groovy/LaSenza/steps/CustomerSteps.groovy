@@ -24,7 +24,6 @@ class CustomerSteps extends UserSteps{
     @Step
     def assert_product_added_to_wishlist() {
         cLPage.qw_should_be_absent()
-        def d = cLPage.get_product_name()
         myAccountPage.assert_product_added_to_wishlist(cLPage.get_product_name())
         myAccountPage.delete_items_from_wish_list()
     }
@@ -56,10 +55,23 @@ class CustomerSteps extends UserSteps{
 
     @Step
     def add_product_to_multi_wishlists() {
-        open_pdp(3067)
+        set_items_qty_in_wish_list_header()
+        open_pdp(1574)
         add_to_wishlist_from_pdp("Wishlist1")
-        open_pdp(3067)
+        assert_item_added_to_wishlist_header()
+        set_items_qty_in_wish_list_header()
+        open_pdp(1574)
         add_to_wishlist_from_pdp("Wishlist2")
+    }
+
+    @Step
+    Object set_items_qty_in_wish_list_header() {
+        homePage.set_items_qty_in_wish_list_header()
+    }
+
+    @Step
+    Object assert_item_added_to_wishlist_header() {
+        homePage.assert_item_added_to_wishlist_header()
     }
 
     @Step

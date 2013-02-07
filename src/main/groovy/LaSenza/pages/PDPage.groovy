@@ -27,6 +27,9 @@ class PDPage extends ForAllPage{
     @FindBy(xpath = "//div[@class='product-options-block']//div[@class='option-wrapper'][2]//select")
     private WebElement selectSize;
 
+    @FindBy(xpath = "//a[@class='change']")
+    private WebElement arrowSelectWishList
+
     @FindBy(xpath = "//button[@title='Add to Cart']")
     private WebElement buttonAddToCart;
 
@@ -69,7 +72,9 @@ class PDPage extends ForAllPage{
     }
 
     def add_to_wishlist_from_pdp(String nameWishlist) {
-
+        def r = getDriver().findElement(By.xpath("//a[@class='change']"))
+        element(arrowSelectWishList).click()
+        getDriver().findElement(By.xpath("//span[@title='${nameWishlist}']")).click()
     }
 
     def contain_configurable_options() {

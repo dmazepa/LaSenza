@@ -35,7 +35,7 @@ Then Quantity of pages is recalculated.
 
 Scenario: User can choose how sort products on CLP.
 Given I am on SubCategory page as User.
-Then I can see sorting by Best Value.
+Then I can see sorting by "Best Value".
 When I select sorting by Name [A to Z].
 Then I get page sorting by Name [A to Z].
 When I select sorting by Name [Z to A].
