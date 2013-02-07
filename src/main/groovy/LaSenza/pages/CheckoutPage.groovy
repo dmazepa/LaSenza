@@ -186,9 +186,7 @@ class CheckoutPage extends ForAllPage{
     }
 
     def click_input_credit_cart() {
-        Thread.sleep(1000)
         element(inputPaymentMethodCreditCart).waitUntilVisible()
-        element(loader).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).click()
         element(loader).waitUntilNotVisible()
         Mouse mouse = ((HasInputDevices) driver).getMouse()
