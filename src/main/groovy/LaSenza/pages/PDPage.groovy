@@ -118,6 +118,8 @@ class PDPage extends ForAllPage{
             prices[i] = element(textPrice).getText()
             names[i] = element(productName).getText()
             element(buttonAddToCart).click()
+            element(preloader).waitUntilVisible()
+            element(preloader).waitUntilNotVisible()
         }
     }
 
