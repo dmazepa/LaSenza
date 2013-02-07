@@ -16,7 +16,7 @@ Then I should redirects to Login page.
 
 Scenario: Link Not <First Name> <Last Name>? logs the user out and loads the default header state.
 Given I am on home page as customer with cookie enabled.
-When I click on link "Not Test Tester?".
+When I click on link Not Test Tester?.
 Then It logs customer out.
 And Load default header state.
 

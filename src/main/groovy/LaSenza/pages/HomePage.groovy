@@ -31,6 +31,12 @@ class HomePage extends ForAllPage{
     @FindBy(xpath = "//a[@class='unset-cookie']")
     private WebElement linkNotUserNameUserLastName;
 
+    @FindBy(xpath = "//a[contains(text(), 'Please login.')]")
+    private WebElement linkPleaseLogin
+
+    @FindBy(xpath = "//a[contains(text(), 'Not Test Tester')]")
+    private WebElement linkNotFirstNameLastName
+
     @FindBy(xpath = "//a[@title='Login']")
     private WebElement linkLogIn;
 
@@ -171,12 +177,11 @@ class HomePage extends ForAllPage{
     }
 
     def assert_please_login_msg(String pleaseLoginNotTestTester) {
-        def h = linkNotUserNameUserLastName.getText()
         assert linkNotUserNameUserLastName.getText() == pleaseLoginNotTestTester
     }
 
     def click_on_link_please_log_in() {
-        element(linkNotUserNameUserLastName).click()
+        element(linkPleaseLogin).click()
     }
 
     def assert_logged_out() {
@@ -342,5 +347,15 @@ class HomePage extends ForAllPage{
     def no_items_in_cart() {
         def r = getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size()
         return  getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() == 0
+    }
+
+    def click_on_link_not_first_name_last_name() {
+        element(linkNotFirstNameLastName).click()
+    }
+
+    def click_on_link_please_log_in_not() {
+        if(getDriver().findElements(By.xpath("//a[@class='unset-cookie']")).size() != 0){
+            element(linkNotUserNameUserLastName).click()
+        }
     }
 }

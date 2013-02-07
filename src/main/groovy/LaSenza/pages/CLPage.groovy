@@ -11,6 +11,7 @@ import static org.hamcrest.Matchers.equalTo
 class CLPage extends ForAllPage{
 
     private def productName
+    def qtyPages
 
     CLPage(WebDriver driver){
         super(driver)
@@ -76,8 +77,9 @@ class CLPage extends ForAllPage{
     @FindBy(xpath = "//div[@class='pager']//a[@class='sbSelector']")
     private WebElement selectItemsPerPage
 
-    @FindBy(xpath = "//ul[@class='sbOptions']")
-    private WebElement selectItemsPerPageOptions
+    @FindBy(xpath = "//div[@class='sorter']//a[@class='sbSelector']")
+    private WebElement selectSortByCurrent
+
 
     def open_quick_w(def i) {
         Locatable hoverItem = (Locatable) getDriver().findElement(By.xpath("//div[@class='category-products']//li[${i}]/div/a[1]"))
@@ -233,7 +235,16 @@ class CLPage extends ForAllPage{
     }
 
     def select_to_show_qty_items_CLP(String qtyItems) {
+        qtyPages = getDriver().findElements(By.xpath("//div[@class='pages']//li")).size()
         element(selectItemsPerPage).click()
-        element(selectItemsPerPageOptions).waitUntilVisible()
+        getDriver().findElement(By.xpath("//a[contains(text(), '${qtyItems}')]")).click()
+    }
+
+    def assert_qty_of_pages_recalculated() {
+        assert getDriver().findElements(By.xpath("//div[@class='pages']//li")).size() < qtyPages
+    }
+
+    def assert_sorted_by(def sortingValue) {
+        assertThat(element(selectSortByCurrent).getText(), equalTo(sortingValue))
     }
 }

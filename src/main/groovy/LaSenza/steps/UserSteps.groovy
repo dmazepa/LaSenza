@@ -897,4 +897,24 @@ class UserSteps extends ScenarioSteps {
     def select_to_show_qty_items_CLP(String qtyItems) {
         cLPage.select_to_show_qty_items_CLP(qtyItems)
     }
+
+    @Step
+    def assert_qty_of_pages_recalculated() {
+        cLPage.assert_qty_of_pages_recalculated()
+    }
+
+    @Step
+    def assert_sorted_by(def sortingValue) {
+        cLPage.assert_sorted_by(sortingValue)
+    }
+
+    @Step
+    def click_on_link_not_first_name_last_name() {
+        homePage.click_on_link_not_first_name_last_name()
+    }
+
+    @Step
+    def click_on_link_please_log_in_not() {
+        homePage.click_on_link_please_log_in_not()
+    }
 }

@@ -43,16 +43,20 @@ class HeaderCustomerWithCookieSteps {
 
     @Given("I am on home page as customer with cookie enabled.")
     public void open_home_page_as_guest_with_cookie(){
-        user.click_on_link_please_log_in()
+        user.click_on_link_please_log_in_not()
         user.log_in(true)
         user.timeout(12000)
         user.refresh_page()
     }
 
     @When("I click on link Please Log In.")
-    @Pending //link doesn't present
     public void click_on_link_please_log_in(){
         user.click_on_link_please_log_in()
+    }
+
+    @When("I click on link Not Test Tester?.")
+    public void click_on_link_not_first_name_last_name(){
+        user.click_on_link_not_first_name_last_name()
     }
 
     @When("I click on link My Account.")
@@ -85,7 +89,6 @@ class HeaderCustomerWithCookieSteps {
     }
 
     @When('I click on link "Not Test Tester?".')
-    @Pending //link doesn't present
     public void click_on_link_not(){
         user.click_on_link_please_log_in()
     }

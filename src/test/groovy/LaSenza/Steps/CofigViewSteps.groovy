@@ -85,8 +85,22 @@ class CofigViewSteps {
     }
 
     @When('I select to show "$qtyItems" items per page.')
-    @Pending
     public void select_to_show_qty_items_CLP(String qtyItems){
         user.select_to_show_qty_items_CLP(qtyItems)
+    }
+
+    @Then('I get page with "$qtyItems" items.')
+    public void assert_qty_items_on_CLP_displayed(String qtyItems){
+        user.assert_qty_items_on_CLP(qtyItems)
+    }
+
+    @Then("Quantity of pages is recalculated.")
+    public void assert_qty_of_pages_recalculated(){
+        user.assert_qty_of_pages_recalculated()
+    }
+
+    @Then('I can see sorting by "$sortingValue".')
+    public void assert_sorted_by(String sortingValue){
+        user.assert_sorted_by(sortingValue)
     }
 }
