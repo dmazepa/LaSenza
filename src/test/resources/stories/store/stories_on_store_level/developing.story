@@ -9,7 +9,8 @@ Given Prepare_base
 Scenario: Prepare Base.
 Given Check products inventory
 
-Scenario: I can navigate to SubCLP with static block and left navigation by menu.
-Given I am on home page
-When I click on View All Offers link in menu "sleepwear".
-Then I should go to chosen SubCLP with static block and left navigation.
+Scenario: Mini cart display only the three most recently added items.
+Given I am on home page with products in cart.
+When I add to cart 3 different items.
+Then Mini cart displays only the three most recently added items.
+And The most recently added item appears first.

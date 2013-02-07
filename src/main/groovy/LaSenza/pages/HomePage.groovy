@@ -273,7 +273,7 @@ class HomePage extends ForAllPage{
 
     }
 
-    def click_on_click_on_element_in_shopping_cart_area(String el) {
+    def click_on_element_in_shopping_cart_area(String el) {
         if (el == "Icon Bag"){
             element(iconBagHeader).waitUntilVisible()
             element(iconBagHeader).click()

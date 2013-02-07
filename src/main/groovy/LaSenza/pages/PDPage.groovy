@@ -17,6 +17,10 @@ class PDPage extends ForAllPage{
 
     def color
     def size
+    def colors = []
+    def sizes = []
+    def prices = []
+    def names = []
 
     @FindBy(xpath = "//div[@class='product-name']/h1/a")
     private WebElement productName;
@@ -26,6 +30,9 @@ class PDPage extends ForAllPage{
 
     @FindBy(xpath = "//div[@class='product-options-block']//div[@class='option-wrapper'][2]//select")
     private WebElement selectSize;
+
+    @FindBy(xpath = "//span[@class='regular-price']/span")
+    private WebElement textPrice
 
     @FindBy(xpath = "//a[@class='change']")
     private WebElement arrowSelectWishList
@@ -62,13 +69,15 @@ class PDPage extends ForAllPage{
     }
 
     def choose_configurable_options() {
-        element(selectColor).selectByIndex(1)
-        element(selectSize).selectByIndex(1)
+        if(getDriver().findElements(By.xpath("//div[@class='product-options-block']//div[@class='option-wrapper']")).size() != 0){
+            element(selectColor).selectByIndex(1)
+            element(selectSize).selectByIndex(1)
+        }
     }
 
     def store_configurable_options() {
-        color = element(selectColor).getSelectedValue()
-        size = element(selectSize).getSelectedValue()
+        color = element(selectColor).getSelectedVisibleTextValue()
+        size = element(selectSize).getSelectedVisibleTextValue()
     }
 
     def add_to_wishlist_from_pdp(String nameWishlist) {
@@ -86,5 +95,36 @@ class PDPage extends ForAllPage{
         Alert alert = getDriver().switchTo().alert();
         assertThat(alert.getText(), equalTo(textAlert))
         alert.accept()
+    }
+
+    def assert_most_recently_added_items_in_mini_cart() {
+        for (def i=1; i <= 3; i++){
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a")).getText(), equalTo(names[3-i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][1]/dd")).getText(), equalTo(colors[3-i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][2]/dd")).getText(), equalTo(sizes[3-i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//span[@class='price']")).getText(), equalTo(prices[3-i]))
+        }
+    }
+
+    def add_3_items_to_cart(int id1, int id2, int id3) {
+        def list = [id1, id2, id3]
+        for (def i=0; i <= 2; i++){
+            getDriver().get("${System.getProperty("webdriver.base.url")}catalog/product/view/id/${list[i]}")
+            element(selectColor).selectByIndex(1)
+            element(selectSize).selectByIndex(1)
+            element(buttonAddToCart).waitUntilVisible()
+            colors[i] = element(selectColor).getSelectedVisibleTextValue()
+            sizes[i] = element(selectSize).getSelectedVisibleTextValue()
+            prices[i] = element(textPrice).getText()
+            names[i] = element(productName).getText()
+            element(buttonAddToCart).click()
+        }
+    }
+
+    def assert_most_recently_added_appears_first() {
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//p/a")).getText(), equalTo(names[2]))
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//div[@class='options'][1]/dd")).getText(), equalTo(colors[2]))
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1}]//div[@class='options'][2]/dd")).getText(), equalTo(sizes[2]))
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//span[@class='price']")).getText(), equalTo(prices[2]))
     }
 }

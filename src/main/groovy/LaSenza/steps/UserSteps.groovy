@@ -334,6 +334,7 @@ class UserSteps extends ScenarioSteps {
         store_configurable_options()
     }
 
+    @Step
     def store_configurable_options() {
         pDPage.store_configurable_options()
     }
@@ -497,7 +498,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def click_on_element_in_shopping_cart_area(String element) {
-        homePage.click_on_click_on_element_in_shopping_cart_area(element)
+        homePage.click_on_element_in_shopping_cart_area(element)
     }
 
     @Step
@@ -935,5 +936,37 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_drop_down_menu_opened() {
         homePage.assert_drop_down_menu_opened()
+    }
+
+    @Step
+    def add_item_to_cart(def id) {
+        open_pdp(id)
+        choose_and_store_configurable_options()
+        click_add_to_cart_button_pdp()
+    }
+
+    @Step
+    def assert_mini_cart_displaying_5_seconds() {
+        assert_mini_cart_appears()
+        move_mouse_on_menu("bras")
+        Thread.sleep(5000)
+        assert_mini_cart_not_appears()
+    }
+
+    @Step
+    def assert_most_recently_added_items_in_mini_cart() {
+        refresh_page()
+        click_on_element_in_shopping_cart_area("Icon Bag")
+        pDPage. assert_most_recently_added_items_in_mini_cart()
+    }
+
+    @Step
+    def add_3_items_to_cart(int id1, int id2, int id3) {
+        pDPage.add_3_items_to_cart(id1, id2, id3)
+    }
+
+    @Step
+    def assert_most_recently_added_appears_first() {
+        pDPage.assert_most_recently_added_appears_first()
     }
 }
