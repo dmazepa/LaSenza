@@ -967,6 +967,9 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def assert_most_recently_added_appears_first() {
+        refresh_page()
+        click_on_element_in_shopping_cart_area("Icon Bag")
+        assert_mini_cart_appears()
         pDPage.assert_most_recently_added_appears_first()
     }
 }
