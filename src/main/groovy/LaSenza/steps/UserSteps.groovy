@@ -972,4 +972,9 @@ class UserSteps extends ScenarioSteps {
         assert_mini_cart_appears()
         pDPage.assert_most_recently_added_appears_first()
     }
+
+    @Step
+    def click_on_element_in_mini_cart(String element) {
+        homePage.click_on_element_in_mini_cart(element)
+    }
 }

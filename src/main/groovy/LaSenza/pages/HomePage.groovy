@@ -380,4 +380,19 @@ class HomePage extends ForAllPage{
     def assert_drop_down_menu_opened() {
         element(blockDropDownMenu).shouldBeVisible()
     }
+
+    def click_on_element_in_mini_cart(String Element) {
+        if(Element == "product-image"){
+            element(By.xpath("//ol[@id='mini-cart']//a[@class='${Element}']")).waitUntilVisible()
+            getDriver().findElement(By.xpath("//ol[@id='mini-cart']//a[@class='${Element}']")).click()
+        } else {
+            if(Element == "product-name"){
+                element(By.xpath("//ol[@id='mini-cart']//p[@class='${Element}']/a")).waitUntilVisible()
+                getDriver().findElement(By.xpath("//ol[@id='mini-cart']//p[@class='${Element}']/a")).click()
+            } else {
+                element(By.xpath("//ol[@id='mini-cart']//div[@class='${Element}']/a")).waitUntilVisible()
+                getDriver().findElement(By.xpath("//ol[@id='mini-cart']//div[@class='${Element}']/a")).click()
+            }
+        }
+    }
 }

@@ -9,8 +9,14 @@ Given Prepare_base
 Scenario: Prepare Base.
 Given Check products inventory
 
-Scenario: Mini cart display only the three most recently added items.
+Scenario: Product Image/Brand Name/Product Name in mini cart should redirects to PDP.
 Given I am on home page with products in cart.
-When I add to cart 3 different items.
-Then Mini cart displays only the three most recently added items.
-And The most recently added item appears first.
+When I slide down mini cart.
+And Click on Product <Element>
+Then I redirects to appropriate PDP.
+
+Examples:
+|Element
+|product-image
+|brand-name
+|product-name
