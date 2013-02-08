@@ -940,6 +940,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def add_item_to_cart(def id) {
+        store_state_of_total_price_and_qty()
         open_pdp(id)
         choose_and_store_configurable_options()
         click_add_to_cart_button_pdp()
@@ -1016,5 +1017,10 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_product_deleted() {
         homePage.assert_product_deleted()
+    }
+
+    @Step
+    def assert_product_deleted_from_mini_cart() {
+        homePage.assert_product_deleted_from_mini_cart()
     }
 }

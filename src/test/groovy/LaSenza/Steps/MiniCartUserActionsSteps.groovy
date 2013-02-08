@@ -37,7 +37,6 @@ class MiniCartUserActionsSteps {
 
     @When("Click on link Remove Item.")
     public void click_on_link_remove_item_mini_cart(){
-        user.store_state_of_total_price_and_qty()
         user.click_on_link_remove_item_mini_cart()
     }
 
@@ -49,5 +48,10 @@ class MiniCartUserActionsSteps {
     @Then("Product removes from shopping cart.")
     public void assert_product_deleted(){
         user.assert_product_deleted()
+    }
+
+    @Then("Mini cart updates and total count of products updated in header.")
+    public void assert_product_deleted_from_mini_cart(){
+        user.assert_product_deleted_from_mini_cart()
     }
 }
