@@ -18,4 +18,20 @@ class MiniCartUserActionsSteps {
     public void assert_on_pdp(){
         user.assert_on_PDP()
     }
+
+    @When("Click on link Edit Item.")
+    public void click_on_link_edit_item(){
+        user.click_on_link_edit_item()
+    }
+
+    @Then("I redirects to appropriate PDP and Add to Cart button has been replaced with an Update Cart button.")
+    public void assert_on_pdp_with_button_update_cart(){
+        user.assert_on_pdp_with_button_update_cart()
+    }
+
+    @Then("I can edit item.")
+    @Pending
+    public void assert_that_i_can_edit_item(){
+        user.assert_that_i_can_edit_item()
+    }
 }

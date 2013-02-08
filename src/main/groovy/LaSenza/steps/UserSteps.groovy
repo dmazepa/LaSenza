@@ -330,7 +330,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def choose_and_store_configurable_options() {
-        choose_configurable_options()
+        choose_configurable_options(1)
         store_configurable_options()
     }
 
@@ -340,8 +340,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def choose_configurable_options() {
-        pDPage.choose_configurable_options()
+    def choose_configurable_options(int index) {
+        pDPage.choose_configurable_options(index)
     }
 
 
@@ -464,7 +464,7 @@ class UserSteps extends ScenarioSteps {
         if(no_items_in_cart()){
             open_pdp(id)
             if(pDPage.contain_configurable_options()){
-                choose_configurable_options()
+                choose_configurable_options(1)
             }
             click_add_to_cart_button_pdp()
         }
@@ -486,7 +486,7 @@ class UserSteps extends ScenarioSteps {
         set_qty_on_pdp("2")
         click_add_to_cart_button_pdp()
         open_pdp(1574)
-        choose_configurable_options()
+        choose_configurable_options(1)
         click_add_to_cart_button_pdp()
         refresh_page()
     }
@@ -976,5 +976,30 @@ class UserSteps extends ScenarioSteps {
     @Step
     def click_on_element_in_mini_cart(String element) {
         homePage.click_on_element_in_mini_cart(element)
+    }
+
+    @Step
+    def click_on_link_edit_item() {
+        homePage.click_on_link_edit_item()
+    }
+
+    @Step
+    def assert_on_pdp_with_button_update_cart() {
+        assert_on_PDP()
+        pDPage.assert_button_update_cart()
+    }
+
+    @Step
+    def assert_that_i_can_edit_item() {
+        fill_qty("10")
+        choose_configurable_options(2)
+        store_configurable_options()
+        click_add_to_cart_button_pdp()
+        assert_product_updated()
+    }
+
+    @Step
+    def assert_product_updated() {
+        Thread.sleep(30000)
     }
 }

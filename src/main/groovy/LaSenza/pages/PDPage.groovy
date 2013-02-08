@@ -37,7 +37,7 @@ class PDPage extends ForAllPage{
     @FindBy(xpath = "//a[@class='change']")
     private WebElement arrowSelectWishList
 
-    @FindBy(xpath = "//button[@title='Add to Cart']")
+    @FindBy(xpath = "//div[@class='product-view']//button[@class='button btn-cart']")
     private WebElement buttonAddToCart;
 
     @FindBy(xpath = "//div[@class='preloader-bg']")
@@ -68,10 +68,10 @@ class PDPage extends ForAllPage{
         typeInto(fieldQTY, qty)
     }
 
-    def choose_configurable_options() {
+    def choose_configurable_options(int index) {
         if(getDriver().findElements(By.xpath("//div[@class='product-options-block']//div[@class='option-wrapper']")).size() != 0){
-            element(selectColor).selectByIndex(1)
-            element(selectSize).selectByIndex(1)
+            element(selectColor).selectByIndex(index)
+            element(selectSize).selectByIndex(index)
         }
     }
 
@@ -129,5 +129,9 @@ class PDPage extends ForAllPage{
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//div[@class='options'][1]/dd")).getText(), equalTo(colors[2]))
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1}]//div[@class='options'][2]/dd")).getText(), equalTo(sizes[2]))
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//span[@class='price']")).getText(), equalTo(prices[2]))
+    }
+
+    def assert_button_update_cart() {
+        assertThat(element(buttonAddToCart).getText(), equalTo("UPDATE CART"))
     }
 }

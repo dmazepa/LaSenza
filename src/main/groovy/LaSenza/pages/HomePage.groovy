@@ -114,6 +114,9 @@ class HomePage extends ForAllPage{
     @FindBy(xpath = "//div[@class='tab-content ']")
     private WebElement blockDropDownMenu
 
+    @FindBy(xpath = "//a[@title='Edit']")
+    private WebElement linkEditItemMiniCart
+
     def click_on_first_image_of_slider() {
         element(sliderImage1).waitUntilNotVisible()
         System.out.println(element(sliderImage1).isCurrentlyVisible());
@@ -394,5 +397,9 @@ class HomePage extends ForAllPage{
                 getDriver().findElement(By.xpath("//ol[@id='mini-cart']//div[@class='${Element}']/a")).click()
             }
         }
+    }
+
+    def click_on_link_edit_item() {
+        element(linkEditItemMiniCart).click()
     }
 }

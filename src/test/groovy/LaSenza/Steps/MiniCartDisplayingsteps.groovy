@@ -18,6 +18,8 @@ class MiniCartDisplayingSteps {
 
     @When("I slide down mini cart.")
     public void open_mini_cart(){
+       user.opens_home_page()
+       user.refresh_page()
        user.click_on_element_in_shopping_cart_area("Icon Bag")
     }
 

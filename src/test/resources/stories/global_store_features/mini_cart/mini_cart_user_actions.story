@@ -3,18 +3,6 @@ Meta:
 Narrative:
 As seller I want to allow users edit and see information of products in shopping cart through mini cart.
 
-Scenario: Product Image/Brand Name/Product Name in mini cart should redirects to PDP.
-Given I am on home page with products in cart.
-When I slide down mini cart.
-And Click on Product <Element>
-Then I redirects to appropriate PDP.
-
-Examples:
-|Element
-|product-image
-|brand-name
-|product-name
-
 Scenario: Allow users to edit products in cart.
 Given I am on home page with products in cart.
 When I slide down mini cart.
@@ -56,3 +44,15 @@ Given I am on home page with products in cart as customer.
 When I slide down mini cart.
 And Click on link Checkout.
 And I redirects to the first step of checkout process for customer.
+
+Scenario: Product Image/Brand Name/Product Name in mini cart should redirects to PDP.
+Given I am on home page with products in cart.
+When I slide down mini cart.
+And Click on Product <Element>
+Then I redirects to appropriate PDP.
+
+Examples:
+|Element
+|product-image
+|brand-name
+|product-name

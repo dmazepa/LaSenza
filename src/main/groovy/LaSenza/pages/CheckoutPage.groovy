@@ -143,6 +143,9 @@ class CheckoutPage extends ForAllPage{
     @FindBy(xpath = "//img[@class='v-middle']")
     private WebElement loader
 
+    @FindBy(xpath = "//div[@class='step-loading']")
+    private WebElement loaderCreditCart
+
     @FindBy(xpath = "//a[@class='cvv-what-is-this']")
     private WebElement linkWhatIsThis
 
@@ -186,8 +189,8 @@ class CheckoutPage extends ForAllPage{
     }
 
     def click_input_credit_cart() {
+        element(loaderCreditCart).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).waitUntilVisible()
-        element(loader).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).click()
         element(loader).waitUntilNotVisible()
         Mouse mouse = ((HasInputDevices) driver).getMouse()
@@ -208,6 +211,7 @@ class CheckoutPage extends ForAllPage{
     }
 
     def select_month() {
+        element(selectMonth).waitUntilVisible()
         element(loader).waitUntilNotVisible()
         element(selectMonth).selectByValue("3")
     }
