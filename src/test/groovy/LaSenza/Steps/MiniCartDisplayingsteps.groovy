@@ -11,15 +11,12 @@ class MiniCartDisplayingSteps {
 
     @Given("I am on home page with products in cart.")
     public void on_home_page_with_products_in_cart(){
-        user.opens_home_page()
         user.add_item_to_cart(11835)
-        user.refresh_page()
     }
 
     @When("I slide down mini cart.")
     public void open_mini_cart(){
        user.opens_home_page()
-       user.refresh_page()
        user.click_on_element_in_shopping_cart_area("Icon Bag")
     }
 

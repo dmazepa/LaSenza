@@ -189,13 +189,11 @@ class CheckoutPage extends ForAllPage{
     }
 
     def click_input_credit_cart() {
-        element(loaderCreditCart).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).waitUntilVisible()
-        element(inputPaymentMethodCreditCart).click()
+        element(loaderCreditCart).waitUntilNotVisible()
         element(loader).waitUntilNotVisible()
-        Mouse mouse = ((HasInputDevices) driver).getMouse()
-        Locatable hoverItem = (Locatable) inputCreditCart
-        mouse.click(hoverItem.getCoordinates())
+        element(loaderCreditCart).waitUntilNotVisible()
+        element(inputPaymentMethodCreditCart).click()
     }
 
     def fill_cart_name() {
@@ -231,6 +229,7 @@ class CheckoutPage extends ForAllPage{
     }
 
     def check_shipment() {
+        Thread.sleep(1000)
         element(shipment).waitUntilVisible()
         element(loader).waitUntilNotVisible()
         element(shipment).click();

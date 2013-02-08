@@ -120,6 +120,12 @@ class HomePage extends ForAllPage{
     @FindBy(xpath = "//a[@title='Remove item']")
     private WebElement linkRemoveItemMiniCart
 
+    @FindBy(xpath = "//div[@class='actions']/a")
+    private WebElement linkGoToShoppingCart
+
+    @FindBy(xpath = "//div[@class='actions']/button")
+    private WebElement buttonCheckout
+
     def click_on_first_image_of_slider() {
         element(sliderImage1).waitUntilNotVisible()
         System.out.println(element(sliderImage1).isCurrentlyVisible());
@@ -417,7 +423,7 @@ class HomePage extends ForAllPage{
 
     def assert_product_deleted() {
         if(getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() != 0){
-            assertThat(element(textQtyHeader).getText().toInteger(), equalTo(qtyHeaderBefore.toInteger()+1))
+            assertThat(element(textQtyHeader).getText().toInteger(), equalTo(qtyHeaderBefore.toInteger()))
         } else{
             assertThat(qtyHeaderBefore, equalTo("0"))
         }
@@ -425,5 +431,23 @@ class HomePage extends ForAllPage{
 
     def assert_product_deleted_from_mini_cart() {
         assertThat(getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size(), equalTo(0))
+    }
+
+    def refuse_confirmation_on_delete_item() {
+        Alert alert = getDriver().switchTo().alert()
+        assertThat(alert.getText(), equalTo("Are you sure you would like to remove this item from the shopping cart?"))
+        alert.dismiss()
+    }
+
+    def assert_products_in_cart_not_removes() {
+        assertThat(element(textQtyHeader).getText().toInteger(), equalTo(qtyHeaderBefore.toInteger()+1))
+    }
+
+    def click_on_link_go_to_shopping_cart() {
+        element(linkGoToShoppingCart).click()
+    }
+
+    def click_on_button_checkout() {
+        element(buttonCheckout).click()
     }
 }

@@ -4,7 +4,6 @@ import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
-import org.openqa.selenium.Alert
 
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
@@ -36,6 +35,9 @@ class PDPage extends ForAllPage{
 
     @FindBy(xpath = "//a[@class='change']")
     private WebElement arrowSelectWishList
+
+    @FindBy(xpath = "//div[@class='popup-message']/div[@class='content']")
+    private WebElement popUpText
 
     @FindBy(xpath = "//div[@class='product-view']//button[@class='button btn-cart']")
     private WebElement buttonAddToCart;
@@ -91,10 +93,8 @@ class PDPage extends ForAllPage{
     }
 
     def assert_modal_window(String textAlert) {
-        Thread.sleep(2000)
-        Alert alert = getDriver().switchTo().alert();
-        assertThat(alert.getText(), equalTo(textAlert))
-        alert.accept()
+        element(popUpText).waitUntilVisible()
+        assertThat(element(popUpText).getText(), equalTo(textAlert))
     }
 
     def assert_most_recently_added_items_in_mini_cart() {

@@ -34,10 +34,10 @@ Then The mini-cart closes.
 And I redirects to the Shopping cart page.
 
 Scenario: Allow guests go to the Checkout.
-Given I am on home page with products in cart as guest.
+Given I am on home page with products in cart.
 When I slide down mini cart.
 And Click on link Checkout.
-And I redirects to the first step of checkout process for guest.
+Then I redirects to the first step of checkout process for guest.
 
 Scenario: Allow customers go to the Checkout.
 Given I am on home page with products in cart as customer.

@@ -21,6 +21,7 @@ class UserSteps extends ScenarioSteps {
     CLPage  cLPage
     CheckoutPage  checkoutPage
     ThankYouPage  thankYouPage
+    ShoppingCartPage  shoppingCartPage
 
     UserSteps(Pages pages){
         super(pages)
@@ -34,6 +35,7 @@ class UserSteps extends ScenarioSteps {
         cLPage = pages[CLPage]
         checkoutPage = pages[CheckoutPage]
         thankYouPage = pages[ThankYouPage]
+        shoppingCartPage = pages[ShoppingCartPage]
     }
     @Step
     def opens_home_page() {
@@ -940,10 +942,13 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def add_item_to_cart(def id) {
-        store_state_of_total_price_and_qty()
-        open_pdp(id)
-        choose_and_store_configurable_options()
-        click_add_to_cart_button_pdp()
+        if(no_items_in_cart()){
+            store_state_of_total_price_and_qty()
+            open_pdp(id)
+            choose_and_store_configurable_options()
+            click_add_to_cart_button_pdp()
+        }
+
     }
 
     @Step
@@ -1022,5 +1027,30 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_product_deleted_from_mini_cart() {
         homePage.assert_product_deleted_from_mini_cart()
+    }
+
+    @Step
+    def refuse_confirmation_on_delete_item() {
+        homePage.refuse_confirmation_on_delete_item()
+    }
+
+    @Step
+    def assert_products_in_cart_not_removes() {
+        homePage.assert_products_in_cart_not_removes()
+    }
+
+    @Step
+    def click_on_link_go_to_shopping_cart() {
+        homePage.click_on_link_go_to_shopping_cart()
+    }
+
+    @Step
+    def assert_on_shopping_cart_page() {
+        shoppingCartPage.assert_on_shopping_cart_page()
+    }
+
+    @Step
+    def click_on_button_checkout() {
+        homePage.click_on_button_checkout()
     }
 }

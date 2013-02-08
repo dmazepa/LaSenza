@@ -54,4 +54,44 @@ class MiniCartUserActionsSteps {
     public void assert_product_deleted_from_mini_cart(){
         user.assert_product_deleted_from_mini_cart()
     }
+
+    @When("Refuse confirmation.")
+    public void refuse_confirmation_on_delete_item(){
+        user.refuse_confirmation_on_delete_item()
+    }
+
+    @Then("Product do not removes from shopping cart.")
+    public void assert_products_in_cart_not_removes(){
+        user.assert_products_in_cart_not_removes()
+    }
+
+    @Then("The mini-cart remains open.")
+    public void assert_mini_cart_remains_open(){
+        user.assert_mini_cart_appears()
+    }
+
+    @When("Click on link Go to Shopping Cart.")
+    public void click_on_link_go_to_shopping_cart(){
+        user.click_on_link_go_to_shopping_cart()
+    }
+
+    @Then("The mini-cart closes.")
+    public void assert_mini_cart_closed(){
+        user.assert_mini_cart_not_appears()
+    }
+
+    @Then("I redirects to the Shopping cart page.")
+    public void assert_on_shopping_cart_page(){
+        user.assert_on_shopping_cart_page()
+    }
+
+    @When("Click on link Checkout.")
+    public void click_on_button_checkout(){
+        user.click_on_button_checkout()
+    }
+
+    @Then("I redirects to the first step of checkout process for guest.")
+    public void assert_on_checkout_page(){
+        user.assert_on_checkout_page()
+    }
 }
