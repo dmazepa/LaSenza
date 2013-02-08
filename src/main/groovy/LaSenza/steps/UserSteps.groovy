@@ -1053,4 +1053,9 @@ class UserSteps extends ScenarioSteps {
     def click_on_button_checkout() {
         homePage.click_on_button_checkout()
     }
+
+    @Step
+    def assert_logget_in_on_checkout_page() {
+        checkoutPage.assert_logged_in()
+    }
 }

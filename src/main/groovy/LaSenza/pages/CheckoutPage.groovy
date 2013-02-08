@@ -193,6 +193,7 @@ class CheckoutPage extends ForAllPage{
         element(loaderCreditCart).waitUntilNotVisible()
         element(loader).waitUntilNotVisible()
         element(loaderCreditCart).waitUntilNotVisible()
+        Thread.sleep(2000)
         element(inputPaymentMethodCreditCart).click()
     }
 
@@ -339,7 +340,6 @@ class CheckoutPage extends ForAllPage{
     def click_button_confirm_and_pay_via_javascript() {
         Thread.sleep(4000)
         ((JavascriptExecutor) driver).executeScript('review.save()')
-        //element(buttonConfirmAndPay).click()
     }
 
     def assert_error_message_wrong_password() {
@@ -363,7 +363,6 @@ class CheckoutPage extends ForAllPage{
     }
 
     def coupon_discount_appears_in_grand_total() {
-        //element(blockDiscountCouponTotals).waitUntilVisible()
         element(blockDiscountCouponTotals).shouldBeVisible()
         shouldContainText("AutoTestCoupon (12345)")
     }
@@ -372,7 +371,7 @@ class CheckoutPage extends ForAllPage{
         shouldContainText("AutoTestCoupon (12345) has been applied to your order.")
     }
 
-    def wait_for_confirmation_page() {
-        waitForTextToAppear("Please review your information before submitting your order. ")
+    def assert_logged_in() {
+        element(fieldEmail).shouldNotBeVisible()
     }
 }

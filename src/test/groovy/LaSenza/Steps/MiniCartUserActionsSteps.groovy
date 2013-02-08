@@ -94,4 +94,16 @@ class MiniCartUserActionsSteps {
     public void assert_on_checkout_page(){
         user.assert_on_checkout_page()
     }
+
+    @Given("I am on home page with products in cart as customer.")
+    public void on_home_page_with_products_in_cart_customer(){
+        user.log_in(true)
+        user.add_item_to_cart(11835)
+    }
+
+    @Then("I redirects to the first step of checkout process for customer.")
+    public void on_checkout_as_customer(){
+        user.assert_on_checkout_page()
+        user.assert_logget_in_on_checkout_page()
+    }
 }

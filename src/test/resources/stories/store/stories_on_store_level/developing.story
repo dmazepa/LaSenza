@@ -9,8 +9,8 @@ Given Prepare_base
 Scenario: Prepare Base.
 Given Check products inventory
 
-Scenario: Allow guests go to the Checkout.
-Given I am on home page with products in cart.
+Scenario: Allow customers go to the Checkout.
+Given I am on home page with products in cart as customer.
 When I slide down mini cart.
 And Click on link Checkout.
-Then I redirects to the first step of checkout process for guest.
+Then I redirects to the first step of checkout process for customer.
