@@ -1002,4 +1002,19 @@ class UserSteps extends ScenarioSteps {
     def assert_product_updated() {
         Thread.sleep(30000)
     }
+    @Step
+    def click_on_link_remove_item_mini_cart() {
+        homePage.click_on_link_remove_item_mini_cart()
+    }
+
+    @Step
+    def accept_confirmation_on_remove_item_mini_cart() {
+        homePage.accept_confirmation_on_remove_item_mini_cart()
+        refresh_page()
+    }
+
+    @Step
+    def assert_product_deleted() {
+        homePage.assert_product_deleted()
+    }
 }

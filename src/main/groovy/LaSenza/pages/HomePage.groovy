@@ -51,7 +51,7 @@ class HomePage extends ForAllPage{
     @FindBy(xpath = "//a[@title='My Account']")
     private WebElement linkMyAccount;
 
-    @FindBy(xpath = "//a[contains(text(), 'Wish list')]")
+    @FindBy(xpath = "//a[contains(text(), 'My Wishlists')]")
     private WebElement linkMyWishlist;
 
     @FindBy(xpath = "//strong//span[@class='price']")
@@ -116,6 +116,9 @@ class HomePage extends ForAllPage{
 
     @FindBy(xpath = "//a[@title='Edit']")
     private WebElement linkEditItemMiniCart
+
+    @FindBy(xpath = "//a[@title='Remove item']")
+    private WebElement linkRemoveItemMiniCart
 
     def click_on_first_image_of_slider() {
         element(sliderImage1).waitUntilNotVisible()
@@ -401,5 +404,23 @@ class HomePage extends ForAllPage{
 
     def click_on_link_edit_item() {
         element(linkEditItemMiniCart).click()
+    }
+
+    def click_on_link_remove_item_mini_cart() {
+        element(linkRemoveItemMiniCart).click()
+    }
+
+    def accept_confirmation_on_remove_item_mini_cart() {
+        Alert alert = getDriver().switchTo().alert()
+        assertThat(alert.getText(), equalTo("Are you sure you would like to remove this item from the shopping cart?"))
+        alert.accept()
+    }
+
+    def assert_product_deleted() {
+        if(getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() != 0){
+            assertThat(element(textQtyHeader).getText().toInteger(), equalTo(qtyHeaderBefore.toInteger()+1))
+        } else{
+            assertThat(qtyHeaderBefore, equalTo("0"))
+        }
     }
 }

@@ -34,4 +34,20 @@ class MiniCartUserActionsSteps {
     public void assert_that_i_can_edit_item(){
         user.assert_that_i_can_edit_item()
     }
+
+    @When("Click on link Remove Item.")
+    public void click_on_link_remove_item_mini_cart(){
+        user.store_state_of_total_price_and_qty()
+        user.click_on_link_remove_item_mini_cart()
+    }
+
+    @When("Accept confirmation.")
+    public void accept_confirmation_on_remove_item_mini_cart(){
+        user.accept_confirmation_on_remove_item_mini_cart()
+    }
+
+    @Then("Product removes from shopping cart.")
+    public void assert_product_deleted(){
+        user.assert_product_deleted()
+    }
 }

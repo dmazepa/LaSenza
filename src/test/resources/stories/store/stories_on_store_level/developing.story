@@ -9,11 +9,10 @@ Given Prepare_base
 Scenario: Prepare Base.
 Given Check products inventory
 
-Scenario: Allow Customers save entered address in Address book.
-Given I am on checkout page as Customer and process checkout with checked Save in Address Book checkbox.
-Then I can see entered on checkout page address in address book
-
-Scenario: Allow Users clarify information about Security code.
-Given I am on checkout page as User and choose payment by Credit cart.
-Then I can click on link What is this?
-And It is associated with a form field triggers a tab tip popup with a description or explanation of the form field.
+Scenario: Allow users to remove products from cart.
+Given I am on home page with products in cart.
+When I slide down mini cart.
+And Click on link Remove Item.
+And Accept confirmation.
+Then Product removes from shopping cart.
+And Mini cart updates and total count of products updated in header.
