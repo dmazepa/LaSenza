@@ -127,7 +127,7 @@ class PDPage extends ForAllPage{
     def assert_most_recently_added_appears_first() {
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//p/a")).getText(), equalTo(names[2]))
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//div[@class='options'][1]/dd")).getText(), equalTo(colors[2]))
-        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1}]//div[@class='options'][2]/dd")).getText(), equalTo(sizes[2]))
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//div[@class='options'][2]/dd")).getText(), equalTo(sizes[2]))
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//span[@class='price']")).getText(), equalTo(prices[2]))
     }
 
