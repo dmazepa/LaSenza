@@ -143,8 +143,8 @@ class CheckoutPage extends ForAllPage{
     @FindBy(xpath = "//img[@class='v-middle']")
     private WebElement loader
 
-    @FindBy(xpath = "//div[@class='step-loading']")
-    private WebElement loaderCreditCart
+    @FindBy(xpath = "//div[@id='checkout-step-payment']//img[@title='Loading step data...']")
+    private WebElement loaderPayment
 
     @FindBy(xpath = "//a[@class='cvv-what-is-this']")
     private WebElement linkWhatIsThis
@@ -189,50 +189,38 @@ class CheckoutPage extends ForAllPage{
     }
 
     def click_input_credit_cart() {
-        element(inputPaymentMethodCreditCart).waitUntilVisible()
-        element(loaderCreditCart).waitUntilNotVisible()
-        element(loader).waitUntilNotVisible()
-        element(loaderCreditCart).waitUntilNotVisible()
-        Thread.sleep(2000)
+        element(loaderPayment).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).click()
     }
 
     def fill_cart_name() {
-        element(loader).waitUntilNotVisible()
+        element(loaderPayment).waitUntilNotVisible()
         element(fieldCartName).type("Visa")
     }
 
     def fill_cart_number_field() {
-        element(loader).waitUntilNotVisible()
-        element(fieldCartNumber).waitUntilVisible()
-        fieldCartNumber.clear()
-        fieldCartNumber.sendKeys("4111111111111111")
+        element(loaderPayment).waitUntilNotVisible()
+        element(fieldCartNumber).type("4111111111111111")
     }
 
     def select_month() {
-        element(selectMonth).waitUntilVisible()
-        element(loader).waitUntilNotVisible()
+        element(loaderPayment).waitUntilNotVisible()
         element(selectMonth).selectByValue("3")
     }
 
     def select_year() {
-        element(selectYear).waitUntilVisible()
-        element(loader).waitUntilNotVisible()
+        element(loaderPayment).waitUntilNotVisible()
         element(selectYear).selectByValue("2022");
     }
 
     def fill_verification_number_field(def verificationNumber) {
-        element(fieldVerificationNumber).waitUntilVisible()
-        Thread.sleep(1000)
-        element(loader).waitUntilNotVisible()
-        Thread.sleep(1000)
+        element(loaderPayment).waitUntilNotVisible()
         element(fieldVerificationNumber).type(verificationNumber)
     }
 
     def check_shipment() {
-        Thread.sleep(1000)
-        element(shipment).waitUntilVisible()
         element(loader).waitUntilNotVisible()
+        element(shipment).waitUntilEnabled()
         element(shipment).click();
     }
 
