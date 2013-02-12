@@ -92,9 +92,6 @@ class CheckoutPage extends ForAllPage{
     @FindBy(name = "shipping_method")
     private WebElement shipment
 
-    @FindBy(xpath = "//input[@value='VI']")
-    private WebElement inputCreditCart
-
     @FindBy(id= "p_method_moneriscc")
     private WebElement inputPaymentMethodCreditCart
 
@@ -143,6 +140,12 @@ class CheckoutPage extends ForAllPage{
     @FindBy(xpath = "//img[@class='v-middle']")
     private WebElement loader
 
+    @FindBy(xpath = "//div[@id='checkout-step-shipping_method']//img")
+    private WebElement loaderShipment
+
+    @FindBy(xpath = "//div[@class='checkitout-checkout-loading']//img")
+    private WebElement loaderSubmittingOrder
+
     @FindBy(xpath = "//div[@id='checkout-step-payment']//img[@title='Loading step data...']")
     private WebElement loaderPayment
 
@@ -188,19 +191,21 @@ class CheckoutPage extends ForAllPage{
         element(fieldTelephone).type("1234567890")
     }
 
-    def click_input_credit_cart() {
+    def click_input_credit_cart(def cartType) {
         element(loaderPayment).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).click()
+        element(loaderPayment).waitUntilNotVisible()
+        element(By.xpath("//input[@value='${cartType}']")).click()
     }
 
-    def fill_cart_name() {
+    def fill_cart_name(def cartName) {
         element(loaderPayment).waitUntilNotVisible()
-        element(fieldCartName).type("Visa")
+        element(fieldCartName).type(cartName)
     }
 
-    def fill_cart_number_field() {
+    def fill_cart_number_field(def cartNumber) {
         element(loaderPayment).waitUntilNotVisible()
-        element(fieldCartNumber).type("4111111111111111")
+        element(fieldCartNumber).type(cartNumber)
     }
 
     def select_month() {
@@ -219,8 +224,7 @@ class CheckoutPage extends ForAllPage{
     }
 
     def check_shipment() {
-        element(loader).waitUntilNotVisible()
-        element(shipment).waitUntilEnabled()
+        element(loaderShipment).waitUntilNotVisible()
         element(shipment).click();
     }
 
@@ -233,8 +237,9 @@ class CheckoutPage extends ForAllPage{
     }
 
     def click_button_submit() {
+        element(loaderSubmittingOrder).waitUntilVisible()
+        element(loaderSubmittingOrder).waitUntilNotVisible()
         element(buttonSubmit).waitUntilVisible()
-        Thread.sleep(1000)
         element(buttonSubmit).click()
     }
 
@@ -253,7 +258,6 @@ class CheckoutPage extends ForAllPage{
     }
 
     def uncheck_checkbox_use_billing_for_shipping() {
-        def f = checkboxUseBillingForShipping.getAttribute("checked")
         if(checkboxUseBillingForShipping.getAttribute("checked") != "checked" & checkboxUseBillingForShipping.getAttribute("checked") != null){
             element(checkboxUseBillingForShipping).click()
         }
@@ -307,7 +311,6 @@ class CheckoutPage extends ForAllPage{
     }
 
     def check_checkbox_save_address() {
-        def r = checkboxSaveShippingAddress.getAttribute("checked")
         if(checkboxSaveShippingAddress.getAttribute("checked") == null){
             element(checkboxSaveShippingAddress).click()
         }

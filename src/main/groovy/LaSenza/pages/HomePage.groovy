@@ -177,12 +177,7 @@ class HomePage extends ForAllPage{
     }
 
     def assert_welcome_msg(def welcomeMSG) {
-        def g = blockWelcomeMsg.getText()
         assertThat(blockWelcomeMsg.getText(), equalTo(welcomeMSG))
-    }
-
-    def click_on_search_field() {
-        element(fieldSearch).click()
     }
 
     def assert_default_text_in_search_field_removes() {
@@ -203,10 +198,6 @@ class HomePage extends ForAllPage{
 
     def assert_logged_out() {
        element(linkLogIn).shouldBeVisible()
-    }
-
-    def return_logged_out() {
-       return element(linkLogIn).isVisible()
     }
 
     def assert_default_header() {
@@ -361,7 +352,6 @@ class HomePage extends ForAllPage{
     }
 
     def no_items_in_cart() {
-        def r = getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size()
         return  getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() == 0
     }
 

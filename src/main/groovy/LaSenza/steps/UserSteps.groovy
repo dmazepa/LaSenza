@@ -172,16 +172,6 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def click_on_search_field() {
-        homePage.click_on_search_field()
-    }
-
-    @Step
-    def assert_default_text_in_search_field_removes() {
-        homePage.assert_default_text_in_search_field_removes()
-    }
-
-    @Step
     def refresh_page() {
         getDriver().navigate().refresh()
     }
@@ -220,11 +210,6 @@ class UserSteps extends ScenarioSteps {
     @Pending
     def assert_on_wish_list_login_page() {
 
-    }
-
-    @Step
-    def should_see_welcomeMSG(String msg) {
-        homePage.assert_welcome_msg(msg)
     }
 
     @Step
@@ -355,22 +340,22 @@ class UserSteps extends ScenarioSteps {
     @Step
     def open_second_step_of_checkout() {
         open_first_step_of_checkout(1472)
-        enter_valid_data_on_checkout_page("test1@speroteck.com", "111")
+        enter_valid_data_on_checkout_page("test1@speroteck.com", "111", "Visa", "4111111111111111", "VI")
         click_button_confirm_and_pay()
     }
 
     @Step
-    def enter_valid_data_on_checkout_page(def email, def verificationNumber) {
+    def enter_valid_data_on_checkout_page(String email, String verificationNumber, String cartName, String cartNumber, def cartType) {
         enter_valid_billing_data(email)
-        enter_payment_inf(verificationNumber)
+        enter_payment_inf(verificationNumber, cartName, cartNumber, cartType)
         check_shipment();
     }
 
     @Step
-    def enter_payment_inf(def verificationNumber) {
-        click_input_credit_cart();
-        fill_cart_name();
-        fill_cart_number_field();
+    def enter_payment_inf(def verificationNumber, def cartName, def cartNumber, def cartType) {
+        click_input_credit_cart(cartType);
+        fill_cart_name(cartName);
+        fill_cart_number_field(cartNumber);
         select_month();
         select_year();
         fill_verification_number_field(verificationNumber);
@@ -402,18 +387,18 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def fill_cart_number_field() {
-        checkoutPage.fill_cart_number_field()
+    def fill_cart_number_field(def cartNumber) {
+        checkoutPage.fill_cart_number_field(cartNumber)
     }
 
     @Step
-    def fill_cart_name() {
-        checkoutPage.fill_cart_name()
+    def fill_cart_name(def cartName) {
+        checkoutPage.fill_cart_name(cartName)
     }
 
     @Step
-    def click_input_credit_cart() {
-        checkoutPage.click_input_credit_cart()
+    def click_input_credit_cart(def cartType) {
+        checkoutPage.click_input_credit_cart(cartType)
     }
 
     @Step
@@ -664,7 +649,7 @@ class UserSteps extends ScenarioSteps {
     @Step
     def open_second_step_of_checkout_with_invalid_data() {
         open_first_step_of_checkout(1472)
-        enter_valid_data_on_checkout_page("test1@speroteck.com", "1111")
+        enter_valid_data_on_checkout_page("test1@speroteck.com", "1111", "Visa", "4111111111111111", "VI")
         click_button_confirm_and_pay()
     }
 

@@ -148,9 +148,9 @@ class CustomerSteps extends UserSteps{
 
     @Step
     def enter_payment_information() {
-        checkoutPage.click_input_credit_cart()
-        checkoutPage.fill_cart_name()
-        checkoutPage.fill_cart_number_field()
+        checkoutPage.click_input_credit_cart("VI")
+        checkoutPage.fill_cart_name("Visa")
+        checkoutPage.fill_cart_number_field("4111111111111111")
         checkoutPage.select_month()
         checkoutPage.select_year()
         checkoutPage.fill_verification_number_field("111")
