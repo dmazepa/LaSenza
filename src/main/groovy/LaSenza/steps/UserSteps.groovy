@@ -340,13 +340,13 @@ class UserSteps extends ScenarioSteps {
     @Step
     def open_second_step_of_checkout() {
         open_first_step_of_checkout(1472)
-        enter_valid_data_on_checkout_page("test1@speroteck.com", "111", "Visa", "4111111111111111", "VI")
+        enter_valid_data_on_checkout_page("test1@speroteck.com", "111", "Visa", "4111111111111111", "VI", "Test City", "11111")
         click_button_confirm_and_pay()
     }
 
     @Step
-    def enter_valid_data_on_checkout_page(String email, String verificationNumber, String cartName, String cartNumber, def cartType) {
-        enter_valid_billing_data(email)
+    def enter_valid_data_on_checkout_page(String email, String verificationNumber, String cartName, String cartNumber, def cartType, def city, def zipCode) {
+        enter_valid_billing_data(email, city, zipCode)
         enter_payment_inf(verificationNumber, cartName, cartNumber, cartType)
         check_shipment();
     }
@@ -407,8 +407,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def fill_postal_code_field() {
-        checkoutPage.fill_postal_code_field()
+    def fill_postal_code_field(def zipCode) {
+        checkoutPage.fill_postal_code_field(zipCode)
     }
 
     @Step
@@ -417,8 +417,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def fill_city_field() {
-        checkoutPage.fill_city_field()
+    def fill_city_field(def city) {
+        checkoutPage.fill_city_field(city)
     }
 
     @Step
@@ -609,15 +609,15 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def enter_valid_billing_data(def email) {
+    def enter_valid_billing_data(def email, def city, def zipCode) {
         fill_email_field(email);
         fill_first_name_field();
         fill_last_name_field();
         fill_address1_field();
         fill_address2_field();
-        fill_city_field();
+        fill_city_field(city);
         select_state();
-        fill_postal_code_field();
+        fill_postal_code_field(zipCode);
         fill_telephone_field();
     }
 
@@ -649,7 +649,7 @@ class UserSteps extends ScenarioSteps {
     @Step
     def open_second_step_of_checkout_with_invalid_data() {
         open_first_step_of_checkout(1472)
-        enter_valid_data_on_checkout_page("test1@speroteck.com", "1111", "Visa", "4111111111111111", "VI")
+        enter_valid_data_on_checkout_page("test1@speroteck.com", "1111", "Visa", "4111111111111111", "VI", "Test City", "11111")
         click_button_confirm_and_pay()
     }
 
@@ -1042,5 +1042,15 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_logget_in_on_checkout_page() {
         checkoutPage.assert_logged_in()
+    }
+
+    @Step
+    def check_pay_pal_method() {
+        checkoutPage.check_pay_pal_method()
+    }
+
+    @Step
+    def pass_pay_pall_process() {
+        checkoutPage.pass_pay_pall_process()
     }
 }

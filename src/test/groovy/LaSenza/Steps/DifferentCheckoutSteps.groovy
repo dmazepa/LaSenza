@@ -11,14 +11,24 @@ class DifferentCheckoutSteps {
 
     @When("I pass checkout with <nameCart>, that has number <numberCart>, cart type <value> security code <securityCode>.")
     public void pass_checkout_with_different_carts(String nameCart, String numberCart, String securityCode, String value){
-        user.enter_valid_data_on_checkout_page("testemail@mail.com", securityCode, nameCart, numberCart, value)
+        user.enter_valid_data_on_checkout_page("testemail@mail.com", securityCode, nameCart, numberCart, value, "Test City", "11111")
         user.click_button_confirm_and_pay()
         user.click_submit_button()
-
     }
 
     @Then("I get Thank You Page.")
     public void assert_on_thank_you_page(){
         user.assert_thank_you_page()
     }
+
+    @When("I pass checkout with via PayPal.")
+    public void pass_checkout_via_pay_pal(){
+        user.enter_valid_billing_data("testemail@mail.com", "Sacramento", "94203")
+        user.check_pay_pal_method()
+        user.check_shipment()
+        user.click_button_confirm_and_pay()
+        user.click_submit_button()
+        user.pass_pay_pall_process()
+    }
+
 }

@@ -23,6 +23,27 @@ class CheckoutPage extends ForAllPage{
     @FindBy(id = "contact:email")
     private WebElement fieldEmail
 
+    @FindBy(xpath = "//input[@id='p_method_paypal_express']")
+    private WebElement inputPayPallMethod
+
+    @FindBy(xpath = "//input[@id='login_email']")
+    private WebElement fieldPayPallEmail
+
+    @FindBy(xpath = "//input[@id='esignOpt']")
+    private WebElement inputPayPallAgree
+
+    @FindBy(xpath = "//input[@id='login_password']")
+    private WebElement fieldPayPallPassword
+
+    @FindBy(xpath = "//input[@id='login_password']")
+    private WebElement buttonPayPallLogin
+
+    @FindBy(xpath = "//input[@id='agree']")
+    private WebElement buttonPayPallAgree
+
+    @FindBy(xpath = "//input[@id='continue_abovefold']")
+    private WebElement buttonPayPallContinue
+
     @FindBy(id = "billing:firstname")
     private WebElement fieldFirstName
 
@@ -175,16 +196,16 @@ class CheckoutPage extends ForAllPage{
         element(fieldAddress2).type("Test Address2")
     }
 
-    def fill_city_field() {
-        element(fieldCity).type("Test City");
+    def fill_city_field(def city) {
+        element(fieldCity).type(city);
     }
 
     def select_state() {
         element(selectState).selectByVisibleText("California")
     }
 
-    def fill_postal_code_field() {
-        element(fieldPostalCode).type("11111");
+    def fill_postal_code_field(def zipCode) {
+        element(fieldPostalCode).type(zipCode);
     }
 
     def fill_telephone_field() {
@@ -237,7 +258,6 @@ class CheckoutPage extends ForAllPage{
     }
 
     def click_button_submit() {
-        element(loaderSubmittingOrder).waitUntilVisible()
         element(loaderSubmittingOrder).waitUntilNotVisible()
         element(buttonSubmit).waitUntilVisible()
         element(buttonSubmit).click()
@@ -364,5 +384,21 @@ class CheckoutPage extends ForAllPage{
 
     def assert_logged_in() {
         element(fieldEmail).shouldNotBeVisible()
+    }
+
+    def check_pay_pal_method() {
+        element(loaderShipment).waitUntilNotVisible()
+        element(inputPayPallMethod).click()
+    }
+
+    def pass_pay_pall_process() {
+        element(fieldPayPallEmail).waitUntilVisible()
+        element(fieldPayPallEmail).type("vovik_1324330788_per@speroteck.com")
+        element(fieldPayPallPassword).type("359728798")
+        element(buttonPayPallLogin).click()
+        element(inputPayPallAgree).waitUntilVisible()
+        element(inputPayPallAgree).click()
+        element(buttonPayPallContinue).waitUntilVisible()
+        element(buttonPayPallContinue).click()
     }
 }
