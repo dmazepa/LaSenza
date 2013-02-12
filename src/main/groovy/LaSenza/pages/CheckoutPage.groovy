@@ -35,7 +35,7 @@ class CheckoutPage extends ForAllPage{
     @FindBy(xpath = "//input[@id='login_password']")
     private WebElement fieldPayPallPassword
 
-    @FindBy(xpath = "//input[@id='login_password']")
+    @FindBy(xpath = "//input[@id='submitLogin']")
     private WebElement buttonPayPallLogin
 
     @FindBy(xpath = "//input[@id='agree']")
@@ -176,7 +176,7 @@ class CheckoutPage extends ForAllPage{
     @FindBy(id = "payment-tool-tip-close")
     private WebElement linkCloseWhatIsThis
 
-    def fill_email_field(def email) {
+    def fill_email_field(String email) {
         element(fieldEmail).type(email);
     }
 
@@ -245,6 +245,8 @@ class CheckoutPage extends ForAllPage{
     }
 
     def check_shipment() {
+        Thread.sleep(2000)
+        element(shipment).waitUntilVisible()
         element(loaderShipment).waitUntilNotVisible()
         element(shipment).click();
     }
@@ -398,6 +400,7 @@ class CheckoutPage extends ForAllPage{
         element(buttonPayPallLogin).click()
         element(inputPayPallAgree).waitUntilVisible()
         element(inputPayPallAgree).click()
+        element(buttonPayPallAgree).click()
         element(buttonPayPallContinue).waitUntilVisible()
         element(buttonPayPallContinue).click()
     }

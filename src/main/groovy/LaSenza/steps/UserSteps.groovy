@@ -5,6 +5,7 @@ import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 import net.thucydides.core.steps.ScenarioSteps
 import org.openqa.selenium.Alert
+import org.openqa.selenium.By
 import LaSenza.pages.*
 
 import static org.hamcrest.MatcherAssert.assertThat
@@ -345,7 +346,7 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def enter_valid_data_on_checkout_page(String email, String verificationNumber, String cartName, String cartNumber, def cartType, def city, def zipCode) {
+    def enter_valid_data_on_checkout_page(def email, def verificationNumber, def cartName, def cartNumber, def cartType, def city, def zipCode) {
         enter_valid_billing_data(email, city, zipCode)
         enter_payment_inf(verificationNumber, cartName, cartNumber, cartType)
         check_shipment();
@@ -1052,5 +1053,16 @@ class UserSteps extends ScenarioSteps {
     @Step
     def pass_pay_pall_process() {
         checkoutPage.pass_pay_pall_process()
+    }
+
+    @Step
+    def login_to_pay_pal() {
+        getDriver().get("https://developer.paypal.com/")
+        getDriver().findElement(By.id("login_email")).clear()
+        getDriver().findElement(By.id("login_email")).sendKeys("vdubyna@speroteck.com")
+        getDriver().findElement(By.id("login_password")).clear()
+        getDriver().findElement(By.id("login_password")).sendKeys("dva827287")
+        getDriver().findElement(By.name("submit")).click()
+        Thread.sleep(3000)
     }
 }

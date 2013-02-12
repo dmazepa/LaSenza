@@ -23,6 +23,8 @@ class DifferentCheckoutSteps {
 
     @When("I pass checkout with via PayPal.")
     public void pass_checkout_via_pay_pal(){
+        user.login_to_pay_pal()
+        user.go_to_checkout()
         user.enter_valid_billing_data("testemail@mail.com", "Sacramento", "94203")
         user.check_pay_pal_method()
         user.check_shipment()

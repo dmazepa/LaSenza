@@ -44,7 +44,7 @@ class EditInfSteps {
     @When("I create account.")
     public void create_account(){
         Random random = new Random()
-        user.enter_valid_data_on_checkout_page("checkout${random.nextInt(1000)}@sproteck.com", "111", "Test City", "11111")
+        user.enter_valid_data_on_checkout_page("account${random.nextInt(1000)}@sproteck.com", "111", "Visa", "4111111111111111", "VI", "Test City", "11111")
         user.create_account_on_checkout_page("testthis","testthis")
         user.click_button_confirm_and_pay_via_javascript()
         user.click_submit_button()
@@ -59,7 +59,7 @@ class EditInfSteps {
     @When("I create account and enter wrong password.")
     public void create_account_with_wrong_password(){
         Random random = new Random()
-        user.enter_valid_data_on_checkout_page("account${random.nextInt(1000)}@sproteck.com", "111", "Test City", "11111")
+        user.enter_valid_data_on_checkout_page("account${random.nextInt(1000)}@sproteck.com","111", "Visa", "4111111111111111", "VI",  "Test City", "11111")
         user.create_account_on_checkout_page("testthis", "testthis1")
         user.click_button_confirm_and_pay_via_javascript()
     }
