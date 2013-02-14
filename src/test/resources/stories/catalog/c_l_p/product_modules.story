@@ -16,7 +16,7 @@ When I click on color swatch.
 Then Product image replaces with a new image displaying the product in the selected color.
 
 Scenario: Users allow view configurable products with more than 7 images in different colors from CLP.
-Given I am on collection page as User.
+Given I am on Category page as User.
 When I click on View All Colors(#).
 Then Popup displays with # of the color swatches loaded into it.
 When When he select some color.

@@ -38,4 +38,19 @@ class ProductModulesSteps {
     public void assert_product_image_replaced_with_new_image_CLP(){
         user.assert_image_replaced_CLP()
     }
+
+    @When("I click on View All Colors(#).")
+    public void click_on_view_all_colors(){
+        user.click_on_view_all_colors()
+    }
+
+    @Then("Popup displays with # of the color swatches loaded into it.")
+    public void assert_pop_up_color_swatches(){
+        user.assert_pop_up_color_swatches()
+    }
+
+    @When("When he select some color.")
+    public void select_color_in_pop_up_color_swatches(){
+        user.select_color_in_pop_up_color_swatches()
+    }
 }

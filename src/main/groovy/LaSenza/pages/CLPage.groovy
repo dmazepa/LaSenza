@@ -12,6 +12,7 @@ class CLPage extends ForAllPage{
 
     private def productName
     def qtyPages
+    def countColors
 
     CLPage(WebDriver driver){
         super(driver)
@@ -22,6 +23,15 @@ class CLPage extends ForAllPage{
 
     @FindBy(xpath = "//a[@class='popup-close']")
     private WebElement buttonQWClose
+
+    @FindBy(xpath = "//a[@class='view-all']")
+    private WebElement linkViewAll
+
+    @FindBy(xpath = "//div[@class='hidden-colors']")
+    private WebElement popUpColosSwatches
+
+    @FindBy(xpath = "//div[@class='hidden-colors']//a[2]")
+    private WebElement colorPopUpColosSwatches
 
     @FindBy(xpath = "//div[@class='more-views']/ul/li")
     private WebElement thumbnailImageQW
@@ -279,5 +289,19 @@ class CLPage extends ForAllPage{
 
     def assert_image_replaced_CLP() {
         getDriver().findElement(By.xpath("//div[@class='category-products']//ul[1]/li[1]//a[@class='product-image']/img")).getAttribute("src").contains("base")
+    }
+
+    def click_on_view_all_colors() {
+        countColors = element(linkViewAll).getText().replaceAll("\\D", "").toInteger()
+        element(linkViewAll).click()
+    }
+
+    def assert_pop_up_color_swatches() {
+        element(popUpColosSwatches).shouldBeVisible()
+        assertThat(getDriver().findElements(By.xpath("//div[@class='hidden-colors']//a")).size(), equalTo(12))
+    }
+
+    def select_color_in_pop_up_color_swatches() {
+         element(colorPopUpColosSwatches).click()
     }
 }

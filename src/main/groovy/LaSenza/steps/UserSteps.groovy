@@ -1095,4 +1095,19 @@ class UserSteps extends ScenarioSteps {
     def assert_image_replaced_CLP() {
         cLPage.assert_image_replaced_CLP()
     }
+
+    @Step
+    def click_on_view_all_colors() {
+        cLPage.click_on_view_all_colors()
+    }
+
+    @Step
+    def assert_pop_up_color_swatches() {
+        cLPage.assert_pop_up_color_swatches()
+    }
+
+    @Step
+    def select_color_in_pop_up_color_swatches() {
+        cLPage.select_color_in_pop_up_color_swatches()
+    }
 }
