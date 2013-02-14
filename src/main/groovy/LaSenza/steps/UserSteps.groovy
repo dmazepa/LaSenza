@@ -1110,4 +1110,14 @@ class UserSteps extends ScenarioSteps {
     def select_color_in_pop_up_color_swatches() {
         cLPage.select_color_in_pop_up_color_swatches()
     }
+
+    @Step
+    def assert_qty_and_price_added_to_shopping_cart(def qty, def price) {
+        shoppingCartPage.assert_qty_and_price_added_to_shopping_cart(qty, price)
+    }
+
+    @Step
+    def open_shopping_cart() {
+        shoppingCartPage.open()
+    }
 }

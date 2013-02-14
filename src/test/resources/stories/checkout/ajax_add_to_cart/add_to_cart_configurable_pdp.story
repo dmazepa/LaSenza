@@ -16,7 +16,7 @@ Scenario: Customer can add configurable products from PDP.
 Given I am on PDP with configurable product.
 When Set multiple product conﬁgurations.
 And I click Add to Cart button configurable.
-Then each conﬁguration will appear as its own line item in the mini-cart shopping cart.
+Then Each conﬁguration will appear as its own line item in the mini-cart shopping cart.
 And Shopping cart.
 And Mini cart slides down.
 

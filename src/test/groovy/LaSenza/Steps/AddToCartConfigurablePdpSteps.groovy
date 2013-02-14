@@ -24,10 +24,10 @@ class AddToCartConfigurablePdpSteps {
         user.assert_qty_and_price_added_in_header(qty, price)
     }
 
-    @Then('Then Added ites qty "1" and price "$22.50" appears ﬁrst in the Shopping cart.')
-    @Pending
+    @Then('Added ites qty "$qty" and price "$price" appears ﬁrst in the Shopping cart.')
     public void assert_item_in_shopping_cart(String qty, String price){
-        //user.assert_qty_and_price_added_to_shopping_cart(qty, price)
+        user.open_shopping_cart()
+        user.assert_qty_and_price_added_to_shopping_cart(qty, price)
     }
 
     @When("I click Add to Cart button configurable.")

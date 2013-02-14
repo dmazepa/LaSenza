@@ -172,7 +172,8 @@ class CustomerSteps extends UserSteps{
     @Step
     def open_quick_view_configurable() {
         cLPage.set_product_name(3)
-        cLPage.open_quick_w(3)
+        mouse_over_on_product_image(3)
+        click_on_button_quick_view(3)
         Thread.sleep(1000)
     }
 
