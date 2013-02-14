@@ -83,11 +83,11 @@ class CLPage extends ForAllPage{
     @FindBy(xpath = "//div[@class='col-left sidebar']")
     private WebElement blockLeftNavigation
 
+    @FindBy(xpath = "//div[@class='category-products']//li/div/a[2]")
+    private WebElement buttonQuickView
 
-    def open_quick_w(def i) {
-        Locatable hoverItem = (Locatable) getDriver().findElement(By.xpath("//div[@class='category-products']//li[${i}]/div/a[1]"))
-        Mouse mouse = ((HasInputDevices) driver).getMouse()
-        mouse.mouseMove(hoverItem.getCoordinates())
+
+    def click_on_button_quick_view(def i) {
         element(By.xpath("//div[@class='category-products']//li[${i}]/div/a[2]")).waitUntilVisible()
                 .click()
         element(buttonQWClose).waitUntilVisible()
@@ -115,7 +115,6 @@ class CLPage extends ForAllPage{
     }
 
     def qw_should_not_have_thumbnail_images() {
-        //element(thumbnailImageQW).shouldBeVisible()
         element(thumbnailImageQW).shouldNotBeVisible()
     }
 
@@ -258,5 +257,27 @@ class CLPage extends ForAllPage{
 
     def assert_on_subCLP_with_left_navigation() {
         element(blockLeftNavigation).shouldBePresent()
+    }
+
+    def mouse_over_on_product_image(def i) {
+        Locatable hoverItem = (Locatable) getDriver().findElement(By.xpath("//div[@class='category-products']//li[${i}]/div/a[1]"))
+        Mouse mouse = ((HasInputDevices) driver).getMouse()
+        mouse.mouseMove(hoverItem.getCoordinates())
+    }
+
+    def assert_quick_view_button() {
+        element(buttonQuickView).shouldBeVisible()
+    }
+
+    def assert_quick_view_module_opened() {
+        element(buttonQWClose).shouldBeVisible()
+    }
+
+    def click_on_color_swatch(def i) {
+        element(By.xpath("//div[@class='category-products']//ul[1]/li[1]//li[@class='color-swatches-swatch first last']/a[${i}]")).click()
+    }
+
+    def assert_image_replaced_CLP() {
+        getDriver().findElement(By.xpath("//div[@class='category-products']//ul[1]/li[1]//a[@class='product-image']/img")).getAttribute("src").contains("base")
     }
 }

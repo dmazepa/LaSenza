@@ -332,10 +332,10 @@ class UserSteps extends ScenarioSteps {
         pDPage.choose_configurable_options(index)
     }
 
-
     @Step
     def open_quick_view(def i) {
-        cLPage.open_quick_w(i)
+        mouse_over_on_product_image(i)
+        click_on_button_quick_view(i)
     }
 
     @Step
@@ -1064,5 +1064,35 @@ class UserSteps extends ScenarioSteps {
         getDriver().findElement(By.id("login_password")).sendKeys("dva827287")
         getDriver().findElement(By.name("submit")).click()
         Thread.sleep(3000)
+    }
+
+    @Step
+    def mouse_over_on_product_image(def i) {
+        cLPage.mouse_over_on_product_image(i)
+    }
+
+    @Step
+    def assert_quick_view_button() {
+        cLPage.assert_quick_view_button()
+    }
+
+    @Step
+    def click_on_button_quick_view(int i) {
+        cLPage.click_on_button_quick_view(i)
+    }
+
+    @Step
+    def assert_quick_view_module_opened() {
+        cLPage.assert_quick_view_module_opened()
+    }
+
+    @Step
+    def click_on_color_swatch(def i) {
+        cLPage.click_on_color_swatch(i)
+    }
+
+    @Step
+    def assert_image_replaced_CLP() {
+        cLPage.assert_image_replaced_CLP()
     }
 }

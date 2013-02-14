@@ -1,0 +1,41 @@
+package LaSenza.Steps
+
+import LaSenza.steps.UserSteps
+import net.thucydides.core.annotations.Steps
+import org.jbehave.core.annotations.*
+
+class ProductModulesSteps {
+
+    @Steps
+    UserSteps user
+
+    @When("I roll mouse over the product image.")
+    public void mouse_over_on_product_image(){
+        user.mouse_over_on_product_image(1)
+    }
+
+    @Then("Highlights quick view button.")
+    public void quick_view_button_highlights(){
+        user.assert_quick_view_button()
+    }
+
+    @When("I click on quick view button.")
+    public void click_quick_view_button(){
+        user.click_on_button_quick_view(1)
+    }
+
+    @Then("Pop-up displays.")
+    public void assert_quick_view_module_opened(){
+        user.assert_quick_view_module_opened()
+    }
+
+    @When("I click on color swatch.")
+    public void click_on_color_swatch(){
+        user.click_on_color_swatch(1)
+    }
+
+    @Then("Product image replaces with a new image displaying the product in the selected color.")
+    public void assert_product_image_replaced_with_new_image_CLP(){
+        user.assert_image_replaced_CLP()
+    }
+}
