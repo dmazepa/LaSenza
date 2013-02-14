@@ -9,12 +9,9 @@ Given Prepare_base
 Scenario: Prepare Base.
 Given Check products inventory
 
-Scenario: Passing checkout with different carts.
-Given I am on checkout page as User.
-When I pass checkout with <nameCart>, that has number <numberCart>, cart type <value> security code <securityCode>.
-Then I get Thank You Page.
-Examples:
-|nameCart               |numberCart         |securityCode   |value
-|Visa                   |4242424242424242   |123            |VI
-|Mastercard             |5454545454545454   |123            |MC
-|American Express       |373599005095005    |123            |AE
+Scenario: Customer can't add configurable product from PDP with quantity greater than the inventory available.
+Given I am on PDP with configurable product.
+When I fill quantity greater than the inventory available.
+And I click Add to Cart button configurable.
+Then Items don't add to cart.
+And Appropriate error messaging displays to the right of the Add to Cart button.

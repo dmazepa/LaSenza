@@ -949,7 +949,7 @@ class UserSteps extends ScenarioSteps {
     def assert_most_recently_added_items_in_mini_cart() {
         refresh_page()
         click_on_element_in_shopping_cart_area("Icon Bag")
-        pDPage. assert_most_recently_added_items_in_mini_cart()
+        pDPage.assert_most_recently_added_items_in_mini_cart()
     }
 
     @Step
@@ -1119,5 +1119,20 @@ class UserSteps extends ScenarioSteps {
     @Step
     def open_shopping_cart() {
         shoppingCartPage.open()
+    }
+
+    @Step
+    def set_and_store_multiple_product_conﬁgurations(def productNumber, def colorNumber, def sizeNumber) {
+        pDPage.set__and_store_multiple_product_conﬁgurations(productNumber, colorNumber, sizeNumber)
+    }
+
+    @Step
+    def assert_multiple_product_added_to_mini_cart() {
+       pDPage.assert_most_recently_added_items_in_mini_cart()
+    }
+
+    @Step
+    def assert_multiple_product_added_to_shopping_cart() {
+        shoppingCartPage.assert_multiple_product_added_to_shopping_cart(pDPage.sizes, pDPage.colors, pDPage.names, pDPage.prices)
     }
 }

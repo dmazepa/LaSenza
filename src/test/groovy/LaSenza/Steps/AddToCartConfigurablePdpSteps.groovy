@@ -15,8 +15,9 @@ class AddToCartConfigurablePdpSteps {
     }
 
     @When("Set multiple product conﬁgurations.")
-    @Pending
     public void set_multiple_product_conﬁgurations(){
+        user.set_and_store_multiple_product_conﬁgurations(2, 2, 2)
+        user.set_and_store_multiple_product_conﬁgurations(3, 2, 3)
     }
 
     @Then('The quantity "$qty" and order total "$price" are updated to reﬂect the addition.')
@@ -34,5 +35,12 @@ class AddToCartConfigurablePdpSteps {
     public void click_add_to_cart_button(){
         user.choose_and_store_configurable_options()
         user.click_add_to_cart_button_pdp()
+    }
+
+    @Then("Each conﬁguration will appear as its own line item in the mini-cart and shopping cart.")
+    public void assert_multiple_product_added_to_cart_and_mini_cart(){
+        user.assert_multiple_product_added_to_mini_cart()
+        user.open_shopping_cart()
+        user.assert_multiple_product_added_to_shopping_cart()
     }
 }
