@@ -216,6 +216,7 @@ class CheckoutPage extends ForAllPage{
         element(loaderPayment).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).click()
         element(loaderPayment).waitUntilNotVisible()
+        Thread.sleep(2000)
         element(By.xpath("//input[@value='${cartType}']")).click()
     }
 
@@ -247,6 +248,7 @@ class CheckoutPage extends ForAllPage{
     def check_shipment() {
         element(shipment).waitUntilVisible()
         element(loaderShipment).waitUntilNotVisible()
+        Thread.sleep(2000)
         element(shipment).click();
     }
 
