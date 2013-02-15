@@ -106,7 +106,7 @@ class PDPage extends ForAllPage{
 
     def assert_modal_window(String textAlert) {
         element(popUpText).waitUntilVisible()
-        assertThat(element(popUpText).getText(), equalTo(textAlert))
+        assertThat(element(popUpText).getText(), containsText(textAlert))
     }
 
     def assert_most_recently_added_items_in_mini_cart() {

@@ -11,6 +11,7 @@ class AddToCartConfigurablePdpSteps {
 
     @Given("I am on PDP with configurable product.")
     public void open_pdp_configurable(){
+        user.delete_items_from_cart()
         user.open_pdp(1574)
     }
 

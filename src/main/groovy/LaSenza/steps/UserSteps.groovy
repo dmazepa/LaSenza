@@ -49,7 +49,7 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_carousel() {
         click_on_first_image_of_slider()
-        timeout(6000)
+        timeout(7000)
         homePage.assert_image_active(2)
         timeout(5000)
         homePage.assert_image_active(3)
@@ -296,7 +296,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def assert_item_not_added() {
-        assert_modal_window("The maximum quantity allowed for purchase is 10000.")
+        assert_modal_window("The requested quantity")
         assert_mini_cart_not_appears()
         assert_item_not_added_on_header()
     }
@@ -1134,5 +1134,11 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_multiple_product_added_to_shopping_cart() {
         shoppingCartPage.assert_multiple_product_added_to_shopping_cart(pDPage.sizes, pDPage.colors, pDPage.names, pDPage.prices)
+    }
+
+    @Step
+    def delete_items_from_cart() {
+        open_shopping_cart()
+        shoppingCartPage.clear_shopping_cart()
     }
 }

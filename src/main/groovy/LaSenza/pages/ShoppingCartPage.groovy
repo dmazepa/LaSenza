@@ -25,6 +25,12 @@ class ShoppingCartPage extends ForAllPage{
     @FindBy(xpath = "//tr[@class='first last odd']//input[@class='input-text qty']")
     private WebElement qtyForOnlyOneItemCart
 
+    @FindBy(id = "empty_cart_button")
+    private WebElement buttonClearShoppingCart
+
+    @FindBy(xpath = "//div[@class='cart-empty']//a")
+    private WebElement linkContinueShoppingEmptyCart
+
     def assert_on_shopping_cart_page() {
         assertThat(element(titleText).getText(), equalTo("SHOPPING CART"))
     }
@@ -38,9 +44,16 @@ class ShoppingCartPage extends ForAllPage{
         for (def i=1; i <= 3; i++){
             element(getDriver().findElement(By.xpath("//table[@id='shopping-cart-table']//tbody/tr[${i}]"))).waitUntilVisible()
             assertThat(getDriver().findElement(By.xpath("//table[@id='shopping-cart-table']//tbody/tr[${i}]//h2")).getText(), equalTo(names[4-i]))
-            assertThat(getDriver().findElement(By.xpath("//table[@id='shopping-cart-table']//tbody/tr[${i}]//dd[1]")).getText(), equalTo(colors[4-i]))
-            assertThat(getDriver().findElement(By.xpath("//table[@id='shopping-cart-table']//tbody/tr[${i}]//dd[2]")).getText(), equalTo(sizes[4-i]))
-            assertThat(getDriver().findElement(By.xpath("//table[@id='shopping-cart-table']//tbody/tr[${i}]//span[@class='price']")).getText(), equalTo(prices[4-i]))
+            assertThat(getDriver().findElement(By.xpath("//table[@id='shopping-cart-table']//tbody/tr[${i}]//dd[1]")).getText(), equalTo(colors[i]))
+            assertThat(getDriver().findElement(By.xpath("//table[@id='shopping-cart-table']//tbody/tr[${i}]//dd[2]")).getText(), equalTo(sizes[i]))
+            assertThat(getDriver().findElement(By.xpath("//table[@id='shopping-cart-table']//tbody/tr[${i}]//span[@class='price']")).getText(), equalTo(prices[i]))
+        }
+    }
+
+    def clear_shopping_cart() {
+        if(getDriver().findElements(By.id("empty_cart_button")) != []){
+            element(buttonClearShoppingCart).click()
+            element(linkContinueShoppingEmptyCart).waitUntilVisible()
         }
     }
 }
