@@ -216,7 +216,7 @@ class CheckoutPage extends ForAllPage{
         element(loaderPayment).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).click()
         element(loaderPayment).waitUntilNotVisible()
-        Thread.sleep(2000)
+        Thread.sleep(3000)
         element(By.xpath("//input[@value='${cartType}']")).click()
     }
 
