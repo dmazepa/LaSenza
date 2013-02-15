@@ -20,7 +20,7 @@ class HeaderCustomerWithCookieSteps {
     @Given("I am on home page as customer with cookies.")
     public void open_home_page_as_customer_with_cookie(){
         admin.open_admin_panel()
-        admin.set_cookie_time("5")
+        admin.set_cookie_time("10")
         admin.clean_cache()
         user.log_in(true)
     }
