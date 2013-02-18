@@ -13,10 +13,10 @@ class CLPage extends ForAllPage{
     private def productName
     def qtyPages
     def countColors
-    def colors
-    def sizes
-    def prices
-    def names
+    def colors = []
+    def sizes = []
+    def prices = []
+    def names = []
 
     CLPage(WebDriver driver){
         super(driver)
@@ -108,6 +108,15 @@ class CLPage extends ForAllPage{
 
     @FindBy(xpath = "//a[@class='add-more-items']")
     private WebElement linkAddMoreItems
+
+    @FindBy(xpath = "//button[@title='Add to Cart']")
+    private WebElement buttonAddToCartQV
+
+    @FindBy(xpath = "//div[@class='product-options-block']//div[@class='option-wrapper'][1]//select")
+    private WebElement selectColor
+
+    @FindBy(xpath = "//div[@class='product-options-block']//div[@class='option-wrapper'][2]//select")
+    private WebElement selectSize
 
     def click_on_button_quick_view(def i) {
         element(By.xpath("//div[@class='category-products']//li[${i}]/div/a[2]")).waitUntilVisible()
@@ -321,10 +330,39 @@ class CLPage extends ForAllPage{
         element(linkAddMoreItems).click()
         element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][1]//select")).selectByIndex(colorNumber)
         element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][2]//select")).selectByIndex(sizeNumber)
-        colors[productNumber] = element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][1]//select")).getSelectedValue()
+        colors[productNumber] = element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][1]//select")).getSelectedVisibleTextValue()
         colors[productNumber] = element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][1]//select")).getSelectedVisibleTextValue()
         sizes[productNumber] = element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][2]//select")).getSelectedVisibleTextValue()
         prices[productNumber] = element(textPriceQV).getText()
         names[productNumber] = element(textProductNameQV).getText()
     }
+
+    def click_add_to_cart_button_qv() {
+        element(buttonAddToCartQV).click()
+    }
+
+    def assert_multiple_product_added_to_mini_cart_from_qv() {
+        for (def i=1; i <= 3; i++){
+            element(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a"))).waitUntilVisible()
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a")).getText(), equalTo(names[4-i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][1]/dd")).getText(), equalTo(colors[4-i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][2]/dd")).getText(), equalTo(sizes[4-i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//span[@class='price']")).getText(), equalTo(prices[4-i]))
+        }
+    }
+
+    def choose_configurable_options(int index) {
+        if(getDriver().findElements(By.xpath("//div[@class='product-options-block']//div[@class='option-wrapper']")).size() != 0){
+            element(selectColor).selectByIndex(index)
+            element(selectSize).selectByIndex(index)
+        }
+    }
+
+    def store_configurable_options() {
+        colors[1] = element(selectColor).getSelectedVisibleTextValue()
+        sizes[1] = element(selectSize).getSelectedVisibleTextValue()
+        prices[1] = element(textPriceQV).getText()
+        names[1] = element(textProductNameQV).getText()
+    }
+
 }

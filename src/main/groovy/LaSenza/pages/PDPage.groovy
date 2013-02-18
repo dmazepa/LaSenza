@@ -14,8 +14,6 @@ class PDPage extends ForAllPage{
         super(driver)
     }
 
-    def color1
-    def size1
     def colors = []
     def sizes = []
     def prices = []
@@ -104,7 +102,7 @@ class PDPage extends ForAllPage{
 
     def assert_modal_window(String textAlert) {
         element(popUpText).waitUntilVisible()
-        //assertThat(element(popUpText).getText(), containsText(textAlert))
+        assertThat(element(popUpText).getText(), containsText(textAlert))
     }
 
     def assert_most_recently_added_items_in_mini_cart() {

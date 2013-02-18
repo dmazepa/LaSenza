@@ -14,5 +14,5 @@ Scenario: Customer can't add product from QW with quantity greater than the inve
 Given I am on QW with simple product.
 When I fill quantity greater than the inventory available.
 And I click Add to Cart button.
-Then Items don't add to cart.
+Then Item don't add to cart.
 And Appropriate error messaging displays to the right of the Add to Cart button.

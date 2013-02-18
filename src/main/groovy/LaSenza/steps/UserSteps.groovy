@@ -296,7 +296,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def assert_item_not_added() {
-        assert_modal_window("The requested quantity")
+        assert_modal_window("The requested quantity for")
         assert_mini_cart_not_appears()
         assert_item_not_added_on_header()
     }
@@ -1145,5 +1145,41 @@ class UserSteps extends ScenarioSteps {
     @Step
     def set_and_store_multiple_product_conﬁgurations_qv(def productNumber, def colorNumber, def sizeNumber) {
        cLPage.set__and_store_multiple_product_conﬁgurations_qv(productNumber, colorNumber, sizeNumber)
+    }
+
+    @Step
+    def click_add_to_cart_button_qv() {
+        cLPage.click_add_to_cart_button_qv()
+    }
+
+    @Step
+    def assert_multiple_product_added_to_mini_cart_from_qv() {
+        cLPage.assert_multiple_product_added_to_mini_cart_from_qv()
+    }
+
+    @Step
+    def choose_and_store_configurable_options_qv() {
+        choose_configurable_options_qv(1)
+        store_configurable_options_qv()
+    }
+
+    @Step
+    def store_configurable_options_qv() {
+        cLPage.store_configurable_options()
+    }
+
+    @Step
+    def choose_configurable_options_qv(int i) {
+        cLPage.choose_configurable_options(i)
+    }
+
+    @Step
+    def click_add_to_cart_button_configurable_qv() {
+        click_add_to_cart_button_qv()
+    }
+
+    @Step
+    def assert_multiple_product_added_to_shopping_cart_from_qv() {
+        shoppingCartPage.assert_multiple_product_added_to_shopping_cart(cLPage.sizes, cLPage.colors, cLPage.names, cLPage.prices)
     }
 }
