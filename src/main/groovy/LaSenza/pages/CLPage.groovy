@@ -13,6 +13,10 @@ class CLPage extends ForAllPage{
     private def productName
     def qtyPages
     def countColors
+    def colors
+    def sizes
+    def prices
+    def names
 
     CLPage(WebDriver driver){
         super(driver)
@@ -20,6 +24,12 @@ class CLPage extends ForAllPage{
 
     @FindBy(xpath = "//h1/a")
     private WebElement linkQWProductName;
+
+    @FindBy(xpath = "//div[@class='quickview-wrapper']//span[@class='price']")
+    private WebElement textPriceQV
+
+    @FindBy(xpath = "//div[@class='quickview-wrapper']//h1/a")
+    private WebElement textProductNameQV
 
     @FindBy(xpath = "//a[@class='popup-close']")
     private WebElement buttonQWClose
@@ -96,6 +106,8 @@ class CLPage extends ForAllPage{
     @FindBy(xpath = "//div[@class='category-products']//li/div/a[2]")
     private WebElement buttonQuickView
 
+    @FindBy(xpath = "//a[@class='add-more-items']")
+    private WebElement linkAddMoreItems
 
     def click_on_button_quick_view(def i) {
         element(By.xpath("//div[@class='category-products']//li[${i}]/div/a[2]")).waitUntilVisible()
@@ -303,5 +315,16 @@ class CLPage extends ForAllPage{
 
     def select_color_in_pop_up_color_swatches() {
          element(colorPopUpColosSwatches).click()
+    }
+
+    def set__and_store_multiple_product_conﬁgurations_qv(def productNumber, def colorNumber, def sizeNumber) {
+        element(linkAddMoreItems).click()
+        element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][1]//select")).selectByIndex(colorNumber)
+        element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][2]//select")).selectByIndex(sizeNumber)
+        colors[productNumber] = element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][1]//select")).getSelectedValue()
+        colors[productNumber] = element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][1]//select")).getSelectedVisibleTextValue()
+        sizes[productNumber] = element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][2]//select")).getSelectedVisibleTextValue()
+        prices[productNumber] = element(textPriceQV).getText()
+        names[productNumber] = element(textProductNameQV).getText()
     }
 }

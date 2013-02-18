@@ -220,7 +220,6 @@ class CheckoutPage extends ForAllPage{
     }
 
     def fill_cart_name(def cartName) {
-        element(loaderPayment).waitUntilVisible()
         element(loaderPayment).waitUntilNotVisible()
         element(fieldCartName).type(cartName)
     }
@@ -249,6 +248,7 @@ class CheckoutPage extends ForAllPage{
         element(shipment).waitUntilVisible()
         element(loaderShipment).waitUntilNotVisible()
         Thread.sleep(3000)
+        element(loaderShipment).waitUntilNotVisible()
         element(shipment).click();
     }
 

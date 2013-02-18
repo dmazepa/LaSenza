@@ -1141,4 +1141,9 @@ class UserSteps extends ScenarioSteps {
         open_shopping_cart()
         shoppingCartPage.clear_shopping_cart()
     }
+
+    @Step
+    def set_and_store_multiple_product_conﬁgurations_qv(def productNumber, def colorNumber, def sizeNumber) {
+       cLPage.set__and_store_multiple_product_conﬁgurations_qv(productNumber, colorNumber, sizeNumber)
+    }
 }

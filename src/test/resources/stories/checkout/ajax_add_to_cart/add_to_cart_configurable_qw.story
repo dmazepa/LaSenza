@@ -4,8 +4,8 @@ Narrative:
 Allow user to add configurable products to cart through QW using ajax.
 
 Scenario: Customer can add configurable products from QW.
-Given I am on QW with configurable product.
-When Set multiple product conﬁgurations.
+Given I am on QW with configurable product as User.
+When Set multiple product conﬁgurations QV.
 And I click Add to Cart button.
 Then each conﬁguration will appear as its own line item in the mini-cart shopping cart.
 And Shopping cart.

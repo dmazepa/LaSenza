@@ -16,6 +16,7 @@ Then I get Thank You Page.
 Examples:
 |nameCart               |numberCart         |securityCode   |value
 |Visa                   |4242424242424242   |123            |VI
-|Mastercard             |5454545454545454   |123            |MC
 |American Express       |373599005095005    |123            |AE
+|Mastercard             |5454545454545454   |123            |MC
+
 
