@@ -54,28 +54,9 @@ task develop (type: Test) {
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
     include 'LaSenza/*.class'
-    exclude  'LaSenza/JBehaveTest.class'
-    exclude  'LaSenza/Developing.class'
 }
 
-task design_homepage (type: Test) {
-    if (project.hasProperty("teamcity")) {
-        systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]
-        systemProperties["webdriver.chrome.driver"] = project.teamcity["webdriver.chrome.driver"]
-        systemProperties["webdriver.driver"] = project.teamcity["webdriver.driver"]
-        systemProperties["thucydides.only.save.failing.screenshots"] = project.teamcity["thucydides.only.save.failing.screenshots"]
-    } else {
-        systemProperties["webdriver.base.url"] = System.properties["webdriver.base.url"]
-        systemProperties["webdriver.chrome.driver"] = System.properties["webdriver.chrome.driver"]
-        systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
-        systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
-
-    }
-    include 'LaSenza/*.class'
-    exclude 'LaSenza/JBehaveTest.class'
-}
-
-task configurable_quickview (type: Test) {
+task simple (type: Test) {
     if (project.hasProperty("teamcity")) {
         systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]
         systemProperties["webdriver.chrome.driver"] = project.teamcity["webdriver.chrome.driver"]
@@ -87,41 +68,5 @@ task configurable_quickview (type: Test) {
         systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
-    include 'LaSenza/MainElements.class'
-}
-task addtocart (type: Test) {
-    include 'LaSenza/Developing.class'
-}
-task catalog_import (type: Test) {
-    include 'LaSenza/Developing.class'
-}
-task category_page_design (type: Test) {
-    include 'LaSenza/Developing.class'
-}
-task checkout_design (type: Test) {
-    include 'LaSenza/Developing.class'
-}
-task checkout_giftcard (type: Test) {
-    include 'LaSenza/Developing.class'
-}
-task collection_landing (type: Test) {
-    include 'LaSenza/Developing.class'
-}
-task design_shopping_cart (type: Test) {
-    include 'LaSenza/Developing.class'
-}
-task epicore_catalog_update (type: Test) {
-    include 'LaSenza/Developing.class'
-}
-task giftcard (type: Test) {
-    include 'LaSenza/Developing.class'
-}
-task payment_method (type: Test) {
-    include 'LaSenza/Developing.class'
-}
-task topmenu (type: Test) {
-    include 'LaSenza/Developing.class'
-}
-task quickview (type: Test) {
-    include 'LaSenza/Developing.class'
+    include 'LaSenza/AddToCartConfigurablePdp.class'
 }
