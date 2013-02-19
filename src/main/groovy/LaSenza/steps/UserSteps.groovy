@@ -1182,4 +1182,10 @@ class UserSteps extends ScenarioSteps {
     def assert_multiple_product_added_to_shopping_cart_from_qv() {
         shoppingCartPage.assert_multiple_product_added_to_shopping_cart(cLPage.sizes, cLPage.colors, cLPage.names, cLPage.prices)
     }
+
+    @Step
+    def assert_simple_added_to_cart() {
+        assert_mini_cart_appears()
+        assert_qty_and_price_added_to_mini_cart("1", "\$26.50")
+    }
 }

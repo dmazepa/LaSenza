@@ -13,7 +13,7 @@ class AddMoreThanOneProductSteps {
     @Given("I am on QW with configurable product as User.")
     public void open_QV_configurable(){
         user.opens_CLP("sale")
-        user.open_quick_view(1)
+        user.open_quick_view(2)
     }
 
     @Then("Select for attribute size is disable.")
