@@ -193,13 +193,13 @@ class CLPage extends ForAllPage{
     }
 
     def assert_QTY_third_row_prefilled_QV() {
-        assertThat(getDriver().findElement(By.xpath("//fieldset/div[3]//input")).getAttribute("value"), equalTo("1"))
+        assertThat(getDriver().findElement(By.xpath("//fieldset//div[3]//input")).getAttribute("value"), equalTo("1"))
     }
 
     def add_row_additional_product_QV() {
         def additionalProductsQuantity = getDriver().findElements(By.xpath("//fieldset/div")).size()
         element(linkAddMoreItemsQV).click()
-        element(By.xpath("//fieldset/div[${additionalProductsQuantity+1}]")).waitUntilVisible()
+        element(By.xpath("//fieldset//div[${additionalProductsQuantity+1}]")).waitUntilVisible()
     }
 
     def set_QTY_additional_products_QV(String rowNumber, String value) {
