@@ -12,7 +12,7 @@ class MainElementsSteps {
     @Given("I am on QW.")
     public void openQWSimple(){
         user.opens_CLP("/sale")
-        user.open_quick_view(2)
+        user.open_quick_view(3)
     }
 
     @Given("I am on QW with one image.")

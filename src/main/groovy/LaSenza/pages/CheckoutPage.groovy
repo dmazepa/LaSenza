@@ -247,9 +247,8 @@ class CheckoutPage extends ForAllPage{
     def check_shipment() {
         element(shipment).waitUntilVisible()
         element(loaderShipment).waitUntilNotVisible()
-        Thread.sleep(2000)
+        Thread.sleep(3000)
         element(loaderShipment).waitUntilNotVisible()
-        Thread.sleep(1000)
         element(shipment).click();
     }
 
