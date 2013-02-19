@@ -68,5 +68,5 @@ task simple (type: Test) {
         systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
-    include 'LaSenza/AddToCartConfigurablePdp.class'
+    include 'LaSenza/AddToCartConfigurableQv.class'
 }

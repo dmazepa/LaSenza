@@ -145,10 +145,10 @@ class PDPage extends ForAllPage{
 
     def set__and_store_multiple_product_conﬁgurations(def productNumber, def colorNumber, def sizeNumber) {
         element(linkAddMoreItems).click()
-        element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][1]//select")).selectByIndex(colorNumber)
-        element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][2]//select")).selectByIndex(sizeNumber)
-        colors[productNumber] = element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][1]//select")).getSelectedVisibleTextValue()
-        sizes[productNumber] = element(By.xpath("//fieldset[@class='product-options']/div[${productNumber}]//div[@class='option-wrapper'][2]//select")).getSelectedVisibleTextValue()
+        element(By.xpath("//fieldset[@class='product-options']//div[${productNumber}]//div[@class='option-wrapper'][1]//select")).selectByIndex(colorNumber)
+        element(By.xpath("//fieldset[@class='product-options']//div[${productNumber}]//div[@class='option-wrapper'][2]//select")).selectByIndex(sizeNumber)
+        colors[productNumber] = element(By.xpath("//fieldset[@class='product-options']//div[${productNumber}]//div[@class='option-wrapper'][1]//select")).getSelectedVisibleTextValue()
+        sizes[productNumber] = element(By.xpath("//fieldset[@class='product-options']//div[${productNumber}]//div[@class='option-wrapper'][2]//select")).getSelectedVisibleTextValue()
         prices[productNumber] = element(textPrice).getText()
         names[productNumber] = element(productName).getText()
     }

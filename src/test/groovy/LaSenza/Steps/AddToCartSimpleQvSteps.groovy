@@ -4,7 +4,7 @@ import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
 import org.jbehave.core.annotations.*
 
-class AddToCartSimpleQW {
+class AddToCartSimpleQvSteps {
 
     @Steps
     UserSteps user

@@ -4,7 +4,7 @@ import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
 import org.jbehave.core.annotations.*
 
-class AddToCartConfigurableQwSteps {
+class AddToCartConfigurableQvSteps {
 
     @Steps
     UserSteps user
@@ -19,6 +19,11 @@ class AddToCartConfigurableQwSteps {
     public void click_add_to_cart_QV(){
         user.choose_and_store_configurable_options_qv()
         user.click_add_to_cart_button_configurable_qv()
+    }
+
+    @Then("Item do not add to cart configurable.")
+    public void assert_item_not_added_configurable(){
+        user.assert_item_not_added("The maximum quantity allowed for purchase is")
     }
 
     @Then("Each conﬁguration will appear as its own line item in the mini-cart and shopping cart from QV.")

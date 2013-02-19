@@ -295,8 +295,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def assert_item_not_added() {
-        assert_modal_window("The requested quantity for")
+    def assert_item_not_added(textPopUp) {
+        assert_modal_window(textPopUp)
         assert_mini_cart_not_appears()
         assert_item_not_added_on_header()
     }

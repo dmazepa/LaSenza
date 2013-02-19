@@ -44,4 +44,10 @@ class AddToCartConfigurablePdpSteps {
         user.open_shopping_cart()
         user.assert_multiple_product_added_to_shopping_cart()
     }
+
+    @Then("Item do not add to cart configurable pdp.")
+    public void assert_item_not_added_configurable(){
+        user.assert_item_not_added("The requested quantity")
+    }
+
 }

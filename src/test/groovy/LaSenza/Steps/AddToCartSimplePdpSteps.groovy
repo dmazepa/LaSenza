@@ -41,7 +41,7 @@ class AddToCartSimplePdpSteps {
 
     @Then("Item don't add to cart.")
     public void assert_item_not_added(){
-        user.assert_item_not_added()
+        user.assert_item_not_added("The maximum quantity allowed for purchase is")
     }
 
     @Then('The qty "$qty" and order total "$price" are updated to reﬂect the addition.')
