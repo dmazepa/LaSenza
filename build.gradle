@@ -54,6 +54,7 @@ task develop (type: Test) {
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
     include 'LaSenza/*.class'
+    exclude 'LaSenza/JBehaveTest.class'
 }
 
 task simple (type: Test) {
@@ -69,4 +70,19 @@ task simple (type: Test) {
         systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
     }
     include 'LaSenza/AddToCartConfigurableQv.class'
+
+task byJbehave (type: Test) {
+    if (project.hasProperty("teamcity")) {
+        systemProperties["webdriver.base.url"] = project.teamcity["webdriver.base.url"]
+        systemProperties["webdriver.chrome.driver"] = project.teamcity["webdriver.chrome.driver"]
+        systemProperties["webdriver.driver"] = project.teamcity["webdriver.driver"]
+        systemProperties["thucydides.only.save.failing.screenshots"] = project.teamcity["thucydides.only.save.failing.screenshots"]
+    } else {
+        systemProperties["webdriver.base.url"] = System.properties["webdriver.base.url"]
+        systemProperties["webdriver.chrome.driver"] = System.properties["webdriver.chrome.driver"]
+        systemProperties["webdriver.driver"] = System.properties["webdriver.driver"]
+        systemProperties["thucydides.only.save.failing.screenshots"] = System.properties["thucydides.only.save.failing.screenshots"]
+    }
+    include 'LaSenza/JBehaveTest.class'
+    }
 }
