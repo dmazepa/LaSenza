@@ -787,8 +787,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def assert_select_size_disable_QV() {
-        cLPage.assert_select_size_disable_QV()
+    def assert_select_size_disable() {
+        cLPage.assert_select_size_disable()
     }
 
     @Step
@@ -817,8 +817,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def select_color_first_row_QV() {
-        cLPage.select_color_first_row_QV()
+    def select_color_first_row() {
+        cLPage.select_color_first_row()
     }
 
     @Step
@@ -1190,7 +1190,12 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def select_color_second_row_QV() {
-        cLPage.select_color_second_row_QV()
+    def select_color_second_row() {
+        cLPage.select_color_second_row()
+    }
+
+    @Step
+    def assert_additional_rows_appeared() {
+        cLPage.assert_additional_rows_appeared()
     }
 }

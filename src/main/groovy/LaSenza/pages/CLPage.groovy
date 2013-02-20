@@ -183,7 +183,7 @@ class CLPage extends ForAllPage{
         element(elementOutsideQW).click()
     }
 
-    def assert_select_size_disable_QV() {
+    def assert_select_size_disable() {
         element(selectSizeFirstQV).shouldNotBeEnabled()
     }
 
@@ -200,16 +200,16 @@ class CLPage extends ForAllPage{
     }
 
     def add_row_additional_product_QV() {
-        def additionalProductsQuantity = getDriver().findElements(By.xpath("//fieldset/div")).size()
+        def additionalProductsQuantity = getDriver().findElements(By.xpath("//div[@class='options-container-big']//div[@class='scroll']/div")).size()
         element(linkAddMoreItemsQV).click()
-        element(By.xpath("//fieldset//div[${additionalProductsQuantity+1}]")).waitUntilVisible()
+        element(By.xpath("//div[@class='options-container-big']//div[@class='scroll']/div[${additionalProductsQuantity+1}]")).waitUntilVisible()
     }
 
     def set_QTY_additional_products_QV(String rowNumber, String value) {
         element(By.xpath("//fieldset/div[${rowNumber}]//input")).type(value)
     }
 
-    def select_color_first_row_QV() {
+    def select_color_first_row() {
         element(selectColorFirstQV).selectByIndex(1)
     }
 
@@ -368,7 +368,11 @@ class CLPage extends ForAllPage{
         names[1] = element(textProductNameQV).getText()
     }
 
-    def select_color_second_row_QV() {
+    def select_color_second_row() {
         element(selectColorSecondQV).selectByIndex(1)
+    }
+
+    def assert_additional_rows_appeared() {
+        assertThat(driver.findElements(By.xpath("//div[@class='options-container-big']//div[@class='scroll']/div")).size(), equalTo(3))
     }
 }

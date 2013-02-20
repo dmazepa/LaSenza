@@ -17,8 +17,8 @@ class AddMoreThanOneProductSteps {
     }
 
     @Then("Select for attribute size is disable.")
-    public void assert_select_size_disable_QV(){
-        user.assert_select_size_disable_QV()
+    public void assert_select_size_disable(){
+        user.assert_select_size_disable()
     }
 
     @Then('Qty field for "$fieldPosition" row pre-filled with value "$value".')
@@ -32,8 +32,8 @@ class AddMoreThanOneProductSteps {
     }
 
     @When("I select color in first row.")
-    public void select_color_first_row_QV(){
-        user.select_color_first_row_QV()
+    public void select_color_first_row(){
+        user.select_color_first_row()
     }
 
     @Then("Select for attribute size enables.")

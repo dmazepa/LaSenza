@@ -24,6 +24,7 @@ Then The quantity input box updates to display a quantity of 1
 
 Scenario: User can add more than two rows to the Product Selections area.
 Given I am on PDP with configurable product as User.
-When I click on the plus sign or the "Add More Items" link.
+When Set QTY for row "1" value "11".
+When I click on the plus sign or the Add More Items link.
 Then Additional row adds to the Product Selections area.
-Then Quantity input box for the new row will be pre-ﬁlled with a quantity of 1.
+Then Qty field for third row pre-filled with value 1.

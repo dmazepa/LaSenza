@@ -16,6 +16,17 @@ class BuyMultipleProductsSteps {
 
     @When("I select color in second row.")
     public void select_color_second_row(){
-        user.select_color_second_row_QV()
+        user.select_color_second_row()
+    }
+
+    @When("I click on the plus sign or the Add More Items link.")
+    public void click_add_more_items(){
+        user.add_row_additional_product_QV()
+        user.add_row_additional_product_QV()
+    }
+
+    @Then("Additional row adds to the Product Selections area.")
+    public void assert_additional_rows_appeared(){
+        user.assert_additional_rows_appeared()
     }
 }
