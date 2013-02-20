@@ -9,9 +9,11 @@ Given Prepare_base
 Scenario: Prepare Base.
 Given Check products inventory
 
-Scenario: Customer can't add configurable product from QV with quantity greater than the inventory available.
-Given I am on QW with configurable product as User.
-When I fill quantity "10000" greater than the inventory available.
-And I click Add to Cart button QV configurable.
-Then Item do not add to cart configurable.
-And Appropriate error messaging displays to the right of the Add to Cart button.
+Scenario: Define sequence in which user must select attributes.
+Given I am on PDP with configurable product as User.
+When I select color in first row.
+Then Select for attribute size enables.
+When I select color in second row.
+Then The quantity input box updates to display a quantity of 1
+
+

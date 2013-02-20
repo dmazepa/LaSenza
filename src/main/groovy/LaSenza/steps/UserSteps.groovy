@@ -1188,4 +1188,9 @@ class UserSteps extends ScenarioSteps {
         assert_mini_cart_appears()
         assert_qty_and_price_added_to_mini_cart("1", "\$26.50")
     }
+
+    @Step
+    def select_color_second_row_QV() {
+        cLPage.select_color_second_row_QV()
+    }
 }

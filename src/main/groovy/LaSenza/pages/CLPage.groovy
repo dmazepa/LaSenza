@@ -73,8 +73,11 @@ class CLPage extends ForAllPage{
     @FindBy(xpath = "//a[@class='add-more-items']")
     private WebElement linkAddMoreItemsQV
 
-    @FindBy(xpath = "//div//select")
+    @FindBy(xpath = "//div[@class='scroll']/div[1]//select")
     private WebElement selectColorFirstQV
+
+    @FindBy(xpath = "//div[@class='scroll']/div[2]//select")
+    private WebElement selectColorSecondQV
 
     @FindBy(xpath = "//a[@title='Next']")
     private WebElement arrowRightNext
@@ -189,7 +192,7 @@ class CLPage extends ForAllPage{
     }
 
     def assert_two_rows_of_additional_products_opened_QV() {
-        assertThat(getDriver().findElements(By.xpath("//fieldset/div")).size(), equalTo(2))
+        assertThat(getDriver().findElements(By.xpath("//div[@class='options-container-big']/fieldset/div")).size(), equalTo(2))
     }
 
     def assert_QTY_third_row_prefilled_QV() {
@@ -365,4 +368,7 @@ class CLPage extends ForAllPage{
         names[1] = element(textProductNameQV).getText()
     }
 
+    def select_color_second_row_QV() {
+        element(selectColorSecondQV).selectByIndex(1)
+    }
 }
