@@ -20,7 +20,7 @@ class AddToCartSimpleQvSteps {
         user.click_add_to_cart_button_qv()
     }
 
-    @Then("Added items appears ﬁrst in the list of Mini-Cart items.")
+    @Then("Added items appears first in the list of Mini-Cart items.")
     public void assert_simple_added_to_cart(){
         user.assert_simple_added_to_cart()
     }

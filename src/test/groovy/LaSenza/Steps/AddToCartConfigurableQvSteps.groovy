@@ -9,7 +9,7 @@ class AddToCartConfigurableQvSteps {
     @Steps
     UserSteps user
 
-    @When("Set multiple product conﬁgurations QV.")
+    @When("Set multiple product configurations QV.")
     public void set_multiple_product_conﬁgurations_QV(){
         user.set_and_store_multiple_product_conﬁgurations_qv(2, 1, 2)
         user.set_and_store_multiple_product_conﬁgurations_qv(3, 2, 1)
@@ -21,12 +21,7 @@ class AddToCartConfigurableQvSteps {
         user.click_add_to_cart_button_configurable_qv()
     }
 
-    @Then("Item do not add to cart configurable.")
-    public void assert_item_not_added_configurable(){
-        user.assert_item_not_added("The maximum quantity allowed for purchase is")
-    }
-
-    @Then("Each conﬁguration will appear as its own line item in the mini-cart and shopping cart from QV.")
+    @Then("Each configuration will appear as its own line item in the mini-cart and shopping cart from QV.")
     public void assert_multiple_product_added_to_cart_and_mini_cart(){
         user.assert_multiple_product_added_to_mini_cart_from_qv()
         user.open_shopping_cart()
