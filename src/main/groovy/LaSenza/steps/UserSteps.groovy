@@ -1244,4 +1244,9 @@ class UserSteps extends ScenarioSteps {
     def assert_attribute_refinement_collapsed() {
         cLPage.assert_attribute_refinement_collapsed()
     }
+
+    @Step
+    def assert_cross_sell(String nameCrossSell) {
+        shoppingCartPage.assert_cross_sell(nameCrossSell)
+    }
 }

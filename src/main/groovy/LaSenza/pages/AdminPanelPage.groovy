@@ -20,6 +20,9 @@ class AdminPanelPage extends ForAllPage {
     @FindBy(id = "banner_properties_name")
     private WebElement fieldBannerName
 
+    @FindBy(xpath = "//thead//input[@class='checkbox']")
+    private WebElement checkboxAll
+
     @FindBy(id = "banner_info_tabs_content_section")
     private WebElement tabContentBanner
 
@@ -71,8 +74,20 @@ class AdminPanelPage extends ForAllPage {
     @FindBy(xpath = "//li[@class='success-msg']")
     private WebElement blockSuccessMsg
 
+    @FindBy(xpath = "//select[@name='in_products']")
+    private WebElement selectShowProducts
+
+    @FindBy(xpath = "//input[@name='entity_id']")
+    private WebElement fieldID
+
+    @FindBy(xpath = "//button[@title='Search']")
+    private WebElement buttonSearch
+
     @FindBy(id = "product_info_tabs_inventory")
     private WebElement tabInventory
+
+    @FindBy(id = "product_info_tabs_crosssell")
+    private WebElement tabCrossSells
 
     @FindBy(id = "inventory_qty")
     private WebElement fieldQty
@@ -338,5 +353,20 @@ class AdminPanelPage extends ForAllPage {
         element(fieldDiscountAmount).type("99")
         element(buttonSave).click()
         element(blockSuccessMsg).waitUntilVisible()
+    }
+
+    def search_product_cross_sells(int id) {
+        element(tabCrossSells).click()
+        element(selectShowProducts).waitUntilVisible()
+        if(driver.findElements(By.xpath("//table[@id='cross_sell_product_grid_table']/tbody//input[@class='checkbox']")).size() == 0){
+            element(selectShowProducts).selectByVisibleText("Any")
+            element(fieldID).type("11501")
+            element(buttonSearch).click()
+            waitForTextToAppear("So Free Balconnet la")
+            element(checkboxAll).waitUntilEnabled()
+            element(checkboxAll).click()
+            element(buttonSave).click()
+            element(blockSuccessMsg).waitUntilVisible()
+        }
     }
 }

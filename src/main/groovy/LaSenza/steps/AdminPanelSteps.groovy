@@ -132,4 +132,14 @@ class AdminPanelSteps extends UserSteps {
     def open_catalog_price_rules() {
         adminPage.open_catalog_price_rules()
     }
+
+    @Step
+    def set_cross_sells_for_product(int id) {
+        search_product_cross_sells(id)
+    }
+
+    @Step
+    def search_product_cross_sells(int id) {
+        adminPage.search_product_cross_sells(id)
+    }
 }

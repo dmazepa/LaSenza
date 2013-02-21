@@ -31,6 +31,9 @@ class ShoppingCartPage extends ForAllPage {
     @FindBy(xpath = "//div[@class='cart-empty']//a")
     private WebElement linkContinueShoppingEmptyCart
 
+    @FindBy(xpath = "//div[@class='crosssell']//div[@class='product-name']/a")
+    private WebElement productNameCrossSell
+
     def assert_on_shopping_cart_page() {
         assertThat(element(titleText).getText(), equalTo("SHOPPING CART"))
     }
@@ -55,5 +58,9 @@ class ShoppingCartPage extends ForAllPage {
             element(buttonClearShoppingCart).click()
             element(linkContinueShoppingEmptyCart).waitUntilVisible()
         }
+    }
+
+    def assert_cross_sell(String nameCrossSell) {
+        assertThat(element(productNameCrossSell).getText(), equalTo("So Free Balconnet la"))
     }
 }
