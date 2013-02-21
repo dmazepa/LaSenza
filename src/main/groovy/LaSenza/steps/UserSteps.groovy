@@ -620,10 +620,16 @@ class UserSteps extends ScenarioSteps {
         fill_last_name_field();
         fill_address1_field();
         fill_address2_field();
+        select_country();
         fill_city_field(city);
         select_state();
         fill_postal_code_field(zipCode);
         fill_telephone_field();
+    }
+
+    @Step
+    def select_country() {
+        checkoutPage.select_country()
     }
 
     @Step

@@ -55,6 +55,7 @@ task develop(type: Test) {
     }
     include 'LaSenza/*.class'
     exclude 'LaSenza/JBehaveTest.class'
+    exclude 'LaSenza/Developing.class'
 }
 
 task simple(type: Test) {

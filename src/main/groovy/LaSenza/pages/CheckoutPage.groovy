@@ -63,6 +63,9 @@ class CheckoutPage extends ForAllPage {
     @FindBy(id = "billing:city")
     private WebElement fieldCity
 
+    @FindBy(id = "billing:country_id")
+    private WebElement fieldCountry
+
     @FindBy(id = "shipping:city")
     private WebElement fieldCityShipping
 
@@ -399,5 +402,9 @@ class CheckoutPage extends ForAllPage {
         element(buttonPayPallAgree).click()
         element(buttonPayPallContinue).waitUntilVisible()
         element(buttonPayPallContinue).click()
+    }
+
+    def select_country() {
+        element(fieldCountry).selectByVisibleText("United States")
     }
 }
