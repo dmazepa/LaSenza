@@ -119,11 +119,62 @@ class AdminPanelPage extends ForAllPage {
     @FindBy(xpath = "//ul[@id='nav']/li[3]/ul/li[4]/ul/li[1]/a")
     private WebElement subMenuManageAttributes
 
-    @FindBy(xpath = "//ul[@id='nav']/li[6]/ul/li[2]/a")
-    private WebElement subMenuCatalogPriceRules
+    @FindBy(xpath = "//ul[@id='nav']/li[3]/ul/li[6]/a")
+    private WebElement subMenuRuleBasedProductRelations
 
     @FindBy(xpath = "//button[@title='Add New Rule']")
     private WebElement buttonAddNewRule
+
+    @FindBy(xpath = "//button[@class='scalable add']")
+    private WebElement buttonAddNewProductRule
+
+    @FindBy(id = "rule_name")
+    private WebElement fieldProductRuleName
+
+    @FindBy(id = "rule_apply_to")
+    private WebElement selectApplayTo
+
+    @FindBy(id = "targetrule_tabs_enterprise_targetrule_edit_tab_conditions")
+    private WebElement tabProductsToMatch
+
+    @FindBy(id = "targetrule_tabs_enterprise_targetrule_edit_tab_actions")
+    private WebElement tabProductsToDisplay
+
+    @FindBy(xpath = "//span[@class='rule-param rule-param-new-child']/a")
+    private WebElement crossAddParameter
+
+    @FindBy(xpath = "//ul[@id='actions__1__children']/li/span/a")
+    private WebElement crossAddParameterActions
+
+    @FindBy(id = "conditions__1__new_child")
+    private WebElement selectAddParameter
+
+    @FindBy(xpath = "//select[@id='actions__1__new_child']")
+    private WebElement selectAddParameterActions
+
+    @FindBy(xpath = "//ul[@id='conditions__1__children']/li/span[2]/a[@class='label']")
+    private WebElement threePoints
+
+    @FindBy(xpath = "//ul[@id='actions__1__children']/li/span[3]/a[@class='label']")
+    private WebElement threePointsactions
+
+    @FindBy(xpath = "//ul[@id='actions__1__children']/li/span[2]/a[@class='label']")
+    private WebElement linkMatchedProductSKU
+
+    @FindBy(id = "actions__1--1__value_type")
+    private WebElement selectValueMatched
+
+    @FindBy(id = "conditions__1--1__value")
+    private WebElement fieldCondition
+
+    @FindBy(id = "actions__1--1__value")
+    private WebElement fieldAction
+
+    @FindBy(xpath = "//a[@class='rule-param-apply']")
+    private WebElement ruleParamApplay
+
+    @FindBy(xpath = "//ul[@id='actions__1__children']//span[3]/span/a[2]")
+    private WebElement ruleParamApplayActions
 
     @FindBy(id = "rule_name")
     private WebElement fieldRuleName
@@ -365,6 +416,41 @@ class AdminPanelPage extends ForAllPage {
             waitForTextToAppear("So Free Balconnet la")
             element(checkboxAll).waitUntilEnabled()
             element(checkboxAll).click()
+            element(buttonSave).click()
+            element(blockSuccessMsg).waitUntilVisible()
+        }
+    }
+
+    def create_new_product_rule(String skuProductInCart, String skuCrossSellProduct) {
+        getDriver().get(subMenuRuleBasedProductRelations.getAttribute("href"))
+        if(!getDriver().getPageSource().contains("TestProductRule")){
+            element(buttonAddNewProductRule).click()
+            element(fieldProductRuleName).waitUntilVisible()
+            element(fieldProductRuleName).type("TestProductRule")
+            element(selectApplayTo).selectByVisibleText("Cross-sells")
+            element(tabProductsToMatch).click()
+            element(crossAddParameter).waitUntilVisible()
+            element(crossAddParameter).click()
+            element(selectAddParameter).waitUntilVisible()
+            element(selectAddParameter).selectByVisibleText("SKU")
+            element(threePoints).waitUntilVisible()
+            element(threePoints).click()
+            element(fieldCondition).waitUntilVisible()
+            element(fieldCondition).type(skuProductInCart)
+            element(ruleParamApplay).click()
+            element(tabProductsToDisplay).click()
+            element(crossAddParameterActions).waitUntilVisible()
+            element(crossAddParameterActions).click()
+            element(selectAddParameterActions).waitUntilVisible()
+            element(selectAddParameterActions).selectByVisibleText("SKU")
+            element(linkMatchedProductSKU).click()
+            element(selectValueMatched).waitUntilVisible()
+            element(selectValueMatched).selectByVisibleText("Constant Value")
+            element(threePointsactions).waitUntilVisible()
+            element(threePointsactions).click()
+            element(fieldAction).waitUntilVisible()
+            element(fieldAction).type(skuCrossSellProduct)
+            element(ruleParamApplayActions).click()
             element(buttonSave).click()
             element(blockSuccessMsg).waitUntilVisible()
         }

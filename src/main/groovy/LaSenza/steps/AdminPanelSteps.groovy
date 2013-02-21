@@ -142,4 +142,9 @@ class AdminPanelSteps extends UserSteps {
     def search_product_cross_sells(int id) {
         adminPage.search_product_cross_sells(id)
     }
+
+    @Step
+    def create_new_product_rule(String skuProductInCart, String skuCrossSellProduct) {
+        adminPage.create_new_product_rule(skuProductInCart, skuCrossSellProduct)
+    }
 }

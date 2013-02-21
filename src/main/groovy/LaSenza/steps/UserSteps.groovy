@@ -1249,4 +1249,12 @@ class UserSteps extends ScenarioSteps {
     def assert_cross_sell(String nameCrossSell) {
         shoppingCartPage.assert_cross_sell(nameCrossSell)
     }
+
+    @Step
+    def click_on_image_or_name_cross_sell() {
+        shoppingCartPage.click_on_image_cross_sell()
+        assert_quick_view_module_opened()
+        click_close_button()
+        shoppingCartPage.click_on_name_cross_sell()
+    }
 }
