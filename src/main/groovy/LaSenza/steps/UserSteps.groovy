@@ -1223,4 +1223,19 @@ class UserSteps extends ScenarioSteps {
     def assert_main_image_changed() {
         pDPage.assert_main_image_changed()
     }
+
+    @Step
+    def click_arrow_attribute_title() {
+        cLPage.click_arrow_attribute_title()
+    }
+
+    @Step
+    def assert_attribute_refinement_expanded() {
+        cLPage.assert_attribute_refinement_expanded()
+    }
+
+    @Step
+    def assert_attribute_refinement_collapsed() {
+        cLPage.assert_attribute_refinement_collapsed()
+    }
 }

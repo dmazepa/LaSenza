@@ -79,6 +79,12 @@ class CLPage extends ForAllPage {
     @FindBy(xpath = "//div[@class='scroll']/div[2]//select")
     private WebElement selectColorSecondQV
 
+    @FindBy(xpath = "//dt/a")
+    private WebElement arrowAttributeShowHide
+
+    @FindBy(xpath = "//dd")
+    private WebElement attributeRefinementFirst
+
     @FindBy(xpath = "//a[@title='Next']")
     private WebElement arrowRightNext
 
@@ -374,5 +380,17 @@ class CLPage extends ForAllPage {
 
     def assert_additional_rows_appeared() {
         assertThat(driver.findElements(By.xpath("//div[@class='options-container-big']//div[@class='scroll']/div")).size(), equalTo(3))
+    }
+
+    def click_arrow_attribute_title() {
+        element(arrowAttributeShowHide).click()
+    }
+
+    def assert_attribute_refinement_expanded() {
+        assertThat(attributeRefinementFirst.getAttribute("style"), equalTo("height: 0px;"))
+    }
+
+    def assert_attribute_refinement_collapsed() {
+        assertThat(attributeRefinementFirst.getAttribute("style"), equalTo("height: auto;"))
     }
 }
