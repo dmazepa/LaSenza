@@ -2,7 +2,9 @@ package LaSenza.Steps
 
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
-import org.jbehave.core.annotations.*
+import org.jbehave.core.annotations.Given
+import org.jbehave.core.annotations.Then
+import org.jbehave.core.annotations.When
 
 class CofigViewSteps {
 
@@ -10,97 +12,97 @@ class CofigViewSteps {
     UserSteps user
 
     @Given("I am on Category page as User.")
-    public void on_category_page(){
+    public void on_category_page() {
         user.opens_CLP("sale")
     }
 
     @Given("I can see only right arrow in pagination.")
-    public void assert_only_right_row_present(){
+    public void assert_only_right_row_present() {
         user.assert_only_right_row_present()
     }
 
     @When("I click on second page.")
-    public void click_on_link_second_page(){
+    public void click_on_link_second_page() {
         user.click_on_link_second_page()
     }
 
     @Then("Second page with products opens.")
-    public void assert_on_second_page_CLP(){
+    public void assert_on_second_page_CLP() {
         user.assert_on_second_page_CLP()
     }
 
     @Then("I can see left and right arrows in pagination.")
-    public void assert_left_and_right_row_CLP(){
+    public void assert_left_and_right_row_CLP() {
         user.assert_left_and_right_row_CLP()
     }
 
     @Then("I can see second page is selected.")
-    public void assert_second_page_selected_CLP(){
+    public void assert_second_page_selected_CLP() {
         user.assert_second_page_selected_CLP()
     }
 
     @When("I click on last page in pagination.")
-    public void click_on_last_page_CLP(){
+    public void click_on_last_page_CLP() {
         user.click_on_last_page_CLP()
     }
 
     @Then("I can see only left arrow in pagination.")
-    public void asser_only_left_row_CLP(){
+    public void asser_only_left_row_CLP() {
         user.asser_only_left_row_CLP()
     }
 
     @Given("I am on Collection landing page as User.")
-    public void on_collection_landing_page(){
+    public void on_collection_landing_page() {
         user.opens_CLP("panties/collections/the-show-off-trade")
     }
 
     @When("I click on right arrow.")
-    public void click_right_arrow(){
+    public void click_right_arrow() {
         user.click_right_arrow()
     }
 
     @Then("I get second page.")
-    public void assert_second_page_CLP(){
+    public void assert_second_page_CLP() {
         user.assert_on_second_page_CLP()
     }
 
     @When("I click on left arrow.")
-    public void click_left_arrow_CLP(){
+    public void click_left_arrow_CLP() {
         user.click_left_arrow_CLP()
     }
 
     @Then("I get first page.")
-    public void assert_first_page_CLP(){
+    public void assert_first_page_CLP() {
         user.assert_on_first_page_CLP()
     }
 
     @Given("I am on SubCategory page as User.")
-    public void on_subcategory_page(){
+    public void on_subcategory_page() {
         user.opens_CLP("bras/push-up")
     }
 
     @Then('I can see "$qtyItems" items on page.')
-    public void assert_qty_items_on_CLP(String qtyItems){
+    public void assert_qty_items_on_CLP(String qtyItems) {
         user.assert_qty_items_on_CLP(qtyItems)
     }
 
     @When('I select to show "$qtyItems" items per page.')
-    public void select_to_show_qty_items_CLP(String qtyItems){
+    public void select_to_show_qty_items_CLP(String qtyItems) {
         user.select_to_show_qty_items_CLP(qtyItems)
     }
 
     @Then('I get page with "$qtyItems" items.')
-    public void assert_qty_items_on_CLP_displayed(String qtyItems){
+    public void assert_qty_items_on_CLP_displayed(String qtyItems) {
         user.assert_qty_items_on_CLP(qtyItems)
     }
 
     @Then("Quantity of pages is recalculated.")
-    public void assert_qty_of_pages_recalculated(){
+    public void assert_qty_of_pages_recalculated() {
         user.assert_qty_of_pages_recalculated()
     }
 
     @Then('I can see sorting by "$sortingValue".')
-    public void assert_sorted_by(String sortingValue){
+    public void assert_sorted_by(String sortingValue) {
         user.assert_sorted_by(sortingValue)
     }
 }

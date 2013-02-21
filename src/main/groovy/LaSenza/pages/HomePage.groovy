@@ -9,11 +9,11 @@ import static org.hamcrest.CoreMatchers.equalTo
 import static org.hamcrest.MatcherAssert.assertThat
 
 @DefaultUrl("http://localhost:9000")
-class HomePage extends ForAllPage{
+class HomePage extends ForAllPage {
 
     def qtyItemsInWishListHeader
 
-    HomePage(WebDriver driver){
+    HomePage(WebDriver driver) {
         super(driver)
     }
 
@@ -167,7 +167,7 @@ class HomePage extends ForAllPage{
         System.out.println(element(sliderImage2).isCurrentlyVisible());
         System.out.println(element(sliderImage3).isCurrentlyVisible());
         if (imageNumber != 1) {
-            assert !element(By.xpath("//div[@id='slider_homepage']/div/ul/div/li[${imageNumber-1}]/img")).isCurrentlyVisible()
+            assert !element(By.xpath("//div[@id='slider_homepage']/div/ul/div/li[${imageNumber - 1}]/img")).isCurrentlyVisible()
         }
         assert element(By.xpath("//div[@id='slider_homepage']/div/ul/div/li[${imageNumber}]/img")).isCurrentlyVisible()
     }
@@ -197,7 +197,7 @@ class HomePage extends ForAllPage{
     }
 
     def assert_logged_out() {
-       element(linkLogIn).shouldBeVisible()
+        element(linkLogIn).shouldBeVisible()
     }
 
     def assert_default_header() {
@@ -255,20 +255,20 @@ class HomePage extends ForAllPage{
     }
 
     def assert_item_not_added() {
-        if(getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() != 0){
+        if (getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() != 0) {
             assertThat(element(textQtyHeader).getText(), equalTo(qtyHeaderBefore))
             assertThat(element(textPriceHeader).getText(), equalTo(priceHeaderBefore))
-        } else{
+        } else {
             assertThat(qtyHeaderBefore, equalTo("0"))
             assertThat(priceHeaderBefore, equalTo("0"))
         }
     }
 
     def store_state_of_total_price_and_qty() {
-        if(getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() != 0){
+        if (getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() != 0) {
             qtyHeaderBefore = element(textQtyHeader).getText()
             priceHeaderBefore = element(textPriceHeader).getText()
-        } else{
+        } else {
             qtyHeaderBefore = "0"
             priceHeaderBefore = "0"
         }
@@ -276,14 +276,14 @@ class HomePage extends ForAllPage{
     }
 
     def click_on_element_in_shopping_cart_area(String el) {
-        if (el == "Icon Bag"){
+        if (el == "Icon Bag") {
             element(iconBagHeader).waitUntilVisible()
             element(iconBagHeader).click()
-        }else {
-            if( el == "QTY"){
+        } else {
+            if (el == "QTY") {
                 element(qtyHeader).waitUntilVisible()
                 element(qtyHeader).click()
-            }else {
+            } else {
                 element(totalPriceHeader).waitUntilVisible()
                 element(totalPriceHeader).click()
             }
@@ -319,10 +319,10 @@ class HomePage extends ForAllPage{
     }
 
     def assert_main_categories_in_menu_sale() {
-        def punktsSaleMenu = driver.findElements(By.xpath("//li[7]//li//span")).collect(){WebElement el ->
+        def punktsSaleMenu = driver.findElements(By.xpath("//li[7]//li//span")).collect() {WebElement el ->
             el.text
         }
-        def punktsMainMenu = driver.findElements(By.xpath("//ul[@class='tabs']/li/a")).collect(){WebElement el ->
+        def punktsMainMenu = driver.findElements(By.xpath("//ul[@class='tabs']/li/a")).collect() {WebElement el ->
             el.text
         }
         punktsMainMenu.remove(6)
@@ -342,7 +342,7 @@ class HomePage extends ForAllPage{
     }
 
     def log_out_if_logged_in() {
-        if(logged_in()){
+        if (logged_in()) {
             click_on_link_log_out()
         }
     }
@@ -352,7 +352,7 @@ class HomePage extends ForAllPage{
     }
 
     def no_items_in_cart() {
-        return  getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() == 0
+        return getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() == 0
     }
 
     def click_on_link_not_first_name_last_name() {
@@ -360,7 +360,7 @@ class HomePage extends ForAllPage{
     }
 
     def click_on_link_please_log_in_not() {
-        if(getDriver().findElements(By.xpath("//a[@class='unset-cookie']")).size() != 0){
+        if (getDriver().findElements(By.xpath("//a[@class='unset-cookie']")).size() != 0) {
             element(linkNotUserNameUserLastName).click()
         }
     }
@@ -371,9 +371,9 @@ class HomePage extends ForAllPage{
     }
 
     def set_items_qty_in_wish_list_header() {
-        if(getDriver().findElements(By.xpath("//a[contains(text(), 'Wish list')]")).size() != 0){
+        if (getDriver().findElements(By.xpath("//a[contains(text(), 'Wish list')]")).size() != 0) {
             qtyItemsInWishListHeader = getDriver().findElement(By.xpath("//a[contains(text(), 'Wish list')]")).getText().replaceAll("\\D", "")
-        } else{
+        } else {
             qtyItemsInWishListHeader = "0"
         }
     }
@@ -383,11 +383,11 @@ class HomePage extends ForAllPage{
     }
 
     def click_on_element_in_mini_cart(String Element) {
-        if(Element == "product-image"){
+        if (Element == "product-image") {
             element(By.xpath("//ol[@id='mini-cart']//a[@class='${Element}']")).waitUntilVisible()
             getDriver().findElement(By.xpath("//ol[@id='mini-cart']//a[@class='${Element}']")).click()
         } else {
-            if(Element == "product-name"){
+            if (Element == "product-name") {
                 element(By.xpath("//ol[@id='mini-cart']//p[@class='${Element}']/a")).waitUntilVisible()
                 getDriver().findElement(By.xpath("//ol[@id='mini-cart']//p[@class='${Element}']/a")).click()
             } else {
@@ -412,9 +412,9 @@ class HomePage extends ForAllPage{
     }
 
     def assert_product_deleted() {
-        if(getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() != 0){
+        if (getDriver().findElements(By.xpath("//strong[@id='cartHeader']/span[1]")).size() != 0) {
             assertThat(element(textQtyHeader).getText().toInteger(), equalTo(qtyHeaderBefore.toInteger()))
-        } else{
+        } else {
             assertThat(qtyHeaderBefore, equalTo("0"))
         }
     }
@@ -430,7 +430,7 @@ class HomePage extends ForAllPage{
     }
 
     def assert_products_in_cart_not_removes() {
-        assertThat(element(textQtyHeader).getText().toInteger(), equalTo(qtyHeaderBefore.toInteger()+1))
+        assertThat(element(textQtyHeader).getText().toInteger(), equalTo(qtyHeaderBefore.toInteger() + 1))
     }
 
     def click_on_link_go_to_shopping_cart() {

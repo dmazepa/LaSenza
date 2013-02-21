@@ -7,9 +7,9 @@ import org.openqa.selenium.support.FindBy
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
 
-class SearchPage extends ForAllPage{
+class SearchPage extends ForAllPage {
 
-    SearchPage(WebDriver driver){
+    SearchPage(WebDriver driver) {
         super(driver)
     }
 

@@ -11,9 +11,9 @@ import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
 
 @DefaultUrl("http://localhost:9000/customer/account/")
-class MyAccountPage extends ForAllPage{
+class MyAccountPage extends ForAllPage {
 
-    MyAccountPage(WebDriver driver){
+    MyAccountPage(WebDriver driver) {
         super(driver)
     }
 
@@ -40,7 +40,7 @@ class MyAccountPage extends ForAllPage{
     }
 
     def delete_items_from_wish_list() {
-        while(getDriver().findElements(By.xpath("//a[@title='Remove Item']")) != [] ){
+        while (getDriver().findElements(By.xpath("//a[@title='Remove Item']")) != []) {
             element(buttonRemoveItemFromWishList).click()
             Alert alert = getDriver().switchTo().alert();
             alert.accept()
@@ -56,9 +56,9 @@ class MyAccountPage extends ForAllPage{
     }
 
     def click_on_tab(String nameTab) {
-        if (titleText.getText() != nameTab){
+        if (titleText.getText() != nameTab) {
             driver.findElement(By.xpath("//a[contains(text(), '${nameTab}')]")).click()
-            assert titleText.getText()  == nameTab.toUpperCase()
+            assert titleText.getText() == nameTab.toUpperCase()
         }
 
     }
@@ -70,13 +70,14 @@ class MyAccountPage extends ForAllPage{
         shouldContainText("City Shipping, California, 14000")
         shouldContainText("T: 555-555-5555")
     }
-   def delete_additional_shipping_address() {
-         while (driver.findElements(By.xpath("//a[contains(text(), 'Delete Address')]")).size() != 0){
+
+    def delete_additional_shipping_address() {
+        while (driver.findElements(By.xpath("//a[contains(text(), 'Delete Address')]")).size() != 0) {
             element(linkDeleteAddress).click()
             Alert alert = getDriver().switchTo().alert();
             alert.accept()
             element(blockSuccessMSG).waitUntilVisible()
-         }
-   }
+        }
+    }
 
 }

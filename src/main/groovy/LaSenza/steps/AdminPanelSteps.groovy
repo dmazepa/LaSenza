@@ -5,11 +5,11 @@ import LaSenza.pages.HomePage
 import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 
-class AdminPanelSteps extends UserSteps{
+class AdminPanelSteps extends UserSteps {
     HomePage homePage
     AdminPanelPage adminPage
 
-    AdminPanelSteps (Pages pages) {
+    AdminPanelSteps(Pages pages) {
         super(pages)
         homePage = pages[HomePage]
         adminPage = pages[AdminPanelPage]
@@ -113,7 +113,7 @@ class AdminPanelSteps extends UserSteps{
     def create_coupon_code_if_not_exist() {
         open_admin_panel()
         open_catalog_price_rules()
-        if(coupon_absent()){
+        if (coupon_absent()) {
             create_coupon()
         }
     }
@@ -125,7 +125,7 @@ class AdminPanelSteps extends UserSteps{
 
     @Step
     boolean coupon_absent() {
-        return  adminPage.coupon_absent()
+        return adminPage.coupon_absent()
     }
 
     @Step

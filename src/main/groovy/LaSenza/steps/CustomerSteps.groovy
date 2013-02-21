@@ -6,11 +6,11 @@ import net.thucydides.core.annotations.Pending
 import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 
-class CustomerSteps extends UserSteps{
+class CustomerSteps extends UserSteps {
     CLPage cLPage
     MyAccountPage myAccountPage
 
-    CustomerSteps (Pages pages) {
+    CustomerSteps(Pages pages) {
         super(pages)
         cLPage = pages[CLPage]
         myAccountPage = pages[MyAccountPage]

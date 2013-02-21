@@ -1,22 +1,17 @@
 package LaSenza.pages
 
 import net.thucydides.core.annotations.DefaultUrl
-import org.openqa.selenium.HasInputDevices
-import org.openqa.selenium.Mouse
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.WebElement
 import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.support.FindBy
+import org.openqa.selenium.*
 
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
-import org.openqa.selenium.JavascriptExecutor
-import org.openqa.selenium.By
 
 @DefaultUrl("http://localhost:9000/checkout/onepage/")
-class CheckoutPage extends ForAllPage{
+class CheckoutPage extends ForAllPage {
 
-    CheckoutPage(WebDriver driver){
+    CheckoutPage(WebDriver driver) {
         super(driver)
     }
 
@@ -113,7 +108,7 @@ class CheckoutPage extends ForAllPage{
     @FindBy(name = "shipping_method")
     private WebElement shipment
 
-    @FindBy(id= "p_method_moneriscc")
+    @FindBy(id = "p_method_moneriscc")
     private WebElement inputPaymentMethodCreditCart
 
     @FindBy(xpath = "//input[@class='checkbox create_an_account']")
@@ -281,7 +276,7 @@ class CheckoutPage extends ForAllPage{
     }
 
     def uncheck_checkbox_use_billing_for_shipping() {
-        if(checkboxUseBillingForShipping.getAttribute("checked") != "checked" & checkboxUseBillingForShipping.getAttribute("checked") != null){
+        if (checkboxUseBillingForShipping.getAttribute("checked") != "checked" & checkboxUseBillingForShipping.getAttribute("checked") != null) {
             element(checkboxUseBillingForShipping).click()
         }
     }
@@ -334,7 +329,7 @@ class CheckoutPage extends ForAllPage{
     }
 
     def check_checkbox_save_address() {
-        if(checkboxSaveShippingAddress.getAttribute("checked") == null){
+        if (checkboxSaveShippingAddress.getAttribute("checked") == null) {
             element(checkboxSaveShippingAddress).click()
         }
     }

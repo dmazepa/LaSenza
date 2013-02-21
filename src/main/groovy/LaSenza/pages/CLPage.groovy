@@ -8,7 +8,7 @@ import org.openqa.selenium.*
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
 
-class CLPage extends ForAllPage{
+class CLPage extends ForAllPage {
 
     private def productName
     def qtyPages
@@ -18,7 +18,7 @@ class CLPage extends ForAllPage{
     def prices = []
     def names = []
 
-    CLPage(WebDriver driver){
+    CLPage(WebDriver driver) {
         super(driver)
     }
 
@@ -153,14 +153,14 @@ class CLPage extends ForAllPage{
     }
 
     def click_on_qw_element(String el) {
-        if (el == "Brand Name"){
+        if (el == "Brand Name") {
             element(linkBrandName).waitUntilVisible()
             element(linkBrandName).click()
-        }else {
-            if( el == "Product Name"){
+        } else {
+            if (el == "Product Name") {
                 element(linkProductName).waitUntilVisible()
                 element(linkProductName).click()
-            }else {
+            } else {
                 element(linkViewFullDetails).waitUntilVisible()
                 element(linkViewFullDetails).click()
             }
@@ -202,7 +202,7 @@ class CLPage extends ForAllPage{
     def add_row_additional_product_QV() {
         def additionalProductsQuantity = getDriver().findElements(By.xpath("//div[@class='options-container-big']//div[@class='scroll']/div")).size()
         element(linkAddMoreItemsQV).click()
-        element(By.xpath("//div[@class='options-container-big']//div[@class='scroll']/div[${additionalProductsQuantity+1}]")).waitUntilVisible()
+        element(By.xpath("//div[@class='options-container-big']//div[@class='scroll']/div[${additionalProductsQuantity + 1}]")).waitUntilVisible()
     }
 
     def set_QTY_additional_products_QV(String rowNumber, String value) {
@@ -326,7 +326,7 @@ class CLPage extends ForAllPage{
     }
 
     def select_color_in_pop_up_color_swatches() {
-         element(colorPopUpColosSwatches).click()
+        element(colorPopUpColosSwatches).click()
     }
 
     def set__and_store_multiple_product_conﬁgurations_qv(def productNumber, def colorNumber, def sizeNumber) {
@@ -345,17 +345,17 @@ class CLPage extends ForAllPage{
     }
 
     def assert_multiple_product_added_to_mini_cart_from_qv() {
-        for (def i=1; i <= 3; i++){
+        for (def i = 1; i <= 3; i++) {
             element(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a"))).waitUntilVisible()
-            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a")).getText(), equalTo(names[4-i]))
-            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][1]/dd")).getText(), equalTo(colors[4-i]))
-            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][2]/dd")).getText(), equalTo(sizes[4-i]))
-            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//span[@class='price']")).getText(), equalTo(prices[4-i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a")).getText(), equalTo(names[4 - i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][1]/dd")).getText(), equalTo(colors[4 - i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][2]/dd")).getText(), equalTo(sizes[4 - i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//span[@class='price']")).getText(), equalTo(prices[4 - i]))
         }
     }
 
     def choose_configurable_options(int index) {
-        if(getDriver().findElements(By.xpath("//div[@class='product-options-block']//div[@class='option-wrapper']")).size() != 0){
+        if (getDriver().findElements(By.xpath("//div[@class='product-options-block']//div[@class='option-wrapper']")).size() != 0) {
             element(selectColor).selectByIndex(index)
             element(selectSize).selectByIndex(index)
         }

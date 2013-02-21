@@ -1,18 +1,18 @@
 package LaSenza.pages
 
+import net.thucydides.core.annotations.DefaultUrl
+import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
-import static org.hamcrest.Matchers.equalTo
 import static org.hamcrest.MatcherAssert.assertThat
-import net.thucydides.core.annotations.DefaultUrl
-import org.openqa.selenium.By
+import static org.hamcrest.Matchers.equalTo
 
 @DefaultUrl("http://localhost:9000/checkout/cart/")
-class ShoppingCartPage extends ForAllPage{
+class ShoppingCartPage extends ForAllPage {
 
-    ShoppingCartPage(WebDriver driver){
+    ShoppingCartPage(WebDriver driver) {
         super(driver)
     }
 
@@ -41,7 +41,7 @@ class ShoppingCartPage extends ForAllPage{
     }
 
     def assert_multiple_product_added_to_shopping_cart(ArrayList sizes, ArrayList colors, ArrayList names, ArrayList prices) {
-        for (def i=1; i <= 3; i++){
+        for (def i = 1; i <= 3; i++) {
             element(getDriver().findElement(By.xpath("//table[@id='shopping-cart-table']//tbody/tr[${i}]"))).waitUntilVisible()
             assertThat(getDriver().findElement(By.xpath("//table[@id='shopping-cart-table']//tbody/tr[${i}]//h2")).getText(), equalTo(names[i]))
             assertThat(getDriver().findElement(By.xpath("//table[@id='shopping-cart-table']//tbody/tr[${i}]//dd[1]")).getText(), equalTo(colors[i]))
@@ -51,7 +51,7 @@ class ShoppingCartPage extends ForAllPage{
     }
 
     def clear_shopping_cart() {
-        if(getDriver().findElements(By.id("empty_cart_button")) != []){
+        if (getDriver().findElements(By.id("empty_cart_button")) != []) {
             element(buttonClearShoppingCart).click()
             element(linkContinueShoppingEmptyCart).waitUntilVisible()
         }

@@ -4,9 +4,9 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
-class LoginPage extends ForAllPage{
+class LoginPage extends ForAllPage {
 
-    LoginPage(WebDriver driver){
+    LoginPage(WebDriver driver) {
         super(driver)
     }
 
@@ -28,8 +28,8 @@ class LoginPage extends ForAllPage{
     def log_in(String email, String pass, Boolean withCookie) {
         element(fieldEmail).type(email)
         element(fieldPassword).type(pass)
-        if(!withCookie){
-          element(checkboxWithCookie).click()
+        if (!withCookie) {
+            element(checkboxWithCookie).click()
         }
         element(buttonLogin).click()
     }

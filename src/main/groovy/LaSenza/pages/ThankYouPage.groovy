@@ -9,24 +9,24 @@ import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
 
 @DefaultUrl("http://localhost:9000/checkout/onepage/success/")
-class ThankYouPage extends ForAllPage{
+class ThankYouPage extends ForAllPage {
 
     private def orderNumber
 
-    ThankYouPage(WebDriver driver){
+    ThankYouPage(WebDriver driver) {
         super(driver)
     }
 
-    @FindBy (xpath = "//div[@class='order-date-block']//div[2]")
+    @FindBy(xpath = "//div[@class='order-date-block']//div[2]")
     private WebElement blockOrderNumber
 
-    @FindBy (xpath = "//address")
+    @FindBy(xpath = "//address")
     private WebElement billingAddress
 
-    @FindBy (xpath = "//div[@class='buttons-set']/a")
+    @FindBy(xpath = "//div[@class='buttons-set']/a")
     private WebElement linkReturnToShopping
 
-    @FindBy (xpath = "//h1")
+    @FindBy(xpath = "//h1")
     private WebElement textTitle
 
     def assert_thank_you_page() {
@@ -41,11 +41,11 @@ class ThankYouPage extends ForAllPage{
     }
 
     def assert_correct_information_on_thank_you_page() {
-       /* assertThat(billingAddress.getText(), equalTo("Test Tester\n" +
-                "Address\n" +
-                "Sacramento, California, 94203\n" +
-                "United States\n" +
-                "T: 555-555-5555 "))*/
+        /* assertThat(billingAddress.getText(), equalTo("Test Tester\n" +
+      "Address\n" +
+      "Sacramento, California, 94203\n" +
+      "United States\n" +
+      "T: 555-555-5555 "))*/
         assertThat(billingAddress.getText(), equalTo("TestFirstName TestLastName\n" +
                 "Test Address1\n" +
                 "Test Address2\n" +

@@ -1,19 +1,19 @@
 package LaSenza.pages
 
+import net.thucydides.core.annotations.DefaultUrl
+import org.openqa.selenium.Alert
+import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
-import net.thucydides.core.annotations.DefaultUrl
-import org.openqa.selenium.Alert
 
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
-import org.openqa.selenium.By
 
 @DefaultUrl("http://localhost:9000/ustorelocator/location/map/")
-class StoreLocatorPage extends ForAllPage{
+class StoreLocatorPage extends ForAllPage {
 
-    StoreLocatorPage(WebDriver driver){
+    StoreLocatorPage(WebDriver driver) {
         super(driver)
     }
 

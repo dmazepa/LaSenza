@@ -1,17 +1,13 @@
 package LaSenza.pages
 
-import org.openqa.selenium.JavascriptExecutor
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
-import org.openqa.selenium.Alert
-import org.openqa.selenium.By
+import org.openqa.selenium.*
 
-class AdminPanelPage extends ForAllPage{
+class AdminPanelPage extends ForAllPage {
 
     def bannerID
 
-    AdminPanelPage(WebDriver driver){
+    AdminPanelPage(WebDriver driver) {
         super(driver)
     }
 
@@ -73,7 +69,7 @@ class AdminPanelPage extends ForAllPage{
     private WebElement buttonSaveBlock
 
     @FindBy(xpath = "//li[@class='success-msg']")
-    private WebElement  blockSuccessMsg
+    private WebElement blockSuccessMsg
 
     @FindBy(id = "product_info_tabs_inventory")
     private WebElement tabInventory
@@ -168,13 +164,13 @@ class AdminPanelPage extends ForAllPage{
     @FindBy(xpath = "//button[@class='scalable delete']")
     private WebElement buttonFlushMagentoCache
 
-    def goTo(additionUrl){
+    def goTo(additionUrl) {
         getDriver().get("${System.getProperty("webdriver.base.url")}${additionUrl}")
     }
 
     def open_and_login() {
         goTo("admin")
-        if (getDriver().findElements(By.id("username")) != []){
+        if (getDriver().findElements(By.id("username")) != []) {
             element(fieldUserName).type("admin")
             element(fieldPassword).type("qwer1234")
             element(buttonLogin).click()
@@ -223,7 +219,7 @@ class AdminPanelPage extends ForAllPage{
     def edit_CMS_block(def addBanner) {
         element(buttonHideEditor).click()
         element(areaCMSBlockContent).waitUntilVisible().clear()
-        if (addBanner){
+        if (addBanner) {
             element(areaCMSBlockContent).type("<div id=\"slider_homepage\">{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"1,2,3,4,${bannerID}\" template=\"banner/widget/block.phtml\"}}</div>")
         } else {
             element(areaCMSBlockContent).type("<div id=\"slider_homepage\">{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"1,2,3,4\" template=\"banner/widget/block.phtml\"}}</div>")
@@ -255,14 +251,14 @@ class AdminPanelPage extends ForAllPage{
 
     def set_cookie_time(def timeSec) {
         open_menu_configuration()
-        if (tabWeb.getAttribute("class") != "active"){
+        if (tabWeb.getAttribute("class") != "active") {
             element(tabWeb).click()
         }
-        if (sessionCookieManagement.getAttribute("class") != "open"){
+        if (sessionCookieManagement.getAttribute("class") != "open") {
             element(sessionCookieManagement).click()
         }
         element(inputCookieTime).waitUntilVisible()
-        if (inputCookieTime.getAttribute("value") != timeSec){
+        if (inputCookieTime.getAttribute("value") != timeSec) {
             element(inputCookieTime).clear()
             element(inputCookieTime).type(timeSec)
             element(buttonSaveConfig).click()
@@ -300,7 +296,7 @@ class AdminPanelPage extends ForAllPage{
         element(buttonAddNewOption).waitUntilVisible()
         element(buttonAddNewOption).click()
         element(By.name("option[value][option_0][3]")).waitUntilVisible()
-        for(def i=0; i <= 3; i++){
+        for (def i = 0; i <= 3; i++) {
             element(By.name("option[value][option_0][${i}]")).type(value)
         }
         element(buttonSave).click()

@@ -17,14 +17,14 @@ class UserSteps extends ScenarioSteps {
     PDPage pDPage
     LoginPage loginPage
     CreateAccountPage createAccountPage
-    StoreLocatorPage  storeLocatorPage
-    SearchPage  searchPage
-    CLPage  cLPage
-    CheckoutPage  checkoutPage
-    ThankYouPage  thankYouPage
-    ShoppingCartPage  shoppingCartPage
+    StoreLocatorPage storeLocatorPage
+    SearchPage searchPage
+    CLPage cLPage
+    CheckoutPage checkoutPage
+    ThankYouPage thankYouPage
+    ShoppingCartPage shoppingCartPage
 
-    UserSteps(Pages pages){
+    UserSteps(Pages pages) {
         super(pages)
         homePage = pages[HomePage]
         homePage = pages[HomePage]
@@ -38,14 +38,17 @@ class UserSteps extends ScenarioSteps {
         thankYouPage = pages[ThankYouPage]
         shoppingCartPage = pages[ShoppingCartPage]
     }
+
     @Step
     def opens_home_page() {
         homePage.open()
     }
+
     @Step
     def should_see_title(String title) {
-       assertThat(homePage.getTitle(), is(title))
+        assertThat(homePage.getTitle(), is(title))
     }
+
     @Step
     def assert_carousel() {
         click_on_first_image_of_slider()
@@ -66,12 +69,12 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def click_on_first_image_of_slider(){
+    def click_on_first_image_of_slider() {
         homePage.click_on_first_image_of_slider()
     }
 
     @Step
-    def click_on_first_image_of_slider_and_assert_changes(){
+    def click_on_first_image_of_slider_and_assert_changes() {
         homePage.click_on_first_image_of_slider()
         homePage.assert_image_active(1)
     }
@@ -162,8 +165,9 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def assert_on_PDP() {
-       pDPage.assert_on_PDP()
+        pDPage.assert_on_PDP()
     }
+
     @Step
     def log_in(Boolean withCookie) {
         homePage.open()
@@ -286,7 +290,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def assert_qty_and_price_added_to_mini_cart(String qty, String price) {
-        homePage.assert_qty_and_price_added_to_mini_cart(qty,price)
+        homePage.assert_qty_and_price_added_to_mini_cart(qty, price)
     }
 
     @Step
@@ -449,9 +453,9 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_first_step_of_checkout(def id) {
-        if(no_items_in_cart()){
+        if (no_items_in_cart()) {
             open_pdp(id)
-            if(pDPage.contain_configurable_options()){
+            if (pDPage.contain_configurable_options()) {
                 choose_configurable_options(1)
             }
             click_add_to_cart_button_pdp()
@@ -729,7 +733,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def click_on_store_entry(def entryNumber) {
-        storeLocatorPage. click_on_store_entry(entryNumber)
+        storeLocatorPage.click_on_store_entry(entryNumber)
     }
 
     @Step
@@ -928,7 +932,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def add_item_to_cart(def id) {
-        if(no_items_in_cart()){
+        if (no_items_in_cart()) {
             store_state_of_total_price_and_qty()
             open_pdp(id)
             choose_and_store_configurable_options()
@@ -994,6 +998,7 @@ class UserSteps extends ScenarioSteps {
     def assert_product_updated() {
         Thread.sleep(30000)
     }
+
     @Step
     def click_on_link_remove_item_mini_cart() {
         homePage.click_on_link_remove_item_mini_cart()
@@ -1128,7 +1133,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def assert_multiple_product_added_to_mini_cart() {
-       pDPage.assert_most_recently_added_items_in_mini_cart()
+        pDPage.assert_most_recently_added_items_in_mini_cart()
     }
 
     @Step
@@ -1144,7 +1149,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def set_and_store_multiple_product_conﬁgurations_qv(def productNumber, def colorNumber, def sizeNumber) {
-       cLPage.set__and_store_multiple_product_conﬁgurations_qv(productNumber, colorNumber, sizeNumber)
+        cLPage.set__and_store_multiple_product_conﬁgurations_qv(productNumber, colorNumber, sizeNumber)
     }
 
     @Step
@@ -1197,5 +1202,25 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_additional_rows_appeared() {
         cLPage.assert_additional_rows_appeared()
+    }
+
+    @Step
+    def hover_on_color_swatch() {
+        pDPage.hover_on_color_swatch()
+    }
+
+    @Step
+    def assert_larger_image() {
+        pDPage.assert_larger_image()
+    }
+
+    @Step
+    def click_on_color_swatch_pdp() {
+        pDPage.click_on_color_swatch_pdp()
+    }
+
+    @Step
+    def assert_main_image_changed() {
+        pDPage.assert_main_image_changed()
     }
 }

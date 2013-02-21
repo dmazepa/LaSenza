@@ -1,16 +1,17 @@
 package LaSenza.pages
 
-import org.openqa.selenium.By
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.WebElement
+import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.support.FindBy
+import org.openqa.selenium.*
 
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
 
-class PDPage extends ForAllPage{
+class PDPage extends ForAllPage {
 
-    PDPage(WebDriver driver){
+    def imageBefore
+
+    PDPage(WebDriver driver) {
         super(driver)
     }
 
@@ -21,6 +22,15 @@ class PDPage extends ForAllPage{
 
     @FindBy(xpath = "//div[@class='product-name']/h1/a")
     private WebElement productName;
+
+    @FindBy(xpath = "//img[@class='color-image']")
+    private WebElement colorSwatch
+
+    @FindBy(xpath = "//a[@id='main-image']//img")
+    private WebElement mainImage
+
+    @FindBy(xpath = "//div[@class='tooltip-box']/img")
+    private WebElement colorSwatchLargerImage
 
     @FindBy(xpath = "//div[@class='product-options-block']//div[@class='option-wrapper'][1]//select")
     private WebElement selectColor
@@ -77,7 +87,7 @@ class PDPage extends ForAllPage{
     }
 
     def choose_configurable_options(int index) {
-        if(getDriver().findElements(By.xpath("//div[@class='product-options-block']//div[@class='option-wrapper']")).size() != 0){
+        if (getDriver().findElements(By.xpath("//div[@class='product-options-block']//div[@class='option-wrapper']")).size() != 0) {
             element(selectColor).selectByIndex(index)
             element(selectSize).selectByIndex(index)
         }
@@ -106,18 +116,18 @@ class PDPage extends ForAllPage{
     }
 
     def assert_most_recently_added_items_in_mini_cart() {
-        for (def i=1; i <= 3; i++){
+        for (def i = 1; i <= 3; i++) {
             element(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a"))).waitUntilVisible()
-            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a")).getText(), equalTo(names[4-i]))
-            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][1]/dd")).getText(), equalTo(colors[4-i]))
-            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][2]/dd")).getText(), equalTo(sizes[4-i]))
-            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//span[@class='price']")).getText(), equalTo(prices[4-i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a")).getText(), equalTo(names[4 - i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][1]/dd")).getText(), equalTo(colors[4 - i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][2]/dd")).getText(), equalTo(sizes[4 - i]))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//span[@class='price']")).getText(), equalTo(prices[4 - i]))
         }
     }
 
     def add_3_items_to_cart(int id1, int id2, int id3) {
         def list = [0, id1, id2, id3]
-        for (def i=1; i <= 3; i++){
+        for (def i = 1; i <= 3; i++) {
             getDriver().get("${System.getProperty("webdriver.base.url")}catalog/product/view/id/${list[i]}")
             element(selectColor).selectByIndex(1)
             element(selectSize).selectByIndex(1)
@@ -151,5 +161,24 @@ class PDPage extends ForAllPage{
         sizes[productNumber] = element(By.xpath("//fieldset[@class='product-options']//div[${productNumber}]//div[@class='option-wrapper'][2]//select")).getSelectedVisibleTextValue()
         prices[productNumber] = element(textPrice).getText()
         names[productNumber] = element(productName).getText()
+    }
+
+    def hover_on_color_swatch() {
+        Mouse mouse = ((HasInputDevices) driver).getMouse()
+        Locatable hoverItem = (Locatable) colorSwatch
+        mouse.mouseMove(hoverItem.getCoordinates())
+    }
+
+    def assert_larger_image() {
+        element(colorSwatchLargerImage).shouldBeVisible()
+    }
+
+    def click_on_color_swatch_pdp() {
+        imageBefore = mainImage.getAttribute("src")
+        element(colorSwatch).click()
+    }
+
+    def assert_main_image_changed() {
+        assert mainImage.getAttribute("src") != imageBefore
     }
 }
