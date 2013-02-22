@@ -7,6 +7,7 @@ import org.openqa.selenium.*
 
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
+import static org.hamcrest.Matchers.lessThan
 
 class CLPage extends ForAllPage {
 
@@ -17,6 +18,8 @@ class CLPage extends ForAllPage {
     def sizes = []
     def prices = []
     def names = []
+    def countProductsCategory
+    def countProductsAttributes
 
     CLPage(WebDriver driver) {
         super(driver)
@@ -84,6 +87,18 @@ class CLPage extends ForAllPage {
 
     @FindBy(xpath = "//dd")
     private WebElement attributeRefinementFirst
+
+    @FindBy(xpath = "//ol[@class='m-filter-item-list ']/li")
+    private WebElement attributeCategories
+
+    @FindBy(xpath = "//dt[@data-id='m_left_category_filter']")
+    private WebElement attributeCategoriesTitle
+
+    @FindBy(xpath = "//a[@class='btn-remove']")
+    private WebElement iconRemove
+
+    @FindBy(xpath = "//div[@class='currently']/ol/li")
+    private WebElement attributeFilteredFirst
 
     @FindBy(xpath = "//a[@title='Next']")
     private WebElement arrowRightNext
@@ -392,5 +407,49 @@ class CLPage extends ForAllPage {
 
     def assert_attribute_refinement_collapsed() {
         assertThat(attributeRefinementFirst.getAttribute("style"), equalTo("height: auto;"))
+    }
+
+    def assert_category_refinements_CLP() {
+        element(attributeCategories).shouldBePresent()
+        def arrayCategories = driver.findElements(By.xpath("//ol[@class='m-filter-item-list ']/li")).collect() {WebElement el ->
+            el.text.replaceAll("\\D", "").toInteger()
+        }
+        assert arrayCategories.each {el -> el.is(int )}
+    }
+
+    def click_on_category_refinements_CLP() {
+        countProductsCategory =  driver.findElement(By.xpath("//ol[@class='m-filter-item-list ']/li")).getText().replaceAll("\\D", "")
+        countProductsAttributes =  driver.findElements(By.xpath("//ol/li")).size()
+        driver.findElement(By.xpath("//ol[@class='m-filter-item-list ']/li[1]/a")).click()
+    }
+
+    def assert_category_refinements_removed_CLP() {
+        element(attributeCategories).shouldNotBePresent()
+    }
+
+    def assert_category_refinements_appears_in_shop_by_list_CLP(String s) {
+        element(attributeFilteredFirst).shouldBeVisible()
+        assert element(attributeFilteredFirst).getText().contains(s)
+    }
+    def assert_number_near_filtered_attribute(){
+        assertThat(element(attributeFilteredFirst).getText().replaceAll("\\D", ""), equalTo(countProductsCategory))
+    }
+
+    def assert_CLP_and_left_navigation_updated() {
+        assertThat(getDriver().findElements(By.xpath("//h2[@class='product-name']")).size().toString(), equalTo(countProductsCategory))
+        assertThat(getDriver().findElements(By.xpath("//ol/li")).size(), lessThan(countProductsAttributes))
+    }
+
+    def assert_category_list_disappeared() {
+        element(attributeCategoriesTitle).shouldNotBePresent()
+    }
+
+    Object click_remove_category_refinement() {
+        element(iconRemove).click()
+    }
+
+    def assert_category_refinement_visible() {
+        element(attributeCategoriesTitle).shouldBePresent()
+
     }
 }

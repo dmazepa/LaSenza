@@ -1269,4 +1269,45 @@ class UserSteps extends ScenarioSteps {
         assert_qw_absent()
         shoppingCartPage.assert_item_added_to_cart()
     }
+
+    @Step
+    def assert_category_refinements_CLP() {
+        cLPage.assert_category_refinements_CLP()
+    }
+
+    @Step
+    def click_on_category_refinements_CLP() {
+        cLPage.click_on_category_refinements_CLP()
+    }
+
+    @Step
+    def assert_category_refinements_removed_CLP() {
+        cLPage.assert_category_refinements_removed_CLP()
+    }
+
+    @Step
+    def assert_category_refinements_appears_in_shop_by_list_CLP(String s) {
+        cLPage.assert_category_refinements_appears_in_shop_by_list_CLP(s)
+    }
+
+    @Step
+    def assert_CLP_and_left_navigation_updated() {
+        cLPage.assert_CLP_and_left_navigation_updated()
+        cLPage.assert_number_near_filtered_attribute()
+    }
+
+    @Step
+    def assert_category_list_disappeared() {
+        cLPage.assert_category_list_disappeared()
+    }
+
+    @Step
+    def click_remove_category_refinement() {
+        cLPage.click_remove_category_refinement()
+    }
+
+    @Step
+    def assert_category_refinement_visible() {
+        cLPage.assert_category_refinement_visible()
+    }
 }
