@@ -159,7 +159,7 @@ class CustomerSteps extends UserSteps {
 
     @Step
     def open_my_account_address_book() {
-        myAccountPage.go_to()
+        myAccountPage.go_to("customer/account/index/")
         myAccountPage.click_on_tab("Address Book")
     }
 
