@@ -12,9 +12,26 @@ import static org.hamcrest.Matchers.equalTo
 @DefaultUrl("http://localhost:9000/checkout/cart/")
 class ShoppingCartPage extends ForAllPage {
 
+    def colors
+    def sizes
+    def prices
+    def names
+
     ShoppingCartPage(WebDriver driver) {
         super(driver)
     }
+
+    @FindBy(xpath = "//div[@class='product-options-block']//div[@class='option-wrapper'][1]//select")
+    private WebElement selectColor
+
+    @FindBy(xpath = "//div[@class='product-options-block']//div[@class='option-wrapper'][2]//select")
+    private WebElement selectSize
+
+    @FindBy(xpath = "//div[@class='quickview-wrapper']//span[@class='price']")
+    private WebElement textPriceQV
+
+    @FindBy(xpath = "//div[@class='quickview-wrapper']//h1/a")
+    private WebElement textProductNameQV
 
     @FindBy(xpath = "//h1")
     private WebElement titleText
@@ -64,7 +81,10 @@ class ShoppingCartPage extends ForAllPage {
     }
 
     def assert_cross_sell(String nameCrossSell) {
-        assertThat(element(productNameCrossSell).getText(), equalTo(nameCrossSell))
+        def actualNames = driver.findElements(By.xpath("//div[@class='crosssell']//div[@class='product-name']/a")).collect {WebElement el ->
+            el.text
+        }
+        assert actualNames.contains(nameCrossSell)
     }
 
     def click_on_image_cross_sell() {
@@ -74,5 +94,39 @@ class ShoppingCartPage extends ForAllPage {
 
     def click_on_name_cross_sell() {
         element(productNameCrossSell).click()
+    }
+
+    def choose_configurable_options(int i) {
+        if (getDriver().findElements(By.xpath("//div[@class='product-options-block']//div[@class='option-wrapper']")).size() != 0) {
+            Thread.sleep(1000)
+            element(selectColor).selectByIndex(i)
+            element(selectSize).selectByIndex(i)
+        }
+    }
+
+    def store_configurable_options() {
+        colors = element(selectColor).getSelectedVisibleTextValue()
+        sizes = element(selectSize).getSelectedVisibleTextValue()
+        prices = element(textPriceQV).getText()
+        names = element(textProductNameQV).getText()
+    }
+
+    def assert_item_added_to_cart() {
+        def actualNames = driver.findElements(By.xpath("//h2[@class='product-name']/a")).collect {WebElement el ->
+            el.text
+        }
+        def actualSizes = driver.findElements(By.xpath("//dl/dd[2]")).collect {WebElement el ->
+            el.text
+        }
+        def actualColors = driver.findElements(By.xpath("//dl/dd[1]")).collect {WebElement el ->
+            el.text
+        }
+        def actualPrices = driver.findElements(By.xpath("//span[@class='cart-price']/span")).collect {WebElement el ->
+            el.text
+        }
+        assert actualColors.contains(colors)
+        assert actualNames.contains(names)
+        assert actualPrices.contains(prices)
+        assert actualSizes.contains(sizes)
     }
 }

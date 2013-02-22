@@ -1257,4 +1257,16 @@ class UserSteps extends ScenarioSteps {
         click_close_button()
         shoppingCartPage.click_on_name_cross_sell()
     }
+
+    @Step
+    def choose_and_store_configurable_options_shopping_cart() {
+        shoppingCartPage.choose_configurable_options(1)
+        shoppingCartPage.store_configurable_options()
+    }
+
+    @Step
+    def assert_item_added_to_cart_shopping_cart() {
+        assert_qw_absent()
+        shoppingCartPage.assert_item_added_to_cart()
+    }
 }
