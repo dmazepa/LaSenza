@@ -41,7 +41,7 @@ class AddToCartSimplePdpSteps {
         user.assert_mini_cart_appears()
     }
 
-    @Then("Item don't add to cart.")
+    @Then("Item don't add to cart configurable.")
     public void assert_item_not_added() {
         user.assert_item_not_added("The maximum quantity allowed for purchase is")
     }
