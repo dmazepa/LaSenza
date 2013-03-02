@@ -24,6 +24,9 @@ class ShoppingCartPage extends ForAllPage {
     @FindBy(xpath = "//div[@class='product-options-block']//div[@class='option-wrapper'][1]//select")
     private WebElement selectColor
 
+    @FindBy(xpath = "//a[@class='edit']")
+    private WebElement linkEdit
+
     @FindBy(xpath = "//div[@class='product-options-block']//div[@class='option-wrapper'][2]//select")
     private WebElement selectSize
 
@@ -128,5 +131,9 @@ class ShoppingCartPage extends ForAllPage {
         assert actualNames.contains(names)
         assert actualPrices.contains(prices)
         assert actualSizes.contains(sizes)
+    }
+
+    def assert_link_edit_on_shopping_cart_absent() {
+        element(linkEdit).shouldNotBePresent()
     }
 }

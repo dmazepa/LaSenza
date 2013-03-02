@@ -1197,7 +1197,7 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_simple_added_to_cart() {
         assert_mini_cart_appears()
-        assert_qty_and_price_added_to_mini_cart("1", "\$26.50")
+        assert_qty_and_price_added_to_mini_cart("1", "CA\$26.50")
     }
 
     @Step
@@ -1309,5 +1309,10 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_category_refinement_visible() {
         cLPage.assert_category_refinement_visible()
+    }
+
+    @Step
+    def assert_link_edit_on_shopping_cart_absent() {
+        shoppingCartPage.assert_link_edit_on_shopping_cart_absent()
     }
 }
