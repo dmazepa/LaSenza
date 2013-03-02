@@ -11,13 +11,25 @@
     <name>Sample Thucydides project</name>
 
     <properties>
+
+        <sonar.language>java</sonar.language>
+        <sonar.dynamicAnalysis>false</sonar.dynamicAnalysis>
+
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <thucydides.version>0.9.90</thucydides.version>
         <thucydides.jbehave.version>0.9.90</thucydides.jbehave.version>
         <webdriver.driver>firefox</webdriver.driver>
     </properties>
 
+
     <dependencies>
+            <dependency>
+                <groupId>org.codehaus.sonar</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.2</version>
+            </dependency>
+
         <!--&lt;!&ndash;<dependency>
             <groupId>net.thucydides</groupId>
             <artifactId>thucydides-core</artifactId>
@@ -51,6 +63,9 @@
                 </executions>
             </plugin>
         </plugins>
+
+        <sourceDirectory>./src</sourceDirectory>
+
     </build>
 
     <!--<profiles>
