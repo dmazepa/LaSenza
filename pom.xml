@@ -12,7 +12,7 @@
 
     <properties>
 
-        <sonar.language>java</sonar.language>
+        <sonar.language>groovy</sonar.language>
         <sonar.dynamicAnalysis>false</sonar.dynamicAnalysis>
 
 
