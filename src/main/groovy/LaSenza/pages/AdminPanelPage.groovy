@@ -283,9 +283,9 @@ class AdminPanelPage extends ForAllPage {
         element(buttonHideEditor).click()
         element(areaCMSBlockContent).waitUntilVisible().clear()
         if (addBanner) {
-            element(areaCMSBlockContent).type("<div id=\"slider_homepage\">{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"1,2,3,4,${bannerID}\" template=\"banner/widget/block.phtml\"}}</div>")
+            element(areaCMSBlockContent).type("<p>{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"1,2,3,4,${bannerID}\" template=\"banner/widget/block.phtml\" unique_id=\"f80360d304e6c051023b51df668b10f9\"}}</p>")
         } else {
-            element(areaCMSBlockContent).type("<div id=\"slider_homepage\">{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"1,2,3,4\" template=\"banner/widget/block.phtml\"}}</div>")
+            element(areaCMSBlockContent).type("<p>{{widget type=\"enterprise_banner/widget_banner\" display_mode=\"fixed\" banner_ids=\"1,2,3,4\" template=\"banner/widget/block.phtml\" unique_id=\"f80360d304e6c051023b51df668b10f9\"}}</p>")
         }
         element(buttonSaveBlock).click()
         element(blockSuccessMsg).waitUntilVisible()
