@@ -128,15 +128,15 @@ class HomePage extends ForAllPage {
 
     def click_on_first_image_of_slider() {
         element(sliderImage1).waitUntilNotVisible()
-        println element(sliderImage1).isCurrentlyVisible()
+       /* println element(sliderImage1).isCurrentlyVisible()
         println element(sliderImage2).isCurrentlyVisible()
-        println element(sliderImage3).isCurrentlyVisible()
+        println element(sliderImage3).isCurrentlyVisible()*/
         element(buttonFirstImageSlider).click();
         element(sliderImage1).waitUntilVisible()
         //Thread.sleep(2000)
-        println element(sliderImage1).isCurrentlyVisible()
+        /*println element(sliderImage1).isCurrentlyVisible()
         println element(sliderImage2).isCurrentlyVisible()
-        println element(sliderImage3).isCurrentlyVisible()
+        println element(sliderImage3).isCurrentlyVisible()*/
     }
 
     def assert_place_holder_on_slider() {
@@ -163,9 +163,9 @@ class HomePage extends ForAllPage {
     }
 
     def assert_image_active(int imageNumber) {
-        println element(sliderImage1).isCurrentlyVisible()
+        /*println element(sliderImage1).isCurrentlyVisible()
         println element(sliderImage2).isCurrentlyVisible()
-        println element(sliderImage3).isCurrentlyVisible()
+        println element(sliderImage3).isCurrentlyVisible()*/
         if (imageNumber != 1) {
             assert !element(By.xpath("//div[@id='slider_homepage']/div/ul/div/li[${imageNumber - 1}]/img")).isCurrentlyVisible()
         }
