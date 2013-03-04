@@ -12,9 +12,8 @@
 
     <properties>
 
-        <sonar.language>groovy</sonar.language>
+        <sonar.language>grvy</sonar.language>
         <sonar.dynamicAnalysis>false</sonar.dynamicAnalysis>
-
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <thucydides.version>0.9.90</thucydides.version>
