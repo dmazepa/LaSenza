@@ -186,4 +186,9 @@ class CustomerSteps extends UserSteps {
     def wait_for_thank_you_page() {
         thankYouPage.waitForThankYouPage()
     }
+
+
+    def assert_total_count_of_items_in_wishlists() {
+
+    }
 }

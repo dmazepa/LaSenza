@@ -9,8 +9,7 @@ Given Prepare_base
 Scenario: Prepare Base.
 Given Check products inventory
 
-Scenario: User can remove refinements in left navigation.
-Given I am on Category page as User.
-When I click on category refinement.
-When I remove the refinement.
-Then The list of categories display again.
+Scenario: Total count of items in Wish list should displays for customers.
+Given I am on Home page as customer and has multiple wishlists and items in Wish List.
+Then Total count of items in Wish list should displays.
+Then The same item from different wish lists is counted multiple times.
