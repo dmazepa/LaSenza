@@ -29,6 +29,11 @@
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.2</version>
             </dependency>
+<dependency>
+    <groupId>org.codehaus.sonar-plugins</groupId>
+    <artifactId>sonar-groovy-plugin</artifactId>
+    <version>0.6</version>
+</dependency>
 
         <!--&lt;!&ndash;<dependency>
             <groupId>net.thucydides</groupId>
