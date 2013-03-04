@@ -59,12 +59,6 @@ class PDPage extends ForAllPage {
     @FindBy(xpath = "//a[@class='add-more-items']")
     private WebElement linkAddMoreItems
 
-    @FindBy(xpath = "//fieldset[@class='product-options']/div[2]//div[@class='option-wrapper'][1]//select")
-    private WebElement selectColor2
-
-    @FindBy(xpath = "//fieldset[@class='product-options']/div[2]//div[@class='option-wrapper'][2]//select")
-    private WebElement selectSize2
-
     def assert_on_PDP() {
         element(productName).waitUntilVisible()
         element(productName).shouldBePresent()
@@ -101,7 +95,6 @@ class PDPage extends ForAllPage {
     }
 
     def add_to_wishlist_from_pdp(String nameWishlist) {
-        def r = getDriver().findElement(By.xpath("//a[@class='change']"))
         element(arrowSelectWishList).click()
         getDriver().findElement(By.xpath("//span[@title='${nameWishlist}']")).click()
     }

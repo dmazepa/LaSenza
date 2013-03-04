@@ -17,9 +17,6 @@ class MyAccountPage extends ForAllPage {
         super(driver)
     }
 
-    @FindBy(id = "send2")
-    private WebElement buttonLogin;
-
     @FindBy(id = "wishlist-create-button")
     private WebElement buttonCreateWishlist;
 

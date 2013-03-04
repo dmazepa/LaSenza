@@ -38,9 +38,6 @@ class StoreLocatorPage extends ForAllPage {
     @FindBy(xpath = "//div[@class='button-set']/button[2]")
     private WebElement buttonReset
 
-    @FindBy(id = "marker-loc-3")
-    private WebElement popUpEntryOnMap
-
     @FindBy(id = "locations-reset")
     private WebElement linkResetLocations
 

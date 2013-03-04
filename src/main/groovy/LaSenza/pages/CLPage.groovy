@@ -414,12 +414,12 @@ class CLPage extends ForAllPage {
         def arrayCategories = driver.findElements(By.xpath("//ol[@class='m-filter-item-list ']/li")).collect() {WebElement el ->
             el.text.replaceAll("\\D", "").toInteger()
         }
-        assert arrayCategories.each {el -> el.is(int )}
+        assert arrayCategories.each {el -> el.is(int)}
     }
 
     def click_on_category_refinements_CLP() {
-        countProductsCategory =  driver.findElement(By.xpath("//ol[@class='m-filter-item-list ']/li")).getText().replaceAll("\\D", "")
-        countProductsAttributes =  driver.findElements(By.xpath("//ol/li")).size()
+        countProductsCategory = driver.findElement(By.xpath("//ol[@class='m-filter-item-list ']/li")).getText().replaceAll("\\D", "")
+        countProductsAttributes = driver.findElements(By.xpath("//ol/li")).size()
         driver.findElement(By.xpath("//ol[@class='m-filter-item-list ']/li[1]/a")).click()
     }
 
@@ -431,7 +431,8 @@ class CLPage extends ForAllPage {
         element(attributeFilteredFirst).shouldBeVisible()
         assert element(attributeFilteredFirst).getText().contains(s)
     }
-    def assert_number_near_filtered_attribute(){
+
+    def assert_number_near_filtered_attribute() {
         assertThat(element(attributeFilteredFirst).getText().replaceAll("\\D", ""), equalTo(countProductsCategory))
     }
 

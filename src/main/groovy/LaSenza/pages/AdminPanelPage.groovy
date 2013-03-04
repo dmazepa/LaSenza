@@ -206,9 +206,6 @@ class AdminPanelPage extends ForAllPage {
     @FindBy(id = "rule_discount_amount")
     private WebElement fieldDiscountAmount
 
-    @FindBy(xpath = "//table[@id='attributeGrid_table']//tbody/tr")
-    private WebElement arrovFirstAttributeManager
-
     @FindBy(id = "product_attribute_tabs_labels")
     private WebElement tabManageLabelOptions
 
@@ -409,7 +406,7 @@ class AdminPanelPage extends ForAllPage {
     def search_product_cross_sells(int id) {
         element(tabCrossSells).click()
         element(selectShowProducts).waitUntilVisible()
-        if(driver.findElements(By.xpath("//table[@id='cross_sell_product_grid_table']/tbody//input[@class='checkbox']")).size() == 0){
+        if (driver.findElements(By.xpath("//table[@id='cross_sell_product_grid_table']/tbody//input[@class='checkbox']")).size() == 0) {
             element(selectShowProducts).selectByVisibleText("Any")
             element(fieldID).type("11501")
             element(buttonSearch).click()
@@ -423,7 +420,7 @@ class AdminPanelPage extends ForAllPage {
 
     def create_new_product_rule(String skuProductInCart, String skuCrossSellProduct) {
         getDriver().get(subMenuRuleBasedProductRelations.getAttribute("href"))
-        if(!getDriver().getPageSource().contains("TestProductRule")){
+        if (!getDriver().getPageSource().contains("TestProductRule")) {
             element(buttonAddNewProductRule).click()
             element(fieldProductRuleName).waitUntilVisible()
             element(fieldProductRuleName).type("TestProductRule")

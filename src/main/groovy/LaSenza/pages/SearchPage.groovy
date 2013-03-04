@@ -27,7 +27,6 @@ class SearchPage extends ForAllPage {
 
     def assert_on_search_page() {
         getTitle().equals("Search results for \'text1\'")
-        def r = element(titlePage).getText()
         assertThat(element(titlePage).getText(), equalTo("SEARCH RESULTS FOR \'TEXT1\'"))
         assertThat(element(breadcrumbsLevel2).getText(), equalTo("SEARCH RESULTS FOR \'TEXT1\'"))
     }
