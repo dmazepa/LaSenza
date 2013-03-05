@@ -4,7 +4,6 @@ import LaSenza.steps.CustomerSteps
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
 import org.jbehave.core.annotations.Given
-import org.jbehave.core.annotations.Pending
 import org.jbehave.core.annotations.Then
 import org.jbehave.core.annotations.When
 
@@ -33,20 +32,19 @@ class HeaderCustomerWithoutCookiesSteps {
     }
 
     @Given("I am on Home page as customer and has multiple wishlists and items in Wish List.")
-    @Pending
-    public void on_home_with_multi_wishlist() {
+        public void on_home_with_multi_wishlist() {
         user.log_in(false)
         customer.add_product_to_multi_wishlists()
     }
 
     @Then("Total count of items in Wish list should displays.")
-    @Pending
     public void assert_total_count_of_items_in_wishlists() {
+        customer.assert_total_count_of_items_in_wishlists()
     }
 
     @Then("The same item from different wish lists is counted multiple times.")
-    @Pending
     public void assert_different_wishlists_counted_items() {
+
     }
 
 

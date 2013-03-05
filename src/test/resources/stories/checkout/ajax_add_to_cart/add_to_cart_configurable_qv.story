@@ -14,5 +14,5 @@ Scenario: Customer can't add configurable product from QV with quantity greater 
 Given I am on QW with configurable product as User.
 When I fill quantity "10000" greater than the inventory available.
 And I click Add to Cart button QV configurable.
-Then Item don't add to cart.
+Then Item don't add to cart configurable qv.
 And Appropriate error messaging displays to the right of the Add to Cart button.

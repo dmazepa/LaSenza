@@ -28,4 +28,10 @@ class AddToCartConfigurableQvSteps {
         user.open_shopping_cart()
         user.assert_multiple_product_added_to_shopping_cart_from_qv()
     }
+
+    @Then("Item don't add to cart configurable qv.")
+    public void assert_item_not_added() {
+        user.assert_item_not_added("The maximum quantity")
+    }
+
 }
