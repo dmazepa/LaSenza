@@ -301,7 +301,7 @@ class HomePage extends ForAllPage {
 
     def assert_on_home_page() {
         assertThat(driver.getCurrentUrl(), equalTo(System.getProperty("webdriver.base.url")))
-        element(sliderImage1).shouldBePresent()
+        element(buttonFirstImageSlider).shouldBePresent()
     }
 
     def move_mouse_on_menu(String nameMenu) {

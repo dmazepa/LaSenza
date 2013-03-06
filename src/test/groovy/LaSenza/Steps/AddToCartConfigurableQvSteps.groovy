@@ -33,5 +33,4 @@ class AddToCartConfigurableQvSteps {
     public void assert_item_not_added() {
         user.assert_item_not_added("The maximum quantity")
     }
-
 }
