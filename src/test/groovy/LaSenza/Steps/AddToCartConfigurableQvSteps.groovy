@@ -12,8 +12,8 @@ class AddToCartConfigurableQvSteps {
 
     @When("Set multiple product configurations QV.")
     public void set_multiple_product_conﬁgurations_QV() {
-        user.set_and_store_multiple_product_conﬁgurations_qv(2, 1, 2)
-        user.set_and_store_multiple_product_conﬁgurations_qv(3, 2, 1)
+        user.set_and_store_multiple_product_conﬁgurations_qv(2, 2, 1)
+        user.set_and_store_multiple_product_conﬁgurations_qv(3, 3, 1)
     }
 
     @When("I click Add to Cart button QV configurable.")

@@ -32,21 +32,15 @@ class HeaderCustomerWithoutCookiesSteps {
     }
 
     @Given("I am on Home page as customer and has multiple wishlists and items in Wish List.")
-        public void on_home_with_multi_wishlist() {
+    public void on_home_with_multi_wishlist() {
         user.log_in(false)
         customer.add_product_to_multi_wishlists()
     }
 
-    @Then("Total count of items in Wish list should displays.")
+    @Then("Total count of items in Wish list should displays and the same item from different wish lists is counted multiple times.")
     public void assert_total_count_of_items_in_wishlists() {
         customer.assert_total_count_of_items_in_wishlists()
     }
-
-    @Then("The same item from different wish lists is counted multiple times.")
-    public void assert_different_wishlists_counted_items() {
-
-    }
-
 
     @Then("I should redirects to the My Account Dashboard page.")
     public void assert_on_my_account_dashboard_page() {
