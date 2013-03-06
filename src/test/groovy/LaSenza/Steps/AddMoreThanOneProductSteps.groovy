@@ -11,7 +11,7 @@ class AddMoreThanOneProductSteps {
     @Steps
     UserSteps user
 
-    @Given("I am on QW with configurable product as User.")
+    @Given("I am on QV with configurable product as User.")
     public void open_QV_configurable() {
         user.opens_CLP("sale")
         user.open_quick_view(2)

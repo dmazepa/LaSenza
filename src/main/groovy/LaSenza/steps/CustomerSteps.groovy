@@ -75,7 +75,6 @@ class CustomerSteps extends UserSteps {
     }
 
     @Step
-    @Pending
     def add_to_wishlist_from_pdp(String nameWishlist) {
         pDPage.add_to_wishlist_from_pdp(nameWishlist)
     }
@@ -187,7 +186,7 @@ class CustomerSteps extends UserSteps {
         thankYouPage.waitForThankYouPage()
     }
 
-
+    @Step
     def assert_total_count_of_items_in_wishlists() {
 
     }

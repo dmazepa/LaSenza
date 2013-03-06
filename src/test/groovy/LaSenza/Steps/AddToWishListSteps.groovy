@@ -15,7 +15,7 @@ class AddToWishListSteps {
     @Steps
     CustomerSteps customer
 
-    @Given("I am on QW with configurable product as customer.")
+    @Given("I am on QV with configurable product as customer.")
     public void on_qw_as_customer() {
         user.opens_home_page()
         user.log_in(true)

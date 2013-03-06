@@ -21,7 +21,7 @@ class HomePage extends ForAllPage {
     String priceHeaderBefore
 
 
-    @FindBy(xpath = "//div[@class='global-header-banner']/img")
+    @FindBy(xpath = "//div[@class='global-header-banner']/p/img")
     private WebElement globalHeaderBanner;
 
     @FindBy(xpath = "//span[@class='welcome-msg']")
@@ -366,13 +366,13 @@ class HomePage extends ForAllPage {
     }
 
     def assert_item_added_to_wishlist_header() {
-        assertThat(qtyItemsInWishListHeader, equalTo(getDriver().findElement(By.xpath("//a[contains(text(), 'Wish list')]")).getText().replaceAll("\\D", "")))
+        assertThat(qtyItemsInWishListHeader, equalTo(getDriver().findElement(By.xpath("//a[contains(text(), 'Wishlists')]")).getText().replaceAll("\\D", "")))
 
     }
 
     def set_items_qty_in_wish_list_header() {
-        if (getDriver().findElements(By.xpath("//a[contains(text(), 'Wish list')]")).size() != 0) {
-            qtyItemsInWishListHeader = getDriver().findElement(By.xpath("//a[contains(text(), 'Wish list')]")).getText().replaceAll("\\D", "")
+        if (getDriver().findElements(By.xpath("//a[contains(text(), 'Wishlists')]")).size() != 0) {
+            qtyItemsInWishListHeader = getDriver().findElement(By.xpath("//a[contains(text(), 'Wishlists')]")).getText().replaceAll("\\D", "")
         } else {
             qtyItemsInWishListHeader = "0"
         }

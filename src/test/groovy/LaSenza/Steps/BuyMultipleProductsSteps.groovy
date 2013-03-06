@@ -16,8 +16,9 @@ class BuyMultipleProductsSteps {
         user.open_pdp(1574)
     }
 
-    @When("I select color in second row.")
+    @Then("I can select color in second row.")
     public void select_color_second_row() {
+        user.add_row_additional_product_QV()
         user.select_color_second_row()
     }
 

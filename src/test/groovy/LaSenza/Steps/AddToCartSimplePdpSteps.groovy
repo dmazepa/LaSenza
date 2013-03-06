@@ -41,9 +41,9 @@ class AddToCartSimplePdpSteps {
         user.assert_mini_cart_appears()
     }
 
-    @Then("Item don't add to cart configurable.")
+    @Then("Item don't add to cart.")
     public void assert_item_not_added() {
-        user.assert_item_not_added("The requested quantity")
+        user.assert_item_not_added("The maximum quantity")
     }
 
     @Then('The qty "$qty" and order total "$price" are updated to reflect the addition.')
