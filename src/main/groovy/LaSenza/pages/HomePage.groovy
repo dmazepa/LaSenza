@@ -11,7 +11,7 @@ import static org.hamcrest.MatcherAssert.assertThat
 @DefaultUrl("http://localhost:9000")
 class HomePage extends ForAllPage {
 
-    def qtyItemsInWishListHeader
+    int qtyItemsInWishListHeader
 
     HomePage(WebDriver driver) {
         super(driver)
@@ -178,10 +178,6 @@ class HomePage extends ForAllPage {
 
     def assert_welcome_msg(def welcomeMSG) {
         assertThat(blockWelcomeMsg.getText(), equalTo(welcomeMSG))
-    }
-
-    def assert_default_text_in_search_field_removes() {
-        assert false
     }
 
     def open1() {
@@ -366,15 +362,14 @@ class HomePage extends ForAllPage {
     }
 
     def assert_item_added_to_wishlist_header() {
-        assertThat(qtyItemsInWishListHeader, equalTo(getDriver().findElement(By.xpath("//a[contains(text(), 'Wishlists')]")).getText().replaceAll("\\D", "")))
-
+        assert qtyItemsInWishListHeader < getDriver().findElement(By.xpath("//a[contains(text(), 'Wishlists')]")).getText().replaceAll("\\D", "").toInteger()
     }
 
     def set_items_qty_in_wish_list_header() {
-        if (getDriver().findElements(By.xpath("//a[contains(text(), 'Wishlists')]")).size() != 0) {
-            qtyItemsInWishListHeader = getDriver().findElement(By.xpath("//a[contains(text(), 'Wishlists')]")).getText().replaceAll("\\D", "")
+        if (getDriver().findElement(By.xpath("//a[contains(text(), 'Wishlists')]")).getText().replaceAll("\\D", "") != "") {
+            qtyItemsInWishListHeader = getDriver().findElement(By.xpath("//a[contains(text(), 'Wishlists')]")).getText().replaceAll("\\D", "").toInteger()
         } else {
-            qtyItemsInWishListHeader = "0"
+            qtyItemsInWishListHeader = 0
         }
     }
 
@@ -442,6 +437,6 @@ class HomePage extends ForAllPage {
     }
 
     def assert_total_count_of_items_in_wishlists() {
-        assert qtyItemsInWishListHeader.toInteger() + 2 == getDriver().findElement(By.xpath("//a[contains(text(), 'Wishlists')]")).getText().replaceAll("\\D", "").toInteger()
+        assert qtyItemsInWishListHeader + 2 == getDriver().findElement(By.xpath("//a[contains(text(), 'Wishlists')]")).getText().replaceAll("\\D", "").toInteger()
     }
 }

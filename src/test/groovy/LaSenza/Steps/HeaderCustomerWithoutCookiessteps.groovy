@@ -34,6 +34,7 @@ class HeaderCustomerWithoutCookiesSteps {
     @Given("I am on Home page as customer and has multiple wishlists and items in Wish List.")
     public void on_home_with_multi_wishlist() {
         user.log_in(false)
+        customer.clear_all_wish_lists()
         customer.add_product_to_multi_wishlists()
     }
 
