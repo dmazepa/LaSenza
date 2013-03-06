@@ -96,19 +96,19 @@ class HomePage extends ForAllPage {
     @FindBy(xpath = "//div[@class='switch switcher-language']")
     private WebElement selectLocation;
 
-    @FindBy(xpath = "//div[@id='slider_homepage']//ul[2]/li[1]/a")
+    @FindBy(xpath = "//div[@class='widget widget-banner']/ul[2]/li[1]/a")
     private WebElement buttonFirstImageSlider;
 
-    @FindBy(xpath = "//div[@id='slider_homepage']//ul[2]/li[2]/a")
+    @FindBy(xpath = "//div[@class='widget widget-banner']/ul[2]/li[2]/a")
     private WebElement buttonSecondImageSlider;
 
-    @FindBy(xpath = "//div[@id='slider_homepage']/div/ul/div/li[1]/img")
+    @FindBy(xpath = "//div[@class='widget widget-banner']/ul[1]/div/li[1]/img")
     private WebElement sliderImage1;
 
-    @FindBy(xpath = "//div[@id='slider_homepage']/div/ul/div/li[2]/img")
+    @FindBy(xpath = "//div[@class='widget widget-banner']/ul[1]/div/li[2]/img")
     private WebElement sliderImage2;
 
-    @FindBy(xpath = "//div[@id='slider_homepage']/div/ul/div/li[3]/img")
+    @FindBy(xpath = "//div[@class='widget widget-banner']/ul[1]/div/li[3]/img")
     private WebElement sliderImage3;
 
     @FindBy(xpath = "//div[@class='tab-content ']")
