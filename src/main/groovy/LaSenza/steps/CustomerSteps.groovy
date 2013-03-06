@@ -64,9 +64,9 @@ class CustomerSteps extends UserSteps {
         open_pdp(1574)
         add_to_wishlist_from_pdp("Wishlist1")
         assert_item_added_to_wishlist_header()
-        set_items_qty_in_wish_list_header()
         open_pdp(1574)
         add_to_wishlist_from_pdp("Wishlist2")
+        assert_item_added_to_wishlist_header()
     }
 
     @Step
