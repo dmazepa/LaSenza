@@ -997,12 +997,12 @@ class UserSteps extends ScenarioSteps {
         choose_configurable_options(2)
         store_configurable_options()
         click_add_to_cart_button_pdp()
-        assert_product_updated()
+        assert_product_updated("BlackWhiteSuntan", "36B", "10", "CA\$8.50", "2 Hook Bra Extenders", "I ♥ COTTON BY LA SENZA", 1)
     }
 
     @Step
-    def assert_product_updated() {
-        Thread.sleep(30000)
+    def assert_product_updated(String color, def size, def qty, def price, def name, Object brandName, def position) {
+        pDPage.assert_product_in_mini_cart(color, size, qty, price, name, brandName, position)
     }
 
     @Step

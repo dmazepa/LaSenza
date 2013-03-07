@@ -3,7 +3,6 @@ package LaSenza.Steps
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
 import org.jbehave.core.annotations.Given
-import org.jbehave.core.annotations.Pending
 import org.jbehave.core.annotations.Then
 import org.jbehave.core.annotations.When
 
@@ -33,7 +32,6 @@ class MiniCartUserActionsSteps {
     }
 
     @Then("I can edit item.")
-    @Pending
     public void assert_that_i_can_edit_item() {
         user.assert_that_i_can_edit_item()
     }

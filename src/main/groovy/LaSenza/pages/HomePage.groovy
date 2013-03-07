@@ -7,6 +7,7 @@ import org.openqa.selenium.*
 
 import static org.hamcrest.CoreMatchers.equalTo
 import static org.hamcrest.MatcherAssert.assertThat
+import static org.hamcrest.Matchers.containsString
 
 @DefaultUrl("http://localhost:9000")
 class HomePage extends ForAllPage {

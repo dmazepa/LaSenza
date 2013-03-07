@@ -9,6 +9,9 @@ Given Prepare_base
 Scenario: Prepare Base.
 Given Check products inventory
 
-Scenario: Total count of items in Wish list should displays for customers.
-Given I am on Home page as customer and has multiple wishlists and items in Wish List.
-Then Total count of items in Wish list should displays and the same item from different wish lists is counted multiple times.
+Scenario: Allow users to edit products in cart.
+Given I am on home page with products in cart.
+When I slide down mini cart.
+And Click on link Edit Item.
+Then I redirects to appropriate PDP and Add to Cart button has been replaced with an Update Cart button.
+And I can edit item.

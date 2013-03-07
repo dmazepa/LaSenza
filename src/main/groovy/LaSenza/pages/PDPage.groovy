@@ -4,10 +4,11 @@ import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.*
 
+import static org.hamcrest.CoreMatchers.equalTo
 import static org.hamcrest.MatcherAssert.assertThat
-import static org.hamcrest.Matchers.equalTo
+import static org.hamcrest.Matchers.containsString
 
-class PDPage extends ForAllPage {
+class PDPage extends HomePage {
 
     def imageBefore
 
@@ -19,9 +20,14 @@ class PDPage extends ForAllPage {
     def sizes = []
     def prices = []
     def names = []
+    def brandNames = []
+    def qtys = []
 
     @FindBy(xpath = "//div[@class='product-name']/h1/a")
     private WebElement productName;
+
+    @FindBy(xpath = "//div[@class='brand-name']/a")
+    private WebElement brandName;
 
     @FindBy(xpath = "//img[@class='color-image']")
     private WebElement colorSwatch
@@ -91,6 +97,7 @@ class PDPage extends ForAllPage {
         colors[1] = element(selectColor).getSelectedVisibleTextValue()
         sizes[1] = element(selectSize).getSelectedVisibleTextValue()
         prices[1] = element(textPrice).getText()
+        qtys[1] = fieldQTY.getAttribute("value")
         names[1] = element(productName).getText()
     }
 
@@ -173,5 +180,18 @@ class PDPage extends ForAllPage {
 
     def assert_main_image_changed() {
         assert mainImage.getAttribute("src") != imageBefore
+    }
+
+
+    def assert_product_in_mini_cart(String color, def size, def qty, def price, def name, Object brandName, def position) {
+        if (driver.findElements(By.xpath("//div[@id='topCartContent']")) == []){
+            click_on_element_in_shopping_cart_area("Icon Bag")
+            assert_mini_cart_appears()
+        }
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//td[@class='qty']")).getText(), equalTo(qtys[1]))
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//span[@class='price']")).getText(), equalTo(prices[1]))
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//p[@class='product-name']/a")).getText(), equalTo(names[1]))
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//div[@class='item-options']//div[1]")).getText(), containsString(colors[1]))
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//div[@class='item-options']//div[2]")).getText(), containsString(sizes[1]))
     }
 }
