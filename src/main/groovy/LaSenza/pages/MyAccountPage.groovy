@@ -32,6 +32,9 @@ class MyAccountPage extends ForAllPage {
     @FindBy(xpath = "//a[@title='Remove Item']")
     private WebElement buttonRemoveItemFromWishList;
 
+    @FindBy(xpath = "//div[@id='wishlists-select']/a")
+    private WebElement selectWishList
+
     def assert_product_added_to_wishlist(def productName) {
         shouldContainText(productName)
     }
@@ -77,4 +80,9 @@ class MyAccountPage extends ForAllPage {
         }
     }
 
+    def open_wish_list(String s) {
+        element(selectWishList).click()
+        element(By.xpath("//a[@title='${s}']")).waitUntilVisible()
+        element(By.xpath("//a[@title='${s}']")).click()
+    }
 }

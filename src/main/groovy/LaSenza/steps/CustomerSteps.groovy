@@ -2,7 +2,6 @@ package LaSenza.steps
 
 import LaSenza.pages.CLPage
 import LaSenza.pages.MyAccountPage
-import net.thucydides.core.annotations.Pending
 import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 
@@ -25,7 +24,13 @@ class CustomerSteps extends UserSteps {
     def assert_product_added_to_wishlist() {
         cLPage.qw_should_be_absent()
         myAccountPage.assert_product_added_to_wishlist(cLPage.get_product_name())
+        delete_items_from_wish_list()
+    }
+
+    @Step
+    def  delete_items_from_wish_list(){
         myAccountPage.delete_items_from_wish_list()
+
     }
 
     @Step
@@ -188,6 +193,26 @@ class CustomerSteps extends UserSteps {
 
     @Step
     def assert_total_count_of_items_in_wishlists() {
+        homePage.assert_total_count_of_items_in_wishlists()
+    }
 
+    @Step
+    def clear_all_wish_lists() {
+        open_my_account_wishlists()
+        open_wish_list("Wishlist1")
+        delete_items_from_wish_list()
+        open_wish_list("Wishlist2")
+        delete_items_from_wish_list()
+    }
+
+    @Step
+    def open_wish_list(String s) {
+        myAccountPage.open_wish_list(s)
+    }
+
+    @Step
+    def open_my_account_wishlists() {
+        myAccountPage.go_to("customer/account/index/")
+        myAccountPage.click_on_tab("My Wishlists")
     }
 }

@@ -36,6 +36,7 @@ class AddToWishListSteps {
     @Then("Quickview module closes and adds the product to her wishlist.")
     public void assert_product_added_to_wishlist() {
         customer.assert_product_added_to_wishlist()
+        customer.clear_all_wish_lists()
     }
 
     @Then("Quickview module closes and she is navigated to the Account Creation page.")

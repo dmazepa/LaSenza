@@ -440,4 +440,8 @@ class HomePage extends ForAllPage {
     def click_on_button_checkout() {
         element(buttonCheckout).click()
     }
+
+    def assert_total_count_of_items_in_wishlists() {
+        assert qtyItemsInWishListHeader.toInteger() + 2 == getDriver().findElement(By.xpath("//a[contains(text(), 'Wishlists')]")).getText().replaceAll("\\D", "").toInteger()
+    }
 }
