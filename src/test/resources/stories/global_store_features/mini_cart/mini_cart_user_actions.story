@@ -43,7 +43,7 @@ Scenario: Allow customers go to the Checkout.
 Given I am on home page with products in cart as customer.
 When I slide down mini cart.
 And Click on link Checkout.
-And I redirects to the first step of checkout process for customer.
+Then I redirects to the first step of checkout process for customer.
 
 Scenario: Product Image/Brand Name/Product Name in mini cart should redirects to PDP.
 Given I am on home page with products in cart.
