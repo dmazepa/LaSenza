@@ -439,4 +439,8 @@ class HomePage extends ForAllPage {
     def assert_total_count_of_items_in_wishlists() {
         assert qtyItemsInWishListHeader + 2 == getDriver().findElement(By.xpath("//a[contains(text(), 'Wishlists')]")).getText().replaceAll("\\D", "").toInteger()
     }
+
+    def get_qty_items_in_wishlist() {
+        return qtyItemsInWishListHeader
+    }
 }

@@ -198,11 +198,14 @@ class CustomerSteps extends UserSteps {
 
     @Step
     def clear_all_wish_lists() {
-        open_my_account_wishlists()
-        open_wish_list("Wishlist1")
-        delete_items_from_wish_list()
-        open_wish_list("Wishlist2")
-        delete_items_from_wish_list()
+        set_items_qty_in_wish_list_header()
+        if(homePage.get_qty_items_in_wishlist() != 0){
+            open_my_account_wishlists()
+            open_wish_list("Wishlist1")
+            delete_items_from_wish_list()
+            open_wish_list("Wishlist2")
+            delete_items_from_wish_list()
+        }
     }
 
     @Step

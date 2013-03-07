@@ -4,7 +4,7 @@ Narrative:
 Customers can also filter products by their attributes (e.g., Size, Color, Price, Collection, Featured, etc.).
 
 Scenario: User can filter products by Size.
-Given Given: I am on Category page as User.
+Given I am on Category page as User.
 Given I can see attribute refinements, number of products associated with each category appears near name.
 Given Number of products associated with attribute color switcher does not shows.
 When Clicking an attribute refinement Size
