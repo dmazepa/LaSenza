@@ -183,7 +183,7 @@ class PDPage extends HomePage {
     }
 
 
-    def assert_product_in_mini_cart(String color, def size, def qty, def price, def name, Object brandName, def position) {
+    def assert_product_in_mini_cart(position) {
         if (driver.findElements(By.xpath("//div[@id='topCartContent']")) == []){
             click_on_element_in_shopping_cart_area("Icon Bag")
             assert_mini_cart_appears()
