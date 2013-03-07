@@ -1,6 +1,6 @@
-package LaSenza
+package LaSenza;
 
-import net.thucydides.jbehave.ThucydidesJUnitStory
+import net.thucydides.jbehave.ThucydidesJUnitStory;
 
-class ColorSwatches extends ThucydidesJUnitStory {
+public class ColorSwatches extends ThucydidesJUnitStory{
 }
