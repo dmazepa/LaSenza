@@ -7,7 +7,6 @@ import org.openqa.selenium.*
 
 import static org.hamcrest.CoreMatchers.equalTo
 import static org.hamcrest.MatcherAssert.assertThat
-import static org.hamcrest.Matchers.containsString
 
 @DefaultUrl("http://localhost:9000")
 class HomePage extends ForAllPage {
@@ -168,13 +167,13 @@ class HomePage extends ForAllPage {
         println element(sliderImage2).isCurrentlyVisible()
         println element(sliderImage3).isCurrentlyVisible()*/
         if (imageNumber != 1) {
-            assert !element(By.xpath("//div[@id='slider_homepage']/div/ul/div/li[${imageNumber - 1}]/img")).isCurrentlyVisible()
+            assert !element(By.xpath("//div[@class='widget widget-banner']/ul[1]/div/li[${imageNumber - 1}]/img")).isCurrentlyVisible()
         }
-        assert element(By.xpath("//div[@id='slider_homepage']/div/ul/div/li[${imageNumber}]/img")).isCurrentlyVisible()
+        assert element(By.xpath("//div[@class='widget widget-banner']/ul[1]/div/li[${imageNumber}]/img")).isCurrentlyVisible()
     }
 
     def assert_cont_images_in_slider(int i) {
-        assert getDriver().findElements(By.xpath("//div[@id='slider_homepage']/ul/li")).size() == i
+        assert getDriver().findElements(By.xpath("//div[@class='widget widget-banner']/ul[2]/li")).size() == i
     }
 
     def assert_welcome_msg(def welcomeMSG) {

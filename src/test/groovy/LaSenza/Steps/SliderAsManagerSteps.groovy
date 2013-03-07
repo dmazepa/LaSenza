@@ -4,7 +4,6 @@ import LaSenza.steps.AdminPanelSteps
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
 import org.jbehave.core.annotations.Given
-import org.jbehave.core.annotations.Pending
 import org.jbehave.core.annotations.Then
 import org.jbehave.core.annotations.When
 
@@ -22,7 +21,6 @@ class SliderAsManagerSteps {
     }
 
     @When("I create new banner")
-    @Pending
     public void createNewBanner() {
         admin.create_new_banner()
     }
