@@ -104,8 +104,14 @@ class AdminPanelPage extends ForAllPage {
     @FindBy(xpath = "//button[@class='scalable save']")
     private WebElement buttonSave
 
+    @FindBy(id = "ustorelocator_general_search_radius_options")
+    private WebElement inputuStoreLocatorRadius
+
     @FindBy(xpath = "//ul[@id='system_config_tabs']//li[1]//dd[2]/a")
     private WebElement tabWeb
+
+    @FindBy(xpath = "//ul[@id='system_config_tabs']//li[1]//dd[7]/a")
+    private WebElement tabStoreLocations
 
     @FindBy(xpath = "//ul[@id='nav']/li[8]/ul/li[5]/a")
     private WebElement subMenuBanner
@@ -329,6 +335,12 @@ class AdminPanelPage extends ForAllPage {
         }
     }
 
+    def click_tab_store_locations() {
+        if (tabStoreLocations.getAttribute("class") != "active") {
+            element(tabStoreLocations).click()
+        }
+    }
+
     def open_product(def id) {
         getDriver().get("${System.getProperty("webdriver.base.url")}index.php/admin/catalog_product/edit/id/${id}")
     }
@@ -451,5 +463,11 @@ class AdminPanelPage extends ForAllPage {
             element(buttonSave).click()
             element(blockSuccessMsg).waitUntilVisible()
         }
+    }
+
+    def set_search_radius_options(String radius) {
+        element(inputuStoreLocatorRadius).type(radius)
+        element(buttonSave).click()
+        element(blockSuccessMsg).waitUntilVisible()
     }
 }

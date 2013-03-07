@@ -147,4 +147,19 @@ class AdminPanelSteps extends UserSteps {
     def create_new_product_rule(String skuProductInCart, String skuCrossSellProduct) {
         adminPage.create_new_product_rule(skuProductInCart, skuCrossSellProduct)
     }
+
+    @Step
+    def open_menu_configuration() {
+        adminPage.open_menu_configuration()
+    }
+
+    @Step
+    def click_tab_store_locations() {
+        adminPage.click_tab_store_locations()
+    }
+
+    @Step
+    def set_search_radius_options(String radius) {
+        adminPage.set_search_radius_options(radius)
+    }
 }

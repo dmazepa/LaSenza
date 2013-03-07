@@ -1315,4 +1315,9 @@ class UserSteps extends ScenarioSteps {
     def assert_link_edit_on_shopping_cart_absent() {
         shoppingCartPage.assert_link_edit_on_shopping_cart_absent()
     }
+
+    @Step
+    def assert_new_search_radius(String newRadius) {
+        storeLocatorPage.assert_new_search_radius(newRadius)
+    }
 }

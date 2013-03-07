@@ -102,4 +102,10 @@ class StoreLocatorPage extends ForAllPage {
     def assert_default_radius() {
         assertThat(element(selectedValueRadius).getText(), equalTo("25 Miles"))
     }
+
+    def assert_new_search_radius(String newRadius) {
+        element(selectRadius).click()
+        element(optionsRadius).waitUntilVisible()
+        assertThat(element(optionsRadius).getText().replaceAll("\\D", ""), equalTo(newRadius))
+    }
 }
