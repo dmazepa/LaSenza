@@ -1,7 +1,7 @@
 Meta:
 
 Narrative:
-User can use Color Swatches on the QW.
+User can use Color Swatches on the QV.
 
 Scenario: Large Color Swatch Displayed on Hover.
 Given I am on QV with configurable product as User.
@@ -11,4 +11,4 @@ Then Larger image displays in an overlay.
 Scenario: Images changes on click.
 Given I am on QV with configurable product as User.
 When I clicks a color swatch.
-Then the product image changes to display the color variant selected (when available).
+Then The product image changes to display the color variant selected (when available).

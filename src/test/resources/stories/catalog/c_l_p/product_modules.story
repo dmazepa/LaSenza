@@ -3,7 +3,7 @@ Meta:
 Narrative:
 Product modules
 
-Scenario: User can open QW from CLP
+Scenario: User can open QV from CLP
 Given I am on SubCategory page as User.
 When I roll mouse over the product image.
 Then Highlights quick view button.

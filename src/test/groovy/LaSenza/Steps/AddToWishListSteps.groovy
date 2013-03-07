@@ -16,7 +16,7 @@ class AddToWishListSteps {
     CustomerSteps customer
 
     @Given("I am on QV with configurable product as customer.")
-    public void on_qw_as_customer() {
+    public void on_QV_as_customer() {
         user.opens_home_page()
         user.log_in(true)
         customer.opens_CLP("bras")
@@ -41,7 +41,7 @@ class AddToWishListSteps {
 
     @Then("Quickview module closes and she is navigated to the Account Creation page.")
     public void assert_QV_closed_and_on_login_page() {
-        user.assert_qw_absent()
+        user.assert_QV_absent()
         user.assert_on_login_page()
     }
 }

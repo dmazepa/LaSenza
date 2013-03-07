@@ -25,7 +25,7 @@ When I select size in second row.
 Then The quantity input box updates to display a quantity of 1
 
 Scenario: User can add more than two rows to the Product Selections area for Outfit products.
-Given I am on QW with with Complete the Outfit block (simple).
+Given I am on QV with with Complete the Outfit block (simple).
 When I click on the plus sign or the "Add More Items" link for Outfit.
 Then Additional row adds to the Product Selections area.
 Then Quantity input box for the new row will be pre-ﬁlled with a quantity of 1.

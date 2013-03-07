@@ -150,7 +150,7 @@ class HomePage extends ForAllPage {
 
     def assert_location(String location) {
         assert getDriver().findElements(By.xpath("//strong[@class='current language-${location}']")) != []
-        //assert getDriver().getCurrentUrl().contains("?___store=${location}")
+        assert getDriver().getCurrentUrl().contains("ca")
     }
 
     def click_on_select_location() {

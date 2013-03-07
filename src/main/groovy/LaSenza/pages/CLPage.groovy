@@ -26,7 +26,7 @@ class CLPage extends ForAllPage {
     }
 
     @FindBy(xpath = "//h1/a")
-    private WebElement linkQWProductName;
+    private WebElement linkQVProductName;
 
     @FindBy(xpath = "//div[@class='quickview-wrapper']//span[@class='price']")
     private WebElement textPriceQV
@@ -35,7 +35,7 @@ class CLPage extends ForAllPage {
     private WebElement textProductNameQV
 
     @FindBy(xpath = "//a[@class='popup-close']")
-    private WebElement buttonQWClose
+    private WebElement buttonQVClose
 
     @FindBy(xpath = "//a[@class='view-all']")
     private WebElement linkViewAll
@@ -47,7 +47,7 @@ class CLPage extends ForAllPage {
     private WebElement colorPopUpColosSwatches
 
     @FindBy(xpath = "//div[@class='more-views']/ul/li")
-    private WebElement thumbnailImageQW
+    private WebElement thumbnailImageQV
 
     @FindBy(xpath = "//div[@class='brand-name']/a")
     private WebElement linkBrandName
@@ -68,7 +68,7 @@ class CLPage extends ForAllPage {
     private WebElement titleCLP
 
     @FindBy(xpath = "//div/div")
-    private WebElement elementOutsideQW
+    private WebElement elementOutsideQV
 
     @FindBy(xpath = "//div[@class='option-wrapper'][2]//select")
     private WebElement selectSizeFirstQV
@@ -145,7 +145,7 @@ class CLPage extends ForAllPage {
     def click_on_button_quick_view(def i) {
         element(By.xpath("//div[@class='category-products']//li[${i}]/div/a[2]")).waitUntilVisible()
                 .click()
-        element(buttonQWClose).waitUntilVisible()
+        element(buttonQVClose).waitUntilVisible()
     }
 
     def set_product_name(def i) {
@@ -157,23 +157,23 @@ class CLPage extends ForAllPage {
     }
 
     def send_esc_key() {
-        element(linkQWProductName).waitUntilVisible()
-        linkQWProductName.sendKeys(Keys.ESCAPE)
+        element(linkQVProductName).waitUntilVisible()
+        linkQVProductName.sendKeys(Keys.ESCAPE)
     }
 
-    def qw_should_be_absent() {
-        element(linkQWProductName).shouldNotBeVisible()
+    def QV_should_be_absent() {
+        element(linkQVProductName).shouldNotBeVisible()
     }
 
     def click_close_button() {
-        element(buttonQWClose).click()
+        element(buttonQVClose).click()
     }
 
-    def qw_should_not_have_thumbnail_images() {
-        element(thumbnailImageQW).shouldNotBeVisible()
+    def QV_should_not_have_thumbnail_images() {
+        element(thumbnailImageQV).shouldNotBeVisible()
     }
 
-    def click_on_qw_element(String el) {
+    def click_on_QV_element(String el) {
         if (el == "Brand Name") {
             element(linkBrandName).waitUntilVisible()
             element(linkBrandName).click()
@@ -198,10 +198,10 @@ class CLPage extends ForAllPage {
     }
 
 
-    def click_outside_qw() {
+    def click_outside_QV() {
         Actions clicker = new Actions(driver);
-        clicker.moveToElement(buttonQWClose).moveByOffset(-10, 300).click().perform();
-        element(elementOutsideQW).click()
+        clicker.moveToElement(buttonQVClose).moveByOffset(-10, 300).click().perform();
+        element(elementOutsideQV).click()
     }
 
     def assert_select_size_disable() {
@@ -325,7 +325,7 @@ class CLPage extends ForAllPage {
     }
 
     def assert_quick_view_module_opened() {
-        element(buttonQWClose).shouldBeVisible()
+        element(buttonQVClose).shouldBeVisible()
     }
 
     def click_on_color_swatch(def i) {
@@ -350,7 +350,7 @@ class CLPage extends ForAllPage {
         element(colorPopUpColosSwatches).click()
     }
 
-    def set__and_store_multiple_product_conﬁgurations_qv(def productNumber, def colorNumber, def sizeNumber) {
+    def set__and_store_multiple_product_conﬁgurations_QV(def productNumber, def colorNumber, def sizeNumber) {
         element(linkAddMoreItems).click()
         element(By.xpath("//fieldset[@class='product-options']//div[${productNumber}]//div[@class='option-wrapper'][1]//select")).selectByIndex(colorNumber)
         element(By.xpath("//fieldset[@class='product-options']//div[${productNumber}]//div[@class='option-wrapper'][2]//select")).selectByIndex(sizeNumber)
@@ -361,11 +361,11 @@ class CLPage extends ForAllPage {
         names[productNumber] = element(textProductNameQV).getText()
     }
 
-    def click_add_to_cart_button_qv() {
+    def click_add_to_cart_button_QV() {
         element(buttonAddToCartQV).click()
     }
 
-    def assert_multiple_product_added_to_mini_cart_from_qv() {
+    def assert_multiple_product_added_to_mini_cart_from_QV() {
         for (def i = 1; i <= 3; i++) {
             element(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a"))).waitUntilVisible()
             assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a")).getText(), equalTo(names[4 - i]))

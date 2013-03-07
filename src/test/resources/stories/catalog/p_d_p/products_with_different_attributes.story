@@ -14,7 +14,7 @@ Then I shouldn't see any blocks with attributes.
 And Quantity field is populated with a quantity of 1 by default.
 
 Scenario: Allow users view detailed information about sizes.
-Given I am on QW with with Complete the Outfit block (simple).
+Given I am on QV with with Complete the Outfit block (simple).
 When I click on Size & Fit link.
 Then Size & Fit popup to displays.
 And Provides customers with additional information/context regarding the sizing for the item speciﬁcally or for the category of item.

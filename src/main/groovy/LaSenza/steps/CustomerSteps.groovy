@@ -22,7 +22,7 @@ class CustomerSteps extends UserSteps {
 
     @Step
     def assert_product_added_to_wishlist() {
-        cLPage.qw_should_be_absent()
+        cLPage.QV_should_be_absent()
         myAccountPage.assert_product_added_to_wishlist(cLPage.get_product_name())
         delete_items_from_wish_list()
     }

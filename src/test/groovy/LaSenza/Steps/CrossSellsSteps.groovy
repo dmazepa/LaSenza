@@ -44,9 +44,9 @@ class CrossSellsSteps {
     }
 
     @When("I add to cart product.")
-    public void add_to_cart_from_qv_shopping_cart() {
+    public void add_to_cart_from_QV_shopping_cart() {
         user.choose_and_store_configurable_options_shopping_cart()
-        user.click_add_to_cart_button_qv()
+        user.click_add_to_cart_button_QV()
     }
 
     @Then("Item adds to cart without leaving the page.")
