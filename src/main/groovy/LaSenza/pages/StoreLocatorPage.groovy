@@ -106,6 +106,7 @@ class StoreLocatorPage extends ForAllPage {
     def assert_new_search_radius(String newRadius) {
         element(selectRadius).click()
         element(optionsRadius).waitUntilVisible()
+        Thread.sleep(1000)
         assertThat(element(optionsRadius).getText().replaceAll("\\D", ""), equalTo(newRadius))
     }
 }
