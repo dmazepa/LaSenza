@@ -142,6 +142,9 @@ class CLPage extends ForAllPage {
     @FindBy(xpath = "//div[@class='product-options-block']//div[@class='option-wrapper'][2]//select")
     private WebElement selectSize
 
+    @FindBy(xpath = "//div[@class='preloader-wrapper']")
+    private WebElement loaderAddToCart
+
     def click_on_button_quick_view(def i) {
         element(By.xpath("//div[@class='category-products']//li[${i}]/div/a[2]")).waitUntilVisible()
                 .click()
@@ -363,6 +366,7 @@ class CLPage extends ForAllPage {
 
     def click_add_to_cart_button_QV() {
         element(buttonAddToCartQV).click()
+        element(loaderAddToCart).waitUntilNotVisible()
     }
 
     def assert_multiple_product_added_to_mini_cart_from_QV() {
