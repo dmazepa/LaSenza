@@ -23,7 +23,7 @@ class ThankYouPage extends ForAllPage {
     @FindBy(xpath = "//address")
     private WebElement billingAddress
 
-    @FindBy(xpath = "//div[@class='buttons-set']/a")
+    @FindBy(xpath = "//div[@class='buttons-set back-link']/a")
     private WebElement linkReturnToShopping
 
     @FindBy(xpath = "//h1")
