@@ -1317,4 +1317,19 @@ class UserSteps extends ScenarioSteps {
     def assert_new_search_radius(String newRadius) {
         storeLocatorPage.assert_new_search_radius(newRadius)
     }
+
+    @Step
+    def enter_prestige_cart() {
+        checkoutPage.enter_prestige_cart()
+    }
+
+    @Step
+    def click_apply_prestige_card() {
+        checkoutPage.click_apply_prestige_card()
+    }
+
+    @Step
+    def assert_discount_prestige_cart() {
+        checkoutPage.assert_discount_prestige_cart()
+    }
 }

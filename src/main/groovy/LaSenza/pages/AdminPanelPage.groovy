@@ -125,6 +125,9 @@ class AdminPanelPage extends ForAllPage {
     @FindBy(xpath = "//ul[@id='nav']/li[3]/ul/li[4]/ul/li[1]/a")
     private WebElement subMenuManageAttributes
 
+    @FindBy(xpath = "//ul[@id='nav']/li[6]/ul/li[2]/a")
+    private WebElement subMenuCatalogPriceRules
+
     @FindBy(xpath = "//ul[@id='nav']/li[3]/ul/li[6]/a")
     private WebElement subMenuRuleBasedProductRelations
 

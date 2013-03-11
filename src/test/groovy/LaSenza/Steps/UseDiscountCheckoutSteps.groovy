@@ -19,16 +19,19 @@ class UseDiscountCheckoutSteps {
 
 
     @When("Enter a Prestige Card number into the field.")
-    @Pending
-    public void enter_valid_prestige_cart() {}
+    public void enter_valid_prestige_cart() {
+        user.enter_prestige_cart()
+    }
 
     @When("Click Apply.")
-    @Pending
-    public void click_apply() {}
+    public void click_apply() {
+        user.click_apply_prestige_card()
+    }
 
     @Then("The discount will be reflected in the Order Summary box.")
-    @Pending
-    public void discount_reflect_to_order_summary() {}
+    public void discount_reflect_to_order_summary() {
+        user.assert_discount_prestige_cart()
+    }
 
     @When("I Enter a valid coupon code.")
     public void enter_valid_coupon() {

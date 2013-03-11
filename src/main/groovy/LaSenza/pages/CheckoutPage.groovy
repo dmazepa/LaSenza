@@ -174,6 +174,21 @@ class CheckoutPage extends ForAllPage {
     @FindBy(id = "payment-tool-tip-close")
     private WebElement linkCloseWhatIsThis
 
+    @FindBy(name = "prestigecard_code")
+    private WebElement fieldPrestigeCard
+
+    @FindBy(xpath = "//div[@class='prestigecard-content-field fieldset']/button")
+    private WebElement buttonApplyPrestigeCard
+
+    @FindBy(xpath = "//div[@id='checkout-step-review']//div[@class='step-loading firefinder-match']")
+    private WebElement loaderTotals
+
+    @FindBy(xpath = "//table[@id='checkout-review-table']//span[@class='price']")
+    private WebElement price
+
+    @FindBy(xpath = "//div[@class='footer-wrapper discount']//span")
+    private WebElement discount
+
     def fill_email_field(String email) {
         element(fieldEmail).type(email);
     }
@@ -406,5 +421,22 @@ class CheckoutPage extends ForAllPage {
 
     def select_country() {
         element(fieldCountry).selectByVisibleText("United States")
+    }
+
+    def enter_prestige_cart() {
+        element(fieldPrestigeCard).type("11022251")
+    }
+
+    def click_apply_prestige_card() {
+        element(buttonApplyPrestigeCard).click()
+    }
+
+    def assert_discount_prestige_cart() {
+        element(loaderTotals).waitUntilNotVisible()
+        element(discount).waitUntilVisible()
+        shouldContainText("Prestige card")
+        def r = element(price).getText().replaceAll("\\D", "").toInteger()
+        def t =  element(discount).getText().replaceAll("\\D", "").toInteger()*10
+        assert element(price).getText().replaceAll("\\D", "").toInteger() ==  element(discount).getText().replaceAll("\\D", "").toInteger()*10
     }
 }
