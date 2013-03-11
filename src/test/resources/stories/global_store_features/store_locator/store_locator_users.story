@@ -10,8 +10,8 @@ Then Input field recognizes any search term that Google Maps understands.
 
 Scenario: (GSF22) Users can specify a search radius and search locations.
 Given I am on Store Locator page.
-When I enter search term "Ul. Woloska 12, Warsaw Poland" into Address field.
-When I specify a search radius "100".
+When I enter search term "Abbotsford Canada" into Address field.
+When I specify a search radius "200".
 And Click button search.
 Then Only locations that fall within the selected radius will be returned in the search result.
 
@@ -35,7 +35,6 @@ Scenario: (GSF27) Allow users displays a list of turn by turn directions below t
 Given I am on Store Locator page.
 When I click on direction.
 Then Displays a list of turn by turn directions below the store location in the sidebar and updates the map with route line(s).
-And the user will be shown a closer view of that section of the route on the map.
 
 Scenario: (GSF28) Allow users clear all actions on Store Locator page.
 Given I am on Store Locator page with some previous actions.

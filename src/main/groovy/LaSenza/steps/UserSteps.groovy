@@ -733,8 +733,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def assert_search_results_contain_all_stores() {
-        storeLocatorPage.assert_search_results_contain_all_stores()
+    def assert_search_results_contains_stores(def i) {
+        storeLocatorPage.assert_search_results_contains_stores(i)
     }
 
     @Step
@@ -1390,5 +1390,15 @@ class UserSteps extends ScenarioSteps {
     @Step
     def remove_discount() {
         checkoutPage.remove_discount()
+    }
+
+    @Step
+    def assert_search_results_contains(def text) {
+        storeLocatorPage.assert_search_results_contains(text)
+    }
+
+    @Step
+    def assert_directions_appeared() {
+        storeLocatorPage.assert_directions_appeared()
     }
 }

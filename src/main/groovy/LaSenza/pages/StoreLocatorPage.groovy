@@ -41,8 +41,14 @@ class StoreLocatorPage extends ForAllPage {
     @FindBy(id = "locations-reset")
     private WebElement linkResetLocations
 
+    @FindBy(xpath = "//a[contains(text(), 'Directions')]")
+    private WebElement linkDirections
+
     @FindBy(xpath = "//a[@class='sbSelector']")
     private WebElement selectedValueRadius
+
+    @FindBy(xpath = "//table[@class='adp-directions']")
+    private WebElement tableDirrections
 
     def assert_on_store_locator_page() {
         element(fieldAddress).shouldBeVisible()
@@ -83,8 +89,8 @@ class StoreLocatorPage extends ForAllPage {
         assertThat(element(fieldAddress).getText(), equalTo(""))
     }
 
-    def assert_search_results_contain_all_stores() {
-        assertThat(getDriver().findElements(By.xpath("//div[@class='sidebar-entry-container']")).size(), equalTo(5))
+    def assert_search_results_contains_stores(def i) {
+        assertThat(getDriver().findElements(By.xpath("//div[@class='sidebar-entry-container']")).size(), equalTo(i))
     }
 
     def click_on_store_entry(def entryNumber) {
@@ -92,11 +98,13 @@ class StoreLocatorPage extends ForAllPage {
     }
 
     def click_on_direction() {
-        getDriver().findElement(By.xpath("//a[contains(text(), 'Directions')]"))
+        element(linkDirections).waitUntilVisible()
+        element(linkDirections).click()
     }
 
     def click_link_reset_store_locations() {
         element(linkResetLocations).click()
+        Thread.sleep(1000)
     }
 
     def assert_default_radius() {
@@ -108,5 +116,13 @@ class StoreLocatorPage extends ForAllPage {
         element(optionsRadius).waitUntilVisible()
         Thread.sleep(1000)
         assertThat(element(optionsRadius).getText().replaceAll("\\D", ""), equalTo(newRadius))
+    }
+
+    def assert_search_results_contains(def text) {
+        assertThat(element(areaSearchResults).getText(), containsText(text))
+    }
+
+    def assert_directions_appeared() {
+        element(tableDirrections).shouldBeVisible()
     }
 }
