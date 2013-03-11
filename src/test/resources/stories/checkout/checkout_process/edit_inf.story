@@ -31,9 +31,9 @@ Then Triggers a partial page refresh through which a form field for mobile phone
 
 Scenario: Interac displays only for orders that are billed to Canadian addresses.
 Given I am on checkout page as User.
-Then I can see Three payment methods.
+Then I can see "2" payment methods.
 When I enter Canadian billing address.
-Then All four payment methods appears.
+Then I can see "3" payment methods.
 
 Scenario: Show to users appropriate error message if he enter wrong password.
 Given I am on checkout page as User.

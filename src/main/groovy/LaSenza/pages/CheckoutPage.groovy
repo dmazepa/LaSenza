@@ -240,8 +240,8 @@ class CheckoutPage extends ForAllPage {
         element(fieldCity).type(city);
     }
 
-    def select_state() {
-        element(selectState).selectByVisibleText("California")
+    def select_state(def state) {
+        element(selectState).selectByVisibleText(state)
     }
 
     def fill_postal_code_field(def zipCode) {
@@ -446,8 +446,8 @@ class CheckoutPage extends ForAllPage {
         element(buttonPayPallContinue).click()
     }
 
-    def select_country() {
-        element(fieldCountry).selectByVisibleText("United States")
+    def select_country(def country) {
+        element(fieldCountry).selectByVisibleText(country)
     }
 
     def enter_prestige_cart() {
@@ -505,5 +505,9 @@ class CheckoutPage extends ForAllPage {
 
     def assert_payment_section_disable() {
         element(inputPaymentFree).shouldBeVisible()
+    }
+
+    def assert_payment_methods(String i) {
+        assertThat(getDriver().findElements(By.xpath("//dl[@id='checkout-payment-method-load']/dt")).size(), equalTo(i.toInteger()))
     }
 }

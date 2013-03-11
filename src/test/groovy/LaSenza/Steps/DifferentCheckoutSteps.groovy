@@ -12,7 +12,7 @@ class DifferentCheckoutSteps {
 
     @When("I pass checkout with <nameCart>, that has number <numberCart>, cart type <value> security code <securityCode>.")
     public void pass_checkout_with_different_carts(String nameCart, String numberCart, String securityCode, String value) {
-        user.enter_valid_data_on_checkout_page("testemail@mail.com", securityCode, nameCart, numberCart, value, "Test City", "11111")
+        user.enter_valid_data_on_checkout_page("testemail@mail.com", securityCode, nameCart, numberCart, value, "Test City", "11111", "United States", "California")
         user.click_button_confirm_and_pay()
         user.click_submit_button()
     }
@@ -26,7 +26,7 @@ class DifferentCheckoutSteps {
     public void pass_checkout_via_pay_pal() {
         user.login_to_pay_pal()
         user.go_to_checkout()
-        user.enter_valid_billing_data("testemail@mail.com", "Sacramento", "94203")
+        user.enter_valid_billing_data("testemail@mail.com", "Sacramento", "94203", "United States", "California")
         user.check_pay_pal_method()
         user.check_shipment()
         user.click_button_confirm_and_pay()

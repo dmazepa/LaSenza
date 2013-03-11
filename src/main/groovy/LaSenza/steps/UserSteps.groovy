@@ -345,13 +345,13 @@ class UserSteps extends ScenarioSteps {
     @Step
     def open_second_step_of_checkout() {
         open_first_step_of_checkout(1472)
-        enter_valid_data_on_checkout_page("test1@speroteck.com", "111", "Visa", "4111111111111111", "VI", "Test City", "11111")
+        enter_valid_data_on_checkout_page("test1@speroteck.com", "111", "Visa", "4111111111111111", "VI", "Test City", "11111","United States", "California")
         click_button_confirm_and_pay()
     }
 
     @Step
-    def enter_valid_data_on_checkout_page(def email, def verificationNumber, def cartName, def cartNumber, def cartType, def city, def zipCode) {
-        enter_valid_billing_data(email, city, zipCode)
+    def enter_valid_data_on_checkout_page(def email, def verificationNumber, def cartName, def cartNumber, def cartType, def city, def zipCode, def country, def state) {
+        enter_valid_billing_data(email, city, zipCode, country, state)
         enter_payment_inf(verificationNumber, cartName, cartNumber, cartType)
         check_shipment();
     }
@@ -417,8 +417,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def select_state() {
-        checkoutPage.select_state()
+    def select_state(def state) {
+        checkoutPage.select_state(state)
     }
 
     @Step
@@ -614,22 +614,22 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def enter_valid_billing_data(def email, def city, def zipCode) {
+    def enter_valid_billing_data(def email, def city, def zipCode, def country, def state) {
         fill_email_field(email);
         fill_first_name_field();
         fill_last_name_field();
         fill_address1_field();
         fill_address2_field();
-        select_country();
+        select_country(country);
         fill_city_field(city);
-        select_state();
+        select_state(state);
         fill_postal_code_field(zipCode);
         fill_telephone_field();
     }
 
     @Step
-    def select_country() {
-        checkoutPage.select_country()
+    def select_country(def country) {
+        checkoutPage.select_country(country)
     }
 
     @Step
@@ -660,7 +660,7 @@ class UserSteps extends ScenarioSteps {
     @Step
     def open_second_step_of_checkout_with_invalid_data() {
         open_first_step_of_checkout(1472)
-        enter_valid_data_on_checkout_page("test1@speroteck.com", "1111", "Visa", "4111111111111111", "VI", "Test City", "11111")
+        enter_valid_data_on_checkout_page("test1@speroteck.com", "1111", "Visa", "4111111111111111", "VI", "Test City", "11111","United States", "California")
         click_button_confirm_and_pay()
     }
 
@@ -1376,5 +1376,10 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_payment_section_disable() {
         checkoutPage.assert_payment_section_disable()
+    }
+
+    @Step
+    def assert_payment_methods(String i) {
+        checkoutPage.assert_payment_methods(i)
     }
 }

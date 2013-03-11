@@ -9,8 +9,8 @@ Given Prepare_base
 Scenario: Prepare Base.
 Given Check products inventory
 
-Scenario: Allow users use their Gift card.
+Scenario: Interac displays only for orders that are billed to Canadian addresses.
 Given I am on checkout page as User.
-When I enter a valid gift card code.
-And Click the Add Gift Card button.
-Then The gift card "02104532110" discount appears as a new line in the order summary and the grand total is updated.
+Then I can see "3" payment methods.
+When I enter Canadian billing address.
+Then I can see "3" payment methods.
