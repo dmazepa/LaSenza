@@ -186,8 +186,35 @@ class CheckoutPage extends ForAllPage {
     @FindBy(xpath = "//table[@id='checkout-review-table']//span[@class='price']")
     private WebElement price
 
+    @FindBy(xpath = "//div[@class='footer-wrapper grandtotal']//span")
+    private WebElement priceGrandTotal
+
     @FindBy(xpath = "//div[@class='footer-wrapper discount']//span")
     private WebElement discount
+
+    @FindBy(name = "giftcard_number")
+    private WebElement fieldGiftCartNumber
+
+    @FindBy(name = "giftcard_pincode")
+    private WebElement fieldGiftCartPin
+
+    @FindBy(xpath = "//div[@class='giftcard-content-field fieldset']/button")
+    private WebElement buttonApplyGiftCard
+
+    @FindBy(xpath = "//div[@class='a-right block-right gift-price']/span")
+    private WebElement discountGiftCard
+
+    @FindBy(xpath = "//a[@class='check-gc-status']")
+    private WebElement linkCheckGiftCard
+
+    @FindBy(xpath = "//div[@class='gift-card-info']/img")
+    private WebElement linkRemoveGiftCardInfo
+
+    @FindBy(xpath = "//p[@class='error-msg']")
+    private WebElement messageWrongGiftCard
+
+    @FindBy(id = "p_method_free")
+    private WebElement inputPaymentFree
 
     def fill_email_field(String email) {
         element(fieldEmail).type(email);
@@ -394,8 +421,8 @@ class CheckoutPage extends ForAllPage {
         shouldContainText("AutoTestCoupon (12345)")
     }
 
-    def message_appears_promo_code_applied() {
-        shouldContainText("AutoTestCoupon (12345) has been applied to your order.")
+    def message_appears_promo_code(String message) {
+        shouldContainText(message)
     }
 
     def assert_logged_in() {
@@ -435,8 +462,48 @@ class CheckoutPage extends ForAllPage {
         element(loaderTotals).waitUntilNotVisible()
         element(discount).waitUntilVisible()
         shouldContainText("Prestige card")
-        def r = element(price).getText().replaceAll("\\D", "").toInteger()
-        def t =  element(discount).getText().replaceAll("\\D", "").toInteger()*10
-        assert element(price).getText().replaceAll("\\D", "").toInteger() ==  element(discount).getText().replaceAll("\\D", "").toInteger()*10
+        assertThat(element(price).getText().replaceAll("\\D", "").toInteger(),
+                equalTo(element(discount).getText().replaceAll("\\D", "").toInteger()*10))
+    }
+
+    def enter_gift_card_checkout(String number, String pin) {
+        element(fieldGiftCartNumber).type(number)
+        element(fieldGiftCartPin).type(pin)
+    }
+
+    def click_add_gift_cart_checkout() {
+        element(buttonApplyGiftCard).click()
+    }
+
+    def assert_discount_gift_cart_applied_checkout(String number) {
+        waitForTextToAppear("Gift Card (${number})")
+        assertThat(element(price).getText().replaceAll("\\D", "").toInteger() -
+                element(discountGiftCard).getText().replaceAll("\\D", "").toInteger(),
+                equalTo(element(priceGrandTotal).getText().replaceAll("\\D", "").toInteger()))
+    }
+
+    def click_check_gift_cart() {
+        element(linkCheckGiftCard).click()
+    }
+
+    def assert_gift_cart_status_and_balance_appeared() {
+        element(linkRemoveGiftCardInfo).shouldBeVisible()
+    }
+
+    def click_on_x_remove_gift_card_info_link() {
+        element(linkRemoveGiftCardInfo).click()
+    }
+
+    def assert_gift_cart_status_and_balance_disappears() {
+        element(linkRemoveGiftCardInfo).shouldNotBeVisible()
+    }
+
+    def assert_message_gift_cart_invalid() {
+        element(messageWrongGiftCard).shouldBeVisible()
+        assertThat(element(messageWrongGiftCard).getText(), equalTo("Wrong card number or pincode"))
+    }
+
+    def assert_payment_section_disable() {
+        element(inputPaymentFree).shouldBeVisible()
     }
 }

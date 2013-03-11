@@ -9,9 +9,8 @@ Given Prepare_base
 Scenario: Prepare Base.
 Given Check products inventory
 
-Scenario: Allow users use their coupon codes.
+Scenario: Allow users use their Gift card.
 Given I am on checkout page as User.
-When I Enter a valid coupon code.
-And Click the Apply Coupon button.
-Then The coupon discount appears as a new line in the order summary and the grand total is updated.
-And Message appears AutoTestCoupon (12345) has been applied to your order.
+When I enter a valid gift card code.
+And Click the Add Gift Card button.
+Then The gift card "02104532110" discount appears as a new line in the order summary and the grand total is updated.

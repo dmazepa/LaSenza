@@ -52,60 +52,73 @@ class UseDiscountCheckoutSteps {
 
     @Then("Message appears AutoTestCoupon (12345) has been applied to your order.")
     public void message_appears_promo_code_applied() {
-        user.message_appears_promo_code_applied()
+        user.message_appears_promo_code_applied("AutoTestCoupon (12345) has been applied to your order.")
     }
 
     @When("I Enter a invalid coupon code.")
-    @Pending
-    public void enter_invalid_coupon_code() {}
+    public void enter_invalid_coupon_code() {
+        user.enter_coupon("123456")
+    }
 
     @Then("message appears: “<promo code name> is invalid or qualifications have not been met”.")
-    @Pending
-    public void assert_error_message() {}
+    public void assert_error_message() {
+        user.message_appears_promo_code("Coupon 12345 is invalid or qualifications have not been met")
+    }
 
     @When("I enter a valid gift card code.")
-    @Pending
-    public void enter_valid_gift_card() {}
+    public void enter_valid_gift_card() {
+        user.enter_gift_card_checkout("02104532110", "0207")
+    }
 
     @When("Click the Add Gift Card button.")
-    @Pending
-    public void click_add_gift_cart() {}
+    public void click_add_gift_cart() {
+        user.click_add_gift_cart_checkout()
+    }
 
-    @Then("The gift card discount appears as a new line in the order summary and the grand total is updated.")
-    @Pending
-    public void discount_gift_cart_appears_in_grand_total() {}
+    @Then('The gift card "$number" discount appears as a new line in the order summary and the grand total is updated.')
+    public void discount_gift_cart_appears_in_grand_total(String number) {
+        user.assert_discount_gift_cart_applied_checkout(number)
+    }
 
     @When("Click the Check Gift Card Status & Balance.")
-    @Pending
-    public void click_check_gift_cart() {}
+    public void click_check_gift_cart() {
+        user.click_check_gift_cart_checkout()
+    }
 
     @Then("The Gift Card Status & Balance appears.")
-    @Pending
-    public void assert_gift_cart_status_and_balance() {}
+    public void assert_gift_cart_status_and_balance() {
+        user.assert_gift_cart_status_and_balance_appeared()
+    }
 
     @When("I click on X remove link.")
-    @Pending
-    public void click_on_x_remove_link() {}
+    public void click_on_x_remove_link() {
+        user.click_on_x_remove_gift_card_info_link()
+    }
 
     @Then("The Gift Card Status & Balance disappears.")
-    @Pending
-    public void assert_gift_cart_status_and_balance_disappears() {}
+    public void assert_gift_cart_status_and_balance_disappears() {
+        user.assert_gift_cart_status_and_balance_disappears()
+    }
 
     @When("I enter a invalid gift card code.")
-    @Pending
-    public void enter_invalid_gift_card() {}
+    public void enter_invalid_gift_card() {
+        user.enter_gift_card_checkout("02104532145", "6274")
+    }
 
     @Then("Message appears that the gift card is invalid")
-    @Pending
-    public void assert_message_gift_cart_invalid() {}
+    public void assert_message_gift_cart_invalid() {
+        user.assert_message_gift_cart_invalid()
+    }
 
     @When("I enter a invalid gift card code, that has balance more than cart Total.")
-    @Pending
-    public void enter_invalid_gift_cart_balance_bigger_than_total() {}
+    public void enter_invalid_gift_cart_balance_bigger_than_total() {
+        user.enter_gift_card_checkout("02104532101", "6274")
+    }
 
     @Then("The Payment Method section is disabled")
-    @Pending
-    public void assert_payment_section_disable() {}
+    public void assert_payment_section_disable() {
+        user.assert_payment_section_disable()
+    }
 
     @Given("I am on checkout as User with gift cart product in cart.")
     @Pending

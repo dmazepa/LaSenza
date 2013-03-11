@@ -26,7 +26,7 @@ Scenario: Allow users use their Gift card.
 Given I am on checkout page as User.
 When I enter a valid gift card code.
 And Click the Add Gift Card button.
-Then The gift card discount appears as a new line in the order summary and the grand total is updated.
+Then The gift card "02104532110" discount appears as a new line in the order summary and the grand total is updated.
 
 Scenario: Allow users view their Gift card ballance.
 Given I am on checkout page as User.
@@ -47,7 +47,7 @@ Given I am on checkout page as User.
 When I enter a invalid gift card code, that has balance more than cart Total.
 And Click the Add Gift Card button.
 Then The Payment Method section is disabled
-Then The gift card discount appears as a new line in the order summary and the grand total is updated.
+Then The gift card "02104532101" discount appears as a new line in the order summary and the grand total is updated.
 
 Scenario: Disallow users to buy Gift cart using another gift cart.
 Given I am on checkout as User with gift cart product in cart.

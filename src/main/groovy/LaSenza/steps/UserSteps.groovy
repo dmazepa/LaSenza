@@ -688,8 +688,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def message_appears_promo_code_applied() {
-        checkoutPage.message_appears_promo_code_applied()
+    def message_appears_promo_code(String message) {
+        checkoutPage.message_appears_promo_code(message)
     }
 
     @Step
@@ -1331,5 +1331,50 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_discount_prestige_cart() {
         checkoutPage.assert_discount_prestige_cart()
+    }
+
+    @Step
+    def enter_gift_card_checkout(String number, String pin) {
+        checkoutPage.enter_gift_card_checkout(number, pin)
+    }
+
+    @Step
+    def click_add_gift_cart_checkout() {
+        checkoutPage.click_add_gift_cart_checkout()
+    }
+
+    @Step
+    def assert_discount_gift_cart_applied_checkout(String number) {
+        checkoutPage.assert_discount_gift_cart_applied_checkout(number)
+    }
+
+    @Step
+    def click_check_gift_cart_checkout() {
+        checkoutPage.click_check_gift_cart()
+    }
+
+    @Step
+    def assert_gift_cart_status_and_balance_appeared() {
+        checkoutPage.assert_gift_cart_status_and_balance_appeared()
+    }
+
+    @Step
+    def click_on_x_remove_gift_card_info_link() {
+        checkoutPage.click_on_x_remove_gift_card_info_link()
+    }
+
+    @Step
+    def assert_gift_cart_status_and_balance_disappears() {
+        checkoutPage.assert_gift_cart_status_and_balance_disappears()
+    }
+
+    @Step
+    def assert_message_gift_cart_invalid() {
+        checkoutPage.assert_message_gift_cart_invalid()
+    }
+
+    @Step
+    def assert_payment_section_disable() {
+        checkoutPage.assert_payment_section_disable()
     }
 }
