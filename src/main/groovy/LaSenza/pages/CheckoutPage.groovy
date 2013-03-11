@@ -132,6 +132,9 @@ class CheckoutPage extends ForAllPage {
     @FindBy(xpath = "//div[@class='footer-wrapper discount']")
     private WebElement blockDiscountCouponTotals
 
+    @FindBy(xpath = "//a[@title='Remove']")
+    private WebElement linkRemoveDiscount
+
     @FindBy(xpath = "//button[@class='confirm button btn-checkout-submit']")
     private WebElement buttonSubmit
 
@@ -476,10 +479,13 @@ class CheckoutPage extends ForAllPage {
     }
 
     def assert_discount_gift_cart_applied_checkout(String number) {
-        waitForTextToAppear("Gift Card (${number})")
+        element(discountGiftCard).waitUntilVisible()
+        shouldContainText("(${number})")
         assertThat(element(price).getText().replaceAll("\\D", "").toInteger() -
                 element(discountGiftCard).getText().replaceAll("\\D", "").toInteger(),
                 equalTo(element(priceGrandTotal).getText().replaceAll("\\D", "").toInteger()))
+        element(linkRemoveDiscount).click()
+        element(discountGiftCard).waitUntilNotVisible()
     }
 
     def click_check_gift_cart() {
@@ -487,6 +493,7 @@ class CheckoutPage extends ForAllPage {
     }
 
     def assert_gift_cart_status_and_balance_appeared() {
+        element(linkRemoveGiftCardInfo).waitUntilVisible()
         element(linkRemoveGiftCardInfo).shouldBeVisible()
     }
 
@@ -509,5 +516,12 @@ class CheckoutPage extends ForAllPage {
 
     def assert_payment_methods(String i) {
         assertThat(getDriver().findElements(By.xpath("//dl[@id='checkout-payment-method-load']/dt")).size(), equalTo(i.toInteger()))
+    }
+
+    def remove_discount() {
+        element(linkRemoveDiscount).click()
+        Alert alert = getDriver().switchTo().alert();
+        alert.accept()
+        element(linkRemoveDiscount).waitUntilNotVisible()
     }
 }

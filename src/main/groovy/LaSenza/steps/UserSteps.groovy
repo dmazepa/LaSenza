@@ -1382,4 +1382,13 @@ class UserSteps extends ScenarioSteps {
     def assert_payment_methods(String i) {
         checkoutPage.assert_payment_methods(i)
     }
+
+    @Step
+    @Pending
+    def add_gift_card_to_cart_and_return() {}
+
+    @Step
+    def remove_discount() {
+        checkoutPage.remove_discount()
+    }
 }

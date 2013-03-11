@@ -52,7 +52,7 @@ class UseDiscountCheckoutSteps {
 
     @Then("Message appears AutoTestCoupon (12345) has been applied to your order.")
     public void message_appears_promo_code_applied() {
-        user.message_appears_promo_code_applied("AutoTestCoupon (12345) has been applied to your order.")
+        user.message_appears_promo_code("AutoTestCoupon (12345) has been applied to your order.")
     }
 
     @When("I Enter a invalid coupon code.")
@@ -60,14 +60,14 @@ class UseDiscountCheckoutSteps {
         user.enter_coupon("123456")
     }
 
-    @Then("message appears: “<promo code name> is invalid or qualifications have not been met”.")
+    @Then("message appears: promo code name is invalid or qualifications have not been met.")
     public void assert_error_message() {
         user.message_appears_promo_code("Coupon 12345 is invalid or qualifications have not been met")
     }
 
     @When("I enter a valid gift card code.")
     public void enter_valid_gift_card() {
-        user.enter_gift_card_checkout("02104532110", "0207")
+        user.enter_gift_card_checkout("02104532109", "9361")
     }
 
     @When("Click the Add Gift Card button.")
@@ -110,7 +110,7 @@ class UseDiscountCheckoutSteps {
         user.assert_message_gift_cart_invalid()
     }
 
-    @When("I enter a invalid gift card code, that has balance more than cart Total.")
+    @When("I enter a valid gift card code, that has balance more than cart Total.")
     public void enter_invalid_gift_cart_balance_bigger_than_total() {
         user.enter_gift_card_checkout("02104532101", "6274")
     }
@@ -135,4 +135,15 @@ class UseDiscountCheckoutSteps {
     @Then("I can't see previous applied gift cards.")
     @Pending
     public void assert_no_applied_gift_cards_to_the_order() {}
+
+    @Then("remove discount.")
+    public void remove_discount() {
+        user.remove_discount()
+    }
+
+    @When("I add to cart gift cart product and return to shopping cart.")
+    public void add_gift_card_to_cart_and_return() {
+        user.assert_discount_gift_cart_applied_checkout("02104532110")
+        user.add_gift_card_to_cart_and_return()
+    }
 }
