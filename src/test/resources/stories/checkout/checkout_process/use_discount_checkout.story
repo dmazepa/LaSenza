@@ -53,7 +53,9 @@ Scenario: Disallow users to buy Gift cart using another gift cart.
 Given I am on checkout as User with gift cart product in cart.
 Then I can't apply gift cart to cart.
 
-Scenario: Do not save in checkout session applied gift cards.
+Scenario: Do not save in checkout session applied gift cards, if user add gift card to basket.
 Given I am on checkout page as User.
-When I go to home page and return to checkout page.
+When I enter a valid gift card code.
+And Click the Add Gift Card button.
+When I add to cart gift cart product and return to shopping cart.
 Then I can't see previous applied gift cards.

@@ -233,6 +233,7 @@ class HomePage extends ForAllPage {
     }
 
     def assert_mini_cart_appears() {
+        element(blockMiniCart).waitUntilVisible()
         element(blockMiniCart).shouldBeVisible()
     }
 
