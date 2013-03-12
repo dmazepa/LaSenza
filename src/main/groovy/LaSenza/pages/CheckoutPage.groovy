@@ -39,6 +39,9 @@ class CheckoutPage extends ForAllPage {
     @FindBy(xpath = "//input[@id='continue_abovefold']")
     private WebElement buttonPayPallContinue
 
+    @FindBy(id = "review_button")
+    private WebElement buttonPlaceOrder
+
     @FindBy(id = "billing:firstname")
     private WebElement fieldFirstName
 
@@ -439,14 +442,16 @@ class CheckoutPage extends ForAllPage {
 
     def pass_pay_pall_process() {
         element(fieldPayPallEmail).waitUntilVisible()
-        element(fieldPayPallEmail).type("vovik_1324330788_per@speroteck.com")
-        element(fieldPayPallPassword).type("359728798")
+        element(fieldPayPallEmail).type("vdubina_buyer@lyonscg.com")
+        element(fieldPayPallPassword).type("qwer1234")
         element(buttonPayPallLogin).click()
         element(inputPayPallAgree).waitUntilVisible()
         element(inputPayPallAgree).click()
         element(buttonPayPallAgree).click()
         element(buttonPayPallContinue).waitUntilVisible()
         element(buttonPayPallContinue).click()
+        element(buttonPlaceOrder).waitUntilVisible()
+        element(buttonPlaceOrder).click()
     }
 
     def select_country(def country) {
