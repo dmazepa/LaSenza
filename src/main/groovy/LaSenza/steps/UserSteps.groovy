@@ -1065,13 +1065,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def login_to_pay_pal() {
-        getDriver().get("https://developer.paypal.com/")
-        getDriver().findElement(By.id("login_email")).clear()
-        getDriver().findElement(By.id("login_email")).sendKeys("vdubyna@speroteck.com")
-        getDriver().findElement(By.id("login_password")).clear()
-        getDriver().findElement(By.id("login_password")).sendKeys("dva827287")
-        getDriver().findElement(By.name("submit")).click()
-        Thread.sleep(3000)
+        checkoutPage.login_to_pay_pal()
     }
 
     @Step

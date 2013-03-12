@@ -529,4 +529,16 @@ class CheckoutPage extends ForAllPage {
         alert.accept()
         element(linkRemoveDiscount).waitUntilNotVisible()
     }
+
+    def login_to_pay_pal() {
+        getDriver().get("https://developer.paypal.com/")
+        getDriver().findElement(By.xpath("//a[@class='ppLogin_internal cleanslate scTrack:ppAccess-login ppAccessBtn']")).click()
+        def windowHandle = getDriver().getWindowHandle()
+        getDriver().switchTo().window("PPA_identity_window")
+        getDriver().findElement(By.id("e")).sendKeys("vdubina@lyonscg.com")
+        getDriver().findElement(By.id("pw")).sendKeys("lyons2013")
+        getDriver().findElement(By.name("_eventId_submit")).click()
+        getDriver().switchTo().window(windowHandle)
+        Thread.sleep(5000)
+    }
 }
