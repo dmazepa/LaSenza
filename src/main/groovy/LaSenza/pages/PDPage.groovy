@@ -188,6 +188,7 @@ class PDPage extends HomePage {
             click_on_element_in_shopping_cart_area("Icon Bag")
             assert_mini_cart_appears()
         }
+        Thread.sleep(1000)
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//td[@class='qty']")).getText(), equalTo(qtys[1]))
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//span[@class='price']")).getText(), equalTo(prices[1]))
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//p[@class='product-name']/a")).getText(), equalTo(names[1]))
