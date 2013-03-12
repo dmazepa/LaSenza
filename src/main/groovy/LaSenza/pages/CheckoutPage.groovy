@@ -421,7 +421,7 @@ class CheckoutPage extends ForAllPage {
 
     def coupon_discount_appears_in_grand_total() {
         element(blockDiscountCouponTotals).shouldBeVisible()
-        shouldContainText("AutoTestCoupon (12345)")
+        shouldContainText("(12345)")
     }
 
     def message_appears_promo_code(String message) {

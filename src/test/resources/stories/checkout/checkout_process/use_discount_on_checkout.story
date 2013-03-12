@@ -7,7 +7,7 @@ Scenario: Allow users use their Gift card.
 Given I am on checkout page as User.
 When I enter a valid gift card code.
 And Click the Add Gift Card button.
-Then The gift card "02104532110" discount appears as a new line in the order summary and the grand total is updated.
+Then The gift card "02104532109" discount appears as a new line in the order summary and the grand total is updated.
 
 Scenario: Allow users pay for all products in cart using only Gift cart.
 Given I am on checkout page as User.

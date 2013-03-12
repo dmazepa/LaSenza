@@ -143,7 +143,7 @@ class UseDiscountCheckoutSteps {
 
     @When("I add to cart gift cart product and return to shopping cart.")
     public void add_gift_card_to_cart_and_return() {
-        user.assert_discount_gift_cart_applied_checkout("02104532110")
+        user.assert_discount_gift_cart_applied_checkout("02104532109")
         user.add_gift_card_to_cart_and_return()
     }
 }
