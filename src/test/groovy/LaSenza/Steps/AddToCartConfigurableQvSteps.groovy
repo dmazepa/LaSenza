@@ -5,7 +5,7 @@ import net.thucydides.core.annotations.Steps
 import org.jbehave.core.annotations.Then
 import org.jbehave.core.annotations.When
 
-class AddToCartConfigurableQVSteps {
+class AddToCartConfigurableQvSteps {
 
     @Steps
     UserSteps user

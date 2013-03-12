@@ -469,7 +469,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def go_to_checkout() {
-        checkoutPage.open()
+        checkoutPage.go_to("checkout/onepage/")
     }
 
     @Step
