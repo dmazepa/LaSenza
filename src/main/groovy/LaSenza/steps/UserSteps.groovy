@@ -1401,4 +1401,19 @@ class UserSteps extends ScenarioSteps {
     def assert_directions_appeared() {
         storeLocatorPage.assert_directions_appeared()
     }
+
+    @Step
+    def select_to_show_sorting_CLP(String sortingOrder) {
+        cLPage.select_to_show_sorting_CLP(sortingOrder)
+    }
+
+    @Step
+    def assert_sorted_by_in_product_list_CLP(String sortingOrder){
+        cLPage.assertItemsSortedByAlphabeticalOrder(sortingOrder)
+    }
+
+    @Step
+    def assert_sorted_by_in_product_grid_CLP(String sortingOrder) {
+        cLPage.assertItemsSortedByPriceValue(sortingOrder)
+    }
 }

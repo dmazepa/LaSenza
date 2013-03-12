@@ -105,4 +105,24 @@ class CofigViewSteps {
     public void assert_sorted_by(String sortingValue) {
         user.assert_sorted_by(sortingValue)
     }
+
+    @Then('I get page sorting by "$sortingValue" in select.')
+    public void assert_got_sorted_by(String sortingValue) {
+        user.assert_sorted_by(sortingValue)
+    }
+
+    @When('I select sorting by "$sortingOrder".')
+    public void select_to_show_sorting_CLP(String sortingOrder) {
+        user.select_to_show_sorting_CLP(sortingOrder)
+    }
+
+    @Then('I get page sorting by "$sortingOrder" in product list.')
+    public void assert_sorted_by_in_product_list_CLP(String sortingOrder) {
+        user.assert_sorted_by_in_product_list_CLP(sortingOrder)
+    }
+
+    @Then('I get page sorting by "$sortingOrder" in product grid.')
+    public void assert_sorted_by_in_product_grid_CLP(String sortingOrder) {
+        user.assert_sorted_by_in_product_grid_CLP(sortingOrder)
+    }
 }

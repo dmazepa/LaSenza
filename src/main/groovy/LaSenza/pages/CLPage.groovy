@@ -124,6 +124,9 @@ class CLPage extends ForAllPage {
     @FindBy(xpath = "//div[@class='sorter']//a[@class='sbSelector']")
     private WebElement selectSortByCurrent
 
+    @FindBy(xpath = "//ul[@class='sbOptions']")
+    private WebElement dropDownSortBy
+
     @FindBy(xpath = "//div[@class='col-left sidebar']")
     private WebElement blockLeftNavigation
 
@@ -457,4 +460,38 @@ class CLPage extends ForAllPage {
         element(attributeCategoriesTitle).shouldBePresent()
 
     }
+
+    def select_to_show_sorting_CLP(String sortingOrder) {
+        element(selectSortByCurrent).click()
+        element(dropDownSortBy).waitUntilVisible()
+        element(By.xpath("//ul[@class='sbOptions']//a[contains(text(), '${sortingOrder}')]")).click()
+    }
+
+    def assertItemsSortedByAlphabeticalOrder(String sortingOrder2) {
+        def actualNames = driver.findElements(By.xpath("//li[contains(@class,'item')]//h2[@class='product-name']/a")).collect {WebElement el ->
+            el.text
+        }
+        if(sortingOrder2 == "Name [A to Z]"){
+            def sortedNames = actualNames.sort(false) {a, b -> a.compareToIgnoreCase(b)}
+            assert actualNames == sortedNames
+        } else{
+            def sortedNames = actualNames.sort(false) {a, b -> b.compareToIgnoreCase(a)}
+            assert actualNames == sortedNames
+        }
+    }
+
+    def assertItemsSortedByPriceValue(String sortingOrder1) {
+        def actualPrices = driver.findElements(By.xpath("//li[contains(@class,'item')]//span/span")).collect {WebElement el ->
+            el.text.replaceAll("\\D", "") as int
+        }
+        def sortedPrices
+        if(sortingOrder1 == "Price [Low to High]"){
+            sortedPrices = actualPrices.sort(false)
+            assert actualPrices == sortedPrices
+        } else {
+            sortedPrices = actualPrices.sort(false).reverse(false)
+            assert actualPrices == sortedPrices
+        }
+    }
+
 }
