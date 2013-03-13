@@ -5,6 +5,7 @@ import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 import net.thucydides.core.steps.ScenarioSteps
 import org.openqa.selenium.Alert
+import org.openqa.selenium.By
 import LaSenza.pages.*
 
 import static org.hamcrest.MatcherAssert.assertThat
@@ -59,7 +60,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_pdp(def id) {
-        getDriver().get("${System.getProperty("webdriver.base.url")}catalog/product/view/id/${id}")
+        getDriver().get("${System.getProperty("webdriver.base.url")}/catalog/product/view/id/${id}")
     }
 
     @Step
@@ -1119,7 +1120,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_shopping_cart() {
-        shoppingCartPage.go_to("checkout/cart/")
+        shoppingCartPage.open()
     }
 
     @Step

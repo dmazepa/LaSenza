@@ -1,5 +1,6 @@
 package LaSenza.pages
 
+import net.thucydides.core.annotations.DefaultUrl
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.FindBy
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
 
+@DefaultUrl("http://localhost:9000/checkout/cart/")
 class ShoppingCartPage extends ForAllPage {
 
     def colors

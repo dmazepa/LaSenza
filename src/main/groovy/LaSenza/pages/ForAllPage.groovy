@@ -9,7 +9,7 @@ class ForAllPage extends PageObject {
     }
 
     def go_to(additionalUrl) {
-        getDriver().get("${System.getProperty("webdriver.base.url")}${additionalUrl}")
+        getDriver().get("${System.getProperty("webdriver.base.url")}/${additionalUrl}")
     }
 
 }

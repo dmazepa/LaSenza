@@ -128,7 +128,7 @@ class PDPage extends HomePage {
     def add_3_items_to_cart(int id1, int id2, int id3) {
         def list = [0, id1, id2, id3]
         for (def i = 1; i <= 3; i++) {
-            getDriver().get("${System.getProperty("webdriver.base.url")}catalog/product/view/id/${list[i]}")
+            getDriver().get("${System.getProperty("webdriver.base.url")}/catalog/product/view/id/${list[i]}")
             element(selectColor).selectByIndex(1)
             element(selectSize).selectByIndex(1)
             element(buttonAddToCart).waitUntilVisible()

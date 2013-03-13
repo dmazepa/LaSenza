@@ -237,7 +237,7 @@ class AdminPanelPage extends ForAllPage {
     private WebElement buttonFlushMagentoCache
 
     def goTo(additionUrl) {
-        getDriver().get("${System.getProperty("webdriver.base.url")}${additionUrl}")
+        getDriver().get("${System.getProperty("webdriver.base.url")}/${additionUrl}")
     }
 
     def open_and_login() {
@@ -345,7 +345,7 @@ class AdminPanelPage extends ForAllPage {
     }
 
     def open_product(def id) {
-        getDriver().get("${System.getProperty("webdriver.base.url")}index.php/admin/catalog_product/edit/id/${id}")
+        getDriver().get("${System.getProperty("webdriver.base.url")}/index.php/admin/catalog_product/edit/id/${id}")
     }
 
     def set_product_qty(String qty) {

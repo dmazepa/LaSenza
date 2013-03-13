@@ -1,5 +1,6 @@
 package LaSenza.pages
 
+import net.thucydides.core.annotations.DefaultUrl
 import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.support.FindBy
 import org.openqa.selenium.*
@@ -7,6 +8,7 @@ import org.openqa.selenium.*
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
 
+@DefaultUrl("http://localhost:9000/checkout/onepage/")
 class CheckoutPage extends ForAllPage {
 
     CheckoutPage(WebDriver driver) {
