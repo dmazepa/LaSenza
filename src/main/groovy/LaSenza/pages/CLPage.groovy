@@ -464,6 +464,7 @@ class CLPage extends ForAllPage {
     def select_to_show_sorting_CLP(String sortingOrder) {
         element(selectSortByCurrent).click()
         element(dropDownSortBy).waitUntilVisible()
+        Thread.sleep(1000)
         element(By.xpath("//ul[@class='sbOptions']//a[contains(text(), '${sortingOrder}')]")).click()
     }
 

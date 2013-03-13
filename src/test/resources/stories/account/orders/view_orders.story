@@ -108,7 +108,7 @@ Given I am on Order Information page with complete order, that has return.
 When I click on "View Return" link.
 Then I get "4.17.3 My Returns - View Return."
 
-Scenario: (MA41) Allow customers to print details about refunds.
+Scenario: (MA42) Allow customers to print details about refunds.
 Given I am on Order Information page with complete order, that has refunds.
 When I click on button "Print refundss" or "Print all refunds".
 Then Link opens a new browser window displaying a printable image of the refund along with the browser's print options.
