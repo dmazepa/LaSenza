@@ -3,7 +3,7 @@ Meta:
 Narrative:
 Allow Users use his discounts.
 
-Scenario: Allow users view their Gift card ballance.
+Scenario: (CH) Allow users view their Gift card ballance.
 Given I am on checkout page as User.
 When I enter a valid gift card code.
 And Click the Check Gift Card Status & Balance.
@@ -11,20 +11,20 @@ Then The Gift Card Status & Balance appears.
 When I click on X remove link.
 Then The Gift Card Status & Balance disappears.
 
-Scenario: Disallow users use invalid Gift cards.
+Scenario: (CH) Disallow users use invalid Gift cards.
 Given I am on checkout page as User.
 When I enter a invalid gift card code.
 And Click the Add Gift Card button.
 Then Message appears that the gift card is invalid
 
-Scenario: Allow users use their coupon codes.
+Scenario: (CH) Allow users use their coupon codes.
 Given I am on checkout page as User.
 When I Enter a valid coupon code.
 And Click the Apply Coupon button.
 Then The coupon discount appears as a new line in the order summary and the grand total is updated.
 And Message appears AutoTestCoupon (12345) has been applied to your order.
 
-Scenario: Disallow users use their invalid coupon codes.
+Scenario: (CH) Disallow users use their invalid coupon codes.
 Given I am on checkout page as User.
 When I Enter a invalid coupon code.
 And Click the Apply Coupon button.

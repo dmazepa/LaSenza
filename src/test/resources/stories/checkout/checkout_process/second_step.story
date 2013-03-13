@@ -3,12 +3,12 @@ Meta:
 Narrative:
 Show to user summary information on second checkout step.
 
-Scenario: Disallow users submit order with wrong information.
+Scenario: (CH34) Disallow users submit order with wrong information.
 Given I am on second step of checkout process with invalid information.
 When I click Submit button.
 Then Returns appropriate message.
 
-Scenario: Allow users come back to first step to edit order information.
+Scenario: (CH32) Allow users come back to first step to edit order information.
 Given I am on second step of checkout process with information, that I want to change.
 When I click <element> link <counter> Edit.
 Then I redirects to the first step of checkout.
@@ -20,3 +20,7 @@ Examples:
 |other edit             |7
 |shipping method edit   |5
 
+Scenario: (CH33) Allow users come back to first step to edit order information.
+Given I am on second step of checkout process with valid information.
+When I click Submit button.
+Then I get order confirmation page.

@@ -3,13 +3,13 @@ Meta:
 Narrative:
 Users can purchase multiple variants of a product from the PDP.
 
-Scenario: (CA49) Define sequence in which user must select attributes.
+Scenario: (CA11) Define sequence in which user must select attributes.
 Given I am on PDP with configurable product as User.
 When I select color in first row.
 Then Select for attribute size enables.
 Then I can select color in second row.
 
-Scenario: (CA50) User can add more than two rows to the Product Selections area.
+Scenario: (CA12) User can add more than two rows to the Product Selections area.
 Given I am on PDP with configurable product as User.
 When Set QTY for row "1" value "11".
 When I click on the plus sign or the Add More Items link.
