@@ -21,7 +21,7 @@
         <webdriver.driver>firefox</webdriver.driver>
         <sonar.includedModules>
                src/main,
-               src/test
+                src/test,
         </sonar.includedModules>
     </properties>
 
@@ -71,6 +71,9 @@
                 </executions>
             </plugin>
         </plugins>
+
+        <sourceDirectory>src/main/groovy</sourceDirectory>
+
     </build>
 
     <!--<profiles>
