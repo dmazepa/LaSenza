@@ -1410,4 +1410,9 @@ class UserSteps extends ScenarioSteps {
     def assert_sorted_by_in_product_grid_CLP(String sortingOrder) {
         cLPage.assertItemsSortedByPriceValue(sortingOrder)
     }
+
+    @Step
+    def click_on_checkout_button_in_area(String element) {
+        shoppingCartPage.click_on_checkout_button_in_area(element)
+    }
 }

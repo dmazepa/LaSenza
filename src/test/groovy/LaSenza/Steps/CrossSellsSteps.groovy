@@ -43,10 +43,20 @@ class CrossSellsSteps {
         user.click_on_image_or_name_cross_sell()
     }
 
+    @Then("I come to the first step of checkout process.")
+    public void assert_on_checkout() {
+        user.assert_on_checkout_page()
+    }
+
     @When("I add to cart product.")
     public void add_to_cart_from_QV_shopping_cart() {
         user.choose_and_store_configurable_options_shopping_cart()
         user.click_add_to_cart_button_QV()
+    }
+
+    @When("I click on checkout button in <Element> area in the shopping cart.")
+    public void click_on_button_checkout_shopping_cart(String Element) {
+        user.click_on_checkout_button_in_area(Element)
     }
 
     @Then("Item adds to cart without leaving the page.")

@@ -486,6 +486,8 @@ class CheckoutPage extends ForAllPage {
     def click_add_gift_cart_checkout() {
         element(buttonApplyGiftCard).click()
         element(loaderGiftCard).waitUntilVisible()
+        element(loaderGiftCard).waitUntilNotVisible()
+        element(loaderTotals).waitUntilNotVisible()
     }
 
     def assert_discount_gift_cart_applied_checkout(String number) {
@@ -497,6 +499,7 @@ class CheckoutPage extends ForAllPage {
                 equalTo(element(priceGrandTotal).getText().replaceAll("\\D", "").toInteger()))
         element(loaderTotals).waitUntilNotVisible()
         element(linkRemoveDiscount).click()
+        element(loaderTotals).waitUntilNotVisible()
         element(discountGiftCard).waitUntilNotVisible()
     }
 

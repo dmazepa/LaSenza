@@ -136,4 +136,8 @@ class ShoppingCartPage extends ForAllPage {
     def assert_link_edit_on_shopping_cart_absent() {
         element(linkEdit).shouldNotBePresent()
     }
+
+    def click_on_checkout_button_in_area(String Element) {
+        element(By.xpath("//div[@class='${Element}']//button")).click()
+    }
 }
