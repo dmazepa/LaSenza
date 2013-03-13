@@ -35,12 +35,3 @@ Then I can see "2" payment methods.
 When I enter Canadian billing address.
 Then I can see "3" payment methods.
 
-Scenario: (CH37) Show to users appropriate error message if he enter wrong password.
-Given I am on checkout page as User.
-When I create account and enter wrong password.
-Then I get error message.
-
-Scenario: (CH36) Allow Users create account from Checkout page.
-Given I am on checkout page as User.
-When I create account.
-Then I get account.
