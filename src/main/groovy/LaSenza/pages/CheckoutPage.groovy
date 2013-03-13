@@ -449,6 +449,7 @@ class CheckoutPage extends ForAllPage {
         element(inputPayPallAgree).click()
         element(buttonPayPallAgree).click()
         element(buttonPayPallContinue).waitUntilVisible()
+        Thread.sleep(1000)
         element(buttonPayPallContinue).click()
         element(buttonPlaceOrder).waitUntilVisible()
         element(buttonPlaceOrder).click()
