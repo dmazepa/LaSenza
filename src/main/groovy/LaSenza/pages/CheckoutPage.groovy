@@ -189,6 +189,9 @@ class CheckoutPage extends ForAllPage {
     @FindBy(xpath = "//div[@id='checkout-step-review']//div[@class='step-loading firefinder-match']")
     private WebElement loaderTotals
 
+    @FindBy(xpath = "//div[@id='checkout-step-giftcard']//div[@class='step-loading']")
+    private WebElement loaderGiftCard
+
     @FindBy(xpath = "//table[@id='checkout-review-table']//span[@class='price']")
     private WebElement price
 
@@ -482,14 +485,17 @@ class CheckoutPage extends ForAllPage {
 
     def click_add_gift_cart_checkout() {
         element(buttonApplyGiftCard).click()
+        element(loaderGiftCard).waitUntilVisible()
     }
 
     def assert_discount_gift_cart_applied_checkout(String number) {
+        element(loaderTotals).waitUntilNotVisible()
         element(discountGiftCard).waitUntilVisible()
         shouldContainText("(${number})")
         assertThat(element(price).getText().replaceAll("\\D", "").toInteger() -
                 element(discountGiftCard).getText().replaceAll("\\D", "").toInteger(),
                 equalTo(element(priceGrandTotal).getText().replaceAll("\\D", "").toInteger()))
+        element(loaderTotals).waitUntilNotVisible()
         element(linkRemoveDiscount).click()
         element(discountGiftCard).waitUntilNotVisible()
     }
