@@ -3,7 +3,7 @@ Meta:
 Narrative:
 Allow Users use his discounts.
 
-Scenario: (CH) Allow users use their Gift card.
+Scenario: (CH24) Allow users use their Gift card.
 Given I am on checkout page as User.
 When I enter a valid gift card code.
 And Click the Add Gift Card button.
