@@ -3,17 +3,17 @@ Meta:
 Narrative:
 Users can view information about orders.
 
-Scenario: (MA5) Allow users find order information by order number, email and last name.
+Scenario: (MA05) Allow users find order information by order number, email and last name.
 Given I am on Login page.
 When I enter correct information about order.
 Then I get Order Information page.
 
-Scenario: (MA6) Allow users find order information by order number, zip code and last name.
+Scenario: (MA06) Allow users find order information by order number, zip code and last name.
 Given I am on Login page.
 When I enter correct information about order.
 Then I get Order Information page.
 
-Scenario: (MA7) Show customers appropriate message if he have not placed orders.
+Scenario: (MA07) Show customers appropriate message if he have not placed orders.
 Given I am on My Orders page.
 And I have not placed orders.
 Then Instead table with orders I get message "You have placed no orders".

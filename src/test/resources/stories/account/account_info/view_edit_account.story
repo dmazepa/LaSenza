@@ -3,7 +3,7 @@ Meta:
 Narrative:
 Allow customers view and edit their Account information.
 
-Scenario: (MA9) Customers can navigate in their accounts using left navigation.
+Scenario: (MA09) Customers can navigate in their accounts using left navigation.
 Given I am on My Account: Dashboard page.
 When I click on any tab in left navigation.
 Then I get appropriate page.
