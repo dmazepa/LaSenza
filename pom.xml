@@ -16,8 +16,8 @@
         <sonar.dynamicAnalysis>false</sonar.dynamicAnalysis>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <thucydides.version>0.9.96</thucydides.version>
-        <thucydides.jbehave.version>0.9.96</thucydides.jbehave.version>
+        <thucydides.version>0.9.97</thucydides.version>
+        <thucydides.jbehave.version>0.9.97</thucydides.jbehave.version>
         <webdriver.driver>firefox</webdriver.driver>
     </properties>
 

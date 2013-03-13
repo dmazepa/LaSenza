@@ -15,12 +15,12 @@ repositories {
     mavenRepo urls: ["http://repo.maven.apache.org/maven2"]
 }
 dependencies {
-    compile "net.thucydides:thucydides-core:0.9.96"
-    compile "net.thucydides:thucydides-jbehave-plugin:0.9.96"
+    compile "net.thucydides:thucydides-core:0.9.97"
+    compile "net.thucydides:thucydides-jbehave-plugin:0.9.97"
     compile "org.slf4j:slf4j-simple:1.6.4"
     compile "org.codehaus.groovy:groovy-all:2.0.5"
     compile "com.googlecode.lambdaj:lambdaj:2.3.1"
-    testCompile "net.thucydides:thucydides-junit:0.9.96"
+    testCompile "net.thucydides:thucydides-junit:0.9.97"
     testCompile "junit:junit:4.10"
     testCompile "org.hamcrest:hamcrest-library:1.1"
     groovy 'org.codehaus.groovy:groovy:1.8.6'
