@@ -11,8 +11,10 @@ class EditProductsSteps {
 
     @Given("I am on shopping cart as User with simple product in cart.")
     public void open_shopping_cart_as_user_with_simple_product() {
-        user.open_pdp(1472)
-        user.click_add_to_cart_button_pdp()
+        if(user.no_items_in_cart()){
+            user.open_pdp(1472)
+            user.click_add_to_cart_button_pdp()
+        }
         user.open_shopping_cart()
     }
 
@@ -23,9 +25,11 @@ class EditProductsSteps {
 
     @Given("I am on shopping cart as User with configurable product in cart.")
     public void open_shopping_cart_as_user_with_configurable_product() {
-        user.open_pdp(1574)
-        user.choose_configurable_options(1)
-        user.click_add_to_cart_button_pdp()
+        if(user.no_items_in_cart()){
+            user.open_pdp(1574)
+            user.choose_configurable_options(1)
+            user.click_add_to_cart_button_pdp()
+        }
         user.open_shopping_cart()
     }
 

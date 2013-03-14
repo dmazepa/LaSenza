@@ -183,7 +183,7 @@ class CheckoutPage extends ForAllPage {
     @FindBy(name = "prestigecard_code")
     private WebElement fieldPrestigeCard
 
-    @FindBy(xpath = "//div[@class='prestigecard-content-field fieldset']/button")
+    @FindBy(xpath = "//button[@value='Apply']")
     private WebElement buttonApplyPrestigeCard
 
     @FindBy(xpath = "//div[@id='checkout-step-review']//div[@class='step-loading firefinder-match']")
@@ -192,7 +192,7 @@ class CheckoutPage extends ForAllPage {
     @FindBy(xpath = "//div[@id='checkout-step-giftcard']//div[@class='step-loading']")
     private WebElement loaderGiftCard
 
-    @FindBy(xpath = "//table[@id='checkout-review-table']//span[@class='price']")
+    @FindBy(xpath = "//div[@class='footer-wrapper']//span")
     private WebElement price
 
     @FindBy(xpath = "//div[@class='footer-wrapper grandtotal']//span")

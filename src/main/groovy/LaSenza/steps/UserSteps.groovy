@@ -5,7 +5,6 @@ import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 import net.thucydides.core.steps.ScenarioSteps
 import org.openqa.selenium.Alert
-import org.openqa.selenium.By
 import LaSenza.pages.*
 
 import static org.hamcrest.MatcherAssert.assertThat
@@ -453,6 +452,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_first_step_of_checkout(def id) {
+        opens_home_page()
         if (no_items_in_cart()) {
             open_pdp(id)
             if (pDPage.contain_configurable_options()) {
@@ -1444,5 +1444,25 @@ class UserSteps extends ScenarioSteps {
     @Step
     def click_on_element_in_shopping_cart(String Element) {
         shoppingCartPage.click_on_element(Element)
+    }
+
+    @Step
+    def click_sign_up_link_shopping_cart() {
+        shoppingCartPage.click_sign_up_link()
+    }
+
+    @Step
+    def assert_on_prestige_registration_page() {
+        shoppingCartPage.assert_on_prestige_registration_page()
+    }
+
+    @Step
+    def enter_coupon_shopping_cart(String code) {
+        shoppingCartPage.enter_coupon(code)
+    }
+
+    @Step
+    def click_apply_coupon_shooping_cart() {
+        shoppingCartPage.click_apply_coupon()
     }
 }

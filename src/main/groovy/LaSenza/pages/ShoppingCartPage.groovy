@@ -33,6 +33,15 @@ class ShoppingCartPage extends ForAllPage {
     @FindBy(xpath = "//div[@class='cart-empty']//a")
     private WebElement linkClickHere
 
+    @FindBy(xpath = "//div[@class='vip-program-static-block']/a")
+    private WebElement linkSignUp
+
+    @FindBy(id = "coupon_code")
+    private WebElement fieldCouponCode
+
+    @FindBy(xpath = "//button[@value='Apply Coupon']")
+    private WebElement buttonApplyCouponCode
+
     @FindBy(xpath = "//button[@class='button btn-continue']")
     private WebElement linkContinueShopping
 
@@ -173,5 +182,21 @@ class ShoppingCartPage extends ForAllPage {
             getDriver().findElement(By.xpath("//table[@id='shopping-cart-table']//*[@class='${Element}']/a")).click()
         }
         Thread.sleep(10000)
+    }
+
+    def click_sign_up_link() {
+        element(linkSignUp).click()
+    }
+
+    def assert_on_prestige_registration_page() {
+        assertThat(getDriver().getTitle(), equalTo("Prestige registration page"))
+    }
+
+    def enter_coupon(String code) {
+        element(fieldCouponCode).type(code)
+    }
+
+    def click_apply_coupon() {
+        element(buttonApplyCouponCode).click()
     }
 }
