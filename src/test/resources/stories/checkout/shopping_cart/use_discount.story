@@ -24,25 +24,24 @@ Scenario: (CH10) Disallow users use their invalid coupon codes.
 Given I am on shopping cart as User with configurable product in cart.
 When I Enter a invalid coupon code shopping_cart.
 And Click the Apply Coupon button shopping cart.
-Then Appropriate error messaging 'Coupon code "XXXXXXX' is not valid." displays.
+Then Appropriate error messaging Coupon code XXXXXXX is not valid. displays.
 
 Scenario: (CH11) Allow users use their Gift card.
-Given I am on shopping cart as User with some products in cart.
+Given I am on shopping cart as User with configurable product in cart.
 When I enter a valid gift card code.
-And Click the Add Gift Card button.
-Then The Gift Card Status & Balance appears.
-Then The gift card discount appears as a new line in the order summary and the grand total is updated.
+And Click the Add Gift Card button shopping cart.
+Then The gift card "02104532109" discount appears as a new line in the order summary and the grand total is updated.
 
 Scenario: (CH12) Allow users view their Gift card ballance.
-Given I am on shopping cart as User with some products in cart.
+Given I am on shopping cart as User with configurable product in cart.
 When I enter a valid gift card code.
-And Click the Check Gift Card Status & Balance.
+And Click the Check Gift Card Status & Balance shopping cart.
 Then The Gift Card Status & Balance appears.
 When I click on X remove link.
-Then The Gift Card Status & Balance disappears
+Then The Gift Card Status & Balance disappears.
 
 Scenario: (CH13) Users can view shipping and tax information depended of entered data.
-Given I am on shopping cart as User with some products in cart.
+Given I am on shopping cart as User with configurable product in cart.
 When I enter data to shipping carriers.
 And Click on button Get a Quote.
 Then Associated costs based upon the location information provided in the Estimate Shipping and Tax form.

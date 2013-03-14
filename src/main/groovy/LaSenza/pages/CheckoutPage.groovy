@@ -462,8 +462,8 @@ class CheckoutPage extends ForAllPage {
         element(fieldCountry).selectByVisibleText(country)
     }
 
-    def enter_prestige_cart() {
-        element(fieldPrestigeCard).type("11022251")
+    def enter_prestige_cart(String code) {
+        element(fieldPrestigeCard).type(code)
     }
 
     def click_apply_prestige_card() {

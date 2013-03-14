@@ -1313,8 +1313,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def enter_prestige_cart() {
-        checkoutPage.enter_prestige_cart()
+    def enter_prestige_cart(String code) {
+        checkoutPage.enter_prestige_cart(code)
     }
 
     @Step
@@ -1464,5 +1464,25 @@ class UserSteps extends ScenarioSteps {
     @Step
     def click_apply_coupon_shooping_cart() {
         shoppingCartPage.click_apply_coupon()
+    }
+
+    @Step
+    def assert_error_message_shopping_cart() {
+        shoppingCartPage.assert_error_message()
+    }
+
+    @Step
+    def click_apply_gift_card_shopping_cart() {
+        shoppingCartPage.click_apply_gift_card()
+    }
+
+    @Step
+    def click_check_gift_card_shopping_cart() {
+        shoppingCartPage.click_check_gift_card()
+    }
+
+    @Step
+    def delete_all_discounts_in_totals() {
+        enter_prestige_cart("110222513333")
     }
 }

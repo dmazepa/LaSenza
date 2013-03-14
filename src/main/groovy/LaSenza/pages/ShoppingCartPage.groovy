@@ -42,6 +42,12 @@ class ShoppingCartPage extends ForAllPage {
     @FindBy(xpath = "//button[@value='Apply Coupon']")
     private WebElement buttonApplyCouponCode
 
+    @FindBy(xpath = "//form[@id='giftcard-form']//button")
+    private WebElement buttonApplyGiftCard
+
+    @FindBy(xpath = "//button[@value='Check gift card status and balance']")
+    private WebElement linkCheckGiftCard
+
     @FindBy(xpath = "//button[@class='button btn-continue']")
     private WebElement linkContinueShopping
 
@@ -74,6 +80,9 @@ class ShoppingCartPage extends ForAllPage {
 
     @FindBy(xpath = "//div[@class='product-image']/a/img")
     private WebElement productImageCrossSell
+
+    @FindBy(xpath = "//li[@class='error-msg']//span")
+    private WebElement textMessage
 
     def assert_on_shopping_cart_page() {
         assertThat(element(titleText).getText(), equalTo("SHOPPING CART"))
@@ -198,5 +207,17 @@ class ShoppingCartPage extends ForAllPage {
 
     def click_apply_coupon() {
         element(buttonApplyCouponCode).click()
+    }
+
+    def assert_error_message() {
+        assertThat(element(textMessage).getText(), equalTo("COUPON CODE \"123456\" IS NOT VALID."))
+    }
+
+    def click_apply_gift_card() {
+        element(buttonApplyGiftCard).click()
+    }
+
+    def click_check_gift_card() {
+        element(linkCheckGiftCard).click()
     }
 }

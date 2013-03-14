@@ -41,8 +41,18 @@ class UseDiscount {
         user.click_apply_coupon_shooping_cart()
     }
 
+    @When("Click the Add Gift Card button shopping cart.")
+    public void click_apply_gift_card() {
+        user.click_apply_gift_card_shopping_cart()
+    }
+
+    @When("Click the Check Gift Card Status & Balance shopping cart.")
+    public void click_check_gift_card() {
+        user.click_check_gift_card_shopping_cart()
+    }
+
     @Then("Appropriate error messaging Coupon code XXXXXXX is not valid. displays.")
     public void assert_error_message() {
-        user.click_apply_coupon_shooping_cart()
+        user.assert_error_message_shopping_cart()
     }
 }
