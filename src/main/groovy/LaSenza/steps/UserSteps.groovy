@@ -1415,4 +1415,34 @@ class UserSteps extends ScenarioSteps {
     def click_on_checkout_button_in_area(String element) {
         shoppingCartPage.click_on_checkout_button_in_area(element)
     }
+
+    @Step
+    def click_on_remove_shopping_cart() {
+        shoppingCartPage.click_on_remove()
+    }
+
+    @Step
+    def assert_empty_cart() {
+        shoppingCartPage.assert_empty_cart()
+    }
+
+    @Step
+    def click_continue_shopping_shopping_cart() {
+        shoppingCartPage.click_continue_shopping()
+    }
+
+    @Step
+    def click_on_link_click_here_shopping_cart() {
+        shoppingCartPage.click_on_link_click_here()
+    }
+
+    @Step
+    def click_clear_shopping_cart() {
+        shoppingCartPage.clear_shopping_cart()
+    }
+
+    @Step
+    def click_on_element_in_shopping_cart(String Element) {
+        shoppingCartPage.click_on_element(Element)
+    }
 }

@@ -27,6 +27,15 @@ class ShoppingCartPage extends ForAllPage {
     @FindBy(xpath = "//a[@class='edit']")
     private WebElement linkEdit
 
+    @FindBy(linkText = "Remove item")
+    private WebElement linkRemove
+
+    @FindBy(xpath = "//div[@class='cart-empty']//a")
+    private WebElement linkClickHere
+
+    @FindBy(xpath = "//button[@class='button btn-continue']")
+    private WebElement linkContinueShopping
+
     @FindBy(xpath = "//div[@class='product-options-block']//div[@class='option-wrapper'][2]//select")
     private WebElement selectSize
 
@@ -139,5 +148,30 @@ class ShoppingCartPage extends ForAllPage {
 
     def click_on_checkout_button_in_area(String Element) {
         element(By.xpath("//div[@class='${Element}']//button")).click()
+    }
+
+    def click_on_remove() {
+        element(linkRemove).click()
+    }
+
+    def assert_empty_cart() {
+        element(linkClickHere).shouldBeVisible()
+    }
+
+    def click_continue_shopping() {
+        element(linkContinueShopping).click()
+    }
+
+    def click_on_link_click_here() {
+        element(linkClickHere).click()
+    }
+
+    def click_on_element(String Element) {
+        if(Element == "product-image" || Element == "edit"){
+            getDriver().findElement(By.xpath(".//*[@class='${Element}']")).click()
+        } else {
+            getDriver().findElement(By.xpath("//table[@id='shopping-cart-table']//*[@class='${Element}']/a")).click()
+        }
+        Thread.sleep(10000)
     }
 }

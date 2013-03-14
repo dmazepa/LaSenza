@@ -26,12 +26,12 @@ When I click on link Click here.
 Then It returns user to Home page.
 
 Scenario: (CH06) Allow users fast clearing shopping cart.
-Given I am on shopping cart as User with some products in cart.
+Given I am on shopping cart as User with simple product in cart.
 When I click on Clear Shopping Cart.
 Then It removes all items from the shopping cart.
 
 Scenario: (CH02) Allow users make last-minute changes to product attributes such as size and color without leaving the Shopping Cart page.
-Given I am on shopping cart as User with configurable product in cart.
+Given I am on shopping cart as User with simple product in cart.
 When I click on <Element>.
 Then Quickview displays.
 And I can edit product attributes.
@@ -39,7 +39,7 @@ And Come back to Shopping cart page.
 
 Examples:
 |Element
-|Brand Name
-|Product Name
-|Product Name
-|Edit product
+|brand-name
+|product-name
+|product-image
+|edit
