@@ -1,11 +1,8 @@
 package LaSenza.pages
 
 import org.openqa.selenium.By
-import org.openqa.selenium.HasInputDevices
-import org.openqa.selenium.Mouse
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
-import org.openqa.selenium.internal.Locatable
 import org.openqa.selenium.support.FindBy
 
 class LoginPage extends ForAllPage {
@@ -82,12 +79,8 @@ class LoginPage extends ForAllPage {
         element(By.xpath("//*[@id='gb_23']/span[2]")).click()
         element(By.xpath("//span[@name='CustomerSupport']")).click()
         def s=element(By.xpath("//p/a[@target='_blank']")).getText()
-        //element(By.xpath("//div[@class='asa']/div[@class='ar9 T-I-J3 J-J5-Ji']")).click()
-        Locatable hoverItem = (Locatable) getDriver().findElement(By.xpath("//div[@data-tooltip='Delete']"))
-        Mouse mouse = ((HasInputDevices) driver).getMouse()
-        mouse.mouseMove(hoverItem.getCoordinates())
-        mouse.click(hoverItem.getCoordinates())
-        getDriver().get(s)
+        element(By.xpath("//div[@class=' G-atb D E']//div[@title='Delete']")).click()
+         getDriver().get(s)
     }
 
     def input_new_password(newpassword) {
