@@ -10,7 +10,7 @@ Then I get My Account: Dashboard page with logged in status.
 
 Scenario: (MA08) Allow customers remember his password.
 Given I am on Login page.
-When I use process to remember my password.
+When I use process forgot my password.
 Then I get email with new password.
 And I can log in with new password.
 

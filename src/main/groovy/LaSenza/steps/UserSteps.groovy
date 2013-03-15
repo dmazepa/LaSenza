@@ -1,12 +1,10 @@
 package LaSenza.steps
-
+import LaSenza.pages.*
 import net.thucydides.core.annotations.Pending
 import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 import net.thucydides.core.steps.ScenarioSteps
 import org.openqa.selenium.Alert
-import org.openqa.selenium.By
-import LaSenza.pages.*
 
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
@@ -764,10 +762,9 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def open_create_account_page() {
+    def open_login_page() {
         homePage.open()
         homePage.click_on_link_login()
-        loginPage.click_on_button_register()
     }
 
     @Step
@@ -1409,5 +1406,27 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_sorted_by_in_product_grid_CLP(String sortingOrder) {
         cLPage.assertItemsSortedByPriceValue(sortingOrder)
+    }
+
+    @Step
+    def click_on_button_register() {
+        loginPage.click_on_button_register()
+    }
+
+    @Step
+    def click_on_link_forgot_password() {
+        loginPage.click_on_link_forgot_password()
+    }
+
+    def input_email_and_click_submit(String email) {
+        loginPage.input_email_and_click_submit(email)
+    }
+
+    def go_to_email_page(String email, String password) {
+        loginPage.go_to_email_page(email, password)
+    }
+
+    def input_new_password(String password) {
+        loginPage.input_new_password(password)
     }
 }
