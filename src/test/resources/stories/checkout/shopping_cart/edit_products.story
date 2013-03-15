@@ -10,20 +10,13 @@ When I click on Update Shopping Cart button after making changes to the item qua
 Then Product Updated Message displays.
 And It updates the item subtotal and order totals through a partial page refresh.
 
-Scenario: (CH02) Allow users make last-minute changes to product attributes such as size and color without leaving the Shopping Cart page.
-Given I am on shopping cart as User with configurable product in cart.
-When I click on Brand Name, Product Name, Product Image, Edit product.
-Then Quickview displays.
-And I can edit product attributes.
-And Come back to Shopping cart page.
-
 Scenario: (CH03) Users can remove items from cart.
-Given I am on shopping cart as User with some products in cart.
+Given I am on shopping cart as User with simple product in cart.
 When I click on remove item icon.
-Then Item removes from the shopping cart without full page refresh.
+Then Item removes from the shopping cart.
 
 Scenario: (CH04) Allow users fast come back to the Home Page.
-Given I am on shopping cart as User with some products in cart.
+Given I am on shopping cart as User with simple product in cart.
 When I click on Continue Shopping.
 Then It returns user to Home page.
 
@@ -33,6 +26,20 @@ When I click on link Click here.
 Then It returns user to Home page.
 
 Scenario: (CH06) Allow users fast clearing shopping cart.
-Given I am on shopping cart as User with some products in cart.
+Given I am on shopping cart as User with simple product in cart.
 When I click on Clear Shopping Cart.
 Then It removes all items from the shopping cart.
+
+Scenario: (CH02) Allow users make last-minute changes to product attributes such as size and color without leaving the Shopping Cart page.
+Given I am on shopping cart as User with simple product in cart.
+When I click on <Element>.
+Then Quickview displays.
+And I can edit product attributes.
+And Come back to Shopping cart page.
+
+Examples:
+|Element
+|brand-name
+|product-name
+|product-image
+|edit

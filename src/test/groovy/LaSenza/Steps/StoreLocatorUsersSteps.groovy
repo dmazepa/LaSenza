@@ -3,6 +3,7 @@ package LaSenza.Steps
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
 import org.jbehave.core.annotations.Given
+import org.jbehave.core.annotations.Pending
 import org.jbehave.core.annotations.Then
 import org.jbehave.core.annotations.When
 
@@ -25,7 +26,7 @@ class StoreLocatorUsersSteps {
     public void assert_input_recognize_search_term() {
         user.click_button_search_store_locator()
         user.assert_search_field_clear_store_locator()
-        user.assert_search_results_contains("China Plaza")
+        user.assert_search_results_contains("1020 RUE DU MARCH")
     }
 
     @When('I specify a search radius "$radius".')
@@ -39,6 +40,7 @@ class StoreLocatorUsersSteps {
     }
 
     @Then("Only locations that fall within the selected radius will be returned in the search result.")
+    @Pending
     public void assert_selected_locations_in_result() {
 
     }
@@ -65,7 +67,7 @@ class StoreLocatorUsersSteps {
 
     @Then("Search Results Sidebar displays all available stores.")
     public void assert_search_results_contain_all_stores() {
-        user.assert_search_results_contains_stores(5)
+        user.assert_search_results_contains_stores(155)
     }
 
     @When('I click on store "$entryNumber" entry.')
@@ -95,7 +97,7 @@ class StoreLocatorUsersSteps {
 
     @Then("Restores the page to its initial load state where all available store locations are displayed in the sidebar.")
     public void assert_initial_load_state() {
-        user.assert_search_results_contains_stores(5)
+        user.assert_search_results_contains_stores(155)
         user.assert_search_field_clear_store_locator()
         user.assert_default_radius()
     }

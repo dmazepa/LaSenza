@@ -114,6 +114,18 @@ class CheckoutPage extends ForAllPage {
     @FindBy(name = "shipping_method")
     private WebElement shipment
 
+    @FindBy(xpath = "//div[@id='checkout-shipping-method-load']//li[1]/label")
+    private WebElement textShippingMethod
+
+    @FindBy(xpath = "//div[@class='footer-totals-wrapper']/div[4]")
+    private WebElement textTaxTotals
+
+    @FindBy(xpath = "//div[@class='footer-totals-wrapper']/div[2]")
+    private WebElement textShippingTotals
+
+    @FindBy(xpath = "//div[@class='footer-totals-wrapper']/div[5]//span")
+    private WebElement textGrandTotalsPrice
+
     @FindBy(id = "p_method_moneriscc")
     private WebElement inputPaymentMethodCreditCart
 
@@ -183,13 +195,16 @@ class CheckoutPage extends ForAllPage {
     @FindBy(name = "prestigecard_code")
     private WebElement fieldPrestigeCard
 
-    @FindBy(xpath = "//div[@class='prestigecard-content-field fieldset']/button")
+    @FindBy(xpath = "//button[@value='Apply']")
     private WebElement buttonApplyPrestigeCard
 
     @FindBy(xpath = "//div[@id='checkout-step-review']//div[@class='step-loading firefinder-match']")
     private WebElement loaderTotals
 
-    @FindBy(xpath = "//table[@id='checkout-review-table']//span[@class='price']")
+    @FindBy(xpath = "//div[@id='checkout-step-giftcard']//div[@class='step-loading']")
+    private WebElement loaderGiftCard
+
+    @FindBy(xpath = "//div[@class='footer-wrapper']//span")
     private WebElement price
 
     @FindBy(xpath = "//div[@class='footer-wrapper grandtotal']//span")
@@ -411,6 +426,7 @@ class CheckoutPage extends ForAllPage {
     }
 
     def assert_on_checkout_page() {
+        element(buttonConfirmAndPay).waitUntilVisible()
         element(buttonConfirmAndPay).shouldBeVisible()
     }
 
@@ -449,6 +465,7 @@ class CheckoutPage extends ForAllPage {
         element(inputPayPallAgree).click()
         element(buttonPayPallAgree).click()
         element(buttonPayPallContinue).waitUntilVisible()
+        Thread.sleep(1000)
         element(buttonPayPallContinue).click()
         element(buttonPlaceOrder).waitUntilVisible()
         element(buttonPlaceOrder).click()
@@ -458,8 +475,8 @@ class CheckoutPage extends ForAllPage {
         element(fieldCountry).selectByVisibleText(country)
     }
 
-    def enter_prestige_cart() {
-        element(fieldPrestigeCard).type("11022251")
+    def enter_prestige_cart(String code) {
+        element(fieldPrestigeCard).type(code)
     }
 
     def click_apply_prestige_card() {
@@ -480,16 +497,23 @@ class CheckoutPage extends ForAllPage {
     }
 
     def click_add_gift_cart_checkout() {
+        element(buttonConfirmAndPay).waitUntilVisible()
         element(buttonApplyGiftCard).click()
+        element(loaderGiftCard).waitUntilVisible()
+        element(loaderGiftCard).waitUntilNotVisible()
+        element(loaderTotals).waitUntilNotVisible()
     }
 
     def assert_discount_gift_cart_applied_checkout(String number) {
+        element(loaderTotals).waitUntilNotVisible()
         element(discountGiftCard).waitUntilVisible()
         shouldContainText("(${number})")
         assertThat(element(price).getText().replaceAll("\\D", "").toInteger() -
                 element(discountGiftCard).getText().replaceAll("\\D", "").toInteger(),
                 equalTo(element(priceGrandTotal).getText().replaceAll("\\D", "").toInteger()))
+        element(loaderTotals).waitUntilNotVisible()
         element(linkRemoveDiscount).click()
+        element(loaderTotals).waitUntilNotVisible()
         element(discountGiftCard).waitUntilNotVisible()
     }
 
@@ -540,5 +564,12 @@ class CheckoutPage extends ForAllPage {
         getDriver().findElement(By.name("_eventId_submit")).click()
         getDriver().switchTo().window(windowHandle)
         Thread.sleep(5000)
+    }
+
+    def assert_shipping_tax_quote_on_checkout(String shippingMethod, String textTax, String textShipping, String textGrandTotalPrice) {
+        assertThat(element(textShippingMethod).getText().replaceAll("([ -])", ""), equalTo(shippingMethod))
+        assertThat(element(textTaxTotals).getText(), equalTo(textTax))
+        assertThat(element(textShippingTotals).getText(), equalTo(textShipping))
+        assertThat(element(textGrandTotalsPrice).getText(), equalTo(textGrandTotalPrice))
     }
 }

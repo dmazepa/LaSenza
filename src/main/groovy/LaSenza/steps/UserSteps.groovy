@@ -1,10 +1,11 @@
 package LaSenza.steps
-import LaSenza.pages.*
+
 import net.thucydides.core.annotations.Pending
 import net.thucydides.core.annotations.Step
 import net.thucydides.core.pages.Pages
 import net.thucydides.core.steps.ScenarioSteps
 import org.openqa.selenium.Alert
+import LaSenza.pages.*
 
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
@@ -21,6 +22,10 @@ class UserSteps extends ScenarioSteps {
     CheckoutPage checkoutPage
     ThankYouPage thankYouPage
     ShoppingCartPage shoppingCartPage
+    def textShipping
+    def textTax
+    def textShippingTotals
+    def textGrandTotal
 
     UserSteps(Pages pages) {
         super(pages)
@@ -451,6 +456,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def open_first_step_of_checkout(def id) {
+        opens_home_page()
         if (no_items_in_cart()) {
             open_pdp(id)
             if (pDPage.contain_configurable_options()) {
@@ -467,7 +473,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def go_to_checkout() {
-        checkoutPage.go_to("checkout/onepage/")
+        checkoutPage.open()
     }
 
     @Step
@@ -1310,8 +1316,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def enter_prestige_cart() {
-        checkoutPage.enter_prestige_cart()
+    def enter_prestige_cart(String code) {
+        checkoutPage.enter_prestige_cart(code)
     }
 
     @Step
@@ -1406,6 +1412,115 @@ class UserSteps extends ScenarioSteps {
     @Step
     def assert_sorted_by_in_product_grid_CLP(String sortingOrder) {
         cLPage.assertItemsSortedByPriceValue(sortingOrder)
+    }
+
+    @Step
+    def click_on_checkout_button_in_area(String element) {
+        shoppingCartPage.click_on_checkout_button_in_area(element)
+    }
+
+    @Step
+    def click_on_remove_shopping_cart() {
+        shoppingCartPage.click_on_remove()
+    }
+
+    @Step
+    def assert_empty_cart() {
+        shoppingCartPage.assert_empty_cart()
+    }
+
+    @Step
+    def click_continue_shopping_shopping_cart() {
+        shoppingCartPage.click_continue_shopping()
+    }
+
+    @Step
+    def click_on_link_click_here_shopping_cart() {
+        shoppingCartPage.click_on_link_click_here()
+    }
+
+    @Step
+    def click_clear_shopping_cart() {
+        shoppingCartPage.clear_shopping_cart()
+    }
+
+    @Step
+    def click_on_element_in_shopping_cart(String Element) {
+        shoppingCartPage.click_on_element(Element)
+    }
+
+    @Step
+    def click_sign_up_link_shopping_cart() {
+        shoppingCartPage.click_sign_up_link()
+    }
+
+    @Step
+    def assert_on_prestige_registration_page() {
+        shoppingCartPage.assert_on_prestige_registration_page()
+    }
+
+    @Step
+    def enter_coupon_shopping_cart(String code) {
+        shoppingCartPage.enter_coupon(code)
+    }
+
+    @Step
+    def click_apply_coupon_shooping_cart() {
+        shoppingCartPage.click_apply_coupon()
+    }
+
+    @Step
+    def assert_error_message_shopping_cart() {
+        shoppingCartPage.assert_error_message()
+    }
+
+    @Step
+    def click_apply_gift_card_shopping_cart() {
+        shoppingCartPage.click_apply_gift_card()
+    }
+
+    @Step
+    def click_check_gift_card_shopping_cart() {
+        shoppingCartPage.click_check_gift_card()
+    }
+
+    @Step
+    def delete_all_discounts_in_totals() {
+        enter_prestige_cart("110222513333")
+    }
+
+    @Step
+    def enter_data_for_shipping_shopping_cart() {
+        shoppingCartPage.enter_data_for_shipping_shopping_cart()
+    }
+
+    @Step
+    def click_button_get_quote() {
+        shoppingCartPage.click_button_get_quote()
+    }
+
+    @Step
+    def assert_quotes_appeared() {
+        shoppingCartPage.assert_quotes_appeared()
+    }
+
+    @Step
+    def select_shipping_and_update_total_shopping_cart() {
+        shoppingCartPage.select_shipping_and_update_total_shopping_cart()
+    }
+
+    @Step
+    def assert_total_updated_shopping_cart() {
+        textGrandTotal = shoppingCartPage.getTextGrandTotalPrice()
+        textShippingTotals = shoppingCartPage.getTextShippingTotals()
+        textShipping = shoppingCartPage.getTextShipping()
+        textTax = shoppingCartPage.getTextTax()
+        shoppingCartPage.assert_total_updated_shopping_cart()
+    }
+
+    @Step
+    def assert_shipping_tax_quote_on_checkout() {
+        checkoutPage.assert_shipping_tax_quote_on_checkout(textShipping, textTax, textShippingTotals, textGrandTotal)
     }
 
     @Step

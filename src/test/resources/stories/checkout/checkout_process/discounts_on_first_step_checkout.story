@@ -32,4 +32,3 @@ Given I am on checkout page as User.
 When Enter a Prestige Card number into the field.
 And Click Apply.
 Then The discount will be reflected in the Order Summary box.
-

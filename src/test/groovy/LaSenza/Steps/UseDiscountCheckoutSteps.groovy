@@ -20,7 +20,7 @@ class UseDiscountCheckoutSteps {
 
     @When("Enter a Prestige Card number into the field.")
     public void enter_valid_prestige_cart() {
-        user.enter_prestige_cart()
+        user.enter_prestige_cart("11022251")
     }
 
     @When("Click Apply.")
@@ -67,6 +67,8 @@ class UseDiscountCheckoutSteps {
 
     @When("I enter a valid gift card code.")
     public void enter_valid_gift_card() {
+        user.delete_all_discounts_in_totals()
+        user.click_apply_prestige_card()
         user.enter_gift_card_checkout("02104532109", "9361")
     }
 

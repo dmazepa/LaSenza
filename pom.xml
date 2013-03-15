@@ -19,6 +19,10 @@
         <thucydides.version>0.9.95</thucydides.version>
         <thucydides.jbehave.version>0.9.95</thucydides.jbehave.version>
         <webdriver.driver>firefox</webdriver.driver>
+        <sonar.includedModules>
+               src/main,
+                src/test,
+        </sonar.includedModules>
     </properties>
 
 
