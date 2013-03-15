@@ -77,15 +77,23 @@ class LoginPage extends ForAllPage {
         element(By.xpath("//*[@id='Passwd']")).type(password)
         element(By.xpath("//*[@id='signIn']")).click()
         element(By.xpath("//*[@id='gb_23']/span[2]")).click()
-        element(By.xpath("//span[@name='CustomerSupport']")).click()
+        Thread.sleep(1000)
+        element(By.xpath("//tr/td[@class='yX xY ']")).waitUntilVisible()
+        element(By.xpath("//tr/td[@class='yX xY ']")).click()
+        Thread.sleep(1000)
+        element(By.xpath("//p/a[@target='_blank']")).waitUntilPresent()
         def s=element(By.xpath("//p/a[@target='_blank']")).getText()
+        Thread.sleep(1000)
+        element(By.xpath("//div[@class=' G-atb D E']//div[@title='Delete']")).waitUntilVisible()
         element(By.xpath("//div[@class=' G-atb D E']//div[@title='Delete']")).click()
-         getDriver().get(s)
+        waitForAnyTextToAppear("The conversation has been moved to the Trash.")
+        getDriver().get(s)
     }
 
     def input_new_password(newpassword) {
         element(newPassword).type(newpassword)
         element(confirmNewPassword).type(newpassword)
         element(resetPasswordButton).click()
+        Thread.sleep(30000)
     }
 }
