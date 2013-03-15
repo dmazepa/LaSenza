@@ -426,6 +426,7 @@ class CheckoutPage extends ForAllPage {
     }
 
     def assert_on_checkout_page() {
+        element(buttonConfirmAndPay).waitUntilVisible()
         element(buttonConfirmAndPay).shouldBeVisible()
     }
 
