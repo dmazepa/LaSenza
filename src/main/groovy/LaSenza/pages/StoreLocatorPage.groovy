@@ -20,14 +20,11 @@ class StoreLocatorPage extends ForAllPage {
     @FindBy(id = "address")
     private WebElement fieldAddress
 
-    @FindBy(xpath = "//a[@class='sbToggle']")
+    @FindBy(name = "radius")
     private WebElement selectRadius
 
     @FindBy(xpath = "//ul[@class='sbOptions']")
     private WebElement optionsRadius
-
-    @FindBy(xpath = "//a[@href='#100']")
-    private WebElement option100Miles
 
     @FindBy(xpath = "//div[@class='button-set']/button[1]")
     private WebElement buttonSearch
@@ -44,9 +41,6 @@ class StoreLocatorPage extends ForAllPage {
     @FindBy(xpath = "//a[contains(text(), 'Directions')]")
     private WebElement linkDirections
 
-    @FindBy(xpath = "//a[@class='sbSelector']")
-    private WebElement selectedValueRadius
-
     @FindBy(xpath = "//table[@class='adp-directions']")
     private WebElement tableDirrections
 
@@ -59,10 +53,7 @@ class StoreLocatorPage extends ForAllPage {
     }
 
     def enter_radius_into_radius_field(String radius) {
-        element(selectRadius).click()
-        element(optionsRadius).waitUntilVisible()
-        element(option100Miles).waitUntilVisible()
-        element(option100Miles).click()
+        element(selectRadius).selectByValue("100")
     }
 
     def click_button_search() {
@@ -108,18 +99,16 @@ class StoreLocatorPage extends ForAllPage {
     }
 
     def assert_default_radius() {
-        assertThat(element(selectedValueRadius).getText(), equalTo("25 Miles"))
+        assertThat(element(selectRadius).getSelectedVisibleTextValue().replaceAll("([ \\n])", ""), equalTo("25Miles"))
     }
 
     def assert_new_search_radius(String newRadius) {
-        element(selectRadius).click()
-        element(optionsRadius).waitUntilVisible()
-        Thread.sleep(1000)
-        assertThat(element(optionsRadius).getText().replaceAll("\\D", ""), equalTo(newRadius))
+        assertThat(element(selectRadius).getText().replaceAll("\\D", ""), equalTo(newRadius))
     }
 
-    def assert_search_results_contains(def text) {
-        assertThat(element(areaSearchResults).getText(), containsText(text))
+    def assert_search_results_contains(String text) {
+        assertThat(getDriver().findElements(By.xpath("//div[@class='sidebar-entry-container']")).size(), equalTo(1))
+        assert element(areaSearchResults).getText().contains(text)
     }
 
     def assert_directions_appeared() {
