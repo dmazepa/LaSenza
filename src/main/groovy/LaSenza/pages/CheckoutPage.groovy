@@ -114,6 +114,18 @@ class CheckoutPage extends ForAllPage {
     @FindBy(name = "shipping_method")
     private WebElement shipment
 
+    @FindBy(xpath = "//div[@id='checkout-shipping-method-load']//li[1]/label")
+    private WebElement textShippingMethod
+
+    @FindBy(xpath = "//div[@class='footer-totals-wrapper']/div[4]")
+    private WebElement textTaxTotals
+
+    @FindBy(xpath = "//div[@class='footer-totals-wrapper']/div[2]")
+    private WebElement textShippingTotals
+
+    @FindBy(xpath = "//div[@class='footer-totals-wrapper']/div[5]//span")
+    private WebElement textGrandTotalsPrice
+
     @FindBy(id = "p_method_moneriscc")
     private WebElement inputPaymentMethodCreditCart
 
@@ -550,5 +562,12 @@ class CheckoutPage extends ForAllPage {
         getDriver().findElement(By.name("_eventId_submit")).click()
         getDriver().switchTo().window(windowHandle)
         Thread.sleep(5000)
+    }
+
+    def assert_shipping_tax_quote_on_checkout(String shippingMethod, String textTax, String textShipping, String textGrandTotalPrice) {
+        assertThat(element(textShippingMethod).getText().replaceAll("([ -])", ""), equalTo(shippingMethod))
+        assertThat(element(textTaxTotals).getText(), equalTo(textTax))
+        assertThat(element(textShippingTotals).getText(), equalTo(textShipping))
+        assertThat(element(textGrandTotalsPrice).getText(), equalTo(textGrandTotalPrice))
     }
 }

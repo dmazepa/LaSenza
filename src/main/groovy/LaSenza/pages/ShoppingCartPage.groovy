@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy
 
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
+import static org.hamcrest.Matchers.greaterThan
 
 @DefaultUrl("http://localhost:9000/checkout/cart/")
 class ShoppingCartPage extends ForAllPage {
@@ -16,6 +17,8 @@ class ShoppingCartPage extends ForAllPage {
     def sizes
     def prices
     def names
+    String  firstQuote
+    def firstQuotePrice
 
     ShoppingCartPage(WebDriver driver) {
         super(driver)
@@ -83,6 +86,42 @@ class ShoppingCartPage extends ForAllPage {
 
     @FindBy(xpath = "//li[@class='error-msg']//span")
     private WebElement textMessage
+
+    @FindBy(id = "country")
+    private WebElement selectCountry
+
+    @FindBy(id = "region_id")
+    private WebElement selectRegion
+
+    @FindBy(id = "postcode")
+    private WebElement fieldZIP
+
+    @FindBy(xpath = "//div[@class='buttons-set']/button")
+    private WebElement buttonGetQuote
+
+    @FindBy(name = "estimate_method")
+    private WebElement inputFirstQuote
+
+    @FindBy(name = "do")
+    private WebElement buttonUpdateTotal
+
+    @FindBy(xpath = "//form[@id='co-shipping-method-form']//li[1]/label")
+    private WebElement textFirstQuote
+
+    @FindBy(xpath = "//form[@id='co-shipping-method-form']//li[1]/label/span")
+    private WebElement textFirstQuotePrice
+
+    @FindBy(xpath = "//div[@class='totals-wrapper']/div[2]")
+    private WebElement textShippingTotals
+
+    @FindBy(xpath = "//div[@class='totals-wrapper']/div[4]")
+    private WebElement textTaxTotals
+
+    @FindBy(xpath = "//div[@class='footer-wrapper grandtotal']//span")
+    private WebElement priceGrandTotal
+
+    @FindBy(xpath = "//div[@class='totals-wrapper']/div[1]//span")
+    private WebElement priceSubTotal
 
     def assert_on_shopping_cart_page() {
         assertThat(element(titleText).getText(), equalTo("SHOPPING CART"))
@@ -219,5 +258,51 @@ class ShoppingCartPage extends ForAllPage {
 
     def click_check_gift_card() {
         element(linkCheckGiftCard).click()
+    }
+
+    def enter_data_for_shipping_shopping_cart() {
+        element(selectCountry).selectByVisibleText("United States")
+        element(selectRegion).selectByVisibleText("California")
+        element(fieldZIP).type("94302")
+    }
+
+    def click_button_get_quote() {
+        element(buttonGetQuote).click()
+        element(inputFirstQuote).waitUntilVisible()
+    }
+
+    def assert_quotes_appeared() {
+        assertThat(getDriver().findElements(By.name("estimate_method")).size(), greaterThan(0))
+    }
+
+    def select_shipping_and_update_total_shopping_cart() {
+        element(inputFirstQuote).click()
+        firstQuote = element(textFirstQuote).getText().replaceAll("([-,() <>])","")
+        firstQuotePrice = element(textFirstQuotePrice).getText().replaceAll("\\D", "")
+        element(buttonUpdateTotal).click()
+    }
+
+    def assert_total_updated_shopping_cart() {
+        assertThat(element(textShippingTotals).getText().replaceAll("([<>\\n() ])", ""), equalTo("Shipping"+firstQuote))
+        assertThat(element(priceGrandTotal).getText().replaceAll("\\D", "").toInteger(),
+                equalTo(priceSubTotal.getText().replaceAll("\\D","").toInteger() +
+                textFirstQuotePrice.getText().replaceAll("\\D", "").toInteger()+
+                textTaxTotals.getText().replaceAll("\\D", "").toInteger()))
+    }
+
+    def getTextShipping() {
+        return firstQuote
+    }
+
+    def getTextTax() {
+        return textTaxTotals.getText()
+    }
+
+    def getTextShippingTotals() {
+        return textShippingTotals.getText()
+    }
+
+    def getTextGrandTotalPrice() {
+        return priceGrandTotal.getText()
     }
 }

@@ -55,4 +55,39 @@ class UseDiscount {
     public void assert_error_message() {
         user.assert_error_message_shopping_cart()
     }
+
+    @When("I enter data to shipping carriers.")
+    public void enter_data_for_shipping() {
+        user.enter_data_for_shipping_shopping_cart()
+    }
+
+    @When("Click on button Get a Quote.")
+    public void click_button_get_quote() {
+        user. click_button_get_quote()
+    }
+
+    @Then("Associated costs based upon the location information provided in the Estimate Shipping and Tax form.")
+    public void assert_quotes_appeared() {
+        user.assert_quotes_appeared()
+    }
+
+    @When("I select a shipping option and click the Update Total button.")
+    public void select_shipping_and_update_total_shopping_cart() {
+        user.select_shipping_and_update_total_shopping_cart()
+    }
+
+    @Then("Shipping and Sales Tax charges appear as separate lines in the order summary and the grand total is updated.")
+    public void assert_total_updated_shopping_cart() {
+        user.assert_total_updated_shopping_cart()
+    }
+
+    @When("I go to checkout page.")
+    public void go_to_checkout_page() {
+        user.go_to_checkout()
+    }
+
+    @Then("This information is remembered within the checkout form")
+    public void assert_shipping_tax_quote_on_checkout() {
+        user.assert_shipping_tax_quote_on_checkout()
+    }
 }

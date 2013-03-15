@@ -22,6 +22,10 @@ class UserSteps extends ScenarioSteps {
     CheckoutPage checkoutPage
     ThankYouPage thankYouPage
     ShoppingCartPage shoppingCartPage
+    def textShipping
+    def textTax
+    def textShippingTotals
+    def textGrandTotal
 
     UserSteps(Pages pages) {
         super(pages)
@@ -469,7 +473,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def go_to_checkout() {
-        checkoutPage.go_to("checkout/onepage/")
+        checkoutPage.open()
     }
 
     @Step
@@ -1484,5 +1488,39 @@ class UserSteps extends ScenarioSteps {
     @Step
     def delete_all_discounts_in_totals() {
         enter_prestige_cart("110222513333")
+    }
+
+    @Step
+    def enter_data_for_shipping_shopping_cart() {
+        shoppingCartPage.enter_data_for_shipping_shopping_cart()
+    }
+
+    @Step
+    def click_button_get_quote() {
+        shoppingCartPage.click_button_get_quote()
+    }
+
+    @Step
+    def assert_quotes_appeared() {
+        shoppingCartPage.assert_quotes_appeared()
+    }
+
+    @Step
+    def select_shipping_and_update_total_shopping_cart() {
+        shoppingCartPage.select_shipping_and_update_total_shopping_cart()
+    }
+
+    @Step
+    def assert_total_updated_shopping_cart() {
+        textGrandTotal = shoppingCartPage.getTextGrandTotalPrice()
+        textShippingTotals = shoppingCartPage.getTextShippingTotals()
+        textShipping = shoppingCartPage.getTextShipping()
+        textTax = shoppingCartPage.getTextTax()
+        shoppingCartPage.assert_total_updated_shopping_cart()
+    }
+
+    @Step
+    def assert_shipping_tax_quote_on_checkout() {
+        checkoutPage.assert_shipping_tax_quote_on_checkout(textShipping, textTax, textShippingTotals, textGrandTotal)
     }
 }
