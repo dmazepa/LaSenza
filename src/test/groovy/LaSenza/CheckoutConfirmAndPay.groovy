@@ -2,6 +2,5 @@ package LaSenza
 
 import net.thucydides.jbehave.ThucydidesJUnitStory
 
-class SecondStep extends ThucydidesJUnitStory {
-
+class CheckoutConfirmAndPay extends ThucydidesJUnitStory{
 }
