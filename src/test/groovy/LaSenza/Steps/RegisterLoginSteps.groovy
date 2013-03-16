@@ -41,13 +41,13 @@ class RegisterLoginSteps {
     @Then("I get email with new password.")
     public void email_new_password(){
          user.go_to_email_page("test2@speroteck.com","testthis")
-         user.input_new_password("testthis")
+         user.input_new_password("testthis1")
 
     }
 
     @Then("I can log in with new password.")
     public void entered_new_login(){
-        user.loginPage.log_in("test2@speroteck.com", "testthis", false)
+        user.loginPage.log_in("test2@speroteck.com", "testthis1", false)
         customer.myAccountPage.assert_on_my_account_dashboard_page()
     }
 

@@ -8,7 +8,7 @@ Given I am on Category page as User.
 Given I can see attribute refinements, number of products associated with each category appears near name.
 Given Number of products associated with attribute color swatcher does not shows.
 When Clicking an attribute refinement Size
-Then Its associated check-box places it in the "Currently Shopping By" list.
+Then Its associated check-box places it in the Currently Shopping By list.
 Then Dynamically filters both the list of remaining attribute refinements and the list of products returned
 
 Scenario: (CA32) User can multi filter products by Color swatcher.

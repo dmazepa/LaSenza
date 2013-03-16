@@ -8,6 +8,7 @@ import org.openqa.selenium.*
 import static org.hamcrest.MatcherAssert.assertThat
 import static org.hamcrest.Matchers.equalTo
 import static org.hamcrest.Matchers.lessThan
+import static org.hamcrest.Matchers.containsString
 
 class CLPage extends ForAllPage {
 
@@ -20,6 +21,7 @@ class CLPage extends ForAllPage {
     def names = []
     def countProductsCategory
     def countProductsAttributes
+    def textFirstRefinement
 
     CLPage(WebDriver driver) {
         super(driver)
@@ -147,6 +149,12 @@ class CLPage extends ForAllPage {
 
     @FindBy(xpath = "//div[@class='preloader-wrapper']")
     private WebElement loaderAddToCart
+
+    @FindBy(xpath = "//div[@class='scroll mCustomScrollbar _mCS_5']//li/a")
+    private WebElement refinementSizeFirst
+
+    @FindBy(xpath = "//div[@class='currently']//li")
+    private WebElement selectedAttributeFirst
 
     def click_on_button_quick_view(def i) {
         element(By.xpath("//div[@class='category-products']//li[${i}]/div/a[2]")).waitUntilVisible()
@@ -495,4 +503,26 @@ class CLPage extends ForAllPage {
         }
     }
 
+    def assert_refinements_with_number_of_products() {
+        for (def i : driver.findElements(By.xpath("//dl[@id='narrow-by-list-0']//ol/li"))) {
+                assert i.getText().endsWith(")")
+                assert i.getText().contains("(")
+        }
+    }
+
+    def assert_refinements_colors_have_no_number_of_products() {
+        for (def i : driver.findElements(By.xpath("//div[@class='m-filter-colors horizontal mf-1-1']/a/div"))) {
+            assertThat(i.getText(), equalTo(""))
+        }
+    }
+
+    def click_refinement_size() {
+        element(refinementSizeFirst).click()
+        textFirstRefinement = element(refinementSizeFirst).getText()
+    }
+
+    def refinement_size_checked_and_added_to_shopping_by() {
+        assertThat(refinementSizeFirst.getAttribute("class"), equalTo("ga-size m-checkbox-checked"))
+        assertThat(element(selectedAttributeFirst).getText(), containsString(textFirstRefinement))
+    }
 }

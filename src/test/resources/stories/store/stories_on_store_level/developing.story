@@ -9,6 +9,8 @@ Given Prepare_base
 Scenario: Prepare Base.
 Given Check products inventory
 
-Scenario: (CH22) Allow Customers save entered address in Address book.
-Given I am on checkout page as Customer and process checkout with checked Save in Address Book checkbox.
-Then I can see entered on checkout page address in address book
+Scenario: (MA08) Allow customers remember his password.
+Given I am on Login page.
+When I use process forgot my password.
+Then I get email with new password.
+And I can log in with new password.

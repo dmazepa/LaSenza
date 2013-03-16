@@ -1533,15 +1533,38 @@ class UserSteps extends ScenarioSteps {
         loginPage.click_on_link_forgot_password()
     }
 
+    @Step
     def input_email_and_click_submit(String email) {
         loginPage.input_email_and_click_submit(email)
     }
 
+    @Step
     def go_to_email_page(String email, String password) {
         loginPage.go_to_email_page(email, password)
     }
 
+    @Step
     def input_new_password(String password) {
         loginPage.input_new_password(password)
+    }
+
+    @Step
+    def assert_refinements_with_number_of_products() {
+        cLPage.assert_refinements_with_number_of_products()
+    }
+
+    @Step
+    def assert_refinements_colors_have_no_number_of_products() {
+        cLPage.assert_refinements_colors_have_no_number_of_products()
+    }
+
+    @Step
+    def click_refinement_size() {
+        cLPage.click_refinement_size()
+    }
+
+    @Step
+    def assert_refinement_size_checked_and_added_to_shopping_by() {
+        cLPage.refinement_size_checked_and_added_to_shopping_by()
     }
 }
