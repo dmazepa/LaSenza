@@ -6,6 +6,11 @@ import net.thucydides.core.annotations.Steps
 import org.jbehave.core.annotations.Given
 import org.jbehave.core.annotations.Then
 import org.jbehave.core.annotations.When
+import org.jbehave.core.annotations.UsingEmbedder
+import org.jbehave.core.embedder.Embedder
+
+@UsingEmbedder(embedder = Embedder.class, generateViewAfterStories = true, ignoreFailureInStories = true, ignoreFailureInView = true, verboseFailures = true,
+storyTimeoutInSecs = 600L, threads = 2, metaFilters = "-skip")
 
 class EditInfSteps {
 

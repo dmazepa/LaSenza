@@ -457,6 +457,7 @@ class UserSteps extends ScenarioSteps {
     @Step
     def open_first_step_of_checkout(def id) {
         opens_home_page()
+        log_out_if_logged_in()
         if (no_items_in_cart()) {
             open_pdp(id)
             if (pDPage.contain_configurable_options()) {
