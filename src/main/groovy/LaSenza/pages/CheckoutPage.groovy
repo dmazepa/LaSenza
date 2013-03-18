@@ -274,7 +274,6 @@ class CheckoutPage extends ForAllPage {
     }
 
     def click_input_credit_cart(def cartType) {
-        Thread.sleep(1000)
         element(loaderPayment).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).click()
         element(loaderPayment).waitUntilNotVisible()
@@ -507,11 +506,13 @@ class CheckoutPage extends ForAllPage {
     def assert_discount_gift_cart_applied_checkout(String number) {
         element(loaderTotals).waitUntilNotVisible()
         element(discountGiftCard).waitUntilVisible()
+        Thread.sleep(1000)
         shouldContainText("(${number})")
         assertThat(element(price).getText().replaceAll("\\D", "").toInteger() -
                 element(discountGiftCard).getText().replaceAll("\\D", "").toInteger(),
                 equalTo(element(priceGrandTotal).getText().replaceAll("\\D", "").toInteger()))
         element(loaderTotals).waitUntilNotVisible()
+        Thread.sleep(1000)
         element(linkRemoveDiscount).click()
         element(loaderTotals).waitUntilNotVisible()
         element(discountGiftCard).waitUntilNotVisible()
