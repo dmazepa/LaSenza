@@ -3,6 +3,12 @@ Meta:
 Narrative:
 Allow Users use his discounts.
 
+Scenario: (CH28) Disallow users use their invalid coupon codes.
+Given I am on checkout page as User.
+When I Enter a invalid coupon code.
+And Click the Apply Coupon button.
+Then message appears: promo code name is invalid or qualifications have not been met.
+
 Scenario: (CH25) Allow users view their Gift card ballance.
 Given I am on checkout page as User.
 When I enter a valid gift card code.
@@ -23,9 +29,3 @@ When I Enter a valid coupon code.
 And Click the Apply Coupon button.
 Then The coupon discount appears as a new line in the order summary and the grand total is updated.
 And Message appears AutoTestCoupon (12345) has been applied to your order.
-
-Scenario: (CH28) Disallow users use their invalid coupon codes.
-Given I am on checkout page as User.
-When I Enter a invalid coupon code.
-And Click the Apply Coupon button.
-Then message appears: promo code name is invalid or qualifications have not been met.

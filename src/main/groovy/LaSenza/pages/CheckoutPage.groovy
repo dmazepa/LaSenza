@@ -274,6 +274,7 @@ class CheckoutPage extends ForAllPage {
     }
 
     def click_input_credit_cart(def cartType) {
+        Thread.sleep(1000)
         element(loaderPayment).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).click()
         element(loaderPayment).waitUntilNotVisible()
