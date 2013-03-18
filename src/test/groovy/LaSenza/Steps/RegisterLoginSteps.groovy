@@ -10,6 +10,8 @@ import org.jbehave.core.annotations.When
 
 class RegisterLoginSteps {
 
+    def newPass
+
     @Steps
     UserSteps user
 
@@ -18,18 +20,18 @@ class RegisterLoginSteps {
 
     @Given("I am on Login page.")
     public void open_login_page() {
-        user.homePage.log_out_if_logged_in()
+        user.log_out_if_logged_in()
         user.open_login_page()
     }
 
     @When("Passing successful authentication.")
     public void entered_login() {
-       user.loginPage.log_in("test2@speroteck.com", "testthis", false)
+       user.loginPage.log_in("test2@speroteck.com", "testthis${newPass}", false)
     }
 
     @Then("I get My Account: Dashboard page with logged in status.")
     public void assert_account_page(){
-        customer.myAccountPage.assert_on_my_account_dashboard_page()
+        customer.assert_on_my_account_dashboard_page()
     }
 
     @When("I use process forgot my password.")
@@ -40,15 +42,17 @@ class RegisterLoginSteps {
 
     @Then("I get email with new password.")
     public void email_new_password(){
-         user.go_to_email_page("test2@speroteck.com","testthis")
-         user.input_new_password("testthis1")
+        user.go_to_email_page("test2@speroteck.com","testthis")
+        Random random = new Random()
+        newPass = random.nextInt(2)
+        user.input_new_password("testthis${newPass}")
 
     }
 
     @Then("I can log in with new password.")
     public void entered_new_login(){
-        user.loginPage.log_in("test2@speroteck.com", "testthis1", false)
-        customer.myAccountPage.assert_on_my_account_dashboard_page()
+        user.loginPage.log_in("test2@speroteck.com", "testthis${newPass}", false)
+        customer.assert_on_my_account_dashboard_page()
     }
 
     @When("I use process to create account.")

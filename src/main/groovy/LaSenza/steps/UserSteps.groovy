@@ -775,6 +775,7 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
+    @Pending
     def create_account(def email, def pas) {
         fill_field_first_name()
         fill_field_last_name()
