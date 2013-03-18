@@ -5,12 +5,12 @@ Allow the ability to effectively show stores in an easily searchable manner usin
 
 Scenario: (GSF21) Input field "Address" recognizes any search term that Google Maps understands, including exact addresses, location names, landmark names, zip codes, city/state/province/country names, etc.
 Given I am on Store Locator page.
-When I enter search term "1020 RUE DU MARCH" into Address field.
+When I enter search term "Abbotsford Canada" into Address field.
 Then Input field recognizes any search term that Google Maps understands.
 
 Scenario: (GSF22) Users can specify a search radius and search locations.
 Given I am on Store Locator page.
-When I enter search term "Abbotsford Canada" into Address field.
+When I enter search term "32900 SOUTH FRASER WAY" into Address field.
 When I specify a search radius "200".
 And Click button search.
 Then Only locations that fall within the selected radius will be returned in the search result.

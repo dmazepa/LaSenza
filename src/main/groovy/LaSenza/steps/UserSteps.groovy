@@ -1392,8 +1392,8 @@ class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    def assert_search_results_contains(def text) {
-        storeLocatorPage.assert_search_results_contains(text)
+    def assert_search_results_contains(def text, def qty) {
+        storeLocatorPage.assert_search_results_contains(text, qty)
     }
 
     @Step

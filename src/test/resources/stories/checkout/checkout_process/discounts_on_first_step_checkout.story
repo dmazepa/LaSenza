@@ -3,6 +3,12 @@ Meta:
 Narrative:
 Allow Users use his discounts.
 
+Scenario: (CH23) Allow user use his Prestige Loyalty Card.
+Given I am on checkout page as User.
+When Enter a Prestige Card number into the field.
+And Click Apply.
+Then The discount will be reflected in the Order Summary box.
+
 Scenario: (CH24) Allow users use their Gift card.
 Given I am on checkout page as User.
 When I enter a valid gift card code.
@@ -26,9 +32,3 @@ When I enter a valid gift card code.
 And Click the Add Gift Card button.
 When I add to cart gift cart product and return to shopping cart.
 Then I can't see previous applied gift cards.
-
-Scenario: (CH23) Allow user use his Prestige Loyalty Card.
-Given I am on checkout page as User.
-When Enter a Prestige Card number into the field.
-And Click Apply.
-Then The discount will be reflected in the Order Summary box.

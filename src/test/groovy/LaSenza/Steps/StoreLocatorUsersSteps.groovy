@@ -3,7 +3,6 @@ package LaSenza.Steps
 import LaSenza.steps.UserSteps
 import net.thucydides.core.annotations.Steps
 import org.jbehave.core.annotations.Given
-import org.jbehave.core.annotations.Pending
 import org.jbehave.core.annotations.Then
 import org.jbehave.core.annotations.When
 
@@ -26,7 +25,7 @@ class StoreLocatorUsersSteps {
     public void assert_input_recognize_search_term() {
         user.click_button_search_store_locator()
         user.assert_search_field_clear_store_locator()
-        user.assert_search_results_contains("1020 RUE DU MARCH")
+        user.assert_search_results_contains("SEVENOAKS MALL", 1)
     }
 
     @When('I specify a search radius "$radius".')
@@ -40,9 +39,8 @@ class StoreLocatorUsersSteps {
     }
 
     @Then("Only locations that fall within the selected radius will be returned in the search result.")
-    @Pending
     public void assert_selected_locations_in_result() {
-
+        user.assert_search_results_contains("WOODGROVE CENTRE", 15)
     }
 
     @Then("A popup displays to indicate that The address is not valid.")

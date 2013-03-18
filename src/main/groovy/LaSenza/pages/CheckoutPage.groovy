@@ -499,7 +499,6 @@ class CheckoutPage extends ForAllPage {
     def click_add_gift_cart_checkout() {
         element(buttonConfirmAndPay).waitUntilVisible()
         element(buttonApplyGiftCard).click()
-        element(loaderGiftCard).waitUntilVisible()
         element(loaderGiftCard).waitUntilNotVisible()
         element(loaderTotals).waitUntilNotVisible()
     }

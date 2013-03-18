@@ -53,7 +53,7 @@ class StoreLocatorPage extends ForAllPage {
     }
 
     def enter_radius_into_radius_field(String radius) {
-        element(selectRadius).selectByValue("100")
+        element(selectRadius).selectByValue("200")
     }
 
     def click_button_search() {
@@ -64,7 +64,7 @@ class StoreLocatorPage extends ForAllPage {
     def assert_pop_up_present() {
         Thread.sleep(2000)
         Alert alert = getDriver().switchTo().alert();
-        assertThat(alert.getText(), equalTo("The address is not valid: "))
+        assertThat(alert.getText(), equalTo("Search does not seem to be valid address."))
         alert.accept()
     }
 
@@ -99,15 +99,15 @@ class StoreLocatorPage extends ForAllPage {
     }
 
     def assert_default_radius() {
-        assertThat(element(selectRadius).getSelectedVisibleTextValue().replaceAll("([ \\n])", ""), equalTo("25Miles"))
+        assertThat(element(selectRadius).getSelectedVisibleTextValue().replaceAll("([ \\n])", ""), equalTo("25Kilometers"))
     }
 
     def assert_new_search_radius(String newRadius) {
         assertThat(element(selectRadius).getText().replaceAll("\\D", ""), equalTo(newRadius))
     }
 
-    def assert_search_results_contains(String text) {
-        assertThat(getDriver().findElements(By.xpath("//div[@class='sidebar-entry-container']")).size(), equalTo(1))
+    def assert_search_results_contains(String text, qty) {
+        assertThat(getDriver().findElements(By.xpath("//div[@class='sidebar-entry-container']")).size(), equalTo(qty))
         assert element(areaSearchResults).getText().contains(text)
     }
 
