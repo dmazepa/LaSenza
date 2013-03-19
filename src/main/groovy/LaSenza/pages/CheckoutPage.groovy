@@ -204,6 +204,9 @@ class CheckoutPage extends ForAllPage {
     @FindBy(xpath = "//div[@id='checkout-step-giftcard']//div[@class='step-loading']")
     private WebElement loaderGiftCard
 
+    @FindBy(xpath = "//div[@id='checkout-step-prestigecard-content']//div[@class='step-loading']")
+    private WebElement loaderPrestigeGiftCard
+
     @FindBy(xpath = "//div[@class='footer-wrapper']//span")
     private WebElement price
 
@@ -485,6 +488,7 @@ class CheckoutPage extends ForAllPage {
     }
 
     def assert_discount_prestige_cart() {
+        element(loaderPrestigeGiftCard).waitUntilNotVisible()
         element(loaderTotals).waitUntilNotVisible()
         element(discount).waitUntilVisible()
         shouldContainText("Prestige card")
