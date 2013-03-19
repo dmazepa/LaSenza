@@ -67,7 +67,7 @@ class MyAccountPage extends ForAllPage {
         assertThat(driver.findElements(By.xpath("//li[@class='item']")).size(), equalTo(1))
         shouldContainText("First Name Shipping Last Name Shipping")
         shouldContainText("Address Shipping")
-        shouldContainText("City Shipping, California, 14000")
+        shouldContainText("City Shipping, British Columbia, 14000")
         shouldContainText("T: 555-555-5555")
     }
 
