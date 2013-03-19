@@ -111,15 +111,15 @@ class PDPage extends HomePage {
 
     def assert_modal_window(String textAlert) {
         element(popUpText).waitUntilVisible()
-        assertThat(element(popUpText).getText(), containsText(textAlert))
+        assert element(popUpText).getText().contains(textAlert)
     }
 
     def assert_most_recently_added_items_in_mini_cart() {
         for (def i = 1; i <= 3; i++) {
             element(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a"))).waitUntilVisible()
             assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a")).getText(), equalTo(names[4 - i]))
-            assertThat getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][1]/dd")).getText(), containsText(colors[4 - i].replace(".",""))
-            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='options'][2]/dd")).getText(), equalTo(sizes[4 - i]))
+            assert getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='item-options']//dd[1]")).getText().contains(colors[4 - i].toString().replaceAll(".",""))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='item-options']//dd[2]")).getText(), equalTo(sizes[4 - i]))
             assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//span[@class='price']")).getText(), equalTo(prices[4 - i]))
         }
     }
@@ -143,8 +143,8 @@ class PDPage extends HomePage {
 
     def assert_most_recently_added_appears_first() {
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//p/a")).getText(), equalTo(names[3]))
-        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//div[@class='options'][1]/dd")).getText(), containsText(colors[3].replace(".","")))
-        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//div[@class='options'][2]/dd")).getText(), equalTo(sizes[3]))
+        assert getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//div[@class='options']/dd[1]")).getText().contains(colors[3].toString().replaceAll(".",""))
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//div[@class='options']/dd[2]")).getText(), equalTo(sizes[3]))
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//span[@class='price']")).getText(), equalTo(prices[3]))
     }
 
