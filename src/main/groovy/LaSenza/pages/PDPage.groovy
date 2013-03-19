@@ -118,7 +118,8 @@ class PDPage extends HomePage {
         for (def i = 1; i <= 3; i++) {
             element(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a"))).waitUntilVisible()
             assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//p/a")).getText(), equalTo(names[4 - i]))
-            assert getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='item-options']//dd[1]")).getText().contains(colors[4 - i].toString().replaceAll(".",""))
+            assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='item-options']//dd[1]")).getText(),
+                    containsString(colors[4 - i].toString().replaceAll(".","")))
             assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//div[@class='item-options']//dd[2]")).getText(), equalTo(sizes[4 - i]))
             assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${i}]//span[@class='price']")).getText(), equalTo(prices[4 - i]))
         }
@@ -143,8 +144,9 @@ class PDPage extends HomePage {
 
     def assert_most_recently_added_appears_first() {
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//p/a")).getText(), equalTo(names[3]))
-        assert getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//div[@class='options']/dd[1]")).getText().contains(colors[3].toString().replaceAll(".",""))
-        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//div[@class='options']/dd[2]")).getText(), equalTo(sizes[3]))
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//div[@class='item-options']//dd[1]")).getText(),
+                containsString(colors[3].toString().replaceAll(".","")))
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//div[@class='item-options']//dd[2]")).getText(), equalTo(sizes[3]))
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[1]//span[@class='price']")).getText(), equalTo(prices[3]))
     }
 
@@ -152,7 +154,7 @@ class PDPage extends HomePage {
         assertThat(element(buttonAddToCart).getText(), equalTo("UPDATE CART"))
     }
 
-    def set__and_store_multiple_product_conﬁgurations(def productNumber, def colorNumber, def sizeNumber) {
+    def set__and_store_multiple_product_conﬁgurations(def productNumber, int colorNumber, int sizeNumber) {
         element(linkAddMoreItems).click()
         element(By.xpath("//fieldset[@class='product-options']//div[${productNumber}]//div[@class='option-wrapper'][1]//select")).selectByIndex(colorNumber)
         element(By.xpath("//fieldset[@class='product-options']//div[${productNumber}]//div[@class='option-wrapper'][2]//select")).selectByIndex(sizeNumber)
@@ -191,7 +193,7 @@ class PDPage extends HomePage {
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//td[@class='qty']")).getText(), equalTo(qtys[1]))
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//span[@class='price']")).getText(), equalTo(prices[1]))
         assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//p[@class='product-name']/a")).getText(), equalTo(names[1]))
-        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//div[@class='item-options']//div[1]")).getText(), containsString(colors[1]))
-        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//div[@class='item-options']//div[2]")).getText(), containsString(sizes[1]))
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//div[@class='item-options']//dd[1]")).getText(), containsString(colors[1].toString()))
+        assertThat(getDriver().findElement(By.xpath("//ol[@id='mini-cart']/li[${position}]//div[@class='item-options']//dd[2]")).getText(), containsString(sizes[1].toString()))
     }
 }
