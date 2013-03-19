@@ -670,10 +670,7 @@ class UserSteps extends ScenarioSteps {
 
     @Step
     def assert_error_message_wrong_payment() {
-        Thread.sleep(3000)
-        Alert alert = getDriver().switchTo().alert();
-        assertThat(alert.getText(), equalTo("Please enter a valid credit card verification number."))
-        alert.accept()
+        checkoutPage.assert_text_appears("Please enter a valid credit card verification number.")
     }
 
     @Step

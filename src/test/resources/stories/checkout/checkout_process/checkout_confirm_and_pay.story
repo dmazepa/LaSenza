@@ -5,7 +5,6 @@ Show to user summary information on second checkout step.
 
 Scenario: (CH34) Disallow users submit order with wrong information.
 Given I am on second step of checkout process with invalid information.
-When I click Submit button.
 Then Returns appropriate message.
 
 Scenario: (CH33) Allow users come back to first step to edit order information.

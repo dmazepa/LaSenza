@@ -280,6 +280,7 @@ class CheckoutPage extends ForAllPage {
         element(loaderPayment).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).click()
         element(loaderPayment).waitUntilNotVisible()
+        element(By.xpath("//div[@class='payment-box']//input[@value='${cartType}']")).waitUntilVisible()
         element(By.xpath("//div[@class='payment-box']//input[@value='${cartType}']")).click()
     }
 
@@ -322,7 +323,7 @@ class CheckoutPage extends ForAllPage {
         Mouse mouse = ((HasInputDevices) driver).getMouse()
         Locatable hoverItem = (Locatable) buttonConfirmAndPay
         mouse.click(hoverItem.getCoordinates())
-        waitForTextToAppear("Please review your information before submitting your order.")
+        loader
     }
 
     def click_button_submit() {
@@ -577,5 +578,9 @@ class CheckoutPage extends ForAllPage {
         assertThat(element(textTaxTotals).getText(), equalTo(textTax))
         assertThat(element(textShippingTotals).getText(), equalTo(textShipping))
         assertThat(element(textGrandTotalsPrice).getText(), equalTo(textGrandTotalPrice))
+    }
+
+    def assert_text_appears(String s) {
+        shouldContainText(s)
     }
 }
