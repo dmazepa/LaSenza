@@ -280,7 +280,7 @@ class CheckoutPage extends ForAllPage {
         element(loaderPayment).waitUntilNotVisible()
         element(inputPaymentMethodCreditCart).click()
         element(loaderPayment).waitUntilNotVisible()
-        element(By.xpath("//input[@value='${cartType}']")).click()
+        element(By.xpath("//div[@class='payment-box']//input[@value='${cartType}']")).click()
     }
 
     def fill_cart_name(def cartName) {
