@@ -342,7 +342,7 @@ class CheckoutPage extends ForAllPage {
     }
 
     def uncheck_checkbox_use_billing_for_shipping() {
-        if (checkboxUseBillingForShipping.getAttribute("checked") != "checked" & checkboxUseBillingForShipping.getAttribute("checked") != null) {
+        if (checkboxUseBillingForShipping.getAttribute("checked") == "checked" & checkboxUseBillingForShipping.getAttribute("checked") != null) {
             element(checkboxUseBillingForShipping).click()
         }
     }

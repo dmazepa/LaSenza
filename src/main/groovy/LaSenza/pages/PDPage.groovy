@@ -73,7 +73,6 @@ class PDPage extends HomePage {
     def click_add_to_cart_button() {
         element(buttonAddToCart).waitUntilVisible()
         element(buttonAddToCart).click()
-        element(preloader).waitUntilVisible()
         element(preloader).waitUntilNotVisible()
     }
 
