@@ -427,7 +427,8 @@ class CheckoutPage extends ForAllPage {
     }
 
     def click_on_edit_link(def element1, def counter) {
-        getDriver().findElement(By.xpath("//div[@class='review-block-left']/div[${counter}]//button")).click()
+        Thread.sleep(2000)
+        element(By.xpath("//div[@class='review-block-left']/div[${counter}]//button")).click()
     }
 
     def assert_on_checkout_page() {
