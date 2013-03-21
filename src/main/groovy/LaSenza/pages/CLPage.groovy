@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.containsString
 class CLPage extends ForAllPage {
 
     private def productName
-    def qtyPages
+    def qtyPagesBefore
     def countColors
     def colors = []
     def sizes = []
@@ -152,6 +152,9 @@ class CLPage extends ForAllPage {
 
     @FindBy(xpath = "//div[@class='scroll mCustomScrollbar _mCS_5']//li/a")
     private WebElement refinementSizeFirst
+
+    @FindBy(xpath = "//div[@class='scroll mCustomScrollbar _mCS_2']//a")
+    private WebElement refinementColorFirst
 
     @FindBy(xpath = "//div[@class='currently']//li")
     private WebElement selectedAttributeFirst
@@ -305,15 +308,19 @@ class CLPage extends ForAllPage {
         assertThat(getDriver().findElements(By.xpath("//h2[@class='product-name']")).size().toString(), equalTo(qtyItems))
     }
 
+    def set_qty_pages_before() {
+        qtyPagesBefore = getDriver().findElements(By.xpath("//div[@class='pages']//li")).size()
+    }
+
     def select_to_show_qty_items_CLP(String qtyItems) {
-        qtyPages = getDriver().findElements(By.xpath("//div[@class='pages']//li")).size()
+        set_qty_pages_before()
         element(selectItemsPerPage).click()
         element(By.xpath("//a[contains(text(), '${qtyItems}')]")).waitUntilVisible()
         getDriver().findElement(By.xpath("//a[contains(text(), '${qtyItems}')]")).click()
     }
 
     def assert_qty_of_pages_recalculated() {
-        assert getDriver().findElements(By.xpath("//div[@class='pages']//li")).size() < qtyPages
+        assert getDriver().findElements(By.xpath("//div[@class='pages']//li")).size() < qtyPagesBefore
     }
 
     def assert_sorted_by(def sortingValue) {
@@ -523,6 +530,11 @@ class CLPage extends ForAllPage {
 
     def refinement_size_checked_and_added_to_shopping_by() {
         assertThat(refinementSizeFirst.getAttribute("class"), equalTo("ga-size m-checkbox-checked"))
-        assertThat(element(selectedAttributeFirst).getText(), containsString(textFirstRefinement))
+        def textAttribute =  textFirstRefinement.substring(0, textFirstRefinement.indexOf(" "))
+        assertThat(element(selectedAttributeFirst).getText(), containsString(textAttribute))
+    }
+
+    def click_on_color_swatch_refinement() {
+        element(refinementColorFirst).click()
     }
 }

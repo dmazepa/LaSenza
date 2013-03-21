@@ -1565,4 +1565,9 @@ class UserSteps extends ScenarioSteps {
     def assert_refinement_size_checked_and_added_to_shopping_by() {
         cLPage.refinement_size_checked_and_added_to_shopping_by()
     }
+
+    @Step
+    def click_on_color_swatch_refinement() {
+        cLPage.click_on_color_swatch_refinement()
+    }
 }
