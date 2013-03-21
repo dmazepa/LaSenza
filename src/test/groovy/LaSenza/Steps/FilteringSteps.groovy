@@ -40,4 +40,19 @@ class FilteringSteps {
         user.click_on_color_swatch_refinement()
     }
 
+    @Then("Its associated check-box for color places it in the Currently Shopping By list.")
+    public void assert_selected_color_swatch_attribute(){
+        user.assert_selected_color_swatch_attribute()
+    }
+
+    @When("Clicking consistently on attribute refinement Price.")
+    public void select_price_boundaries(){
+        user.select_price_boundaries()
+    }
+
+    @Then("Its associated check-box price places it in the Currently Shopping By list.")
+    public void assert_selected_price(){
+        user.assert_selected_price()
+    }
+
 }

@@ -14,13 +14,13 @@ Then Dynamically filters both the list of remaining attribute refinements and th
 Scenario: (CA32) User can multi filter products by Color swatcher.
 Given I am on Category page as User.
 When Clicking consistently on attribute refinement Color swatcher.
-Then Its associated check-box places it in the "Currently Shopping By" list.
+Then Its associated check-box for color places it in the Currently Shopping By list.
 Then Dynamically filters both the list of remaining attribute refinements and the list of products returned
 
 Scenario: (CA33) User can multi filter products by Price.
 Given I am on Category page as User.
 When Clicking consistently on attribute refinement Price.
-Then Its associated check-box places it in the "Currently Shopping By" list.
+Then Its associated check-box places it in the Currently Shopping By list.
 Then Dynamically filters both the list of remaining attribute refinements and the list of products returned
 
 Scenario: (CA34) User can filter products by Collection.

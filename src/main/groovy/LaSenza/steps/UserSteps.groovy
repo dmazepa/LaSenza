@@ -1570,4 +1570,19 @@ class UserSteps extends ScenarioSteps {
     def click_on_color_swatch_refinement() {
         cLPage.click_on_color_swatch_refinement()
     }
+
+    @Step
+    def assert_selected_color_swatch_attribute() {
+        cLPage.assert_selected_color_swatch_attribute()
+    }
+
+    @Step
+    def select_price_boundaries() {
+        cLPage.select_price_boundaries()
+    }
+
+    @Step
+    def assert_selected_price() {
+        cLPage.assert_selected_price()
+    }
 }

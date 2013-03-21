@@ -180,6 +180,7 @@ class PDPage extends HomePage {
     }
 
     def assert_main_image_changed() {
+        Thread.sleep(2000)
         assert mainImage.getAttribute("src") != imageBefore
     }
 

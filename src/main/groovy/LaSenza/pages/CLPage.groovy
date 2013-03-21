@@ -22,6 +22,7 @@ class CLPage extends ForAllPage {
     def countProductsCategory
     def countProductsAttributes
     def textFirstRefinement
+    String colorToSelect
 
     CLPage(WebDriver driver) {
         super(driver)
@@ -153,11 +154,23 @@ class CLPage extends ForAllPage {
     @FindBy(xpath = "//div[@class='scroll mCustomScrollbar _mCS_5']//li/a")
     private WebElement refinementSizeFirst
 
-    @FindBy(xpath = "//div[@class='scroll mCustomScrollbar _mCS_2']//a")
+    @FindBy(xpath = "//div[@class='scroll mCustomScrollbar _mCS_2']//a/span")
     private WebElement refinementColorFirst
+
+    @FindBy(xpath = "//div[@class='currently']//li/div")
+    private WebElement selectedAttributeColor
 
     @FindBy(xpath = "//div[@class='currently']//li")
     private WebElement selectedAttributeFirst
+
+    @FindBy(id = "left_price-from")
+    private WebElement leftArrowPrice
+
+    @FindBy(id = "left_price-to")
+    private WebElement rightArrowPrice
+
+    @FindBy(id = "left_price-applied")
+    private WebElement textPriceFromTo
 
     def click_on_button_quick_view(def i) {
         element(By.xpath("//div[@class='category-products']//li[${i}]/div/a[2]")).waitUntilVisible()
@@ -535,6 +548,24 @@ class CLPage extends ForAllPage {
     }
 
     def click_on_color_swatch_refinement() {
+        colorToSelect = refinementColorFirst.getAttribute("title")
+        set_qty_pages_before()
         element(refinementColorFirst).click()
+    }
+
+    def assert_selected_color_swatch_attribute() {
+        assertThat(selectedAttributeColor.getAttribute("title"), equalTo(colorToSelect))
+    }
+
+    def select_price_boundaries() {
+        set_qty_pages_before()
+        Actions mouseAction = new Actions(driver);
+        mouseAction.dragAndDropBy(leftArrowPrice, 44, 0).build().perform()
+        mouseAction.dragAndDropBy(rightArrowPrice, -88, 0).build().perform()
+    }
+
+    def assert_selected_price() {
+        assertThat(element(textPriceFromTo).getText(), equalTo("CA\$19 to CA\$25"))
+        assertThat(element(selectedAttributeFirst).getText().replaceAll("\\D", ""), equalTo("1925"))
     }
 }

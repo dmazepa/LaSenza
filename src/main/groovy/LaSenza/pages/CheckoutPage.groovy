@@ -323,7 +323,6 @@ class CheckoutPage extends ForAllPage {
         Mouse mouse = ((HasInputDevices) driver).getMouse()
         Locatable hoverItem = (Locatable) buttonConfirmAndPay
         mouse.click(hoverItem.getCoordinates())
-        loader
     }
 
     def click_button_submit() {
