@@ -511,6 +511,7 @@ class CheckoutPage extends ForAllPage {
     }
 
     def assert_discount_gift_cart_applied_checkout(String number) {
+        getDriver().navigate().refresh()
         element(loaderTotals).waitUntilNotVisible()
         element(discountGiftCard).waitUntilVisible()
         Thread.sleep(1000)
